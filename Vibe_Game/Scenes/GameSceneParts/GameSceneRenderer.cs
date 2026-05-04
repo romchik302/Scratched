@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Vibe_Game.Core.Engine;
 using Vibe_Game.Core.Services;
 using Vibe_Game.Core.Settings;
+using Vibe_Game.Core.Tiles;
 using Vibe_Game.Core.Utilities;
 using Vibe_Game.Gameplay.Entities;
 using Vibe_Game.Gameplay.Weapons;
@@ -14,10 +15,9 @@ namespace Vibe_Game.Scenes
 {
     internal sealed class GameSceneRenderer
     {
-        private const int MinimapRoomSize = 24;
-        private const int MinimapSpacing = 27;
+        private const int MinimapRoomSize = 34;
+        private const int MinimapSpacing = 38;
         private const int MinimapOffset = 12;
-        private const float MinimapTextScale = 0.42f;
 
         private readonly Game _game;
         private readonly GameSceneState _state;
@@ -121,56 +121,116 @@ namespace Vibe_Game.Scenes
                 for (int ty = 0; ty < WorldConfig.RoomHeightTiles; ty++)
                 {
                     Color color = room.Tiles[tx, ty].Tint;
+                    Rectangle tileBounds = new Rectangle(
+                        wx + tx * WorldConfig.TileSize,
+                        wy + ty * WorldConfig.TileSize,
+                        WorldConfig.TileSize,
+                        WorldConfig.TileSize);
+
                     spriteBatch.Draw(
                         _tileTexture ?? pixel,
-                        new Rectangle(wx + tx * WorldConfig.TileSize, wy + ty * WorldConfig.TileSize, WorldConfig.TileSize, WorldConfig.TileSize),
+                        tileBounds,
                         color
                     );
+
+                    DrawTileEntity(spriteBatch, pixel, room.Tiles[tx, ty], tileBounds);
                 }
             }
         }
 
+        /// <summary>Рисует сущность, которая живёт внутри тайла, например заготовку предмета на пьедестале.</summary>
+        private static void DrawTileEntity(SpriteBatch spriteBatch, Texture2D pixel, Tile tile, Rectangle tileBounds)
+        {
+            if (tile is PedestalTile pedestalTile)
+                pedestalTile.Collectable.DrawOnPedestal(spriteBatch, pixel, tileBounds);
+        }
+
+        /// <summary>Рисует посещённые комнаты миникарты от верхнего левого угла экрана.</summary>
         private void DrawMinimap(SpriteBatch spriteBatch, Texture2D pixel)
         {
+            if (!TryGetMinimapTopLeft(out Point topLeft))
+                return;
+
             for (int x = 0; x < WorldConfig.GridSize; x++)
             {
                 for (int y = 0; y < WorldConfig.GridSize; y++)
                 {
                     Point grid = new Point(x, y);
-                    if (_state.FloorMap[x, y] == null || !_state.VisitedRooms.Contains(grid))
+                    if (_state.FloorMap[x, y] == null || !IsVisibleOnMinimap(grid))
                         continue;
 
-                    Rectangle rect = new Rectangle(MinimapOffset + x * MinimapSpacing, MinimapOffset + y * MinimapSpacing, MinimapRoomSize, MinimapRoomSize);
+                    Rectangle rect = new Rectangle(
+                        MinimapOffset + (x - topLeft.X) * MinimapSpacing,
+                        MinimapOffset + (y - topLeft.Y) * MinimapSpacing,
+                        MinimapRoomSize,
+                        MinimapRoomSize);
 
-                    Color roomColor = _state.FloorMap[x, y].Type switch
-                    {
-                        LevelGenerator.RoomType.Start => GameColors.MinimapStart,
-                        LevelGenerator.RoomType.Boss => GameColors.MinimapBoss,
-                        LevelGenerator.RoomType.Shop => GameColors.MinimapShop,
-                        LevelGenerator.RoomType.Treasure => GameColors.MinimapTreasure,
-                        LevelGenerator.RoomType.Secret => GameColors.MinimapSecret,
-                        LevelGenerator.RoomType.SuperSecret => GameColors.MinimapSuperSecret,
-                        LevelGenerator.RoomType.Challenge => GameColors.MinimapChallenge,
-                        LevelGenerator.RoomType.Sacrifice => GameColors.MinimapSacrifice,
-                        _ => GameColors.MinimapDefault
-                    };
-
+                    bool isVisited = _state.VisitedRooms.Contains(grid);
                     bool isCurrent = x == _state.CurrentRoomGrid.X && y == _state.CurrentRoomGrid.Y;
-                    spriteBatch.Draw(pixel, rect, isCurrent ? roomColor : roomColor * 0.55f);
-                    spriteBatch.DrawRectangle(pixel, rect, isCurrent ? GameColors.MinimapCurrent : GameColors.MinimapVisitedOutline, 1);
+                    Color roomColor = isVisited
+                        ? GetMinimapRoomColor(_state.FloorMap[x, y].Type)
+                        : new Color(150, 150, 155, 92);
+                    Color fillColor = isCurrent ? roomColor : roomColor * 0.72f;
 
-                    if (_roomFont != null)
+                    spriteBatch.Draw(pixel, rect, fillColor);
+                    spriteBatch.DrawRectangle(pixel, rect, new Color(12, 12, 18, 220), 2);
+
+                    if (isCurrent)
                     {
-                        DrawCenteredText(
-                            spriteBatch,
-                            GetRoomTypeShortLabel(_state.FloorMap[x, y].Type),
-                            _roomFont,
-                            new Vector2(rect.Center.X, rect.Center.Y),
-                            GameColors.RoomLabel,
-                            MinimapTextScale);
+                        Rectangle currentRect = new Rectangle(rect.X - 3, rect.Y - 3, rect.Width + 6, rect.Height + 6);
+                        spriteBatch.DrawRectangle(pixel, currentRect, GameColors.MinimapVisitedOutline, 3);
                     }
                 }
             }
+        }
+
+        /// <summary>Находит верхнюю левую видимую комнату, чтобы миникарта оставалась компактной в углу экрана.</summary>
+        private bool TryGetMinimapTopLeft(out Point topLeft)
+        {
+            topLeft = Point.Zero;
+            bool hasVisibleRoom = false;
+            int minX = WorldConfig.GridSize;
+            int minY = WorldConfig.GridSize;
+
+            for (int x = 0; x < WorldConfig.GridSize; x++)
+            {
+                for (int y = 0; y < WorldConfig.GridSize; y++)
+                {
+                    Point roomGrid = new Point(x, y);
+                    if (_state.FloorMap[x, y] == null || !IsVisibleOnMinimap(roomGrid))
+                        continue;
+
+                    minX = Math.Min(minX, x);
+                    minY = Math.Min(minY, y);
+                    hasVisibleRoom = true;
+                }
+            }
+
+            if (!hasVisibleRoom)
+                return false;
+
+            topLeft = new Point(minX, minY);
+            return true;
+        }
+
+        /// <summary>Проверяет, должна ли комната отображаться на миникарте как посещённая или уже обнаруженная.</summary>
+        private bool IsVisibleOnMinimap(Point roomGrid)
+        {
+            return _state.VisitedRooms.Contains(roomGrid) || _state.DiscoveredRooms.Contains(roomGrid);
+        }
+
+        /// <summary>Возвращает цвет посещённой комнаты на миникарте по её типу.</summary>
+        private static Color GetMinimapRoomColor(LevelGenerator.RoomType roomType)
+        {
+            return roomType switch
+            {
+                LevelGenerator.RoomType.Start => GameColors.MinimapStart,
+                LevelGenerator.RoomType.Battle => GameColors.MinimapBattle,
+                LevelGenerator.RoomType.Boss => GameColors.MinimapBoss,
+                LevelGenerator.RoomType.Treasure => GameColors.MinimapTreasure,
+                LevelGenerator.RoomType.Challenge => GameColors.MinimapChallenge,
+                _ => GameColors.MinimapDefault
+            };
         }
 
         private void DrawCurrentRoomLabel(SpriteBatch spriteBatch)
@@ -203,35 +263,16 @@ namespace Vibe_Game.Scenes
             }
         }
 
-        private static string GetRoomTypeShortLabel(LevelGenerator.RoomType roomType)
-        {
-            return roomType switch
-            {
-                LevelGenerator.RoomType.Start => "ST",
-                LevelGenerator.RoomType.Boss => "BO",
-                LevelGenerator.RoomType.Shop => "SH",
-                LevelGenerator.RoomType.Treasure => "TR",
-                LevelGenerator.RoomType.Secret => "SE",
-                LevelGenerator.RoomType.SuperSecret => "SS",
-                LevelGenerator.RoomType.Challenge => "CH",
-                LevelGenerator.RoomType.Sacrifice => "SA",
-                _ => "NO"
-            };
-        }
-
         private static string GetRoomTypeLabel(LevelGenerator.RoomType roomType)
         {
             return roomType switch
             {
                 LevelGenerator.RoomType.Start => "START ROOM",
+                LevelGenerator.RoomType.Battle => "BATTLE ROOM",
                 LevelGenerator.RoomType.Boss => "BOSS ROOM",
-                LevelGenerator.RoomType.Shop => "SHOP ROOM",
                 LevelGenerator.RoomType.Treasure => "TREASURE ROOM",
-                LevelGenerator.RoomType.Secret => "SECRET ROOM",
-                LevelGenerator.RoomType.SuperSecret => "SUPER SECRET ROOM",
                 LevelGenerator.RoomType.Challenge => "CHALLENGE ROOM",
-                LevelGenerator.RoomType.Sacrifice => "SACRIFICE ROOM",
-                _ => "NORMAL ROOM"
+                _ => "ROOM"
             };
         }
 

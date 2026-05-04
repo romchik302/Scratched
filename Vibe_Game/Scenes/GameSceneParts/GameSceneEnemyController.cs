@@ -26,6 +26,7 @@ namespace Vibe_Game.Scenes
             _wallCollision = new SceneWallCollisionChecker(world);
         }
 
+        /// <summary>Создаёт врагов для текущего этажа и записывает номер этажа в каждого врага.</summary>
         public void SpawnEnemies(int floorIndex)
         {
             SpawnBossRoomEnemies(floorIndex);
@@ -291,7 +292,7 @@ namespace Vibe_Game.Scenes
                     {
                         Vector2 spawnWorld = _world.GetRandomFreeTilePosition(room, gx, gy, rng);
                         spawnWorld = _world.PushEnemyOutOfWalls(spawnWorld, EnemyConfig.DefaultFlyingRadius);
-                        room.enemies.Add(new FlyingEnemy(spawnWorld, _flyingCollision));
+                        room.enemies.Add(AssignEnemyFloor(new FlyingEnemy(spawnWorld, _flyingCollision), floorIndex));
                     }
                 }
             }
@@ -318,7 +319,7 @@ namespace Vibe_Game.Scenes
                     {
                         Vector2 spawnWorld = _world.GetRandomFreeTilePosition(room, gx, gy, rng);
                         spawnWorld = _world.PushEnemyOutOfWalls(spawnWorld, EnemyConfig.DefaultChasingRadius);
-                        room.enemies.Add(new ChasingEnemy(spawnWorld, _wallCollision));
+                        room.enemies.Add(AssignEnemyFloor(new ChasingEnemy(spawnWorld, _wallCollision), floorIndex));
                     }
                 }
             }
@@ -349,7 +350,7 @@ namespace Vibe_Game.Scenes
                         {
                             ProjectileSpawner = _projectiles.Spawn
                         };
-                        room.enemies.Add(shooter);
+                        room.enemies.Add(AssignEnemyFloor(shooter, floorIndex));
                     }
                 }
             }
@@ -376,14 +377,18 @@ namespace Vibe_Game.Scenes
                     {
                         Vector2 spawnWorld = _world.GetRandomFreeTilePosition(room, gx, gy, rng);
                         spawnWorld = _world.PushEnemyOutOfWalls(spawnWorld, EnemyConfig.AdaptiveChasingRadius);
-                        room.enemies.Add(new AdaptiveChasingEnemy(spawnWorld, _wallCollision));
+                        room.enemies.Add(AssignEnemyFloor(new AdaptiveChasingEnemy(spawnWorld, _wallCollision), floorIndex));
                     }
                 }
             }
         }
 
+        /// <summary>Создаёт босса только на этаже, который указан как этаж босса.</summary>
         private void SpawnBossRoomEnemies(int floorIndex)
         {
+            if (floorIndex != FloorConfig.BossFloorIndex)
+                return;
+
             var rng = new Random(unchecked(floorIndex * 911 ^ 0xB055));
 
             for (int gx = 0; gx < WorldConfig.GridSize; gx++)
@@ -402,11 +407,12 @@ namespace Vibe_Game.Scenes
                         DamagePlayer = damage => _state.Player.TakeDamage(damage),
                         SummonEnemy = (position, spawnShooter) => SpawnSummonedEnemy(position, spawnShooter)
                     };
-                    room.enemies.Add(boss);
+                    room.enemies.Add(AssignEnemyFloor(boss, floorIndex));
                 }
             }
         }
 
+        /// <summary>Создаёт врага, призванного боссом, на текущем этаже.</summary>
         private void SpawnSummonedEnemy(Vector2 position, bool spawnShooter)
         {
             Point grid = new Point(
@@ -434,8 +440,16 @@ namespace Vibe_Game.Scenes
                 enemy = new FlyingEnemy(safePosition, _flyingCollision);
             }
 
+            AssignEnemyFloor(enemy, _state.CurrentFloorIndex);
             enemy.Activate(skipDelay: true); // Пропускаем задержку для призванных врагов
             room.enemies.Add(enemy);
+        }
+
+        /// <summary>Присваивает врагу этаж появления и возвращает того же врага для удобного добавления в комнату.</summary>
+        private static T AssignEnemyFloor<T>(T enemy, int floorIndex) where T : Enemy
+        {
+            enemy.SetFloorIndex(floorIndex);
+            return enemy;
         }
 
         public List<Enemy> GetEnemies()
@@ -463,9 +477,8 @@ namespace Vibe_Game.Scenes
 
         private static bool CanSpawnRegularEnemies(LevelGenerator.RoomType roomType)
         {
-            return roomType is LevelGenerator.RoomType.Normal
-                or LevelGenerator.RoomType.Challenge
-                or LevelGenerator.RoomType.Sacrifice;
+            return roomType is LevelGenerator.RoomType.Battle
+                or LevelGenerator.RoomType.Challenge;
         }
 
         private static float GetEnemyRadius(Enemy enemy)

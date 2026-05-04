@@ -13,6 +13,13 @@ namespace Vibe_Game.Scenes
     public class GameScene : BaseScene
     {
         private static readonly Point StartRoomGrid = new(WorldConfig.CenterGrid, WorldConfig.CenterGrid);
+        private static readonly Point[] NeighborDirections =
+        {
+            new Point(0, -1),
+            new Point(0, 1),
+            new Point(-1, 0),
+            new Point(1, 0)
+        };
 
         private readonly GameSceneState _state = new();
         private readonly IPlayerRenderer _playerRenderer;
@@ -88,6 +95,7 @@ namespace Vibe_Game.Scenes
             if (_state.CurrentRoomGrid != _state.LastRoomGrid)
             {
                 _state.VisitedRooms.Add(_state.CurrentRoomGrid);
+                DiscoverAdjacentRooms(_state.CurrentRoomGrid);
                 _enemyController.ActivateEnemies(_state.CurrentRoomGrid);
                 _world.OnRoomEntered(_state.CurrentRoomGrid, _state.LastRoomGrid);
                 _state.LastRoomGrid = _state.CurrentRoomGrid;
@@ -95,7 +103,21 @@ namespace Vibe_Game.Scenes
 
             _projectileController.Update(gameTime);
             _enemyController.Update(gameTime);
+
+            if (IsPlayerDead())
+            {
+                ShowDeathScreen();
+                return;
+            }
+
             _world.UpdateCurrentRoomState();
+
+            if (HasFinalBossBeenDefeated())
+            {
+                ShowCreditsAfterFinalBoss();
+                return;
+            }
+
             _state.IsPlayerStandingOnFloorExit = _world.TryGetFloorExitTarget(out int nextFloorIndex);
 
             if (_state.IsPlayerStandingOnFloorExit && _inputService.IsActionPressed(InputAction.Interact))
@@ -130,6 +152,7 @@ namespace Vibe_Game.Scenes
             _state.FloorMap = levelGenerator.GenerateFloor(_state.CurrentFloorIndex);
             _state.Projectiles.Clear();
             _state.VisitedRooms.Clear();
+            _state.DiscoveredRooms.Clear();
             _state.IsPlayerStandingOnFloorExit = false;
             _state.CurrentRoomGrid = StartRoomGrid;
             _state.LastRoomGrid = StartRoomGrid;
@@ -138,10 +161,62 @@ namespace Vibe_Game.Scenes
             _state.Player.Position = startPos;
             _state.CameraPosition = startPos;
             _state.VisitedRooms.Add(StartRoomGrid);
+            DiscoverAdjacentRooms(StartRoomGrid);
 
             _world.InitializeDoorStates();
             _enemyController.SpawnEnemies(_state.CurrentFloorIndex);
             _world.RefreshEnemyOccupancy();
+        }
+
+        /// <summary>Запоминает соседние комнаты, которые игрок уже увидел на миникарте.</summary>
+        private void DiscoverAdjacentRooms(Point roomGrid)
+        {
+            _state.DiscoveredRooms.Add(roomGrid);
+
+            foreach (Point direction in NeighborDirections)
+            {
+                Point neighborGrid = roomGrid + direction;
+                if (IsRoomInsideMap(neighborGrid) && _state.FloorMap[neighborGrid.X, neighborGrid.Y] != null)
+                    _state.DiscoveredRooms.Add(neighborGrid);
+            }
+        }
+
+        /// <summary>Проверяет, находится ли координата комнаты внутри карты этажа.</summary>
+        private static bool IsRoomInsideMap(Point roomGrid)
+        {
+            return roomGrid.X >= 0
+                && roomGrid.X < WorldConfig.GridSize
+                && roomGrid.Y >= 0
+                && roomGrid.Y < WorldConfig.GridSize;
+        }
+
+        /// <summary>Проверяет, закончилось ли здоровье игрока.</summary>
+        private bool IsPlayerDead()
+        {
+            return _state.Player?.Stats.Health <= 0f;
+        }
+
+        /// <summary>Показывает экран смерти после потери всего здоровья.</summary>
+        private void ShowDeathScreen()
+        {
+            ((Game1)GameInstance).ShowDeathScreen();
+        }
+
+        /// <summary>Проверяет, что финальный босс на последнем этаже уже побеждён.</summary>
+        private bool HasFinalBossBeenDefeated()
+        {
+            if (_state.HasFinishedRun || _state.CurrentFloorIndex < _state.MaxFloorIndex)
+                return false;
+
+            Room currentRoom = _world.GetRoomAtGrid(_state.CurrentRoomGrid);
+            return currentRoom?.Type == LevelGenerator.RoomType.Boss && currentRoom.IsCleared;
+        }
+
+        /// <summary>Завершает забег после победы над финальным боссом и показывает титры.</summary>
+        private void ShowCreditsAfterFinalBoss()
+        {
+            _state.HasFinishedRun = true;
+            ((Game1)GameInstance).ShowCredits();
         }
 
         private static Vector2 GetStartWorldPosition()

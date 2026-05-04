@@ -23,6 +23,8 @@ namespace Vibe_Game
         private Texture2D _pixelTexture;
         private Texture2D _playerTexture;
         private MainMenuScene _mainMenuScene;
+        private CreditsScene _creditsScene;
+        private DeathScene _deathScene;
         private KeyboardState _previousKeyboardState;
         private RenderTarget2D _sceneRenderTarget;
         private const int VirtualWidth = 1280;
@@ -189,6 +191,30 @@ namespace Vibe_Game
             }
 
             _sceneManager.SwitchTo("main-menu");
+        }
+
+        /// <summary>Показывает отдельную сцену титров после завершения забега.</summary>
+        public void ShowCredits()
+        {
+            if (_creditsScene == null)
+            {
+                _creditsScene = new CreditsScene(this, _inputService);
+                _sceneManager.AddScene("credits", _creditsScene);
+            }
+
+            _sceneManager.SwitchTo("credits");
+        }
+
+        /// <summary>Показывает отдельную сцену смерти после окончания здоровья игрока.</summary>
+        public void ShowDeathScreen()
+        {
+            if (_deathScene == null)
+            {
+                _deathScene = new DeathScene(this, _inputService);
+                _sceneManager.AddScene("death", _deathScene);
+            }
+
+            _sceneManager.SwitchTo("death");
         }
 
         protected override void Update(GameTime gameTime)

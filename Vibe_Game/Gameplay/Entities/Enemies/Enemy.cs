@@ -37,6 +37,7 @@ public abstract class Enemy : Entity
 
     public int Health { get; set; }
     public int MaxHealth { get; protected set; }
+    public int FloorIndex { get; private set; } = 1;
 
     /// <summary>Сопротивление отдаче (0.0 = полная отдача, 1.0 = не отталкивается).</summary>
     public float RecoilResistance { get; protected set; } = 0f;
@@ -87,6 +88,12 @@ public abstract class Enemy : Entity
         Position = position;
         MaxHealth = maxHealth;
         Health = maxHealth;
+    }
+
+    /// <summary>Запоминает этаж, на котором враг был создан.</summary>
+    public void SetFloorIndex(int floorIndex)
+    {
+        FloorIndex = Math.Max(1, floorIndex);
     }
 
     public static void LoadSharedTextures(ContentManager content)

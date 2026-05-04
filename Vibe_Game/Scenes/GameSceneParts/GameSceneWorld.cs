@@ -241,7 +241,7 @@ namespace Vibe_Game.Scenes
             if (room == null)
                 return;
 
-            EnsureBossFloorExit(room);
+            EnsureFloorExit(room);
 
             if (room.Type == LevelGenerator.RoomType.Start)
             {
@@ -256,7 +256,7 @@ namespace Vibe_Game.Scenes
             {
                 room.IsLocked = false;
                 room.IsCleared = true;
-                EnsureBossFloorExit(room);
+                EnsureFloorExit(room);
                 RefreshDoorStatesAround(_state.CurrentRoomGrid);
                 return;
             }
@@ -572,18 +572,21 @@ namespace Vibe_Game.Scenes
             return buttonSatisfied && !HasAliveEnemies(room);
         }
 
-        private void EnsureBossFloorExit(Room room)
+        /// <summary>Создаёт выход на следующий этаж в комнате босса или в выбранной комнате выхода.</summary>
+        private void EnsureFloorExit(Room room)
         {
-            if (room.Type != LevelGenerator.RoomType.Boss)
-                return;
-
-            if (!room.IsCleared)
-                return;
-
-            if (_state.CurrentFloorIndex >= _state.MaxFloorIndex)
+            if (!ShouldCreateFloorExit(room))
                 return;
 
             room.CreateFloorExit(_state.CurrentFloorIndex + 1);
+        }
+
+        /// <summary>Проверяет, можно ли открыть люк на следующий этаж в этой комнате.</summary>
+        private bool ShouldCreateFloorExit(Room room)
+        {
+            return room.IsCleared
+                && _state.CurrentFloorIndex < _state.MaxFloorIndex
+                && (room.Type == LevelGenerator.RoomType.Boss || room.IsFloorExitRoom);
         }
 
         private static bool HasAliveEnemies(Room room)

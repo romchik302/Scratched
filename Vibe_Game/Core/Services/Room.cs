@@ -18,6 +18,7 @@ namespace Vibe_Game.Core.Services
         public bool HasButton { get; set; }
         public bool IsButtonPressed => ButtonTile?.IsPressed ?? false;
         public bool IsCleared { get; set; }
+        public bool IsFloorExitRoom { get; set; }
         public Point ButtonPos => ButtonTile?.GridPosition ?? Point.Zero;
         public ButtonTile ButtonTile { get; private set; }
         public TrapdoorTile FloorExitTile { get; private set; }
@@ -31,7 +32,7 @@ namespace Vibe_Game.Core.Services
             WidthInTiles = widthInTiles;
             HeightInTiles = heightInTiles;
             Type = type;
-            HasButton = type is LevelGenerator.RoomType.Normal or LevelGenerator.RoomType.Challenge;
+            HasButton = type is LevelGenerator.RoomType.Battle or LevelGenerator.RoomType.Challenge;
             IsCleared = type == LevelGenerator.RoomType.Start;
             Tiles = new Tile[WidthInTiles, HeightInTiles];
 
@@ -87,6 +88,22 @@ namespace Vibe_Game.Core.Services
             SetTile(center.X, center.Y, new TrapdoorTile(center, targetFloorIndex));
         }
 
+        /// <summary>Размещает указанное количество пьедесталов на свободных клетках комнаты.</summary>
+        public void PlacePedestals(int count)
+        {
+            if (count <= 0)
+                return;
+
+            List<Point> candidates = GetPedestalCandidates();
+            for (int i = 0; i < count && candidates.Count > 0; i++)
+            {
+                int candidateIndex = _random.Next(candidates.Count);
+                Point pedestalPos = candidates[candidateIndex];
+                candidates.RemoveAt(candidateIndex);
+                SetTile(pedestalPos.X, pedestalPos.Y, new PedestalTile(pedestalPos));
+            }
+        }
+
         public void ClearEnemyOccupancy()
         {
             for (int x = 0; x < WidthInTiles; x++)
@@ -106,6 +123,7 @@ namespace Vibe_Game.Core.Services
         private void InitializeTiles()
         {
             int obstacleChance = GetInteriorObstacleChance(Type);
+            int overgrowthChance = GetInteriorOvergrowthChance(Type);
 
             for (int x = 0; x < WidthInTiles; x++)
             {
@@ -119,9 +137,12 @@ namespace Vibe_Game.Core.Services
                     else
                     {
                         bool shouldPlaceObstacle = obstacleChance > 0 && _random.Next(100) < obstacleChance;
+                        bool shouldPlaceOvergrowth = !shouldPlaceObstacle && overgrowthChance > 0 && _random.Next(100) < overgrowthChance;
                         Tiles[x, y] = shouldPlaceObstacle
-                            ? new WallTile(tilePosition)
-                            : new FloorTile(tilePosition);
+                            ? new RockTile(tilePosition)
+                            : shouldPlaceOvergrowth
+                                ? new OvergrowthTile(tilePosition)
+                                : new FloorTile(tilePosition);
                     }
                 }
             }
@@ -156,14 +177,44 @@ namespace Vibe_Game.Core.Services
             return roomType switch
             {
                 LevelGenerator.RoomType.Boss => 1,
-                LevelGenerator.RoomType.Shop => 0,
                 LevelGenerator.RoomType.Treasure => 0,
-                LevelGenerator.RoomType.Secret => 0,
-                LevelGenerator.RoomType.SuperSecret => 0,
-                LevelGenerator.RoomType.Sacrifice => 2,
                 LevelGenerator.RoomType.Challenge => 3,
                 _ => 5
             };
+        }
+
+        /// <summary>Возвращает шанс появления проходимых зарослей внутри комнаты.</summary>
+        private static int GetInteriorOvergrowthChance(LevelGenerator.RoomType roomType)
+        {
+            return roomType switch
+            {
+                LevelGenerator.RoomType.Treasure => 2,
+                LevelGenerator.RoomType.Boss => 1,
+                _ => 8
+            };
+        }
+
+        /// <summary>Собирает безопасные клетки, куда можно поставить пьедестал без перекрытия центра и дверей.</summary>
+        private List<Point> GetPedestalCandidates()
+        {
+            List<Point> candidates = new List<Point>();
+            Point center = new Point(WidthInTiles / 2, HeightInTiles / 2);
+
+            for (int x = 2; x < WidthInTiles - 2; x++)
+            {
+                for (int y = 2; y < HeightInTiles - 2; y++)
+                {
+                    Point candidate = new Point(x, y);
+                    if (Math.Abs(candidate.X - center.X) <= 1 && Math.Abs(candidate.Y - center.Y) <= 1)
+                        continue;
+
+                    Tile tile = GetTile(x, y);
+                    if (tile is FloorTile or OvergrowthTile)
+                        candidates.Add(candidate);
+                }
+            }
+
+            return candidates;
         }
     }
 }

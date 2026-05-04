@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Vibe_Game.Core.Services;
+using Vibe_Game.Core.Settings;
 using Vibe_Game.Gameplay.Entities.Player;
 using Vibe_Game.Gameplay.Projectiles;
 
@@ -15,8 +16,10 @@ namespace Vibe_Game.Scenes
         public Vector2 CameraPosition { get; set; }
         public List<Projectile> Projectiles { get; } = new();
         public HashSet<Point> VisitedRooms { get; } = new();
-        public int CurrentFloorIndex { get; set; } = 1;
-        public int MaxFloorIndex { get; } = 2;
+        public HashSet<Point> DiscoveredRooms { get; } = new();
+        public int CurrentFloorIndex { get; set; } = FloorConfig.FirstFloorIndex;
+        public int MaxFloorIndex { get; } = FloorConfig.MaxFloorIndex;
         public bool IsPlayerStandingOnFloorExit { get; set; }
+        public bool HasFinishedRun { get; set; }
     }
 }

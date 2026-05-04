@@ -16,6 +16,13 @@ namespace Vibe_Game.Core.Settings
         public const int CenterGrid = 6;
     }
 
+    public static class FloorConfig
+    {
+        public const int FirstFloorIndex = 1;
+        public const int BossFloorIndex = 2;
+        public const int MaxFloorIndex = 2;
+    }
+
     public static class PlayerConfig
     {
         public const int Size = 24;
@@ -92,23 +99,24 @@ namespace Vibe_Game.Core.Settings
         public static readonly Color Background = new Color(15, 10, 20);
         public static readonly Color Floor = new Color(35, 25, 40);
         public static readonly Color Wall = new Color(70, 60, 80);
+        public static readonly Color Rock = new Color(82, 78, 88);
+        public static readonly Color Overgrowth = new Color(58, 92, 58);
+        public static readonly Color Pedestal = new Color(126, 108, 84);
+        public static readonly Color CollectablePlaceholder = new Color(238, 210, 104);
         public static readonly Color Trapdoor = new Color(120, 82, 44);
         public static readonly Color TrapdoorRim = new Color(200, 160, 95);
 
         public static readonly Color ButtonLocked = Color.Yellow;
         public static readonly Color ButtonUnlocked = Color.Lime;
 
-        public static readonly Color MinimapStart = Color.DodgerBlue;
-        public static readonly Color MinimapBoss = Color.Crimson;
-        public static readonly Color MinimapShop = Color.Goldenrod;
-        public static readonly Color MinimapTreasure = Color.MediumPurple;
-        public static readonly Color MinimapSecret = new Color(82, 168, 120);
-        public static readonly Color MinimapSuperSecret = new Color(65, 210, 170);
-        public static readonly Color MinimapChallenge = new Color(206, 126, 54);
-        public static readonly Color MinimapSacrifice = new Color(176, 72, 72);
+        public static readonly Color MinimapStart = new Color(210, 212, 218);
+        public static readonly Color MinimapBattle = new Color(96, 98, 108);
+        public static readonly Color MinimapBoss = new Color(224, 42, 48);
+        public static readonly Color MinimapTreasure = new Color(240, 202, 58);
+        public static readonly Color MinimapChallenge = new Color(58, 134, 238);
         public static readonly Color MinimapCurrent = Color.Red;
-        public static readonly Color MinimapDefault = Color.LightGray;
-        public static readonly Color MinimapVisitedOutline = new Color(220, 220, 220);
+        public static readonly Color MinimapDefault = new Color(96, 98, 108);
+        public static readonly Color MinimapVisitedOutline = new Color(235, 235, 230);
         public static readonly Color RoomLabel = new Color(245, 245, 235);
         public static readonly Color RoomLabelShadow = new Color(20, 20, 26, 180);
         public static readonly Color FloorHint = new Color(232, 216, 160);

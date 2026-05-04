@@ -21,18 +21,14 @@ namespace Vibe_Game.Core.Services
 
         public enum RoomType
         {
-            None,
-            Normal,
             Start,
-            Boss,
-            Shop,
-            Treasure,
-            Secret,
-            SuperSecret,
+            Battle,
             Challenge,
-            Sacrifice
+            Treasure,
+            Boss
         }
 
+        /// <summary>Создаёт карту этажа и назначает специальные комнаты по номеру этажа.</summary>
         public Room[,] GenerateFloor(int floorIndex)
         {
             Room[,] grid = new Room[WorldConfig.GridSize, WorldConfig.GridSize];
@@ -47,8 +43,9 @@ namespace Vibe_Game.Core.Services
 
             int targetRoomCount = Math.Clamp(8 + floorIndex * 2 + _random.Next(-1, 2), 8, 14);
             GrowMainLayout(grid, occupiedRooms, start, targetRoomCount);
+            EnsureSpecialRoomDeadEnds(grid, occupiedRooms, start, requiredDeadEndCount: 2);
             AssignSpecialRooms(grid, occupiedRooms, start, floorIndex);
-            TryAddSecretRooms(grid, occupiedRooms, start);
+            PlacePedestals(grid, occupiedRooms, start, floorIndex);
             CreateDoorways(grid);
 
             return grid;
@@ -82,7 +79,7 @@ namespace Vibe_Game.Core.Services
                 if (anchor == start && CountOccupiedNeighbors(grid, anchor) >= 2 && _random.NextDouble() < 0.75)
                     continue;
 
-                grid[candidate.X, candidate.Y] = new Room(WorldConfig.RoomWidthTiles, WorldConfig.RoomHeightTiles, RoomType.Normal);
+                grid[candidate.X, candidate.Y] = new Room(WorldConfig.RoomWidthTiles, WorldConfig.RoomHeightTiles, RoomType.Battle);
                 occupiedRooms.Add(candidate);
             }
 
@@ -95,13 +92,60 @@ namespace Vibe_Game.Core.Services
                     if (!IsInsideGrid(candidate) || grid[candidate.X, candidate.Y] != null)
                         continue;
 
-                    grid[candidate.X, candidate.Y] = new Room(WorldConfig.RoomWidthTiles, WorldConfig.RoomHeightTiles, RoomType.Normal);
+                    grid[candidate.X, candidate.Y] = new Room(WorldConfig.RoomWidthTiles, WorldConfig.RoomHeightTiles, RoomType.Battle);
                     occupiedRooms.Add(candidate);
                     break;
                 }
             }
         }
 
+        /// <summary>Гарантирует, что для босса и сокровищницы есть тупиковые комнаты с одним входом.</summary>
+        private void EnsureSpecialRoomDeadEnds(Room[,] grid, List<Point> occupiedRooms, Point start, int requiredDeadEndCount)
+        {
+            int attempts = 0;
+            int maxAttempts = WorldConfig.GridSize * WorldConfig.GridSize;
+
+            while (CountDeadEnds(grid, occupiedRooms, start) < requiredDeadEndCount && attempts < maxAttempts)
+            {
+                attempts++;
+
+                Point? deadEnd = TryCreateExtraDeadEnd(grid, occupiedRooms, start);
+                if (!deadEnd.HasValue)
+                    break;
+            }
+        }
+
+        /// <summary>Создаёт дополнительную тупиковую боевую комнату рядом с существующим ответвлением карты.</summary>
+        private Point? TryCreateExtraDeadEnd(Room[,] grid, List<Point> occupiedRooms, Point start)
+        {
+            Dictionary<Point, int> distances = CalculateDistances(grid, start);
+            List<Point> anchors = occupiedRooms
+                .Where(point => point != start && CountOccupiedNeighbors(grid, point) > 1)
+                .OrderByDescending(point => distances.GetValueOrDefault(point))
+                .ThenBy(_ => _random.Next())
+                .ToList();
+
+            foreach (Point anchor in anchors)
+            {
+                foreach (Point direction in Directions.OrderBy(_ => _random.Next()))
+                {
+                    Point candidate = anchor + direction;
+                    if (!IsInsideGrid(candidate) || grid[candidate.X, candidate.Y] != null)
+                        continue;
+
+                    if (CountOccupiedNeighbors(grid, candidate) != 1)
+                        continue;
+
+                    grid[candidate.X, candidate.Y] = new Room(WorldConfig.RoomWidthTiles, WorldConfig.RoomHeightTiles, RoomType.Battle);
+                    occupiedRooms.Add(candidate);
+                    return candidate;
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>Назначает специальные комнаты и выбирает комнату выхода, если на этаже нет босса.</summary>
         private void AssignSpecialRooms(Room[,] grid, List<Point> occupiedRooms, Point start, int floorIndex)
         {
             Dictionary<Point, int> distances = CalculateDistances(grid, start);
@@ -112,28 +156,15 @@ namespace Vibe_Game.Core.Services
 
             HashSet<Point> assigned = new HashSet<Point> { start };
 
-            Point bossRoom = deadEnds.FirstOrDefault();
-            if (bossRoom == Point.Zero && !deadEnds.Contains(Point.Zero))
-            {
-                bossRoom = occupiedRooms
-                    .Where(point => point != start)
-                    .OrderByDescending(point => distances.GetValueOrDefault(point))
-                    .First();
-            }
-
-            AssignRoomType(grid, bossRoom, RoomType.Boss, assigned);
+            Point floorProgressionRoom = FindFloorProgressionRoom(deadEnds, occupiedRooms, start, distances);
+            if (ShouldCreateBossRoom(floorIndex))
+                AssignRoomType(grid, floorProgressionRoom, RoomType.Boss, assigned);
+            else
+                MarkFloorExitRoom(grid, floorProgressionRoom, assigned);
 
             Point treasureRoom = deadEnds.FirstOrDefault(point => !assigned.Contains(point));
             if (treasureRoom != Point.Zero || deadEnds.Contains(Point.Zero))
                 AssignRoomType(grid, treasureRoom, RoomType.Treasure, assigned);
-
-            Point shopRoom = occupiedRooms
-                .Where(point => !assigned.Contains(point) && distances.GetValueOrDefault(point) >= 2)
-                .OrderBy(point => CountOccupiedNeighbors(grid, point))
-                .ThenByDescending(point => distances.GetValueOrDefault(point))
-                .FirstOrDefault();
-            if (shopRoom != Point.Zero || occupiedRooms.Contains(Point.Zero))
-                AssignRoomType(grid, shopRoom, RoomType.Shop, assigned);
 
             if (floorIndex >= 1)
             {
@@ -144,87 +175,46 @@ namespace Vibe_Game.Core.Services
                 if (challengeRoom != Point.Zero || occupiedRooms.Contains(Point.Zero))
                     AssignRoomType(grid, challengeRoom, RoomType.Challenge, assigned);
             }
-
-            if (floorIndex >= 2)
-            {
-                Point sacrificeRoom = occupiedRooms
-                    .Where(point => !assigned.Contains(point) && distances.GetValueOrDefault(point) >= 2)
-                    .OrderBy(point => CountOccupiedNeighbors(grid, point))
-                    .ThenBy(point => _random.Next())
-                    .FirstOrDefault();
-                if (sacrificeRoom != Point.Zero || occupiedRooms.Contains(Point.Zero))
-                    AssignRoomType(grid, sacrificeRoom, RoomType.Sacrifice, assigned);
-            }
         }
 
-        private void TryAddSecretRooms(Room[,] grid, List<Point> occupiedRooms, Point start)
+        /// <summary>Считает тупиковые комнаты, которые не являются стартовой комнатой.</summary>
+        private static int CountDeadEnds(Room[,] grid, List<Point> occupiedRooms, Point start)
         {
-            Point? secretRoom = FindEmptySpecialRoomCandidate(grid, minimumNeighbors: 3, maximumNeighbors: 4);
-            if (secretRoom.HasValue)
-            {
-                grid[secretRoom.Value.X, secretRoom.Value.Y] = new Room(WorldConfig.RoomWidthTiles, WorldConfig.RoomHeightTiles, RoomType.Secret);
-                occupiedRooms.Add(secretRoom.Value);
-            }
-
-            Point? superSecretRoom = FindEmptySuperSecretCandidate(grid, start);
-            if (superSecretRoom.HasValue)
-            {
-                grid[superSecretRoom.Value.X, superSecretRoom.Value.Y] = new Room(WorldConfig.RoomWidthTiles, WorldConfig.RoomHeightTiles, RoomType.SuperSecret);
-                occupiedRooms.Add(superSecretRoom.Value);
-            }
+            return occupiedRooms.Count(point => point != start && CountOccupiedNeighbors(grid, point) == 1);
         }
 
-        private Point? FindEmptySpecialRoomCandidate(Room[,] grid, int minimumNeighbors, int maximumNeighbors)
+        /// <summary>Определяет, должен ли текущий этаж содержать комнату босса.</summary>
+        private static bool ShouldCreateBossRoom(int floorIndex)
         {
-            List<Point> candidates = new List<Point>();
-
-            for (int x = 1; x < WorldConfig.GridSize - 1; x++)
-            {
-                for (int y = 1; y < WorldConfig.GridSize - 1; y++)
-                {
-                    Point point = new Point(x, y);
-                    if (grid[x, y] != null || point == new Point(WorldConfig.CenterGrid, WorldConfig.CenterGrid))
-                        continue;
-
-                    int occupiedNeighbors = CountOccupiedNeighbors(grid, point);
-                    if (occupiedNeighbors >= minimumNeighbors && occupiedNeighbors <= maximumNeighbors)
-                        candidates.Add(point);
-                }
-            }
-
-            if (candidates.Count == 0 && minimumNeighbors > 2)
-                return FindEmptySpecialRoomCandidate(grid, minimumNeighbors - 1, maximumNeighbors);
-
-            return candidates.Count == 0
-                ? null
-                : candidates[_random.Next(candidates.Count)];
+            return floorIndex == FloorConfig.BossFloorIndex;
         }
 
-        private Point? FindEmptySuperSecretCandidate(Room[,] grid, Point start)
+        /// <summary>Выбирает самую дальнюю комнату, через которую игрок продвигается на следующий этап.</summary>
+        private static Point FindFloorProgressionRoom(
+            List<Point> deadEnds,
+            List<Point> occupiedRooms,
+            Point start,
+            Dictionary<Point, int> distances)
         {
-            List<Point> candidates = new List<Point>();
+            Point progressionRoom = deadEnds.FirstOrDefault();
+            if (progressionRoom != Point.Zero || deadEnds.Contains(Point.Zero))
+                return progressionRoom;
 
-            for (int x = 1; x < WorldConfig.GridSize - 1; x++)
-            {
-                for (int y = 1; y < WorldConfig.GridSize - 1; y++)
-                {
-                    Point point = new Point(x, y);
-                    if (grid[x, y] != null)
-                        continue;
+            return occupiedRooms
+                .Where(point => point != start)
+                .OrderByDescending(point => distances.GetValueOrDefault(point))
+                .First();
+        }
 
-                    if (CountOccupiedNeighbors(grid, point) != 1)
-                        continue;
+        /// <summary>Помечает комнату местом выхода на следующий этаж без изменения её обычного типа.</summary>
+        private static void MarkFloorExitRoom(Room[,] grid, Point point, HashSet<Point> assigned)
+        {
+            Room room = grid[point.X, point.Y];
+            if (room == null || assigned.Contains(point))
+                return;
 
-                    if (PointManhattanDistance(start, point) < 3)
-                        continue;
-
-                    candidates.Add(point);
-                }
-            }
-
-            return candidates.Count == 0
-                ? null
-                : candidates.OrderByDescending(point => PointManhattanDistance(start, point)).First();
+            room.IsFloorExitRoom = true;
+            assigned.Add(point);
         }
 
         private static void AssignRoomType(Room[,] grid, Point point, RoomType roomType, HashSet<Point> assigned)
@@ -235,6 +225,29 @@ namespace Vibe_Game.Core.Services
 
             grid[point.X, point.Y] = new Room(WorldConfig.RoomWidthTiles, WorldConfig.RoomHeightTiles, roomType);
             assigned.Add(point);
+        }
+
+        /// <summary>Расставляет пьедесталы в стартовой, сокровищной и финальной комнате первого этажа.</summary>
+        private static void PlacePedestals(Room[,] grid, List<Point> occupiedRooms, Point start, int floorIndex)
+        {
+            grid[start.X, start.Y]?.PlacePedestals(2);
+
+            foreach (Point point in occupiedRooms)
+            {
+                Room room = grid[point.X, point.Y];
+                if (room?.Type == RoomType.Treasure)
+                    room.PlacePedestals(1);
+            }
+
+            if (floorIndex != FloorConfig.FirstFloorIndex)
+                return;
+
+            foreach (Point point in occupiedRooms)
+            {
+                Room room = grid[point.X, point.Y];
+                if (room?.IsFloorExitRoom == true)
+                    room.PlacePedestals(1);
+            }
         }
 
         private static Dictionary<Point, int> CalculateDistances(Room[,] grid, Point start)
