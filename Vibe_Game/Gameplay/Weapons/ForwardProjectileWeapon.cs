@@ -20,7 +20,7 @@ public sealed class ForwardProjectileWeapon : WeaponBase
     float spawnOffsetPixels,
     float lifetimeSeconds,
     float radius = 4f,
-    float recoilForce = 100f)
+    float recoilForce = 150f)
     : base("Forward Shot", cooldownSeconds)
     {
         _projectileSpeed = projectileSpeed;
