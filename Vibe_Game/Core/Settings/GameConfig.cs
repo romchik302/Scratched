@@ -94,6 +94,39 @@ namespace Vibe_Game.Core.Settings
         public const bool BossInvulnerableDuringBurrow = true;
     }
 
+    public static class WeaponConfig
+    {
+        public const string SwordTexture = "sword_sheet";
+        public const string SwordTrailTexture = "sword_trail_particles";
+        public const string PlayerProjectileTexture = "player_projectile_sheet";
+        public const string EnemyProjectileTexture = "enemy_projectile_sheet";
+
+        public const float SwordLength = 40f;
+        public const float SwordWidth = 10f;
+        public const float SwordAttackAngle = System.MathF.PI / 1.5f; // 120 градусов
+        public const float SwordAttackDuration = 1.12f;
+        public const int SwordDamage = 5;
+        public const float SwordRecoilForce = 500f;
+
+        public const int SwordTrailParticleCount = 5;
+        public const int SwordTrailFrameCount = 8;
+        public const float SwordTrailParticleSize = 5f;
+        public const float SwordTrailAnimationSpeed = 0.08f;
+        public const float SwordTrailParticleLifetime = 1.5f;
+
+        public const int ProjectileFrameCount = 4;
+        public const float ProjectileSize = 16f;
+        public const float ProjectileAnimationSpeed = 0.06f;
+        
+        public const float PlayerProjectileSpeed = 300f;
+        public const float PlayerProjectileLifetime = 1.8f;
+        public const int PlayerProjectileDamage = 3;
+        
+        public const float EnemyProjectileSpeed = 150f;
+        public const float EnemyProjectileLifetime = 2.2f;
+        public const int EnemyProjectileDamage = 1;
+    }
+
     public static class GameColors
     {
         public static readonly Color Background = new Color(15, 10, 20);

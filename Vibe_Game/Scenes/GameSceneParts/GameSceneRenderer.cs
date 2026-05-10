@@ -63,6 +63,9 @@ namespace Vibe_Game.Scenes
 
             drawables.AddRange(_enemies.GetEnemies());
             drawables.Add(_state.Player);
+            
+            // Добавляем проджектайлы в список отрисовки
+            drawables.AddRange(_state.Projectiles);
 
             // сортировка по Y
             drawables.Sort((a, b) => a.Position.Y.CompareTo(b.Position.Y));
@@ -72,13 +75,8 @@ namespace Vibe_Game.Scenes
                 d.Draw(spriteBatch);
             DrawCurrentRoomLabel(spriteBatch);
 
-            // Отрисовка проджектайлов
-            _projectiles.Draw(spriteBatch, pixel);
-
-#if DEBUG
-            if (_state.Player.EquippedWeapon is SwordWeapon sword)
+if (_state.Player.EquippedWeapon is SwordWeapon sword)
                 sword.Draw(spriteBatch, attackContext);
-#endif
 
             spriteBatch.End();
 

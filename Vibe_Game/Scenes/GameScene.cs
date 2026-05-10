@@ -52,9 +52,9 @@ namespace Vibe_Game.Scenes
 
             Vector2 startPos = GetStartWorldPosition();
             _state.Player = new Player(startPos, _playerRenderer, _inputService, _contentLoader, _attackContext);
-            //_state.Player.EquippedWeapon = new SwordWeapon();
+            _state.Player.EquippedWeapon = new SwordWeapon();
             // камилла сделай пожалуйста чтобы при старте игры можно было выбирать оружие
-            _state.Player.EquippedWeapon = new ForwardProjectileWeapon(0.35f, 205f, 3, 2f, 1.5f);
+            //_state.Player.EquippedWeapon = new ForwardProjectileWeapon(0.35f, 205f, 3, 2f, 1.5f);
 
             LoadFloor(floorIndex: 1);
 
@@ -65,6 +65,14 @@ namespace Vibe_Game.Scenes
         {
             Enemy.LoadSharedTextures(GameInstance.Content);
             _state.Player.LoadContent(GameInstance.Content);
+            _projectileController.LoadContent(GameInstance.Content);
+            
+            // Загружаем контент для оружия
+            if (_state.Player.EquippedWeapon is SwordWeapon swordWeapon)
+            {
+                swordWeapon.LoadContent(GameInstance.Content);
+            }
+            
             _renderer.LoadContent(GameInstance.Content);
         }
 

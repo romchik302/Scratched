@@ -1,8 +1,10 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
 using Vibe_Game.Core.Utilities;
+using Vibe_Game.Core.Settings;
 
 namespace Vibe_Game.Gameplay.Weapons;
 
@@ -11,21 +13,23 @@ public sealed class SwordWeapon : WeaponBase
     public override WeaponFireMode FireMode => WeaponFireMode.DirectionHeldPlusButtonPress;
 
     /// <summary>Базовая отдача меча (сила толчка врага при ударе).</summary>
-    public override float BaseRecoil => _recoilForce;
+    public override float BaseRecoil => WeaponConfig.SwordRecoilForce;
 
-    private float _recoilForce;  // Сила отдачи
-    private readonly int _damage;
-    private float _swordLength;     // Длина меча
-    private float _swordWidth;      // Ширина меча
-    private readonly float _attackAngle;     // Угол атаки (дуга)
-    private readonly float _attackDuration;  // Длительность анимации удара
+    private Texture2D _swordTexture;
+    private Texture2D _trailTexture;
+    private readonly List<SwordTrailParticle> _trailParticles = new();
 
-    private float _attackTimer;              // Таймер анимации удара
-    private Vector2 _attackDirection;        // Направление удара (фиксируется в момент атаки)
-    private Vector2 _currentPlayerPosition;  // ТЕКУЩАЯ позиция игрока (обновляется каждый кадр)
+    private float _swordLength = WeaponConfig.SwordLength;
+    private float _swordWidth = WeaponConfig.SwordWidth;
+    private readonly float _attackAngle = WeaponConfig.SwordAttackAngle;
+    private readonly float _attackDuration = WeaponConfig.SwordAttackDuration;
+    private readonly int _damage = WeaponConfig.SwordDamage;
 
-    private float _startAngle;               // Начальный угол атаки
-    private float _endAngle;                 // Конечный угол атаки
+    private float _attackTimer;
+    private Vector2 _attackDirection;
+    private Vector2 _currentPlayerPosition;
+    private float _startAngle;
+    private float _endAngle;
 
     // Кто уже получил урон в этой атаке
     private HashSet<object> _hitEnemies = new();
@@ -54,28 +58,16 @@ public sealed class SwordWeapon : WeaponBase
         get => _damage;
     }
 
-    public float RecoilForce
-    {
-        get => _recoilForce;
-        set => _recoilForce = value;
-    }
-
-    public SwordWeapon(
-        int damage = 5,
-        float swordLength = 60f,
-        float swordWidth = 10f,
-        float attackAngle = MathF.PI / 1.5f,  // 120 градусов
-        float attackDuration = 0.12f,         // Длительность анимации
-        float cooldownSeconds = 0.4f,
-        float recoilForce = 500f)              // Сила отдачи по умолчанию
+    
+    public SwordWeapon(float cooldownSeconds = 0.4f)
         : base("Sword", cooldownSeconds)
     {
-        _damage = damage;
-        _swordLength = swordLength;
-        _swordWidth = swordWidth;
-        _attackAngle = attackAngle;
-        _attackDuration = attackDuration;
-        _recoilForce = recoilForce;
+    }
+
+    public void LoadContent(ContentManager content)
+    {
+        _swordTexture = content.Load<Texture2D>(WeaponConfig.SwordTexture);
+        _trailTexture = content.Load<Texture2D>(WeaponConfig.SwordTrailTexture);
     }
 
     public override void Update(GameTime gameTime, IAttackContext context)
@@ -95,10 +87,17 @@ public sealed class SwordWeapon : WeaponBase
         // ПРОВЕРЯЕМ УРОН КАЖДЫЙ КАДР во время всей анимации
         CheckAndDealDamage(context, progress);
 
+        // Создаем частицы следа
+        CreateTrailParticles(progress);
+
+        // Обновляем частицы
+        UpdateTrailParticles(dt);
+
         // Сброс после окончания анимации
         if (_attackTimer <= 0)
         {
             _hitEnemies.Clear();
+            // Частицы не очищаем - они должны исчезнуть только по истечению лайфтайма
         }
     }
 
@@ -127,7 +126,7 @@ public sealed class SwordWeapon : WeaponBase
                 context.DamageEnemy(enemy, _damage);
 
                 // Применяем отдачу врагу в направлении удара
-                context.ApplyRecoilToEnemy(enemy, _attackDirection, _recoilForce);
+                context.ApplyRecoilToEnemy(enemy, _attackDirection, WeaponConfig.SwordRecoilForce);
             }
         }
     }
@@ -181,7 +180,9 @@ public sealed class SwordWeapon : WeaponBase
 
     private Vector2 GetSwordHandle()
     {
-        return _currentPlayerPosition;
+        // Смещаем рукоять меча к краю игрока в направлении атаки
+        float handleOffset = 15f; // Расстояние от центра игрока до рукояти
+        return _currentPlayerPosition + _attackDirection * handleOffset;
     }
 
     private Vector2 GetSwordTip(float angle)
@@ -192,48 +193,60 @@ public sealed class SwordWeapon : WeaponBase
 
     public override void Draw(SpriteBatch spriteBatch, IAttackContext context)
     {
-        if (_attackTimer <= 0) return;
+        // Рисуем меч только во время атаки
+        if (_attackTimer > 0)
+        {
+            float totalTime = _attackDuration;
+            float elapsedTime = totalTime - _attackTimer;
+            float progress = Math.Clamp(elapsedTime / totalTime, 0f, 1f);
 
-        var pixel = GetPixelTexture(spriteBatch);
-        if (pixel == null) return;
+            float currentAngle = GetCurrentAngle(progress);
 
-        float totalTime = _attackDuration;
-        float elapsedTime = totalTime - _attackTimer;
-        float progress = Math.Clamp(elapsedTime / totalTime, 0f, 1f);
+            Vector2 handle = GetSwordHandle();
+            Vector2 tip = GetSwordTip(currentAngle);
 
-        float currentAngle = GetCurrentAngle(progress);
+            if (Vector2.Distance(handle, tip) < 0.1f) return;
 
-        Vector2 handle = GetSwordHandle();
-        Vector2 tip = GetSwordTip(currentAngle);
+            // Альфа: 0 -> 1 -> 0
+            float alpha;
+            if (progress <= 0.5f)
+                alpha = progress * 2f;
+            else
+                alpha = 2f - (progress * 2f);
+            alpha = Math.Clamp(alpha, 0f, 1f);
 
-        if (Vector2.Distance(handle, tip) < 0.1f) return;
+            // Цвет меча
+            Color swordColor;
+            if (progress <= 0.5f)
+                swordColor = Color.Lerp(Color.White, Color.LightBlue, progress * 2f);
+            else
+                swordColor = Color.Lerp(Color.LightBlue, Color.White, (progress - 0.5f) * 2f);
+            swordColor *= alpha;
 
-        // Альфа: 0 -> 1 -> 0
-        float alpha;
-        if (progress <= 0.5f)
-            alpha = progress * 2f;
-        else
-            alpha = 2f - (progress * 2f);
-        alpha = Math.Clamp(alpha, 0f, 1f);
+            // Рисуем меч текстурой если доступна
+            if (_swordTexture != null)
+            {
+                Vector2 swordDir = tip - handle;
+                float swordAngle = (float)Math.Atan2(swordDir.Y, swordDir.X);
+                float swordLength = swordDir.Length();
+                
+                spriteBatch.Draw(_swordTexture, handle, null, swordColor, swordAngle + MathHelper.PiOver2, 
+                    new Vector2(_swordTexture.Width / 2f, _swordTexture.Height / 2f), new Vector2(swordLength / _swordTexture.Height, _swordWidth / _swordTexture.Width), 
+                    SpriteEffects.None, 0f);
+            }
+            else
+            {
+                // Fallback на отрисовку линиями
+                var pixel = GetPixelTexture(spriteBatch);
+                if (pixel != null)
+                {
+                    DrawLine(spriteBatch, pixel, handle, tip, swordColor, _swordWidth);
+                }
+            }
+        }
 
-        // Цвет меча
-        Color swordColor;
-        if (progress <= 0.5f)
-            swordColor = Color.Lerp(Color.White, Color.Red, progress * 2f);
-        else
-            swordColor = Color.Lerp(Color.Red, Color.White, (progress - 0.5f) * 2f);
-        swordColor *= alpha;
-
-        // Рисуем сам меч
-        DrawLine(spriteBatch, pixel, handle, tip, swordColor, _swordWidth);
-
-        // Рисуем след
-        Vector2 perpendicular = new Vector2(-(tip - handle).Y, (tip - handle).X);
-        perpendicular.Normalize();
-
-        Color trailColor = Color.OrangeRed * (alpha * 0.6f);
-        DrawLine(spriteBatch, pixel, tip - perpendicular * _swordWidth * 0.5f,
-                 tip + perpendicular * _swordWidth * 0.5f, trailColor, _swordWidth * 0.6f);
+        // Рисуем частицы следа всегда
+        DrawTrailParticles(spriteBatch);
 
 #if DEBUG
         // Отладочная отрисовка хитбокса
@@ -274,4 +287,98 @@ public sealed class SwordWeapon : WeaponBase
 
         spriteBatch.Draw(texture, start, null, color, angle, Vector2.Zero, new Vector2(length, thickness), SpriteEffects.None, 0f);
     }
+
+    private void CreateTrailParticles(float progress)
+    {
+        if (_trailTexture == null) return;
+
+        // Создаем частицы вдоль меча
+        Vector2 handle = GetSwordHandle();
+        float currentAngle = GetCurrentAngle(progress);
+        Vector2 tip = GetSwordTip(currentAngle);
+        
+        // Случайное количество частиц от 1 до 5
+        int particleCount = Random.Shared.Next(1, WeaponConfig.SwordTrailParticleCount + 1);
+        
+        for (int i = 0; i < particleCount; i++)
+        {
+            // Случайная позиция от рукояти к острию по вертикальной оси меча
+            float t = Random.Shared.NextSingle(); // от 0 до 1
+            Vector2 position = Vector2.Lerp(handle, tip, t);
+            
+            // Добавляем случайное смещение для более естественного вида
+            Vector2 offset = new Vector2(
+                (float)(Random.Shared.NextDouble() - 0.5) * WeaponConfig.SwordTrailParticleSize * 0.5f,
+                (float)(Random.Shared.NextDouble() - 0.5) * WeaponConfig.SwordTrailParticleSize * 0.5f
+            );
+
+            _trailParticles.Add(new SwordTrailParticle
+            {
+                Position = position + offset,
+                CurrentFrame = 0,
+                Row = Random.Shared.Next(0, 2), // Случайная строка 0 или 1
+                Timer = 0f,
+                Lifetime = WeaponConfig.SwordTrailParticleLifetime,
+                Size = WeaponConfig.SwordTrailParticleSize
+            });
+        }
+    }
+
+    private void UpdateTrailParticles(float deltaTime)
+    {
+        for (int i = _trailParticles.Count - 1; i >= 0; i--)
+        {
+            var particle = _trailParticles[i];
+            particle.Lifetime -= deltaTime;
+            particle.Timer += deltaTime;
+
+            // Переходим к следующему кадру анимации
+            if (particle.Timer >= WeaponConfig.SwordTrailAnimationSpeed)
+            {
+                particle.CurrentFrame++;
+                particle.Timer = 0f;
+            }
+
+            // Удаляем частицу если анимация закончилась или время жизни истекло
+            if (particle.CurrentFrame >= WeaponConfig.SwordTrailFrameCount || particle.Lifetime <= 0)
+            {
+                _trailParticles.RemoveAt(i);
+            }
+        }
+    }
+
+    private void DrawTrailParticles(SpriteBatch spriteBatch)
+    {
+        if (_trailTexture == null) return;
+
+        foreach (var particle in _trailParticles)
+        {
+            float alpha = Math.Clamp(particle.Lifetime / WeaponConfig.SwordTrailParticleLifetime, 0f, 1f);
+            Color color = Color.OrangeRed * alpha;
+
+            // Вычисляем исходный прямоугольник для текущего кадра
+            int frameWidth = _trailTexture.Width / 8; // 8 кадров в строке
+            int frameHeight = _trailTexture.Height / 2; // 2 строки
+            Rectangle sourceRect = new Rectangle(
+                particle.CurrentFrame * frameWidth, 
+                particle.Row * frameHeight, 
+                frameWidth, 
+                frameHeight
+            );
+
+            spriteBatch.Draw(_trailTexture, particle.Position, sourceRect, color, 
+                0f, new Vector2(frameWidth / 2f, frameHeight / 2f), 
+                particle.Size / frameWidth, SpriteEffects.None, 0f);
+        }
+    }
+}
+
+public class SwordTrailParticle
+{
+    public Vector2 Position;
+    public int CurrentFrame;
+    public int Row; // Строка в спрайт листе (0 или 1)
+    public float Timer;
+    public float Lifetime;
+    public float Size;
 }

@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Vibe_Game.Core.Services;
 using Vibe_Game.Core.Settings;
@@ -11,11 +12,22 @@ namespace Vibe_Game.Scenes
     {
         private readonly GameSceneState _state;
         private readonly GameSceneWorld _world;
+        private ContentManager _contentManager;
 
         public GameSceneProjectileController(GameSceneState state, GameSceneWorld world)
         {
             _state = state;
             _world = world;
+        }
+
+        public void LoadContent(ContentManager content)
+        {
+            _contentManager = content;
+            // Загружаем контент для всех существующих проджектайлов
+            foreach (var projectile in _state.Projectiles)
+            {
+                projectile.LoadContent(content);
+            }
         }
 
         public void Spawn(ProjectileSpawnArgs args)
@@ -32,6 +44,12 @@ namespace Vibe_Game.Scenes
                 args.IgnoreWallCollisions,
                 args.Length
             );
+
+            // Загружаем контент для нового проджектайла
+            if (_contentManager != null)
+            {
+                projectile.LoadContent(_contentManager);
+            }
 
             if (args.UseOrbitMotion)
             {
@@ -65,9 +83,16 @@ namespace Vibe_Game.Scenes
                 Vector2 next = projectile.Position + projectile.Velocity * dt;
                 if (!projectile.IgnoreWallCollisions && _world.IsWorldPointBlocked(next))
                 {
-                    projectile.IsAlive = false;
-                    _state.Projectiles.RemoveAt(i);
-                    continue;
+                    // Запускаем анимацию удара при столкновении со стеной
+                    projectile.StartImpactAnimation();
+                    
+                    // Для проджектайлов врагов сразу удаляем, чтобы не застревали
+                    if (!projectile.IsFriendlyToPlayer)
+                    {
+                        projectile.IsAlive = false;
+                        _state.Projectiles.RemoveAt(i);
+                        continue;
+                    }
                 }
 
                 projectile.Update(gameTime);
@@ -89,12 +114,16 @@ namespace Vibe_Game.Scenes
 
                         if (projectile.GetBounds().Intersects(enemy.GetBounds()))
                         {
-                            enemy.TakeDamage((int)projectile.Damage);
+                            if (projectile.CanDealDamage)
+                            {
+                                enemy.TakeDamage((int)projectile.Damage);
 
-                            if (projectile.RecoilForce > 0)
-                                enemy.ApplyRecoil(projectile.Direction, projectile.RecoilForce);
+                                if (projectile.RecoilForce > 0)
+                                    enemy.ApplyRecoil(projectile.Direction, projectile.RecoilForce);
+                            }
 
-                            projectile.IsAlive = false;
+                            // Запускаем анимацию удара вместо удаления
+                            projectile.StartImpactAnimation();
                             break;
                         }
                     }
@@ -103,8 +132,13 @@ namespace Vibe_Game.Scenes
                 {
                     if (projectile.GetBounds().Intersects(_state.Player.GetBounds()))
                     {
-                        _state.Player.TakeDamage(projectile.Damage);
-                        projectile.IsAlive = false;
+                        if (projectile.CanDealDamage)
+                        {
+                            _state.Player.TakeDamage(projectile.Damage);
+                        }
+
+                        // Запускаем анимацию удара вместо удаления
+                        projectile.StartImpactAnimation();
                     }
                 }
 
@@ -113,55 +147,14 @@ namespace Vibe_Game.Scenes
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Texture2D pixel)
+        public void Draw(SpriteBatch spriteBatch)
         {
             foreach (Projectile projectile in _state.Projectiles)
             {
                 if (!projectile.IsAlive)
                     continue;
 
-                if (projectile.Length > 0f)
-                {
-                    // Draw elongated projectile (spike) using rotation
-                    float angle = System.MathF.Atan2(projectile.Direction.Y, projectile.Direction.X);
-                    float halfLength = projectile.Length / 2f;
-                    float halfWidth = projectile.Radius;
-
-                    Rectangle spikeRect = new Rectangle(
-                        (int)(-halfLength),
-                        (int)(-halfWidth),
-                        (int)projectile.Length,
-                        (int)(halfWidth * 2)
-                    );
-
-                    spriteBatch.Draw(
-                        pixel,
-                        projectile.Position,
-                        spikeRect,
-                        projectile.IsFriendlyToPlayer ? Color.SkyBlue : Color.OrangeRed,
-                        angle,
-                        Vector2.Zero,
-                        1f,
-                        SpriteEffects.None,
-                        0f
-                    );
-                }
-                else
-                {
-                    // Draw normal circular projectile
-                    int radius = (int)projectile.Radius;
-
-                    spriteBatch.Draw(
-                        pixel,
-                        new Rectangle(
-                            (int)projectile.Position.X - radius,
-                            (int)projectile.Position.Y - radius,
-                            radius * 2,
-                            radius * 2
-                        ),
-                        projectile.IsFriendlyToPlayer ? Color.SkyBlue : Color.OrangeRed
-                    );
-                }
+                projectile.Draw(spriteBatch);
             }
         }
     }
