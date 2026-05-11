@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Content;
 using System;
 using Vibe_Game.Gameplay.Entities;
 using Vibe_Game.Core.Settings;
+using Vibe_Game.Core.Utilities;
 
 namespace Vibe_Game.Gameplay.Projectiles;
 
@@ -158,11 +159,19 @@ public sealed class Projectile : Entity
 
     public void StartImpactAnimation()
     {
-        _isImpacting = true;
-        _canDealDamage = false; // Блокируем урон
-        Velocity = Vector2.Zero; // Останавливаем движение
-        _currentFrame = 1; // Переходим ко второму кадру (начало анимации удара)
-        _animationTimer = 0f;
+        if (!_isImpacting)
+        {
+            if (IsFriendlyToPlayer)
+            {
+                _rotation = Random.Shared.NextSingle() * 2 * (float)Math.PI;
+            }
+
+            _isImpacting = true;
+            _canDealDamage = false; // Блокируем урон
+            Velocity = Vector2.Zero; // Останавливаем движение
+            _currentFrame = 1; // Переходим ко второму кадру (начало анимации удара)
+            _animationTimer = 0f;
+        }
     }
     public override Rectangle GetBounds()
     {

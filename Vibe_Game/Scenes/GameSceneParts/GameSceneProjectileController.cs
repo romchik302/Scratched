@@ -86,13 +86,6 @@ namespace Vibe_Game.Scenes
                     // Запускаем анимацию удара при столкновении со стеной
                     projectile.StartImpactAnimation();
                     
-                    // Для проджектайлов врагов сразу удаляем, чтобы не застревали
-                    if (!projectile.IsFriendlyToPlayer)
-                    {
-                        projectile.IsAlive = false;
-                        _state.Projectiles.RemoveAt(i);
-                        continue;
-                    }
                 }
 
                 projectile.Update(gameTime);
