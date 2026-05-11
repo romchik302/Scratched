@@ -104,15 +104,15 @@ namespace Vibe_Game.Core.Settings
         public const float SwordLength = 40f;
         public const float SwordWidth = 10f;
         public const float SwordAttackAngle = System.MathF.PI / 1.5f; // 120 градусов
-        public const float SwordAttackDuration = 1.12f;
+        public const float SwordAttackDuration = 0.12f;
         public const int SwordDamage = 5;
         public const float SwordRecoilForce = 500f;
 
-        public const int SwordTrailParticleCount = 5;
-        public const int SwordTrailFrameCount = 8;
-        public const float SwordTrailParticleSize = 5f;
-        public const float SwordTrailAnimationSpeed = 0.08f;
-        public const float SwordTrailParticleLifetime = 1.5f;
+        public const int SwordTrailParticleCount = 7;
+        public const int SwordTrailFrameCount = 4;
+        public const float SwordTrailParticleSize = 6f;
+        public const float SwordTrailAnimationSpeed = 0.09f;
+        public const float SwordTrailParticleLifetime = 1f;
 
         public const int ProjectileFrameCount = 4;
         public const float ProjectileSize = 16f;

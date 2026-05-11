@@ -74,10 +74,13 @@ public sealed class SwordWeapon : WeaponBase
     {
         base.Update(gameTime, context);
 
-        if (_attackTimer <= 0) return;
-
         var dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
         _attackTimer -= dt;
+
+        // Обновляем частицы
+        UpdateTrailParticles(dt);
+
+        if (_attackTimer <= 0) return;
 
         // Прогресс анимации (от 0 до 1)
         float totalTime = _attackDuration;
@@ -89,9 +92,6 @@ public sealed class SwordWeapon : WeaponBase
 
         // Создаем частицы следа
         CreateTrailParticles(progress);
-
-        // Обновляем частицы
-        UpdateTrailParticles(dt);
 
         // Сброс после окончания анимации
         if (_attackTimer <= 0)
