@@ -312,14 +312,20 @@ public sealed class SwordWeapon : WeaponBase
                 (float)(Random.Shared.NextDouble() - 0.5) * WeaponConfig.SwordTrailParticleSize * 0.5f
             );
 
+            float brightness =
+                1f +
+                Random.Shared.NextSingle() *
+                WeaponConfig.SwordTrailBrightnessVariation;
+
             _trailParticles.Add(new SwordTrailParticle
             {
                 Position = position + offset,
                 CurrentFrame = 0,
-                Row = Random.Shared.Next(0, 2), // Случайная строка 0 или 1
+                Row = Random.Shared.Next(0, 2),
                 Timer = 0f,
                 Lifetime = WeaponConfig.SwordTrailParticleLifetime,
-                Size = WeaponConfig.SwordTrailParticleSize
+                Size = WeaponConfig.SwordTrailParticleSize,
+                Brightness = brightness
             });
         }
     }
@@ -354,7 +360,18 @@ public sealed class SwordWeapon : WeaponBase
         foreach (var particle in _trailParticles)
         {
             float alpha = Math.Clamp(particle.Lifetime / WeaponConfig.SwordTrailParticleLifetime, 0f, 1f);
-            Color color = Color.OrangeRed * alpha;
+            Color baseColor = Color.OrangeRed;
+
+            // 0 = обычный цвет
+            // 1 = полностью белый
+            float brightnessFactor = particle.Brightness - 1f;
+
+            Color brightColor = Color.Lerp(
+                baseColor,
+                Color.White,
+                brightnessFactor);
+
+            Color color = brightColor * alpha;
 
             // Вычисляем исходный прямоугольник для текущего кадра
             int frameWidth = _trailTexture.Width / 8; // 8 кадров в строке
@@ -381,4 +398,6 @@ public class SwordTrailParticle
     public float Timer;
     public float Lifetime;
     public float Size;
+
+    public float Brightness;
 }
