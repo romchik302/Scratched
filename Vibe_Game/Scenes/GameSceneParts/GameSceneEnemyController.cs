@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Vibe_Game.Core.Interfaces;
 using Vibe_Game.Core.Services;
 using Vibe_Game.Core.Settings;
+using Vibe_Game.Gameplay.Entities.Collectables;
 using Vibe_Game.Gameplay.Entities.Enemies;
 
 namespace Vibe_Game.Scenes
@@ -103,7 +104,10 @@ namespace Vibe_Game.Scenes
                         enemy.Update(gameTime);
 
                         if (!enemy.IsAlive)
+                        {
+                            TrySpawnHealthPickup(enemy.Position);
                             room.enemies.RemoveAt(i);
+                        }
                     }
 
                     for (int j = 0; j < room.enemies.Count; j++)
@@ -496,6 +500,20 @@ namespace Vibe_Game.Scenes
             if (enemy is BossEnemy boss)
                 return boss.ContactDamage;
             return 1f;
+        }
+
+        private void TrySpawnHealthPickup(Vector2 worldPosition)
+        {
+            if (_state.CollectibleVisualCache == null)
+                return;
+            if (Random.Shared.NextDouble() >= CollectibleConfig.EnemyHealthDropChance)
+                return;
+
+            CollectableKind kind = Random.Shared.NextDouble() < CollectibleConfig.EnemyTwoHpDropWeight
+                ? CollectableKind.HealthLarge
+                : CollectableKind.HealthSmall;
+
+            _state.FloorPickups.Add(new DroppedPickup(worldPosition, kind, _state.CollectibleVisualCache));
         }
     }
 }

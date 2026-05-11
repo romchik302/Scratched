@@ -8,14 +8,14 @@ namespace Vibe_Game.Core.Tiles
     public sealed class PedestalTile : Tile
     {
         /// <summary>Создаёт пьедестал и привязанную к нему заготовку предмета.</summary>
-        public PedestalTile(Point gridPosition) : base(gridPosition)
+        public PedestalTile(Point gridPosition, CollectableKind kind) : base(gridPosition)
         {
-            Collectable = new CollectableEntity(gridPosition);
+            Collectable = new CollectableEntity(gridPosition, kind);
         }
 
         public CollectableEntity Collectable { get; }
 
-        public override bool IsWalkable => false;
+        public override bool IsWalkable => true;
         public override bool CanHostEnemy => false;
         public override Color Tint => GameColors.Pedestal;
     }

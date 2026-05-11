@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Vibe_Game.Gameplay.Entities.Collectables;
 
 namespace Vibe_Game.Core.Settings
 {
@@ -126,6 +127,75 @@ namespace Vibe_Game.Core.Settings
         public const float EnemyProjectileSpeed = 150f;
         public const float EnemyProjectileLifetime = 2.2f;
         public const int EnemyProjectileDamage = 1;
+    }
+
+    public static class CollectibleConfig
+    {
+        public const float FeatherSpeedMultiplierBonus = 0.12f;
+        public const float FeatherProjectileSpeedMultiplierBonus = 0.1f;
+        public const float FeatherSwordCooldownMultiplierPerStack = 0.92f;
+
+        public const int FangBonusDamage = 1;
+
+        public const float EnemyHealthDropChance = 0.15f;
+        /// <summary>Доля дропа, при котором выпадает +2 HP (остальное — +1).</summary>
+        public const float EnemyTwoHpDropWeight = 0.5f;
+
+        public const int FloorPickupSize = 22;
+        public const float FloorPickupBobSpeed = 4.2f;
+        public const float FloorPickupBobAmplitude = 2.5f;
+
+        public const float BasePlayerControllerMaxSpeed = 150f;
+    }
+
+    /// <summary>Пьедесталы: раскладка, имена PNG в Content, число кадров idle-анимации.</summary>
+    public static class PedestalConfig
+    {
+        public const int SpriteFrameCount = 4;
+        public const float IdleAnimFps = 7f;
+        public const float PickupAnimDurationSeconds = 0.42f;
+
+        public const string TotemTextureAsset = "collectable_totem";
+        public const string FeatherTextureAsset = "collectable_feather";
+        public const string FangTextureAsset = "collectable_fang";
+        public const string WeaponProjectilePedestalTextureAsset = "collectable_weapon_projectile";
+        public const string WeaponSwordPedestalTextureAsset = "collectable_weapon_sword";
+
+        /// <summary>Случайный лут на обычных пьедесталах (не стартовое оружие).</summary>
+        public static readonly CollectableKind[] StandardLootKinds =
+        {
+            CollectableKind.Totem,
+            CollectableKind.Feather,
+            CollectableKind.Fang
+        };
+
+        /// <summary>Смещения плиток пьедесталов выбора оружия относительно центра комнаты [слева, справа].</summary>
+        public static readonly Point[] StartingWeaponPedestalOffsetsFromCenter =
+        {
+            new Point(-2, 0),
+            new Point(2, 0)
+        };
+
+        /// <summary>Порядок соответствует <see cref="StartingWeaponPedestalOffsetsFromCenter"/>.</summary>
+        public static readonly CollectableKind[] StartingWeaponPedestalKinds =
+        {
+            CollectableKind.WeaponProjectile,
+            CollectableKind.WeaponSword
+        };
+    }
+
+    /// <summary>Параметры экземпляров оружия при выборе на первом этаже.</summary>
+    public static class StartingWeaponConfig
+    {
+        public const float SwordCooldownSeconds = 0.4f;
+
+        public const float ProjectileCooldownSeconds = 0.35f;
+        public const float ProjectileSpeed = 205f;
+        public const int ProjectileDamage = 3;
+        public const float ProjectileSpawnOffsetPixels = 2f;
+        public const float ProjectileLifetimeSeconds = 1.5f;
+        public const float ProjectileRadius = 4f;
+        public const float ProjectileRecoilForce = 100f;
     }
 
     public static class GameColors

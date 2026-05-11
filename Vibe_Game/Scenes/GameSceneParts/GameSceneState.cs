@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Vibe_Game.Core.Services;
 using Vibe_Game.Core.Settings;
+using Vibe_Game.Gameplay.Entities.Collectables;
 using Vibe_Game.Gameplay.Entities.Player;
 using Vibe_Game.Gameplay.Projectiles;
 
@@ -15,6 +16,8 @@ namespace Vibe_Game.Scenes
         public Point LastRoomGrid { get; set; } = new Point(-1, -1);
         public Vector2 CameraPosition { get; set; }
         public List<Projectile> Projectiles { get; } = new();
+        public List<DroppedPickup> FloorPickups { get; } = new();
+        public CollectibleVisualCache CollectibleVisualCache { get; set; }
         public HashSet<Point> VisitedRooms { get; } = new();
         public HashSet<Point> DiscoveredRooms { get; } = new();
         public int CurrentFloorIndex { get; set; } = FloorConfig.FirstFloorIndex;

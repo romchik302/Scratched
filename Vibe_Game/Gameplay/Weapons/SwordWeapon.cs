@@ -24,6 +24,7 @@ public sealed class SwordWeapon : WeaponBase
     private readonly float _attackAngle = WeaponConfig.SwordAttackAngle;
     private readonly float _attackDuration = WeaponConfig.SwordAttackDuration;
     private readonly int _damage = WeaponConfig.SwordDamage;
+    private readonly float _baseCooldownSeconds;
 
     private float _attackTimer;
     private Vector2 _attackDirection;
@@ -53,6 +54,8 @@ public sealed class SwordWeapon : WeaponBase
         }
     }
 
+    public int ExternalDamageBonus { get; set; }
+
     public int Damage
     {
         get => _damage;
@@ -62,6 +65,12 @@ public sealed class SwordWeapon : WeaponBase
     public SwordWeapon(float cooldownSeconds = 0.4f)
         : base("Sword", cooldownSeconds)
     {
+        _baseCooldownSeconds = cooldownSeconds;
+    }
+
+    public void SetCooldownMultiplier(float multiplier)
+    {
+        CooldownSeconds = Math.Max(0.04f, _baseCooldownSeconds * multiplier);
     }
 
     public void LoadContent(ContentManager content)
@@ -123,7 +132,7 @@ public sealed class SwordWeapon : WeaponBase
             if (!_hitEnemies.Contains(enemy))
             {
                 _hitEnemies.Add(enemy);
-                context.DamageEnemy(enemy, _damage);
+                context.DamageEnemy(enemy, _damage + ExternalDamageBonus);
 
                 // Применяем отдачу врагу в направлении удара
                 context.ApplyRecoilToEnemy(enemy, _attackDirection, WeaponConfig.SwordRecoilForce);
@@ -243,27 +252,21 @@ public sealed class SwordWeapon : WeaponBase
                     DrawLine(spriteBatch, pixel, handle, tip, swordColor, _swordWidth);
                 }
             }
+
+#if DEBUG
+            var dbgPixel = GetPixelTexture(spriteBatch);
+            Rectangle bounds = GetSwordBounds(currentAngle);
+            spriteBatch.Draw(dbgPixel, bounds, Color.Cyan * 0.3f);
+            spriteBatch.DrawRectangle(dbgPixel, bounds, Color.Cyan, 1);
+            Vector2 center = (handle + tip) / 2;
+            spriteBatch.Draw(dbgPixel, new Rectangle((int)center.X - 2, (int)center.Y - 2, 4, 4), Color.Yellow);
+            Vector2 debugEnd = handle + _attackDirection * _swordLength;
+            DrawLine(spriteBatch, dbgPixel, handle, debugEnd, Color.Green * 0.3f, 1f);
+#endif
         }
 
         // Рисуем частицы следа всегда
         DrawTrailParticles(spriteBatch);
-
-#if DEBUG
-        // Отладочная отрисовка хитбокса
-        Rectangle bounds = GetSwordBounds(currentAngle);
-        spriteBatch.Draw(pixel, bounds, Color.Cyan * 0.3f);
-
-        // Границы хитбокса
-        spriteBatch.DrawRectangle(pixel, bounds, Color.Cyan, 1);
-
-        // Центр меча
-        Vector2 center = (handle + tip) / 2;
-        spriteBatch.Draw(pixel, new Rectangle((int)center.X - 2, (int)center.Y - 2, 4, 4), Color.Yellow);
-
-        // Направление атаки
-        Vector2 debugEnd = handle + _attackDirection * _swordLength;
-        DrawLine(spriteBatch, pixel, handle, debugEnd, Color.Green * 0.3f, 1f);
-#endif
     }
 
     private Texture2D _pixelTexture;

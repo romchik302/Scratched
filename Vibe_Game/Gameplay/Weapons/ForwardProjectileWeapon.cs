@@ -13,6 +13,9 @@ public sealed class ForwardProjectileWeapon : WeaponBase
     private readonly float _radius;
     private readonly float _recoilForce;
 
+    public float ProjectileSpeedMultiplier { get; set; } = 1f;
+    public int ExternalDamageBonus { get; set; }
+
     public ForwardProjectileWeapon(
     float cooldownSeconds,
     float projectileSpeed,
@@ -45,8 +48,8 @@ public sealed class ForwardProjectileWeapon : WeaponBase
         {
             Position = spawn,
             Direction = dir,
-            Speed = _projectileSpeed,
-            Damage = _damage,
+            Speed = _projectileSpeed * ProjectileSpeedMultiplier,
+            Damage = _damage + ExternalDamageBonus,
             LifetimeSeconds = _lifetime,
             Radius = _radius,
             RecoilForce = _recoilForce,

@@ -14,10 +14,21 @@ namespace Vibe_Game.Gameplay.Entities.Player
         public float Damage { get; set; } = 3.5f;
         public float Speed { get; set; } = 1.0f;
 
+        /// <summary>Дополнительные жизни (тотем): при 0 HP снимается одна жизнь и восстанавливается 2 HP.</summary>
+        public int ExtraLives { get; set; }
+
+        /// <summary>Аддитивный бонус к урону оружия (клык и т.п.).</summary>
+        public int BonusWeaponDamage { get; set; }
 
         // Модификаторы (будут добавляться предметами)
         public float DamageMultiplier { get; set; } = 1.0f;
         public float SpeedMultiplier { get; set; } = 1.0f;
+
+        /// <summary>Множитель скорости снарядов игрока (перо).</summary>
+        public float ProjectileSpeedMultiplier { get; set; } = 1f;
+
+        /// <summary>Множитель перезарядки меча (меньше — быстрее; перо).</summary>
+        public float SwordCooldownMultiplier { get; set; } = 1f;
 
         public void TakeDamage(float amount)
         {

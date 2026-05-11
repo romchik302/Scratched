@@ -9,6 +9,7 @@ using Vibe_Game.Core.Settings;
 using Vibe_Game.Core.Tiles;
 using Vibe_Game.Core.Utilities;
 using Vibe_Game.Gameplay.Entities;
+using Vibe_Game.Gameplay.Entities.Collectables;
 using Vibe_Game.Gameplay.Weapons;
 
 namespace Vibe_Game.Scenes
@@ -42,6 +43,10 @@ namespace Vibe_Game.Scenes
         {
             _roomFont = content.Load<SpriteFont>("room_font");
             _tileTexture = content.Load<Texture2D>("player_sheet");
+
+            if (_state.CollectibleVisualCache == null)
+                _state.CollectibleVisualCache = new CollectibleVisualCache();
+            _state.CollectibleVisualCache.Load(content, _game.GraphicsDevice);
         }
 
         public void Draw(IAttackContext attackContext, Camera camera, SpriteBatch spriteBatch, Texture2D pixel)
@@ -66,6 +71,11 @@ namespace Vibe_Game.Scenes
             
             // Добавляем проджектайлы в список отрисовки
             drawables.AddRange(_state.Projectiles);
+            foreach (DroppedPickup pickup in _state.FloorPickups)
+            {
+                if (pickup.IsAlive)
+                    drawables.Add(pickup);
+            }
 
             // сортировка по Y
             drawables.Sort((a, b) => a.Position.Y.CompareTo(b.Position.Y));
@@ -118,29 +128,51 @@ if (_state.Player.EquippedWeapon is SwordWeapon sword)
             {
                 for (int ty = 0; ty < WorldConfig.RoomHeightTiles; ty++)
                 {
-                    Color color = room.Tiles[tx, ty].Tint;
+                    Tile tile = room.Tiles[tx, ty];
                     Rectangle tileBounds = new Rectangle(
                         wx + tx * WorldConfig.TileSize,
                         wy + ty * WorldConfig.TileSize,
                         WorldConfig.TileSize,
                         WorldConfig.TileSize);
 
-                    spriteBatch.Draw(
-                        _tileTexture ?? pixel,
-                        tileBounds,
-                        color
-                    );
-
-                    DrawTileEntity(spriteBatch, pixel, room.Tiles[tx, ty], tileBounds);
+                    if (tile is PedestalTile pedestal)
+                    {
+                        spriteBatch.Draw(_tileTexture ?? pixel, tileBounds, GameColors.Floor);
+                        DrawPedestalBase(spriteBatch, pixel, tileBounds, pedestal);
+                        if (_state.CollectibleVisualCache != null)
+                            pedestal.Collectable.DrawOnPedestal(spriteBatch, _state.CollectibleVisualCache, pixel, tileBounds);
+                    }
+                    else
+                    {
+                        spriteBatch.Draw(
+                            _tileTexture ?? pixel,
+                            tileBounds,
+                            tile.Tint
+                        );
+                        DrawTileEntity(spriteBatch, pixel, tile, tileBounds);
+                    }
                 }
             }
         }
 
-        /// <summary>Рисует сущность, которая живёт внутри тайла, например заготовку предмета на пьедестале.</summary>
+        private static void DrawPedestalBase(SpriteBatch spriteBatch, Texture2D pixel, Rectangle tileBounds, PedestalTile pedestal)
+        {
+            if (pixel == null)
+                return;
+
+            float s = MathHelper.Clamp(pedestal.Collectable.VisualScale, 0f, 1f);
+            float a = MathHelper.Clamp(pedestal.Collectable.VisualAlpha, 0f, 1f);
+            int w = Math.Max(4, (int)(tileBounds.Width * s));
+            int h = Math.Max(4, (int)(tileBounds.Height * s));
+            Rectangle r = new Rectangle(tileBounds.Center.X - w / 2, tileBounds.Center.Y - h / 2, w, h);
+            spriteBatch.Draw(pixel, r, GameColors.Pedestal * a);
+        }
+
+        /// <summary>Рисует сущность, которая живёт внутри тайла (кроме пьедестала — он рисуется отдельно).</summary>
         private static void DrawTileEntity(SpriteBatch spriteBatch, Texture2D pixel, Tile tile, Rectangle tileBounds)
         {
-            if (tile is PedestalTile pedestalTile)
-                pedestalTile.Collectable.DrawOnPedestal(spriteBatch, pixel, tileBounds);
+            if (tile is PedestalTile)
+                return;
         }
 
         /// <summary>Рисует посещённые комнаты миникарты от верхнего левого угла экрана.</summary>
@@ -335,6 +367,16 @@ if (_state.Player.EquippedWeapon is SwordWeapon sword)
                 );
 
                 spriteBatch.Draw(pixel, fillRect, new Color(90, 220, 110));
+            }
+
+            if (_roomFont != null && _state.Player.Stats.ExtraLives > 0)
+            {
+                string label = $"x{_state.Player.Stats.ExtraLives}";
+                float scale = 0.55f;
+                Vector2 size = _roomFont.MeasureString(label) * scale;
+                Vector2 pos = new Vector2(startX + totalWidth - size.X, y + cellSize + 4f);
+                spriteBatch.DrawString(_roomFont, label, pos + new Vector2(1, 1), new Color(0, 0, 0, 160), 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+                spriteBatch.DrawString(_roomFont, label, pos, new Color(230, 210, 120), 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
             }
         }
 
