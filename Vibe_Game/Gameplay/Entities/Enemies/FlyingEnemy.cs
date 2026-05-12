@@ -45,7 +45,7 @@ public class FlyingEnemy : Enemy
         _moveSpeed = moveSpeed;
         _collisionRadius = collisionRadius;
         Color = Color.White;
-        RecoilResistance = 0.1f;  // Легко отскакивает (10% сопротивление)
+        RecoilResistance = 0.01f;  // Легко отскакивает (10% сопротивление)
     }
 
     /// <summary>Удобный конструктор с константами из <see cref="EnemyConfig"/>.</summary>
