@@ -34,7 +34,7 @@ namespace Vibe_Game.Core.Settings
 
     public static class EnemyConfig
     {
-        public const float EnemyActivationDelaySeconds = 0.4f;
+        public const float EnemyActivationDelaySeconds = 0.6f;
 
         public const int DefaultFlyingRadius = 8;
         public const float DefaultFlyingMoveSpeed = 85f;
