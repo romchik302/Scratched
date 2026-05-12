@@ -227,16 +227,22 @@ namespace Vibe_Game.Core.Services
             assigned.Add(point);
         }
 
-        /// <summary>Расставляет пьедесталы в стартовой, сокровищной и финальной комнате первого этажа.</summary>
+        /// <summary>Пьедесталы: на первом этаже в старте — выбор оружия; в сокровищнице — один предмет по центру; на первом этаже у выхода — случайный лут.</summary>
         private static void PlacePedestals(Room[,] grid, List<Point> occupiedRooms, Point start, int floorIndex)
         {
-            grid[start.X, start.Y]?.PlacePedestals(2);
+            Room startRoom = grid[start.X, start.Y];
+            if (floorIndex == FloorConfig.FirstFloorIndex && startRoom != null)
+            {
+                startRoom.RequiresStartingWeaponChoice = true;
+                startRoom.IsLocked = true;
+                startRoom.PlaceStartingWeaponPedestals();
+            }
 
             foreach (Point point in occupiedRooms)
             {
                 Room room = grid[point.X, point.Y];
                 if (room?.Type == RoomType.Treasure)
-                    room.PlacePedestals(1);
+                    room.PlaceTreasurePedestalAtCenter();
             }
 
             if (floorIndex != FloorConfig.FirstFloorIndex)

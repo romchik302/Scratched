@@ -9,6 +9,7 @@ using Vibe_Game.Core.Settings;
 using Vibe_Game.Core.Tiles;
 using Vibe_Game.Core.Utilities;
 using Vibe_Game.Gameplay.Entities;
+using Vibe_Game.Gameplay.Entities.Collectables;
 using Vibe_Game.Gameplay.Weapons;
 
 namespace Vibe_Game.Scenes
@@ -25,6 +26,11 @@ namespace Vibe_Game.Scenes
         private readonly GameSceneEnemyController _enemies;
         private SpriteFont _roomFont;
         private Texture2D _tileTexture;
+        private Texture2D _healthHudTexture;
+        private readonly List<HealthHudCellRuntime> _healthHudCells = new();
+        private float _healthHudIdleDelayTimer;
+        private int _healthHudIdleCellIndex;
+        private float _healthHudNextStartInterval = HealthHudConfig.IdleCellIntervalSeconds;
 
         public GameSceneRenderer(
             Game game,
@@ -42,6 +48,23 @@ namespace Vibe_Game.Scenes
         {
             _roomFont = content.Load<SpriteFont>("room_font");
             _tileTexture = content.Load<Texture2D>("player_sheet");
+            try
+            {
+                _healthHudTexture = content.Load<Texture2D>(HealthHudConfig.TextureAsset);
+            }
+            catch
+            {
+                _healthHudTexture = null;
+            }
+
+            if (_state.CollectibleVisualCache == null)
+                _state.CollectibleVisualCache = new CollectibleVisualCache();
+            _state.CollectibleVisualCache.Load(content, _game.GraphicsDevice);
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            UpdateHealthHudAnimation(gameTime);
         }
 
         public void Draw(IAttackContext attackContext, Camera camera, SpriteBatch spriteBatch, Texture2D pixel)
@@ -63,6 +86,14 @@ namespace Vibe_Game.Scenes
 
             drawables.AddRange(_enemies.GetEnemies());
             drawables.Add(_state.Player);
+            
+            // Добавляем проджектайлы в список отрисовки
+            drawables.AddRange(_state.Projectiles);
+            foreach (DroppedPickup pickup in _state.FloorPickups)
+            {
+                if (pickup.IsAlive)
+                    drawables.Add(pickup);
+            }
 
             // сортировка по Y
             drawables.Sort((a, b) => a.Position.Y.CompareTo(b.Position.Y));
@@ -72,13 +103,8 @@ namespace Vibe_Game.Scenes
                 d.Draw(spriteBatch);
             DrawCurrentRoomLabel(spriteBatch);
 
-            // Отрисовка проджектайлов
-            _projectiles.Draw(spriteBatch, pixel);
-
-#if DEBUG
-            if (_state.Player.EquippedWeapon is SwordWeapon sword)
+if (_state.Player.EquippedWeapon is SwordWeapon sword)
                 sword.Draw(spriteBatch, attackContext);
-#endif
 
             spriteBatch.End();
 
@@ -120,29 +146,51 @@ namespace Vibe_Game.Scenes
             {
                 for (int ty = 0; ty < WorldConfig.RoomHeightTiles; ty++)
                 {
-                    Color color = room.Tiles[tx, ty].Tint;
+                    Tile tile = room.Tiles[tx, ty];
                     Rectangle tileBounds = new Rectangle(
                         wx + tx * WorldConfig.TileSize,
                         wy + ty * WorldConfig.TileSize,
                         WorldConfig.TileSize,
                         WorldConfig.TileSize);
 
-                    spriteBatch.Draw(
-                        _tileTexture ?? pixel,
-                        tileBounds,
-                        color
-                    );
-
-                    DrawTileEntity(spriteBatch, pixel, room.Tiles[tx, ty], tileBounds);
+                    if (tile is PedestalTile pedestal)
+                    {
+                        spriteBatch.Draw(_tileTexture ?? pixel, tileBounds, GameColors.Floor);
+                        DrawPedestalBase(spriteBatch, pixel, tileBounds, pedestal);
+                        if (_state.CollectibleVisualCache != null)
+                            pedestal.Collectable.DrawOnPedestal(spriteBatch, _state.CollectibleVisualCache, pixel, tileBounds);
+                    }
+                    else
+                    {
+                        spriteBatch.Draw(
+                            _tileTexture ?? pixel,
+                            tileBounds,
+                            tile.Tint
+                        );
+                        DrawTileEntity(spriteBatch, pixel, tile, tileBounds);
+                    }
                 }
             }
         }
 
-        /// <summary>Рисует сущность, которая живёт внутри тайла, например заготовку предмета на пьедестале.</summary>
+        private static void DrawPedestalBase(SpriteBatch spriteBatch, Texture2D pixel, Rectangle tileBounds, PedestalTile pedestal)
+        {
+            if (pixel == null)
+                return;
+
+            float s = MathHelper.Clamp(pedestal.Collectable.VisualScale, 0f, 1f);
+            float a = MathHelper.Clamp(pedestal.Collectable.VisualAlpha, 0f, 1f);
+            int w = Math.Max(4, (int)(tileBounds.Width * s));
+            int h = Math.Max(4, (int)(tileBounds.Height * s));
+            Rectangle r = new Rectangle(tileBounds.Center.X - w / 2, tileBounds.Center.Y - h / 2, w, h);
+            spriteBatch.Draw(pixel, r, GameColors.Pedestal * a);
+        }
+
+        /// <summary>Рисует сущность, которая живёт внутри тайла (кроме пьедестала — он рисуется отдельно).</summary>
         private static void DrawTileEntity(SpriteBatch spriteBatch, Texture2D pixel, Tile tile, Rectangle tileBounds)
         {
-            if (tile is PedestalTile pedestalTile)
-                pedestalTile.Collectable.DrawOnPedestal(spriteBatch, pixel, tileBounds);
+            if (tile is PedestalTile)
+                return;
         }
 
         /// <summary>Рисует посещённые комнаты миникарты от верхнего левого угла экрана.</summary>
@@ -302,42 +350,248 @@ namespace Vibe_Game.Scenes
             if (_state.Player?.Stats == null)
                 return;
 
-            int maxCells = Math.Max(1, (int)MathF.Ceiling(_state.Player.Stats.MaxHealth));
-            float currentHealth = MathHelper.Clamp(_state.Player.Stats.Health, 0f, _state.Player.Stats.MaxHealth);
+            int maxCells = Math.Max(1, (int)MathF.Ceiling(_state.Player.Stats.MaxHealth / 2f));
+            EnsureHealthHudCellCount(maxCells);
 
-            const int cellSize = 28;
-            const int spacing = 8;
-            const int marginRight = 18;
-            const int marginTop = 18;
-            const int textureInset = 4;
+            int totalWidth = maxCells * HealthHudConfig.CellWidth + (maxCells - 1) * HealthHudConfig.CellSpacing;
+            int startX = _game.GraphicsDevice.Viewport.Width - HealthHudConfig.MarginRight - totalWidth + HealthHudConfig.CellOffsetX;
+            int y = HealthHudConfig.MarginTop + HealthHudConfig.CellOffsetY;
 
-            int totalWidth = maxCells * cellSize + (maxCells - 1) * spacing;
-            int startX = _game.GraphicsDevice.Viewport.Width - marginRight - totalWidth;
-            int y = marginTop;
+            int srcW = _healthHudTexture != null ? Math.Max(1, _healthHudTexture.Width / HealthHudConfig.Columns) : 1;
+            int srcH = _healthHudTexture != null ? Math.Max(1, _healthHudTexture.Height / HealthHudConfig.Rows) : 1;
 
             for (int i = 0; i < maxCells; i++)
             {
-                int x = startX + i * (cellSize + spacing);
-                Rectangle cellRect = new Rectangle(x, y, cellSize, cellSize);
-                Rectangle innerRect = new Rectangle(x + textureInset, y + textureInset, cellSize - textureInset * 2, cellSize - textureInset * 2);
+                int x = startX + i * (HealthHudConfig.CellWidth + HealthHudConfig.CellSpacing);
+                Rectangle dst = new Rectangle(x, y, HealthHudConfig.CellWidth, HealthHudConfig.CellHeight);
 
-                spriteBatch.Draw(pixel, cellRect, new Color(20, 20, 26, 220));
-                spriteBatch.DrawRectangle(pixel, cellRect, new Color(150, 150, 170), 1);
-                spriteBatch.Draw(pixel, innerRect, new Color(45, 45, 55, 210));
-
-                float cellHealth = MathHelper.Clamp(currentHealth - i, 0f, 1f);
-                if (cellHealth <= 0f)
+                if (_healthHudTexture == null)
+                {
+                    spriteBatch.Draw(pixel, dst, new Color(20, 20, 26, 220));
                     continue;
+                }
 
-                Rectangle fillRect = new Rectangle(
-                    innerRect.X + 1,
-                    innerRect.Y + 1,
-                    Math.Max(1, (int)((innerRect.Width - 2) * cellHealth)),
-                    Math.Max(1, innerRect.Height - 2)
-                );
-
-                spriteBatch.Draw(pixel, fillRect, new Color(90, 220, 110));
+                HealthHudCellRuntime cell = _healthHudCells[i];
+                int row = GetCurrentHealthHudRow(cell);
+                int col = Math.Clamp(cell.Frame, 0, HealthHudConfig.Columns - 1);
+                Rectangle src = new Rectangle(col * srcW, row * srcH, srcW, srcH);
+                spriteBatch.Draw(_healthHudTexture, dst, src, Color.White);
             }
+
+            if (_roomFont != null && _state.Player.Stats.ExtraLives > 0)
+            {
+                string label = $"x{_state.Player.Stats.ExtraLives}";
+                float scale = HealthHudConfig.ExtraLivesTextScale;
+                Vector2 size = _roomFont.MeasureString(label) * scale;
+                Vector2 pos = new Vector2(startX + totalWidth - size.X, y + HealthHudConfig.CellHeight + HealthHudConfig.ExtraLivesTextOffsetY);
+                spriteBatch.DrawString(_roomFont, label, pos + new Vector2(1, 1), new Color(0, 0, 0, 160), 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+                spriteBatch.DrawString(_roomFont, label, pos, new Color(230, 210, 120), 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            }
+        }
+
+        private void UpdateHealthHudAnimation(GameTime gameTime)
+        {
+            if (_state.Player?.Stats == null)
+                return;
+
+            int cellCount = Math.Max(1, (int)MathF.Ceiling(_state.Player.Stats.MaxHealth / 2f));
+            EnsureHealthHudCellCount(cellCount);
+
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            int healthUnits = Math.Max(0, (int)MathF.Round(MathHelper.Clamp(_state.Player.Stats.Health, 0f, _state.Player.Stats.MaxHealth)));
+
+            for (int i = 0; i < cellCount; i++)
+            {
+                int unitsInCell = Math.Clamp(healthUnits - i * 2, 0, 2);
+                CellFillState target = unitsInCell switch
+                {
+                    2 => CellFillState.Full,
+                    1 => CellFillState.Half,
+                    _ => CellFillState.Empty
+                };
+
+                HealthHudCellRuntime cell = _healthHudCells[i];
+                if (cell.TargetState != target)
+                    cell.TargetState = target;
+
+                if (!cell.IsTransitionPlaying && cell.CurrentState != cell.TargetState)
+                    StartCellTransition(cell);
+
+                if (cell.IsTransitionPlaying)
+                {
+                    cell.FrameTimer += dt;
+                    if (cell.FrameTimer >= HealthHudConfig.TransitionFrameDurationSeconds)
+                    {
+                        cell.FrameTimer -= HealthHudConfig.TransitionFrameDurationSeconds;
+                        cell.Frame++;
+                        if (cell.Frame >= HealthHudConfig.Columns)
+                        {
+                            cell.Frame = 0;
+                            cell.IsTransitionPlaying = false;
+                            cell.CurrentState = cell.TargetState;
+                        }
+                    }
+                }
+                else if (cell.IsIdlePlaying)
+                {
+                    cell.FrameTimer += dt;
+                    if (cell.FrameTimer >= HealthHudConfig.IdleFrameDurationSeconds)
+                    {
+                        cell.FrameTimer -= HealthHudConfig.IdleFrameDurationSeconds;
+                        cell.Frame++;
+                        if (cell.Frame >= HealthHudConfig.Columns)
+                        {
+                            cell.Frame = 0;
+                            cell.IsIdlePlaying = false;
+                            _healthHudIdleDelayTimer = 0f;
+                            _healthHudIdleCellIndex = (_healthHudIdleCellIndex + 1) % Math.Max(1, cellCount);
+                        }
+                    }
+                }
+            }
+
+            if (cellCount == 0)
+                return;
+
+            if (_healthHudIdleCellIndex >= cellCount)
+                _healthHudIdleCellIndex = 0;
+
+            bool hasActiveTransition = false;
+            for (int i = 0; i < cellCount; i++)
+            {
+                if (_healthHudCells[i].IsTransitionPlaying)
+                {
+                    hasActiveTransition = true;
+                    break;
+                }
+            }
+
+            if (hasActiveTransition)
+                return;
+
+            _healthHudIdleDelayTimer += dt;
+
+            HealthHudCellRuntime activeCell = _healthHudCells[_healthHudIdleCellIndex];
+            if (activeCell.IsIdlePlaying)
+                return;
+
+            if (_healthHudIdleDelayTimer < _healthHudNextStartInterval)
+                return;
+
+            _healthHudIdleDelayTimer = 0f;
+            activeCell.IsIdlePlaying = true;
+            activeCell.Frame = 0;
+            activeCell.FrameTimer = 0f;
+            int nextIndex = (_healthHudIdleCellIndex + 1) % Math.Max(1, cellCount);
+            _healthHudNextStartInterval = nextIndex == 0
+                ? HealthHudConfig.IdleCycleIntervalSeconds
+                : HealthHudConfig.IdleCellIntervalSeconds;
+        }
+
+        private void EnsureHealthHudCellCount(int cellCount)
+        {
+            if (_healthHudCells.Count == cellCount)
+                return;
+
+            if (_healthHudIdleCellIndex >= cellCount)
+                _healthHudIdleCellIndex = 0;
+            _healthHudIdleDelayTimer = 0f;
+            _healthHudNextStartInterval = HealthHudConfig.IdleCellIntervalSeconds;
+
+            while (_healthHudCells.Count < cellCount)
+                _healthHudCells.Add(new HealthHudCellRuntime());
+
+            while (_healthHudCells.Count > cellCount)
+                _healthHudCells.RemoveAt(_healthHudCells.Count - 1);
+        }
+
+        private static int GetCurrentHealthHudRow(HealthHudCellRuntime cell)
+        {
+            if (cell.IsTransitionPlaying)
+                return cell.TransitionRow;
+
+            return cell.CurrentState switch
+            {
+                CellFillState.Full => HealthHudConfig.FullIdleRow,
+                CellFillState.Half => HealthHudConfig.HalfIdleRow,
+                _ => HealthHudConfig.EmptyIdleRow
+            };
+        }
+
+        private static void StartCellTransition(HealthHudCellRuntime cell)
+        {
+            if (!TryGetTransitionRow(cell.CurrentState, cell.TargetState, out int row))
+            {
+                cell.CurrentState = cell.TargetState;
+                cell.IsTransitionPlaying = false;
+                cell.IsIdlePlaying = false;
+                cell.Frame = 0;
+                cell.FrameTimer = 0f;
+                return;
+            }
+
+            cell.IsTransitionPlaying = true;
+            cell.IsIdlePlaying = false;
+            cell.TransitionRow = row;
+            cell.Frame = 0;
+            cell.FrameTimer = 0f;
+        }
+
+        private static bool TryGetTransitionRow(CellFillState from, CellFillState to, out int row)
+        {
+            row = -1;
+            if (from == to)
+                return false;
+
+            if (from == CellFillState.Empty && to == CellFillState.Half)
+            {
+                row = HealthHudConfig.EmptyToHalfRow;
+                return true;
+            }
+
+            if (from == CellFillState.Half && to == CellFillState.Empty)
+            {
+                row = HealthHudConfig.HalfToEmptyRow;
+                return true;
+            }
+
+            if (from == CellFillState.Full && to == CellFillState.Half)
+            {
+                row = HealthHudConfig.FullToHalfRow;
+                return true;
+            }
+
+            if (from == CellFillState.Empty && to == CellFillState.Full)
+            {
+                row = HealthHudConfig.EmptyToFullRow;
+                return true;
+            }
+
+            if (from == CellFillState.Half && to == CellFillState.Full)
+            {
+                row = HealthHudConfig.HalfToFullRow;
+                return true;
+            }
+
+            return false;
+        }
+
+        private enum CellFillState
+        {
+            Empty,
+            Half,
+            Full
+        }
+
+        private sealed class HealthHudCellRuntime
+        {
+            public CellFillState CurrentState = CellFillState.Full;
+            public CellFillState TargetState = CellFillState.Full;
+            public bool IsTransitionPlaying;
+            public bool IsIdlePlaying;
+            public int TransitionRow = HealthHudConfig.FullIdleRow;
+            public int Frame;
+            public float FrameTimer;
         }
 
         private void DrawBossHealthBar(SpriteBatch spriteBatch, Texture2D pixel)

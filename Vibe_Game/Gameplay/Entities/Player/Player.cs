@@ -61,6 +61,8 @@ namespace Vibe_Game.Gameplay.Entities.Player
 
         public override void Update(GameTime gameTime)
         {
+            SyncEquipmentFromStats();
+
             Controller.Update(gameTime);
 
             _lastShootDirection = Controller.ShootDirection;
@@ -151,10 +153,36 @@ namespace Vibe_Game.Gameplay.Entities.Player
             if (amount <= 0) return;
 
             Stats.TakeDamage(amount);
+
+            while (Stats.Health <= 0f && Stats.ExtraLives > 0)
+            {
+                Stats.ExtraLives--;
+                Stats.Health = 2f;
+            }
+
+            if (Stats.Health <= 0f)
+                return;
+
             _invincibilityTimer = InvincibilityDuration;
 
             // Визуальный эффект - мигание 
             Color = Color.White * 0.25f;
+        }
+
+        private void SyncEquipmentFromStats()
+        {
+            Controller.MaxSpeed = CollectibleConfig.BasePlayerControllerMaxSpeed * Stats.SpeedMultiplier;
+
+            if (EquippedWeapon is ForwardProjectileWeapon gun)
+            {
+                gun.ExternalDamageBonus = Stats.BonusWeaponDamage;
+                gun.ProjectileSpeedMultiplier = Stats.ProjectileSpeedMultiplier;
+            }
+            else if (EquippedWeapon is SwordWeapon sword)
+            {
+                sword.ExternalDamageBonus = Stats.BonusWeaponDamage;
+                sword.SetCooldownMultiplier(Stats.SwordCooldownMultiplier);
+            }
         }
 
         public bool IsInvincible => _invincibilityTimer > 0;

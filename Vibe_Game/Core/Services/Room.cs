@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Vibe_Game.Core.Settings;
 using Vibe_Game.Core.Tiles;
+using Vibe_Game.Gameplay.Entities.Collectables;
 using Vibe_Game.Gameplay.Entities.Enemies;
 
 namespace Vibe_Game.Core.Services
@@ -19,6 +20,8 @@ namespace Vibe_Game.Core.Services
         public bool IsButtonPressed => ButtonTile?.IsPressed ?? false;
         public bool IsCleared { get; set; }
         public bool IsFloorExitRoom { get; set; }
+        /// <summary>На первом этаже: комната закрыта, пока не взят один из стартовых видов оружия с пьедесталов.</summary>
+        public bool RequiresStartingWeaponChoice { get; set; }
         public Point ButtonPos => ButtonTile?.GridPosition ?? Point.Zero;
         public ButtonTile ButtonTile { get; private set; }
         public TrapdoorTile FloorExitTile { get; private set; }
@@ -100,7 +103,32 @@ namespace Vibe_Game.Core.Services
                 int candidateIndex = _random.Next(candidates.Count);
                 Point pedestalPos = candidates[candidateIndex];
                 candidates.RemoveAt(candidateIndex);
-                SetTile(pedestalPos.X, pedestalPos.Y, new PedestalTile(pedestalPos));
+                CollectableKind kind = PickRandomPedestalKind();
+                SetTile(pedestalPos.X, pedestalPos.Y, new PedestalTile(pedestalPos, kind));
+            }
+        }
+
+        /// <summary>Один пьедестал строго в центре комнаты (сокровищница).</summary>
+        public void PlaceTreasurePedestalAtCenter()
+        {
+            Point center = new Point(WidthInTiles / 2, HeightInTiles / 2);
+            CollectableKind kind = PickRandomPedestalKind();
+            SetTile(center.X, center.Y, new PedestalTile(center, kind));
+        }
+
+        /// <summary>Два пьедестала выбора оружия слева и справа от центра (координаты из конфига).</summary>
+        public void PlaceStartingWeaponPedestals()
+        {
+            Point center = new Point(WidthInTiles / 2, HeightInTiles / 2);
+            for (int i = 0; i < PedestalConfig.StartingWeaponPedestalOffsetsFromCenter.Length; i++)
+            {
+                Point delta = PedestalConfig.StartingWeaponPedestalOffsetsFromCenter[i];
+                Point pos = new Point(center.X + delta.X, center.Y + delta.Y);
+                if (!IsInside(pos.X, pos.Y))
+                    continue;
+
+                CollectableKind kind = PedestalConfig.StartingWeaponPedestalKinds[i];
+                SetTile(pos.X, pos.Y, new PedestalTile(pos, kind));
             }
         }
 
@@ -215,6 +243,12 @@ namespace Vibe_Game.Core.Services
             }
 
             return candidates;
+        }
+
+        private CollectableKind PickRandomPedestalKind()
+        {
+            CollectableKind[] kinds = PedestalConfig.StandardLootKinds;
+            return kinds[_random.Next(kinds.Length)];
         }
     }
 }

@@ -8,7 +8,9 @@ namespace Vibe_Game.Gameplay.Entities.Enemies;
 
 internal class AdaptiveChasingEnemy : ChasingEnemy
 {
-    protected override float AnimFrameDuration => 0.08f;
+    protected override float AnimFrameDuration =>
+        EnemyConfig.AdaptiveChasingAnimationSpeed;
+    private bool _isPlayerCurrentlyInRadius;
 
     private readonly float _initialChaseRadius;
     private readonly float _expandedChaseRadius;
@@ -51,6 +53,9 @@ internal class AdaptiveChasingEnemy : ChasingEnemy
         float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
         float distanceToPlayer = Vector2.Distance(Position, ChaseTarget);
 
+        _isPlayerCurrentlyInRadius =
+            distanceToPlayer <= _currentChaseRadius;
+
         CheckPlayerEnteredRadius(distanceToPlayer);
 
         if (Health < MaxHealth && !_hasPlayerEnteredRadius)
@@ -88,6 +93,7 @@ internal class AdaptiveChasingEnemy : ChasingEnemy
         }
     }
 
+
     public override void Draw(SpriteBatch spriteBatch)
     {
         if (!IsAlive || !IsActivated || spriteBatch == null)
@@ -97,17 +103,27 @@ internal class AdaptiveChasingEnemy : ChasingEnemy
 
         if (_spriteSheet != null)
         {
+            int currentRow = _isPlayerCurrentlyInRadius ? 0 : 1;
+
+            _sourceRect = new Rectangle(
+                _frameIndex * _frameWidth,
+                currentRow * _frameHeight,
+                _frameWidth,
+                _frameHeight
+            );
+
             spriteBatch.Draw(
                 _spriteSheet,
                 Position,
                 _sourceRect,
                 Color.White,
                 0f,
-                new Vector2(_frameWidth / 2f, _frameHeight / 2f),
+                new Vector2(_frameWidth / 2f, _frameHeight / 4f),
                 1f,
                 GetHorizontalSpriteEffect(),
                 0f
             );
+
             DrawDebugOverlay(spriteBatch);
             return;
         }
@@ -151,10 +167,13 @@ internal class AdaptiveChasingEnemy : ChasingEnemy
         if (_spriteSheet == null)
             return;
 
-        _frameHeight = _spriteSheet.Height;
-        _frameWidth = _frameHeight > 0 ? _frameHeight : _spriteSheet.Width;
-        _frameWidth = Math.Clamp(_frameWidth, 1, _spriteSheet.Width);
-        _frameCount = Math.Max(1, _spriteSheet.Width / _frameWidth);
+        _frameCount = EnemyConfig.AdaptiveChasingFrameCount;
+
+        _frameWidth = _spriteSheet.Width / _frameCount;
+
+        _frameHeight =
+            _spriteSheet.Height / EnemyConfig.AdaptiveChasingAnimationRows;
+
         _sourceRect = new Rectangle(0, 0, _frameWidth, _frameHeight);
     }
 }

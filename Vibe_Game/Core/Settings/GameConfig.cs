@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Vibe_Game.Gameplay.Entities.Collectables;
 
 namespace Vibe_Game.Core.Settings
 {
@@ -33,7 +34,7 @@ namespace Vibe_Game.Core.Settings
 
     public static class EnemyConfig
     {
-        public const float EnemyActivationDelaySeconds = 1f;
+        public const float EnemyActivationDelaySeconds = 0.6f;
 
         public const int DefaultFlyingRadius = 8;
         public const float DefaultFlyingMoveSpeed = 85f;
@@ -51,6 +52,10 @@ namespace Vibe_Game.Core.Settings
         public const float AdaptiveChasingInitialRadius = 90f;
         public const float AdaptiveChasingExpandedRadius = 200f;
         public const float AdaptiveChasingSpawnChance = 0.3f;
+
+        public const int AdaptiveChasingFrameCount = 4;
+        public const float AdaptiveChasingAnimationSpeed = 0.05f;
+        public const int AdaptiveChasingAnimationRows = 2;
 
         public const float ShooterRadius = 10f;
         public const float ShooterMoveSpeed = 80f;
@@ -92,6 +97,145 @@ namespace Vibe_Game.Core.Settings
         public const float BossBurrowTrailSpeed = 30f;
         public const float BossBurrowStrikeRadius = 44f;
         public const bool BossInvulnerableDuringBurrow = true;
+    }
+
+    public static class WeaponConfig
+    {
+        public const string SwordTexture = "sword_sheet";
+        public const string SwordTrailTexture = "sword_trail_particles";
+        public const string PlayerProjectileTexture = "player_projectile_sheet";
+        public const string EnemyProjectileTexture = "enemy_projectile_sheet";
+
+        public const float SwordLength = 40f;
+        public const float SwordWidth = 10f;
+        public const float SwordAttackAngle = System.MathF.PI / 1.5f; // 120 градусов
+        public const float SwordAttackDuration = 0.15f;
+        public const int SwordDamage = 5;
+        public const float SwordRecoilForce = 500f;
+
+        public const int SwordTrailParticleCount = 20;
+        public const int SwordTrailFrameCount = 8;
+        public const float SwordTrailParticleSize = 6f;
+        public const float SwordTrailAnimationSpeed = 0.1f;
+        public const float SwordTrailParticleLifetime = 0.7f;
+        public const float SwordTrailBrightnessVariation = 0.6f;
+
+        public const int ProjectileFrameCount = 4;
+        public const float ProjectileSize = 16f;
+        public const float ProjectileAnimationSpeed = 0.06f;
+        
+        public const float PlayerProjectileSpeed = 300f;
+        public const float PlayerProjectileLifetime = 1.8f;
+        public const int PlayerProjectileDamage = 3;
+        
+        public const float EnemyProjectileSpeed = 150f;
+        public const float EnemyProjectileLifetime = 2.2f;
+        public const int EnemyProjectileDamage = 1;
+    }
+
+    public static class CollectibleConfig
+    {
+        public const float FeatherSpeedMultiplierBonus = 0.12f;
+        public const float FeatherProjectileSpeedMultiplierBonus = 0.1f;
+        public const float FeatherSwordCooldownMultiplierPerStack = 0.92f;
+
+        public const int FangBonusDamage = 1;
+
+        public const float EnemyHealthDropChance = 0.15f;
+        /// <summary>Доля дропа, при котором выпадает +2 HP (остальное — +1).</summary>
+        public const float EnemyTwoHpDropWeight = 0.5f;
+
+        public const int FloorPickupSize = 22;
+        public const float FloorPickupBobSpeed = 4.2f;
+        public const float FloorPickupBobAmplitude = 2.5f;
+
+        public const float BasePlayerControllerMaxSpeed = 150f;
+    }
+
+    /// <summary>Пьедесталы: раскладка, имена PNG в Content, число кадров idle-анимации.</summary>
+    public static class PedestalConfig
+    {
+        public const int SpriteFrameCount = 4;
+        public const float IdleAnimFps = 7f;
+        public const float PickupAnimDurationSeconds = 0.42f;
+
+        public const string TotemTextureAsset = "collectable_totem";
+        public const string FeatherTextureAsset = "collectable_feather";
+        public const string FangTextureAsset = "collectable_fang";
+        public const string WeaponProjectilePedestalTextureAsset = "collectable_weapon_projectile";
+        public const string WeaponSwordPedestalTextureAsset = "collectable_weapon_sword";
+
+        /// <summary>Случайный лут на обычных пьедесталах (не стартовое оружие).</summary>
+        public static readonly CollectableKind[] StandardLootKinds =
+        {
+            CollectableKind.Totem,
+            CollectableKind.Feather,
+            CollectableKind.Fang
+        };
+
+        /// <summary>Смещения плиток пьедесталов выбора оружия относительно центра комнаты [слева, справа].</summary>
+        public static readonly Point[] StartingWeaponPedestalOffsetsFromCenter =
+        {
+            new Point(-2, 0),
+            new Point(2, 0)
+        };
+
+        /// <summary>Порядок соответствует <see cref="StartingWeaponPedestalOffsetsFromCenter"/>.</summary>
+        public static readonly CollectableKind[] StartingWeaponPedestalKinds =
+        {
+            CollectableKind.WeaponProjectile,
+            CollectableKind.WeaponSword
+        };
+    }
+
+    /// <summary>Параметры экземпляров оружия при выборе на первом этаже.</summary>
+    public static class StartingWeaponConfig
+    {
+        public const float SwordCooldownSeconds = 0.4f;
+
+        public const float ProjectileCooldownSeconds = 0.35f;
+        public const float ProjectileSpeed = 205f;
+        public const int ProjectileDamage = 3;
+        public const float ProjectileSpawnOffsetPixels = 2f;
+        public const float ProjectileLifetimeSeconds = 1.5f;
+        public const float ProjectileRadius = 4f;
+        public const float ProjectileRecoilForce = 100f;
+    }
+
+    /// <summary>Конфиг полоски здоровья игрока из спрайт-листа 8x4.</summary>
+    public static class HealthHudConfig
+    {
+        public const string TextureAsset = "healthbar_sheet";
+
+        public const int Columns = 4;
+        public const int Rows = 8;
+
+        public const int FullIdleRow = 0;
+        public const int HalfIdleRow = 1;
+        public const int EmptyIdleRow = 2;
+        public const int EmptyToHalfRow = 3;
+        public const int HalfToEmptyRow = 4;
+        public const int FullToHalfRow = 5;
+        public const int EmptyToFullRow = 6;
+        public const int HalfToFullRow = 7;
+
+        public const float IdleFrameDurationSeconds = 0.08f;
+        public const float TransitionFrameDurationSeconds = 0.05f;
+        /// <summary>Пауза между анимациями соседних ячеек в одном проходе.</summary>
+        public const float IdleCellIntervalSeconds = 0.1f;
+        /// <summary>Пауза перед запуском нового полного прохода по всем ячейкам.</summary>
+        public const float IdleCycleIntervalSeconds = 3f;
+
+        public const int CellWidth = 50;
+        public const int CellHeight = 50;
+        public const int CellSpacing = 4;
+        public const int MarginRight = 20;
+        public const int MarginTop = 20;
+        public const int CellOffsetX = 2;
+        public const int CellOffsetY = 2;
+
+        public const float ExtraLivesTextScale = 0.55f;
+        public const int ExtraLivesTextOffsetY = 4;
     }
 
     public static class GameColors

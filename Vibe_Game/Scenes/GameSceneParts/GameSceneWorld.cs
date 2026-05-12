@@ -1,20 +1,25 @@
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Vibe_Game.Core.Engine;
 using Vibe_Game.Core.Services;
 using Vibe_Game.Core.Settings;
 using Vibe_Game.Core.Tiles;
+using Vibe_Game.Gameplay.Entities.Collectables;
 using Vibe_Game.Gameplay.Entities.Enemies;
+using Vibe_Game.Gameplay.Weapons;
 
 namespace Vibe_Game.Scenes
 {
     internal sealed class GameSceneWorld
     {
         private readonly GameSceneState _state;
+        private readonly ContentManager _content;
 
-        public GameSceneWorld(GameSceneState state)
+        public GameSceneWorld(GameSceneState state, ContentManager content)
         {
             _state = state;
+            _content = content;
         }
 
         public Point GetRoomGridAtWorldPosition(Vector2 worldPosition)
@@ -170,6 +175,13 @@ namespace Vibe_Game.Scenes
             if (room == null)
                 return;
 
+            if (room.Type == LevelGenerator.RoomType.Start && room.RequiresStartingWeaponChoice)
+            {
+                room.IsLocked = true;
+                RefreshDoorStatesAround(roomGrid);
+                return;
+            }
+
             if (room.Type == LevelGenerator.RoomType.Start || room.IsCleared)
             {
                 room.IsLocked = false;
@@ -245,6 +257,13 @@ namespace Vibe_Game.Scenes
 
             if (room.Type == LevelGenerator.RoomType.Start)
             {
+                if (room.RequiresStartingWeaponChoice)
+                {
+                    room.IsLocked = true;
+                    RefreshDoorStatesAround(_state.CurrentRoomGrid);
+                    return;
+                }
+
                 room.IsLocked = false;
                 RefreshDoorStatesAround(_state.CurrentRoomGrid);
                 return;
@@ -636,6 +655,103 @@ namespace Vibe_Game.Scenes
             }
 
             _state.Player.SetMovementFrictionMultiplier(frictionMultiplier);
+        }
+
+        /// <summary>Обновляет предметы на пьедесталах и дроп на полу в посещённых комнатах.</summary>
+        public void UpdateCollectables(GameTime gameTime)
+        {
+            if (_state.Player == null)
+                return;
+
+            Rectangle playerBounds = _state.Player.GetBounds();
+
+            foreach (Point roomGrid in _state.VisitedRooms)
+            {
+                Room room = GetRoomAtGridOrNull(roomGrid);
+                if (room == null)
+                    continue;
+
+                for (int tx = 0; tx < WorldConfig.RoomWidthTiles; tx++)
+                {
+                    for (int ty = 0; ty < WorldConfig.RoomHeightTiles; ty++)
+                    {
+                        if (room.GetTile(tx, ty) is not PedestalTile pedestal)
+                            continue;
+
+                        pedestal.Collectable.Update(gameTime);
+                        if (pedestal.Collectable.TryBeginPickupIfOverlapping(playerBounds, roomGrid))
+                        {
+                            CollectableKind kind = pedestal.Collectable.Kind;
+                            if (room.RequiresStartingWeaponChoice && IsStartingWeaponPedestalKind(kind))
+                            {
+                                ApplyStartingWeaponChoice(room, roomGrid, new Point(tx, ty), kind);
+                            }
+                            else
+                            {
+                                pedestal.Collectable.ApplyEffect(_state.Player);
+                            }
+                        }
+
+                        if (pedestal.Collectable.IsPedestalGone)
+                            room.SetTile(tx, ty, new FloorTile(new Point(tx, ty)));
+                    }
+                }
+            }
+
+            for (int i = _state.FloorPickups.Count - 1; i >= 0; i--)
+            {
+                DroppedPickup pickup = _state.FloorPickups[i];
+                pickup.Update(gameTime, _state.Player);
+                if (!pickup.IsAlive)
+                    _state.FloorPickups.RemoveAt(i);
+            }
+        }
+
+        private static bool IsStartingWeaponPedestalKind(CollectableKind kind) =>
+            kind is CollectableKind.WeaponProjectile or CollectableKind.WeaponSword;
+
+        private void ApplyStartingWeaponChoice(Room room, Point roomGrid, Point pickedTile, CollectableKind kind)
+        {
+            if (!room.RequiresStartingWeaponChoice)
+                return;
+
+            if (kind == CollectableKind.WeaponProjectile)
+            {
+                _state.Player.EquippedWeapon = new ForwardProjectileWeapon(
+                    StartingWeaponConfig.ProjectileCooldownSeconds,
+                    StartingWeaponConfig.ProjectileSpeed,
+                    StartingWeaponConfig.ProjectileDamage,
+                    StartingWeaponConfig.ProjectileSpawnOffsetPixels,
+                    StartingWeaponConfig.ProjectileLifetimeSeconds,
+                    StartingWeaponConfig.ProjectileRadius,
+                    StartingWeaponConfig.ProjectileRecoilForce);
+            }
+            else if (kind == CollectableKind.WeaponSword)
+            {
+                var sword = new SwordWeapon(StartingWeaponConfig.SwordCooldownSeconds);
+                sword.LoadContent(_content);
+                _state.Player.EquippedWeapon = sword;
+            }
+
+            RemoveOtherStartingWeaponPedestals(room, pickedTile);
+            room.RequiresStartingWeaponChoice = false;
+            room.IsLocked = false;
+            RefreshDoorStatesAround(roomGrid);
+        }
+
+        private static void RemoveOtherStartingWeaponPedestals(Room room, Point keepTile)
+        {
+            for (int x = 0; x < room.WidthInTiles; x++)
+            {
+                for (int y = 0; y < room.HeightInTiles; y++)
+                {
+                    if (x == keepTile.X && y == keepTile.Y)
+                        continue;
+
+                    if (room.GetTile(x, y) is PedestalTile pedestal && IsStartingWeaponPedestalKind(pedestal.Collectable.Kind))
+                        room.SetTile(x, y, new FloorTile(new Point(x, y)));
+                }
+            }
         }
     }
 }
