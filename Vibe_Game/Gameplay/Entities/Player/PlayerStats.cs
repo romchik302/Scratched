@@ -9,7 +9,7 @@ namespace Vibe_Game.Gameplay.Entities.Player
     public class PlayerStats
     {
         // Основные характеристики
-        public float Health { get; set; } = 6f;
+        public float Health { get; set; } = 6;
         public float MaxHealth { get; set; } = 6f;
         public float Damage { get; set; } = 3.5f;
         public float Speed { get; set; } = 1.0f;

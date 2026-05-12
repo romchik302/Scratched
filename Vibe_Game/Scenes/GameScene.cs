@@ -125,6 +125,7 @@ namespace Vibe_Game.Scenes
             _world.UpdatePlayerFrictionByGround();
 
             _world.UpdateCamera(GetCamera());
+            _renderer.Update(gameTime);
 
             base.Update(gameTime);
         }

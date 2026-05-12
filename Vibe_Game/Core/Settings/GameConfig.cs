@@ -53,6 +53,10 @@ namespace Vibe_Game.Core.Settings
         public const float AdaptiveChasingExpandedRadius = 200f;
         public const float AdaptiveChasingSpawnChance = 0.3f;
 
+        public const int AdaptiveChasingFrameCount = 4;
+        public const float AdaptiveChasingAnimationSpeed = 0.05f;
+        public const int AdaptiveChasingAnimationRows = 2;
+
         public const float ShooterRadius = 10f;
         public const float ShooterMoveSpeed = 80f;
         public const int ShooterMaxHealth = 12;
@@ -196,6 +200,42 @@ namespace Vibe_Game.Core.Settings
         public const float ProjectileLifetimeSeconds = 1.5f;
         public const float ProjectileRadius = 4f;
         public const float ProjectileRecoilForce = 100f;
+    }
+
+    /// <summary>Конфиг полоски здоровья игрока из спрайт-листа 8x4.</summary>
+    public static class HealthHudConfig
+    {
+        public const string TextureAsset = "healthbar_sheet";
+
+        public const int Columns = 4;
+        public const int Rows = 8;
+
+        public const int FullIdleRow = 0;
+        public const int HalfIdleRow = 1;
+        public const int EmptyIdleRow = 2;
+        public const int EmptyToHalfRow = 3;
+        public const int HalfToEmptyRow = 4;
+        public const int FullToHalfRow = 5;
+        public const int EmptyToFullRow = 6;
+        public const int HalfToFullRow = 7;
+
+        public const float IdleFrameDurationSeconds = 0.08f;
+        public const float TransitionFrameDurationSeconds = 0.05f;
+        /// <summary>Пауза между анимациями соседних ячеек в одном проходе.</summary>
+        public const float IdleCellIntervalSeconds = 0.1f;
+        /// <summary>Пауза перед запуском нового полного прохода по всем ячейкам.</summary>
+        public const float IdleCycleIntervalSeconds = 3f;
+
+        public const int CellWidth = 50;
+        public const int CellHeight = 50;
+        public const int CellSpacing = 4;
+        public const int MarginRight = 20;
+        public const int MarginTop = 20;
+        public const int CellOffsetX = 2;
+        public const int CellOffsetY = 2;
+
+        public const float ExtraLivesTextScale = 0.55f;
+        public const int ExtraLivesTextOffsetY = 4;
     }
 
     public static class GameColors
