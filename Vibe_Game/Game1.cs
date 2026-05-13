@@ -115,6 +115,9 @@ namespace Vibe_Game
             Services.AddService(typeof(Texture2D), _pixelTexture);
             EnsureSceneRenderTarget();
 
+            GameplayAudio.Load(Content);
+            GameplayAudio.OnEnterMainMenu();
+
             // Проверяем состояние
             System.Diagnostics.Debug.WriteLine($"GraphicsDevice: {GraphicsDevice != null}");
             System.Diagnostics.Debug.WriteLine($"SceneManager: {_sceneManager != null}");
@@ -176,6 +179,8 @@ namespace Vibe_Game
 
         public void StartNewGame()
         {
+            GameplayAudio.OnEnterGameScene();
+
             var playerRenderer = new PlayerRenderer(_playerTexture);
             var gameScene = new GameScene(this, playerRenderer, _inputService, _contentLoader);
             _sceneManager.AddScene("game", gameScene);
@@ -184,6 +189,8 @@ namespace Vibe_Game
 
         public void ShowMainMenu()
         {
+            GameplayAudio.OnEnterMainMenu();
+
             if (_mainMenuScene == null)
             {
                 _mainMenuScene = new MainMenuScene(this, _inputService);
@@ -196,6 +203,8 @@ namespace Vibe_Game
         /// <summary>Показывает отдельную сцену титров после завершения забега.</summary>
         public void ShowCredits()
         {
+            GameplayAudio.OnEnterCredits();
+
             if (_creditsScene == null)
             {
                 _creditsScene = new CreditsScene(this, _inputService);
@@ -208,6 +217,8 @@ namespace Vibe_Game
         /// <summary>Показывает отдельную сцену смерти после окончания здоровья игрока.</summary>
         public void ShowDeathScreen()
         {
+            GameplayAudio.StopAllMusic();
+
             if (_deathScene == null)
             {
                 _deathScene = new DeathScene(this, _inputService);

@@ -31,6 +31,7 @@ public abstract class Enemy : Entity
     private static Texture2D _sharedFlyingTexture;
     private static Texture2D _sharedChasingTexture;
     private static Texture2D _sharedAdaptiveTexture;
+    private static Texture2D _sharedDeathTexture;
 #if DEBUG
     private static Texture2D _debugPixel;
 #endif
@@ -104,7 +105,10 @@ public abstract class Enemy : Entity
         _sharedFlyingTexture ??= TryLoad(content, "enemy_flying_sheet");
         _sharedChasingTexture ??= TryLoad(content, "enemy_chasing_sheet");
         _sharedAdaptiveTexture ??= TryLoad(content, "enemy_adaptive_sheet");
+        _sharedDeathTexture ??= TryLoad(content, Core.Settings.EnemyConfig.EnemyDeathAnimation);
     }
+
+    public static Texture2D SharedDeathTexture => _sharedDeathTexture;
 
     protected static Texture2D SharedFlyingTexture => _sharedFlyingTexture;
     protected static Texture2D SharedChasingTexture => _sharedChasingTexture;

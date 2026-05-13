@@ -106,6 +106,13 @@ namespace Vibe_Game.Scenes
                         if (!enemy.IsAlive)
                         {
                             TrySpawnHealthPickup(enemy.Position);
+                            float r = GetEnemyRadius(enemy);
+                            _state.EnemyDeathAnimations.Add(new EnemyDeathVfx(enemy.Position, r));
+                            if (enemy is BossEnemy)
+                                GameplayAudio.PlayBossDeath();
+                            else
+                                GameplayAudio.PlayEnemyDeath();
+
                             room.enemies.RemoveAt(i);
                         }
                     }
@@ -157,8 +164,31 @@ namespace Vibe_Game.Scenes
             }
 
             _world.RefreshEnemyOccupancy();
+
+            UpdateEnemyDeathAnimations(gameTime);
         }
 
+        private void UpdateEnemyDeathAnimations(GameTime gameTime)
+        {
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            for (int i = _state.EnemyDeathAnimations.Count - 1; i >= 0; i--)
+            {
+                EnemyDeathVfx vfx = _state.EnemyDeathAnimations[i];
+                vfx.Update(dt);
+                if (vfx.IsFinished)
+                    _state.EnemyDeathAnimations.RemoveAt(i);
+            }
+        }
+
+        public void DrawEnemyDeathAnimations(SpriteBatch spriteBatch)
+        {
+            Texture2D death = Enemy.SharedDeathTexture;
+            if (death == null)
+                return;
+
+            foreach (EnemyDeathVfx vfx in _state.EnemyDeathAnimations)
+                vfx.Draw(spriteBatch, death);
+        }
 
         public void Draw(SpriteBatch spriteBatch)
         {

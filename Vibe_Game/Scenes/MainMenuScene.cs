@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Vibe_Game.Core.Interfaces;
+using Vibe_Game.Core.Services;
 using Vibe_Game.Core.Settings;
 
 namespace Vibe_Game.Scenes
@@ -26,14 +27,22 @@ namespace Vibe_Game.Scenes
 
         public override void Update(GameTime gameTime)
         {
+            int prev = _selectedIndex;
+
             if (IsNavigateUpPressed())
                 _selectedIndex = (_selectedIndex - 1 + _options.Length) % _options.Length;
 
             if (IsNavigateDownPressed())
                 _selectedIndex = (_selectedIndex + 1) % _options.Length;
 
+            if (prev != _selectedIndex)
+                GameplayAudio.PlayUiSelect();
+
             if (IsConfirmPressed())
+            {
+                GameplayAudio.PlayUiConfirm();
                 ActivateSelectedOption();
+            }
         }
 
         public override void Draw(GameTime gameTime)

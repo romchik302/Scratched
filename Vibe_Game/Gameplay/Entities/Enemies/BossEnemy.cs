@@ -262,7 +262,7 @@ public sealed class BossEnemy : Enemy
                 RecoilForce = 0f,
                 IsFriendlyToPlayer = false,
                 IgnoreWallCollisions = true,
-                Length = 40f  // Elongated spike length
+                Length = 30f  // Elongated spike length
             });
         }
     }

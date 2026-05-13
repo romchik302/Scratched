@@ -49,6 +49,18 @@
 /processorParam:TextureFormat=Color
 /build:enemy_chasing_sheet.png
 
+#begin enemy_death_sheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:enemy_death_sheet.png
+
 #begin enemy_flying_sheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -85,6 +97,18 @@
 /processorParam:TextureFormat=Color
 /build:healthbar_sheet.png
 
+#begin pedestal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:pedestal.png
+
 #begin player_projectile_sheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -115,6 +139,126 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:room_font.spritefont
+
+#begin sounds/boss_death.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/boss_death.mp3
+
+#begin sounds/enemy_death.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/enemy_death.mp3
+
+#begin sounds/enemy_fly.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/enemy_fly.mp3
+
+#begin sounds/enemy_slime.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/enemy_slime.wav
+
+#begin sounds/enemy_treant.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/enemy_treant.wav
+
+#begin sounds/map_boss_entry.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/map_boss_entry.mp3
+
+#begin sounds/map_button.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/map_button.wav
+
+#begin sounds/map_closeddoor.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/map_closeddoor.mp3
+
+#begin sounds/map_door_unlock.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/map_door_unlock.mp3
+
+#begin sounds/map_opendoor.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/map_opendoor.mp3
+
+#begin sounds/mc_death.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/mc_death.mp3
+
+#begin sounds/mc_footsteps_grass.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/mc_footsteps_grass.wav
+
+#begin sounds/mc_footsteps_stone.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/mc_footsteps_stone.wav
+
+#begin sounds/mc_get_hit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/mc_get_hit.wav
+
+#begin sounds/mc_heal.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/mc_heal.wav
+
+#begin sounds/mc_ranged_attack.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/mc_ranged_attack.wav
+
+#begin sounds/mc_sword_attack1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/mc_sword_attack1.wav
+
+#begin sounds/mc_sword_attack2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/mc_sword_attack2.wav
+
+#begin sounds/ui_confirm.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/ui_confirm.wav
+
+#begin sounds/ui_select.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/ui_select.ogg
 
 #begin sword_sheet.png
 /importer:TextureImporter

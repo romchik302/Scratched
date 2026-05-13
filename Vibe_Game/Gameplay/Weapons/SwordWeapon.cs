@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
 using Vibe_Game.Core.Utilities;
+using Vibe_Game.Core.Services;
 using Vibe_Game.Core.Settings;
 
 namespace Vibe_Game.Gameplay.Weapons;
@@ -56,6 +57,8 @@ public sealed class SwordWeapon : WeaponBase
     }
 
     public int ExternalDamageBonus { get; set; }
+
+    public Vector2 AttackDirection => _attackDirection;
 
     public int Damage
     {
@@ -180,6 +183,8 @@ public sealed class SwordWeapon : WeaponBase
         _startAngle = directionAngle - _attackAngle / 2;
         _endAngle = directionAngle + _attackAngle / 2;
 
+        GameplayAudio.PlaySwordSwing();
+
         return true;
     }
 
@@ -238,7 +243,11 @@ public sealed class SwordWeapon : WeaponBase
             {
                 Vector2 swordDir = tip - handle;
                 float swordAngle = (float)Math.Atan2(swordDir.Y, swordDir.X);
-                float swordLength = swordDir.Length();
+                float uniformScale = _swordLength / _swordTexture.Height;
+
+                // При ударе вверх меч отрисовывается перед персонажем (layerDepth > 0)
+                // В остальных случаях - перед персонажем (layerDepth = 0)
+                float layerDepth = _attackDirection.Y < -0.5f ? 0.1f : 0f;
 
                 spriteBatch.Draw(
                     _swordTexture,
@@ -253,14 +262,11 @@ public sealed class SwordWeapon : WeaponBase
                         _swordTexture.Height - _handleOffsetFromBottom
                     ),
 
-                    // scale
-                    new Vector2(
-                        _swordLength / _swordTexture.Height,
-                        _swordWidth / _swordTexture.Width
-                    ),
+                    // uniform scale — без некорректного растягивания по осям при вращении
+                    new Vector2(uniformScale, uniformScale),
 
                     SpriteEffects.None,
-                    0f
+                    layerDepth
                 );
             }
             else

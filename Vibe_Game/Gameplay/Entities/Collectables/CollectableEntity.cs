@@ -31,6 +31,9 @@ public sealed class CollectableEntity : Entity
     public Point TilePositionInRoom { get; }
     public CollectableKind Kind { get; }
 
+    /// <summary>Текущий кадр idle на пьедестале (для синхронной отрисовки основания пьедестала из того же листа).</summary>
+    public int PedestalIdleFrameIndex => _frameIndex;
+
     /// <summary>Масштаб и альфа для совместной отрисовки с пьедесталом (1 → 0).</summary>
     public float VisualScale { get; private set; } = 1f;
     public float VisualAlpha { get; private set; } = 1f;
@@ -126,12 +129,13 @@ public sealed class CollectableEntity : Entity
         if (sheet == null)
             return;
 
-        int frameW = Math.Max(1, sheet.Width / PedestalConfig.SpriteFrameCount);
-        int frameH = sheet.Height;
-        Rectangle source = new Rectangle(_frameIndex * frameW, 0, frameW, frameH);
+        Rectangle source = visuals.GetSourceRect(Kind, _frameIndex);
+        int frameW = source.Width;
+        int frameH = source.Height;
 
-        Vector2 center = tileBounds.Center.ToVector2();
-        float scale = 1.1f * VisualScale * (WorldConfig.TileSize / (float)Math.Max(frameW, frameH));
+        Vector2 center = tileBounds.Center.ToVector2()
+            + new Vector2(PedestalConfig.CollectableOnPedestalOffsetXPixels, -PedestalConfig.CollectableOnPedestalOffsetYUpPixels);
+        float scale = PedestalConfig.CollectableOnPedestalScaleMultiplier * VisualScale * (WorldConfig.TileSize / (float)Math.Max(frameW, frameH));
         Color tint = Color.White * VisualAlpha;
 
         spriteBatch.Draw(

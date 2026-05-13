@@ -98,13 +98,26 @@ namespace Vibe_Game.Scenes
             // сортировка по Y
             drawables.Sort((a, b) => a.Position.Y.CompareTo(b.Position.Y));
 
+            // При ударе вверх меч отрисовывается ПЕРЕД игроком (до drawables)
+            bool shouldDrawSwordBeforePlayer = false;
+            if (_state.Player.EquippedWeapon is SwordWeapon sword)
+            {
+                shouldDrawSwordBeforePlayer = sword.AttackDirection.Y < -0.5f;
+                if (shouldDrawSwordBeforePlayer)
+                    sword.Draw(spriteBatch, attackContext);
+            }
+
             // отрисовка
             foreach (var d in drawables)
                 d.Draw(spriteBatch);
+
+            _enemies.DrawEnemyDeathAnimations(spriteBatch);
+
             DrawCurrentRoomLabel(spriteBatch);
 
-if (_state.Player.EquippedWeapon is SwordWeapon sword)
-                sword.Draw(spriteBatch, attackContext);
+            // При ударе в других направлениях меч отрисовывается ПОСЛЕ игрока
+            if (!shouldDrawSwordBeforePlayer && _state.Player.EquippedWeapon is SwordWeapon sword2)
+                sword2.Draw(spriteBatch, attackContext);
 
             spriteBatch.End();
 
@@ -173,16 +186,30 @@ if (_state.Player.EquippedWeapon is SwordWeapon sword)
             }
         }
 
-        private static void DrawPedestalBase(SpriteBatch spriteBatch, Texture2D pixel, Rectangle tileBounds, PedestalTile pedestal)
+        private void DrawPedestalBase(SpriteBatch spriteBatch, Texture2D pixel, Rectangle tileBounds, PedestalTile pedestal)
         {
+            float s = MathHelper.Clamp(pedestal.Collectable.VisualScale, 0f, 1f);
+            float a = MathHelper.Clamp(pedestal.Collectable.VisualAlpha, 0f, 1f);
+
+            if (_state.CollectibleVisualCache?.Sheet != null)
+            {
+                var cache = _state.CollectibleVisualCache;
+                Rectangle src = cache.GetPedestalBaseSourceRect(pedestal.Collectable.PedestalIdleFrameIndex);
+                Vector2 center = tileBounds.Center.ToVector2()
+                    + new Vector2(PedestalConfig.PedestalBaseOffsetXPixels, PedestalConfig.PedestalBaseOffsetYPixels);
+                float scale = s * PedestalConfig.PedestalBaseScaleMultiplier * (WorldConfig.TileSize / (float)Math.Max(src.Width, src.Height));
+                spriteBatch.Draw(cache.Sheet, center, src, Color.White * a, 0f, new Vector2(src.Width / 2f, src.Height / 2f), scale, SpriteEffects.None, 0f);
+                return;
+            }
+
             if (pixel == null)
                 return;
 
-            float s = MathHelper.Clamp(pedestal.Collectable.VisualScale, 0f, 1f);
-            float a = MathHelper.Clamp(pedestal.Collectable.VisualAlpha, 0f, 1f);
             int w = Math.Max(4, (int)(tileBounds.Width * s));
             int h = Math.Max(4, (int)(tileBounds.Height * s));
-            Rectangle r = new Rectangle(tileBounds.Center.X - w / 2, tileBounds.Center.Y - h / 2, w, h);
+            int cx = tileBounds.Center.X + (int)PedestalConfig.PedestalBaseOffsetXPixels;
+            int cy = tileBounds.Center.Y + (int)PedestalConfig.PedestalBaseOffsetYPixels;
+            Rectangle r = new Rectangle(cx - w / 2, cy - h / 2, w, h);
             spriteBatch.Draw(pixel, r, GameColors.Pedestal * a);
         }
 
