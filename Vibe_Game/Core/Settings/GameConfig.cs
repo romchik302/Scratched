@@ -109,11 +109,11 @@ namespace Vibe_Game.Core.Settings
         public const float SwordLength = 40f;
         public const float SwordWidth = 10f;
         public const float SwordAttackAngle = System.MathF.PI / 1.5f; // 120 градусов
-        public const float SwordAttackDuration = 0.15f;
+        public const float SwordAttackDuration = 0.2f;
         public const int SwordDamage = 5;
         public const float SwordRecoilForce = 500f;
 
-        public const int SwordTrailParticleCount = 20;
+        public const int SwordTrailParticleCount = 10;
         public const int SwordTrailFrameCount = 8;
         public const float SwordTrailParticleSize = 6f;
         public const float SwordTrailAnimationSpeed = 0.1f;
@@ -135,9 +135,19 @@ namespace Vibe_Game.Core.Settings
 
     public static class CollectibleConfig
     {
+        public const string CollectablesTexture = "collectables_sheet";
+
         public const float FeatherSpeedMultiplierBonus = 0.12f;
         public const float FeatherProjectileSpeedMultiplierBonus = 0.1f;
         public const float FeatherSwordCooldownMultiplierPerStack = 0.92f;
+
+        public const int ClawRow = 1;
+        public const int FeatherRow = 2;
+        public const int TotemRow = 3;
+        public const int HalfHeartRow = 4;
+        public const int FullHeartRow = 5;
+        public const int ProjectileWeaponRow = 6;
+        public const int SwordWeaponRow = 7;
 
         public const int FangBonusDamage = 1;
 

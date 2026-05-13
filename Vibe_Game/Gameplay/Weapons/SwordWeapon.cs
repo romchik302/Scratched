@@ -31,6 +31,7 @@ public sealed class SwordWeapon : WeaponBase
     private Vector2 _currentPlayerPosition;
     private float _startAngle;
     private float _endAngle;
+    private float _handleOffsetFromBottom = 13f;
 
     // Кто уже получил урон в этой атаке
     private HashSet<object> _hitEnemies = new();
@@ -238,10 +239,29 @@ public sealed class SwordWeapon : WeaponBase
                 Vector2 swordDir = tip - handle;
                 float swordAngle = (float)Math.Atan2(swordDir.Y, swordDir.X);
                 float swordLength = swordDir.Length();
-                
-                spriteBatch.Draw(_swordTexture, handle, null, swordColor, swordAngle + MathHelper.PiOver2, 
-                    new Vector2(_swordTexture.Width / 2f, _swordTexture.Height / 2f), new Vector2(swordLength / _swordTexture.Height, _swordWidth / _swordTexture.Width), 
-                    SpriteEffects.None, 0f);
+
+                spriteBatch.Draw(
+                    _swordTexture,
+                    handle,
+                    null,
+                    swordColor,
+                    swordAngle + MathHelper.PiOver2,
+
+                    // origin
+                    new Vector2(
+                        _swordTexture.Width / 2f,
+                        _swordTexture.Height - _handleOffsetFromBottom
+                    ),
+
+                    // scale
+                    new Vector2(
+                        _swordLength / _swordTexture.Height,
+                        _swordWidth / _swordTexture.Width
+                    ),
+
+                    SpriteEffects.None,
+                    0f
+                );
             }
             else
             {
@@ -362,8 +382,8 @@ public sealed class SwordWeapon : WeaponBase
 
         foreach (var particle in _trailParticles)
         {
-            float alpha = Math.Clamp(particle.Lifetime / WeaponConfig.SwordTrailParticleLifetime, 0f, 1f);
-            Color baseColor = Color.OrangeRed;
+            float alpha = Math.Clamp(particle.Lifetime / WeaponConfig.SwordTrailParticleLifetime, 0f, 1f) * 0.3f;
+            Color baseColor = Color.Yellow;
 
             // 0 = обычный цвет
             // 1 = полностью белый
