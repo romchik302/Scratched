@@ -242,6 +242,9 @@ public abstract class Enemy : Entity
         // Переопределяется в подклассах
     }
 
+    /// <summary>Подгружает спрайт до первого Update (например, призыв босса).</summary>
+    public void PrimeSpriteConfiguration() => EnsureSpriteConfigured();
+
     /// <summary>Проверяет коллизию со стенами при отдаче и возвращает скорректированную позицию.</summary>
     protected virtual Vector2 ResolveRecoilCollision(Vector2 oldPos, Vector2 newPos)
     {

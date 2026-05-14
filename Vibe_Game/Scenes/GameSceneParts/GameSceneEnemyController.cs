@@ -474,6 +474,7 @@ namespace Vibe_Game.Scenes
 
             AssignEnemyFloor(enemy, _state.CurrentFloorIndex);
             enemy.Activate(skipDelay: false);
+            enemy.PrimeSpriteConfiguration();
             room.enemies.Add(enemy);
         }
 

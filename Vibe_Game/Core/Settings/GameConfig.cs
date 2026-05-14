@@ -80,6 +80,8 @@ namespace Vibe_Game.Core.Settings
         public const float BossMoveSpeed = 35f;
         public const int BossMaxHealth = 180;
         public const float BossRadius = 26f;
+        /// <summary>Доля высоты спрайта босса, участвующей в хитбоксе (верхние 15% отрезаны).</summary>
+        public const float BossHitboxVisibleHeightFraction = 0.85f;
         public const float BossAttackPauseMin = 0.95f;
         public const float BossAttackPauseMax = 1.55f;
         public const float BossSummonAttackWeight = 0.35f;

@@ -182,8 +182,10 @@ public sealed class BossEnemy : Enemy
                 _pixel = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
                 _pixel.SetData(new[] { Color.White });
             }
-            int fw = Math.Max(1, sheet.Width / Math.Max(1, EnemyConfig.BossSheetFramesCount));
-            int fh = Math.Max(1, sheet.Height / Math.Max(1, EnemyConfig.BossSheetRowCount));
+
+            if (!TryGetBossSpriteLayout(sheet, out Vector2 anchor, out float scale, out int fw, out int fh))
+                return;
+
             int row = Math.Clamp(_spriteRow, 0, EnemyConfig.BossSheetRowCount - 1);
             int frameCount = row == EnemyConfig.BossSheetFliesAttackIdleRow
                 ? EnemyConfig.BossSheetFliesAttckFramesCount
@@ -192,16 +194,10 @@ public sealed class BossEnemy : Enemy
             var src = new Rectangle(frame * fw, row * fh, fw, fh);
             bool flip = ChaseTarget.X < Position.X - 2f;
             var effects = flip ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-            float scale = (CollisionRadius * 2.1f) / Math.Max(fw, fh);
-            Vector2 drawPos = Position;
-            if (_burrowPhase == BurrowPhase.MovingTrail)
-                drawPos = _burrowTrailPosition;
-            else if (_burrowPhase == BurrowPhase.Windup)
-                drawPos = Position;
 
             spriteBatch.Draw(
                 sheet,
-                drawPos,
+                anchor,
                 src,
                 Color.White,
                 0f,
@@ -209,13 +205,6 @@ public sealed class BossEnemy : Enemy
                 scale,
                 effects,
                 0f);
-
-            if (_burrowPhase == BurrowPhase.MovingTrail && _pixel != null)
-            {
-                int radius = 12;
-                Rectangle trail = new Rectangle((int)_burrowTrailPosition.X - radius, (int)_burrowTrailPosition.Y - radius, radius * 2, radius * 2);
-                spriteBatch.Draw(_pixel, trail, new Color(135, 170, 85, 160));
-            }
 
             DrawDebugOverlay(spriteBatch);
             return;
@@ -235,8 +224,50 @@ public sealed class BossEnemy : Enemy
 
     public override Rectangle GetBounds()
     {
-        int r = (int)CollisionRadius;
-        return new Rectangle((int)Position.X - r, (int)Position.Y - r, r * 2, r * 2);
+        Texture2D sheet = SharedBossTexture;
+        if (sheet == null || !TryGetBossSpriteLayout(sheet, out Vector2 anchor, out float scale, out int fw, out int fh))
+        {
+            int r = (int)CollisionRadius;
+            return new Rectangle((int)Position.X - r, (int)Position.Y - r, r * 2, r * 2);
+        }
+
+        float fullW = fw * scale;
+        float fullH = fh * scale;
+        float hitH = fullH * EnemyConfig.BossHitboxVisibleHeightFraction;
+        float bottomY = anchor.Y + fullH * 0.5f;
+        float topY = bottomY - hitH;
+        int x = (int)MathF.Floor(anchor.X - fullW * 0.5f);
+        int y = (int)MathF.Floor(topY);
+        int w = Math.Max(1, (int)MathF.Ceiling(fullW));
+        int h = Math.Max(1, (int)MathF.Ceiling(hitH));
+        return new Rectangle(x, y, w, h);
+    }
+
+    private Vector2 GetBossDrawAnchor()
+    {
+        if (_burrowPhase == BurrowPhase.MovingTrail)
+            return _burrowTrailPosition;
+        return Position;
+    }
+
+    private static void GetBossCellPixelSize(Texture2D sheet, out int fw, out int fh)
+    {
+        fw = Math.Max(1, sheet.Width / Math.Max(1, EnemyConfig.BossSheetFramesCount));
+        fh = Math.Max(1, sheet.Height / Math.Max(1, EnemyConfig.BossSheetRowCount));
+    }
+
+    private bool TryGetBossSpriteLayout(Texture2D sheet, out Vector2 anchor, out float scale, out int fw, out int fh)
+    {
+        anchor = default;
+        scale = 0f;
+        fw = fh = 0;
+        if (sheet == null)
+            return false;
+
+        GetBossCellPixelSize(sheet, out fw, out fh);
+        anchor = GetBossDrawAnchor();
+        scale = (CollisionRadius * 2.1f) / Math.Max(fw, fh);
+        return true;
     }
 
     private void MoveTowardPlayer(float dt)
