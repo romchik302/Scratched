@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Vibe_Game.Core.Engine;
 using Vibe_Game.Core.Interfaces;
@@ -32,6 +33,8 @@ namespace Vibe_Game.Scenes
         private GameSceneAttackContext _attackContext;
         private bool _isPaused;
         private int _selectedPauseOption;
+        private float _footstepDistanceCarry;
+        private float _footstepTimeSinceLast;
 
         public GameScene(Game game, IPlayerRenderer pr, IInputService isrv, IPlayerContentLoader pcl)
             : base(game)
@@ -72,7 +75,10 @@ namespace Vibe_Game.Scenes
             {
                 _isPaused = !_isPaused;
                 if (_isPaused)
+                {
                     _selectedPauseOption = 0;
+                    GameplayAudio.PlayUiSelect();
+                }
 
                 return;
             }
@@ -102,6 +108,9 @@ namespace Vibe_Game.Scenes
 
             _projectileController.Update(gameTime);
             _enemyController.Update(gameTime);
+
+            UpdateGameMusic();
+            UpdateFootsteps(gameTime);
 
             if (IsPlayerDead())
             {
@@ -152,11 +161,14 @@ namespace Vibe_Game.Scenes
             _state.FloorMap = levelGenerator.GenerateFloor(_state.CurrentFloorIndex);
             _state.Projectiles.Clear();
             _state.FloorPickups.Clear();
+            _state.EnemyDeathAnimations.Clear();
             _state.VisitedRooms.Clear();
             _state.DiscoveredRooms.Clear();
             _state.IsPlayerStandingOnFloorExit = false;
             _state.CurrentRoomGrid = StartRoomGrid;
             _state.LastRoomGrid = StartRoomGrid;
+
+            GameplayAudio.ResetExplorationMusicBookmark();
 
             Vector2 startPos = GetStartWorldPosition();
             _state.Player.Position = startPos;
@@ -228,16 +240,64 @@ namespace Vibe_Game.Scenes
             );
         }
 
+        private void UpdateGameMusic()
+        {
+            Room room = _world.GetRoomAtGrid(_state.CurrentRoomGrid);
+            if (room == null)
+                return;
+
+            bool anyAlive = room.enemies != null && room.enemies.Any(e => e.IsAlive);
+            bool bossFight = room.Type == LevelGenerator.RoomType.Boss && anyAlive;
+            bool combat = !bossFight && anyAlive && !room.IsCleared
+                && (room.Type == LevelGenerator.RoomType.Battle || room.Type == LevelGenerator.RoomType.Challenge);
+
+            GameplayAudio.UpdateGameSceneBgm(bossFight, combat);
+        }
+
+        private void UpdateFootsteps(GameTime gameTime)
+        {
+            if (_state.Player == null)
+                return;
+
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            Vector2 vel = _state.Player.Velocity;
+            _footstepTimeSinceLast += dt;
+
+            if (vel.LengthSquared() < 120f)
+            {
+                _footstepDistanceCarry = 0f;
+                return;
+            }
+
+            _footstepDistanceCarry += vel.Length() * dt;
+            bool strideOk = _footstepDistanceCarry >= SoundConfig.FootstepStridePixels;
+            bool timeOk = _footstepTimeSinceLast >= SoundConfig.FootstepMinIntervalSeconds;
+            if (!strideOk || !timeOk)
+                return;
+
+            _footstepDistanceCarry = 0f;
+            _footstepTimeSinceLast = 0f;
+            bool nearRock = _world.IsNearRockFootstepSurface(_state.Player.Position);
+            GameplayAudio.PlayFootstep(nearRock);
+        }
+
         private void UpdatePauseMenu()
         {
+            int prev = _selectedPauseOption;
+
             if (IsMenuUpPressed())
                 _selectedPauseOption = (_selectedPauseOption - 1 + 2) % 2;
 
             if (IsMenuDownPressed())
                 _selectedPauseOption = (_selectedPauseOption + 1) % 2;
 
+            if (prev != _selectedPauseOption)
+                GameplayAudio.PlayUiSelect();
+
             if (!IsConfirmPressed())
                 return;
+
+            GameplayAudio.PlayUiConfirm();
 
             if (_selectedPauseOption == 0)
             {

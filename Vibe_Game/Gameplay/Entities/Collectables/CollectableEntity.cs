@@ -20,6 +20,13 @@ public sealed class CollectableEntity : Entity
     private float _idleAnimTimer;
     private float _pickupAnimTimer;
     private int _frameIndex;
+    private float _bobPhase;
+
+    public Point TilePositionInRoom { get; }
+    public CollectableKind Kind { get; }
+
+    /// <summary>Вертикальное смещение покачивания на пьедестале (как дроп хила на полу).</summary>
+    public float PedestalBobOffsetY { get; private set; }
 
     public CollectableEntity(Point tilePositionInRoom, CollectableKind kind)
     {
@@ -28,8 +35,8 @@ public sealed class CollectableEntity : Entity
         IsAlive = true;
     }
 
-    public Point TilePositionInRoom { get; }
-    public CollectableKind Kind { get; }
+    /// <summary>Текущий кадр idle на пьедестале (для синхронной отрисовки основания пьедестала из того же листа).</summary>
+    public int PedestalIdleFrameIndex => _frameIndex;
 
     /// <summary>Масштаб и альфа для совместной отрисовки с пьедесталом (1 → 0).</summary>
     public float VisualScale { get; private set; } = 1f;
@@ -46,6 +53,9 @@ public sealed class CollectableEntity : Entity
 
         if (_state == CollectState.Idle)
         {
+            _bobPhase += dt * CollectibleConfig.FloorPickupBobSpeed;
+            PedestalBobOffsetY = MathF.Sin(_bobPhase) * CollectibleConfig.FloorPickupBobAmplitude;
+
             _idleAnimTimer += dt;
             float frameDur = 1f / Math.Max(1f, PedestalConfig.IdleAnimFps);
             if (_idleAnimTimer >= frameDur)
@@ -56,6 +66,9 @@ public sealed class CollectableEntity : Entity
         }
         else if (_state == CollectState.PickupAnimating)
         {
+            _bobPhase += dt * CollectibleConfig.FloorPickupBobSpeed;
+            PedestalBobOffsetY = MathF.Sin(_bobPhase) * CollectibleConfig.FloorPickupBobAmplitude;
+
             _pickupAnimTimer += dt;
             float t = MathHelper.Clamp(_pickupAnimTimer / PedestalConfig.PickupAnimDurationSeconds, 0f, 1f);
             VisualScale = 1f - t;
@@ -126,12 +139,13 @@ public sealed class CollectableEntity : Entity
         if (sheet == null)
             return;
 
-        int frameW = Math.Max(1, sheet.Width / PedestalConfig.SpriteFrameCount);
-        int frameH = sheet.Height;
-        Rectangle source = new Rectangle(_frameIndex * frameW, 0, frameW, frameH);
+        Rectangle source = visuals.GetSourceRect(Kind, _frameIndex);
+        int frameW = source.Width;
+        int frameH = source.Height;
 
-        Vector2 center = tileBounds.Center.ToVector2();
-        float scale = 1.1f * VisualScale * (WorldConfig.TileSize / (float)Math.Max(frameW, frameH));
+        Vector2 center = tileBounds.Center.ToVector2()
+            + new Vector2(PedestalConfig.CollectableOnPedestalOffsetXPixels, -PedestalConfig.CollectableOnPedestalOffsetYUpPixels + PedestalBobOffsetY);
+        float scale = PedestalConfig.CollectableOnPedestalScaleMultiplier * VisualScale * (WorldConfig.TileSize / (float)Math.Max(frameW, frameH));
         Color tint = Color.White * VisualAlpha;
 
         spriteBatch.Draw(
@@ -141,7 +155,7 @@ public sealed class CollectableEntity : Entity
             tint,
             0f,
             new Vector2(frameW / 2f, frameH / 2f),
-            scale,
+            scale * 0.9f,
             SpriteEffects.None,
             0f);
 

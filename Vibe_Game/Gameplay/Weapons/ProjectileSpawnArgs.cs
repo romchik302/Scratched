@@ -22,4 +22,10 @@ public readonly struct ProjectileSpawnArgs
     public Vector2 ReleaseDirection { get; init; }
     public bool IgnoreWallCollisions { get; init; }  // Проходит сквозь стены
     public float Length { get; init; }  // Длина вытянутого проджектила (для шипов)
+
+    /// <summary>Для вражеских проджектайлов: подмена текстуры (например длинный шип босса). Null — стандартный лист.</summary>
+    public string HostileTextureOverride { get; init; }
+
+    public int HostileTextureFrameColumns { get; init; }
+    public float HostileProjectileDrawSize { get; init; }
 }

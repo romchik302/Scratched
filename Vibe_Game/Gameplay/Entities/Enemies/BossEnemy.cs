@@ -2,6 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Vibe_Game.Core.Interfaces;
+using Vibe_Game.Core.Services;
 using Vibe_Game.Core.Settings;
 using Vibe_Game.Gameplay.Weapons;
 
@@ -20,6 +21,7 @@ public sealed class BossEnemy : Enemy
     private enum BurrowPhase
     {
         None,
+        Windup,
         MovingTrail
     }
 
@@ -32,6 +34,20 @@ public sealed class BossEnemy : Enemy
     private bool _isInAttack;
     private BurrowPhase _burrowPhase;
     private Vector2 _burrowTrailPosition;
+    private float _burrowWindupRemaining;
+
+    private bool _burstSpawned;
+    private float _burstSpawnDelay;
+
+    private bool _summonSpawned;
+    private float _summonIntroRemaining;
+
+    private BossAttackType _currentAttack;
+    private float _attackElapsed;
+
+    private int _spriteRow = EnemyConfig.BossSheetIdleRow;
+    private int _spriteFrame;
+    private float _spriteAnimTimer;
 
     public Action<ProjectileSpawnArgs> ProjectileSpawner { get; set; }
     public Action<Vector2, bool> SummonEnemy { get; set; }
@@ -99,12 +115,39 @@ public sealed class BossEnemy : Enemy
         if (_burrowPhase != BurrowPhase.None)
         {
             UpdateBurrow(dt);
+            UpdateBossSpriteAnimation(dt);
             return;
         }
 
         if (_isInAttack)
         {
+            _attackElapsed += dt;
             _attackTimer -= dt;
+
+            if (_currentAttack == BossAttackType.SpikeBurst && !_burstSpawned)
+            {
+                _burstSpawnDelay -= dt;
+                if (_burstSpawnDelay <= 0f)
+                {
+                    ExecuteSpikeBurst();
+                    _burstSpawned = true;
+                }
+            }
+
+            if (_currentAttack == BossAttackType.SummonMinions)
+            {
+                _summonIntroRemaining -= dt;
+                if (!_summonSpawned && _summonIntroRemaining <= 0f)
+                {
+                    ExecuteSummon();
+                    _summonSpawned = true;
+                    GameplayAudio.PlayBossStatic();
+                }
+            }
+
+            UpdateVisualRowForAttack();
+            UpdateBossSpriteAnimation(dt);
+
             if (_attackTimer <= 0f)
                 EndAttackAndEnterCooldown();
 
@@ -115,10 +158,14 @@ public sealed class BossEnemy : Enemy
         {
             _cooldownTimer -= dt;
             Velocity = Vector2.Zero;
+            _spriteRow = EnemyConfig.BossSheetIdleRow;
+            UpdateBossSpriteAnimation(dt);
             return;
         }
 
         MoveTowardPlayer(dt);
+        _spriteRow = EnemyConfig.BossSheetIdleRow;
+        UpdateBossSpriteAnimation(dt);
         StartAttack(ChooseNextAttack());
     }
 
@@ -127,9 +174,38 @@ public sealed class BossEnemy : Enemy
         if (!IsAlive || !IsActivated || spriteBatch == null)
             return;
 
-        if (_burrowPhase != BurrowPhase.None)
+        Texture2D sheet = SharedBossTexture;
+        if (sheet != null)
         {
-            DrawBurrowTrail(spriteBatch);
+            if (_pixel == null)
+            {
+                _pixel = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
+                _pixel.SetData(new[] { Color.White });
+            }
+
+            if (!TryGetBossSpriteLayout(sheet, out Vector2 anchor, out float scale, out int fw, out int fh))
+                return;
+
+            int row = Math.Clamp(_spriteRow, 0, EnemyConfig.BossSheetRowCount - 1);
+            int frameCount = row == EnemyConfig.BossSheetFliesAttackIdleRow
+                ? EnemyConfig.BossSheetFliesAttckFramesCount
+                : EnemyConfig.BossSheetCommonFramesCount;
+            int frame = Math.Clamp(_spriteFrame, 0, frameCount - 1);
+            var src = new Rectangle(frame * fw, row * fh, fw, fh);
+            bool flip = ChaseTarget.X < Position.X - 2f;
+            var effects = flip ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+
+            spriteBatch.Draw(
+                sheet,
+                anchor,
+                src,
+                Color.White,
+                0f,
+                new Vector2(fw / 2f, fh / 2f),
+                scale,
+                effects,
+                0f);
+
             DrawDebugOverlay(spriteBatch);
             return;
         }
@@ -148,8 +224,50 @@ public sealed class BossEnemy : Enemy
 
     public override Rectangle GetBounds()
     {
-        int r = (int)CollisionRadius;
-        return new Rectangle((int)Position.X - r, (int)Position.Y - r, r * 2, r * 2);
+        Texture2D sheet = SharedBossTexture;
+        if (sheet == null || !TryGetBossSpriteLayout(sheet, out Vector2 anchor, out float scale, out int fw, out int fh))
+        {
+            int r = (int)CollisionRadius;
+            return new Rectangle((int)Position.X - r, (int)Position.Y - r, r * 2, r * 2);
+        }
+
+        float fullW = fw * scale;
+        float fullH = fh * scale;
+        float hitH = fullH * EnemyConfig.BossHitboxVisibleHeightFraction;
+        float bottomY = anchor.Y + fullH * 0.5f;
+        float topY = bottomY - hitH;
+        int x = (int)MathF.Floor(anchor.X - fullW * 0.5f);
+        int y = (int)MathF.Floor(topY);
+        int w = Math.Max(1, (int)MathF.Ceiling(fullW));
+        int h = Math.Max(1, (int)MathF.Ceiling(hitH));
+        return new Rectangle(x, y, w, h);
+    }
+
+    private Vector2 GetBossDrawAnchor()
+    {
+        if (_burrowPhase == BurrowPhase.MovingTrail)
+            return _burrowTrailPosition;
+        return Position;
+    }
+
+    private static void GetBossCellPixelSize(Texture2D sheet, out int fw, out int fh)
+    {
+        fw = Math.Max(1, sheet.Width / Math.Max(1, EnemyConfig.BossSheetFramesCount));
+        fh = Math.Max(1, sheet.Height / Math.Max(1, EnemyConfig.BossSheetRowCount));
+    }
+
+    private bool TryGetBossSpriteLayout(Texture2D sheet, out Vector2 anchor, out float scale, out int fw, out int fh)
+    {
+        anchor = default;
+        scale = 0f;
+        fw = fh = 0;
+        if (sheet == null)
+            return false;
+
+        GetBossCellPixelSize(sheet, out fw, out fh);
+        anchor = GetBossDrawAnchor();
+        scale = (CollisionRadius * 2.1f) / Math.Max(fw, fh);
+        return true;
     }
 
     private void MoveTowardPlayer(float dt)
@@ -207,29 +325,48 @@ public sealed class BossEnemy : Enemy
     {
         _isInAttack = true;
         _lastAttack = attack;
+        _currentAttack = attack;
         Velocity = Vector2.Zero;
+        _attackElapsed = 0f;
+        _burstSpawned = false;
+        _summonSpawned = false;
+
+        float commonDur = EnemyConfig.BossCommonAnimFrameDurationSeconds;
+        float rotateDur = EnemyConfig.BossSheetCommonFramesCount * commonDur;
 
         switch (attack)
         {
             case BossAttackType.SpikeBurst:
-                ExecuteSpikeBurst();
-                _attackTimer = 0.25f;
+                _burstSpawnDelay = 2f * commonDur;
+                _attackTimer = rotateDur + 6f * commonDur;
                 break;
 
             case BossAttackType.SpinningSpikes:
                 ExecuteSpinningSpikes();
-                _attackTimer = SpinningSpikeOrbitDuration + 0.15f;
+                _attackTimer = SpinningSpikeOrbitDuration + rotateDur + 2f * commonDur;
                 break;
 
             case BossAttackType.BurrowStrike:
                 BeginBurrow();
+                GameplayAudio.PlayBossBurrow();
                 break;
 
             case BossAttackType.SummonMinions:
-                ExecuteSummon();
-                _attackTimer = 0.4f;
+                _summonIntroRemaining = EnemyConfig.BossSheetCommonFramesCount * commonDur;
+                _attackTimer = _summonIntroRemaining + GetSummonStaticDurationSeconds();
                 break;
         }
+
+        if (attack != BossAttackType.BurrowStrike)
+            GameplayAudio.PlayBossAttack();
+    }
+
+    private static float GetSummonStaticDurationSeconds()
+    {
+        float idleLoop = EnemyConfig.BossSheetCommonFramesCount * EnemyConfig.BossIdleRowFrameDurationSeconds;
+        float need = EnemyConfig.EnemyActivationDelaySeconds;
+        int n = (int)Math.Ceiling(need / Math.Max(0.01f, idleLoop));
+        return Math.Max(1, n) * idleLoop;
     }
 
     private void EndAttackAndEnterCooldown()
@@ -237,6 +374,77 @@ public sealed class BossEnemy : Enemy
         _isInAttack = false;
         _attackTimer = 0f;
         _cooldownTimer = NextRange(AttackPauseMin, AttackPauseMax);
+    }
+
+    private void UpdateVisualRowForAttack()
+    {
+        float commonDur = EnemyConfig.BossCommonAnimFrameDurationSeconds;
+        float rotateEnd = EnemyConfig.BossSheetCommonFramesCount * commonDur;
+
+        switch (_currentAttack)
+        {
+            case BossAttackType.SpikeBurst:
+                if (_attackElapsed < rotateEnd)
+                    _spriteRow = EnemyConfig.BossSheetRotateRow;
+                else
+                    _spriteRow = EnemyConfig.BossSheetAttackRow;
+                break;
+
+            case BossAttackType.SpinningSpikes:
+                if (_attackElapsed < rotateEnd)
+                    _spriteRow = EnemyConfig.BossSheetRotateRow;
+                else
+                    _spriteRow = EnemyConfig.BossSheetAttackRow;
+                break;
+
+            case BossAttackType.SummonMinions:
+                if (_summonIntroRemaining > 0f)
+                    _spriteRow = EnemyConfig.BossSheetAttackRow;
+                else
+                    _spriteRow = EnemyConfig.BossSheetFliesAttackIdleRow;
+                break;
+
+            default:
+                _spriteRow = EnemyConfig.BossSheetIdleRow;
+                break;
+        }
+    }
+
+    private void UpdateBossSpriteAnimation(float dt)
+    {
+        Texture2D sheet = SharedBossTexture;
+        if (sheet == null)
+            return;
+
+        int frameCount = _spriteRow == EnemyConfig.BossSheetFliesAttackIdleRow
+            ? EnemyConfig.BossSheetFliesAttckFramesCount
+            : EnemyConfig.BossSheetCommonFramesCount;
+
+        float frameDur = _spriteRow == EnemyConfig.BossSheetFliesAttackIdleRow
+            ? EnemyConfig.BossFlyIdleAnimFrameDurationSeconds
+            : (_spriteRow == EnemyConfig.BossSheetIdleRow
+                ? EnemyConfig.BossIdleRowFrameDurationSeconds
+                : EnemyConfig.BossCommonAnimFrameDurationSeconds);
+
+        if (_burrowPhase == BurrowPhase.Windup)
+        {
+            _spriteRow = EnemyConfig.BossSheetBurrowRow;
+            frameCount = EnemyConfig.BossSheetCommonFramesCount;
+            frameDur = EnemyConfig.BossCommonAnimFrameDurationSeconds;
+        }
+        else if (_burrowPhase == BurrowPhase.MovingTrail)
+        {
+            _spriteRow = EnemyConfig.BossSheetDiggingRow;
+            frameCount = EnemyConfig.BossSheetCommonFramesCount;
+            frameDur = EnemyConfig.BossCommonAnimFrameDurationSeconds;
+        }
+
+        _spriteAnimTimer += dt;
+        if (_spriteAnimTimer >= frameDur)
+        {
+            _spriteAnimTimer = 0f;
+            _spriteFrame = (_spriteFrame + 1) % Math.Max(1, frameCount);
+        }
     }
 
     private void ExecuteSpikeBurst()
@@ -262,7 +470,49 @@ public sealed class BossEnemy : Enemy
                 RecoilForce = 0f,
                 IsFriendlyToPlayer = false,
                 IgnoreWallCollisions = true,
-                Length = 40f  // Elongated spike length
+                Length = 30f
+            });
+        }
+
+        SpawnBurstSpecialProjectiles();
+    }
+
+    private void SpawnBurstSpecialProjectiles()
+    {
+        if (ProjectileSpawner == null)
+            return;
+
+        int special = Math.Max(0, EnemyConfig.BossBurstSpecialProjectileCount);
+        if (special == 0)
+            return;
+
+        Vector2 toPlayer = ChaseTarget - Position;
+        if (toPlayer.LengthSquared() < 0.0001f)
+            toPlayer = Vector2.UnitY;
+        else
+            toPlayer.Normalize();
+
+        float spread = EnemyConfig.BossBurstSpecialSpreadHalfAngle;
+        for (int i = 0; i < special; i++)
+        {
+            float t = special == 1 ? 0f : (i / (float)(special - 1)) * 2f - 1f;
+            float ang = MathF.Atan2(toPlayer.Y, toPlayer.X) + t * spread;
+            Vector2 dir = new Vector2(MathF.Cos(ang), MathF.Sin(ang));
+            ProjectileSpawner.Invoke(new ProjectileSpawnArgs
+            {
+                Position = Position + dir * (SpikeBurstSpawnRadius * 0.4f),
+                Direction = dir,
+                Speed = EnemyConfig.BossBurstSpecialProjectileSpeed,
+                Damage = ContactDamage,
+                LifetimeSeconds = EnemyConfig.BossBurstSpecialProjectileLifetime,
+                Radius = EnemyConfig.BossBurstSpecialProjectileRadius,
+                RecoilForce = 0f,
+                IsFriendlyToPlayer = false,
+                IgnoreWallCollisions = true,
+                Length = EnemyConfig.BossBurstSpecialProjectileLength,
+                HostileTextureOverride = EnemyConfig.BossLongProjectileTexture,
+                HostileTextureFrameColumns = EnemyConfig.BossLongProjectileFrameColumns,
+                HostileProjectileDrawSize = EnemyConfig.BossLongProjectileDrawSize
             });
         }
     }
@@ -304,17 +554,30 @@ public sealed class BossEnemy : Enemy
 
     private void BeginBurrow()
     {
-        _burrowPhase = BurrowPhase.MovingTrail;
+        _burrowPhase = BurrowPhase.Windup;
         _burrowTrailPosition = Position;
-        _attackTimer = BurrowTravelDuration;
+        _burrowWindupRemaining = EnemyConfig.BossSheetCommonFramesCount * EnemyConfig.BossCommonAnimFrameDurationSeconds;
+        _attackTimer = _burrowWindupRemaining + BurrowTravelDuration;
+        _spriteRow = EnemyConfig.BossSheetBurrowRow;
     }
 
     private void UpdateBurrow(float dt)
     {
+        _attackTimer -= dt;
+
+        if (_burrowPhase == BurrowPhase.Windup)
+        {
+            _burrowWindupRemaining -= dt;
+            if (_burrowWindupRemaining <= 0f)
+                _burrowPhase = BurrowPhase.MovingTrail;
+
+            UpdateBossSpriteAnimation(dt);
+            return;
+        }
+
         if (_burrowPhase != BurrowPhase.MovingTrail)
             return;
 
-        _attackTimer -= dt;
         Vector2 toTarget = ChaseTarget - _burrowTrailPosition;
         if (toTarget.LengthSquared() > 1f)
         {
@@ -323,10 +586,14 @@ public sealed class BossEnemy : Enemy
         }
 
         if (_attackTimer > 0f)
+        {
+            UpdateBossSpriteAnimation(dt);
             return;
+        }
 
         Position = _burrowTrailPosition;
         _burrowPhase = BurrowPhase.None;
+        GameplayAudio.PlayBossEmerge();
         TryBurrowStrikePlayer();
         EndAttackAndEnterCooldown();
     }
@@ -386,19 +653,6 @@ public sealed class BossEnemy : Enemy
         return final;
     }
 
-    private void DrawBurrowTrail(SpriteBatch spriteBatch)
-    {
-        if (_pixel == null)
-        {
-            _pixel = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
-            _pixel.SetData(new[] { Color.White });
-        }
-
-        int radius = 12;
-        Rectangle trail = new Rectangle((int)_burrowTrailPosition.X - radius, (int)_burrowTrailPosition.Y - radius, radius * 2, radius * 2);
-        spriteBatch.Draw(_pixel, trail, new Color(135, 170, 85, 220));
-    }
-
     private float NextRange(float min, float max)
     {
         if (max < min)
@@ -410,5 +664,11 @@ public sealed class BossEnemy : Enemy
     {
         int r = (int)BurrowStrikeRadius;
         return new Rectangle((int)Position.X - r, (int)Position.Y - r, r * 2, r * 2);
+    }
+
+    protected override void OnActivated()
+    {
+        GameplayAudio.PlayBossEntering();
+        GameplayAudio.PlayMapBossEntry();
     }
 }

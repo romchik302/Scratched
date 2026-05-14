@@ -31,6 +31,8 @@ public abstract class Enemy : Entity
     private static Texture2D _sharedFlyingTexture;
     private static Texture2D _sharedChasingTexture;
     private static Texture2D _sharedAdaptiveTexture;
+    private static Texture2D _sharedDeathTexture;
+    private static Texture2D _sharedBossTexture;
 #if DEBUG
     private static Texture2D _debugPixel;
 #endif
@@ -52,6 +54,7 @@ public abstract class Enemy : Entity
 
     private float _activationDelayTimer = 0f;
     private bool _canMove = false;
+    private bool _activationSkippedDelay;
 
     /// <summary>Velocity отдачи (плавное отталкивание).</summary>
     private Vector2 _recoilVelocity = Vector2.Zero;
@@ -104,7 +107,13 @@ public abstract class Enemy : Entity
         _sharedFlyingTexture ??= TryLoad(content, "enemy_flying_sheet");
         _sharedChasingTexture ??= TryLoad(content, "enemy_chasing_sheet");
         _sharedAdaptiveTexture ??= TryLoad(content, "enemy_adaptive_sheet");
+        _sharedDeathTexture ??= TryLoad(content, Core.Settings.EnemyConfig.EnemyDeathAnimation);
+        _sharedBossTexture ??= TryLoad(content, Core.Settings.EnemyConfig.BossTexture);
     }
+
+    public static Texture2D SharedDeathTexture => _sharedDeathTexture;
+
+    public static Texture2D SharedBossTexture => _sharedBossTexture;
 
     protected static Texture2D SharedFlyingTexture => _sharedFlyingTexture;
     protected static Texture2D SharedChasingTexture => _sharedChasingTexture;
@@ -129,6 +138,7 @@ public abstract class Enemy : Entity
             return;
 
         IsActivated = true; // Сразу видим врага
+        _activationSkippedDelay = skipDelay;
 
         if (skipDelay)
         {
@@ -141,6 +151,9 @@ public abstract class Enemy : Entity
 
         OnActivated();
     }
+
+    /// <summary>True, если активация была с <paramref name="skipDelay"/> (призыв босса и т.п.).</summary>
+    protected bool ActivationSkippedDelay => _activationSkippedDelay;
 
     /// <summary>Хуки: звук, анимация пробуждения и т.д.</summary>
     protected virtual void OnActivated()
@@ -228,6 +241,9 @@ public abstract class Enemy : Entity
     {
         // Переопределяется в подклассах
     }
+
+    /// <summary>Подгружает спрайт до первого Update (например, призыв босса).</summary>
+    public void PrimeSpriteConfiguration() => EnsureSpriteConfigured();
 
     /// <summary>Проверяет коллизию со стенами при отдаче и возвращает скорректированную позицию.</summary>
     protected virtual Vector2 ResolveRecoilCollision(Vector2 oldPos, Vector2 newPos)

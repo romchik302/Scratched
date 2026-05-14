@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Vibe_Game.Core.Interfaces;
+using Vibe_Game.Core.Services;
 using Vibe_Game.Core.Settings;
 using Vibe_Game.Gameplay.Weapons;
 
@@ -132,6 +133,11 @@ namespace Vibe_Game.Gameplay.Entities.Player
             base.Update(gameTime);
         }
 
+        public void TryPlayPickupAnimation()
+        {
+            _animationRenderer?.BeginPickupAnimation();
+        }
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             _renderer.Draw(spriteBatch, Position, _lastShootDirection, Color);
@@ -153,6 +159,7 @@ namespace Vibe_Game.Gameplay.Entities.Player
             if (amount <= 0) return;
 
             Stats.TakeDamage(amount);
+            GameplayAudio.PlayPlayerHit();
 
             while (Stats.Health <= 0f && Stats.ExtraLives > 0)
             {

@@ -38,6 +38,7 @@ public sealed class ShooterFlyingEnemy : FlyingEnemy
             EnemyConfig.ShooterMaxHealth,
             EnemyConfig.ShooterRadius)
     {
+        EnsureSpriteConfigured();
     }
 
     protected override void UpdateEnemy(GameTime gameTime)

@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
 using Vibe_Game.Core.Utilities;
+using Vibe_Game.Core.Services;
 using Vibe_Game.Core.Settings;
 
 namespace Vibe_Game.Gameplay.Weapons;
@@ -31,6 +32,9 @@ public sealed class SwordWeapon : WeaponBase
     private Vector2 _currentPlayerPosition;
     private float _startAngle;
     private float _endAngle;
+    private float _handleOffsetFromBottom = 13f;
+
+    private float _visualScale = 1.3f;
 
     // Кто уже получил урон в этой атаке
     private HashSet<object> _hitEnemies = new();
@@ -55,6 +59,8 @@ public sealed class SwordWeapon : WeaponBase
     }
 
     public int ExternalDamageBonus { get; set; }
+
+    public Vector2 AttackDirection => _attackDirection;
 
     public int Damage
     {
@@ -179,6 +185,8 @@ public sealed class SwordWeapon : WeaponBase
         _startAngle = directionAngle - _attackAngle / 2;
         _endAngle = directionAngle + _attackAngle / 2;
 
+        GameplayAudio.PlaySwordSwing();
+
         return true;
     }
 
@@ -236,12 +244,28 @@ public sealed class SwordWeapon : WeaponBase
             if (_swordTexture != null)
             {
                 Vector2 swordDir = tip - handle;
-                float swordAngle = (float)Math.Atan2(swordDir.Y, swordDir.X);
-                float swordLength = swordDir.Length();
-                
-                spriteBatch.Draw(_swordTexture, handle, null, swordColor, swordAngle + MathHelper.PiOver2, 
-                    new Vector2(_swordTexture.Width / 2f, _swordTexture.Height / 2f), new Vector2(swordLength / _swordTexture.Height, _swordWidth / _swordTexture.Width), 
-                    SpriteEffects.None, 0f);
+                float swordAngle = (float)Math.Atan2(swordDir.Y, swordDir.X); 
+                float layerDepth = _attackDirection.Y < -0.5f ? 0.1f : 0f;
+
+                float lengthScale = _swordLength / _swordTexture.Height;
+
+                // коэффициент можно подобрать
+                float widthScale = (_swordWidth / _swordTexture.Width);
+
+                spriteBatch.Draw(
+                    _swordTexture,
+                    handle,
+                    null,
+                    swordColor,
+                    swordAngle + MathHelper.PiOver2,
+                    new Vector2(
+                        _swordTexture.Width / 2f,
+                        _swordTexture.Height - _handleOffsetFromBottom
+                    ),
+                    new Vector2(widthScale, lengthScale) * _visualScale,
+                    SpriteEffects.None,
+                    layerDepth
+                );
             }
             else
             {
@@ -362,8 +386,8 @@ public sealed class SwordWeapon : WeaponBase
 
         foreach (var particle in _trailParticles)
         {
-            float alpha = Math.Clamp(particle.Lifetime / WeaponConfig.SwordTrailParticleLifetime, 0f, 1f);
-            Color baseColor = Color.OrangeRed;
+            float alpha = Math.Clamp(particle.Lifetime / WeaponConfig.SwordTrailParticleLifetime, 0f, 1f) * 0.3f;
+            Color baseColor = Color.Yellow;
 
             // 0 = обычный цвет
             // 1 = полностью белый

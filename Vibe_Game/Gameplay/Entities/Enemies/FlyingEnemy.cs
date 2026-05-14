@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using Vibe_Game.Core.Services;
 using Vibe_Game.Core.Settings;
 
 namespace Vibe_Game.Gameplay.Entities.Enemies;
@@ -187,5 +188,11 @@ public class FlyingEnemy : Enemy
         _animTimer = 0f;
         _frameIndex = (_frameIndex + 1) % _frameCount;
         _sourceRect.X = _frameIndex * _frameWidth;
+    }
+
+    protected override void OnActivated()
+    {
+        if (!ActivationSkippedDelay)
+            GameplayAudio.PlayEnemyFly();
     }
 }

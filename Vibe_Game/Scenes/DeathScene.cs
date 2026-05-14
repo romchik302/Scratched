@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Vibe_Game.Core.Interfaces;
+using Vibe_Game.Core.Services;
 using Vibe_Game.Core.Settings;
 
 namespace Vibe_Game.Scenes
@@ -26,7 +27,10 @@ namespace Vibe_Game.Scenes
         public override void Update(GameTime gameTime)
         {
             if (IsAnySkipActionPressed())
+            {
+                GameplayAudio.PlayUiConfirm();
                 ((Game1)GameInstance).ShowMainMenu();
+            }
         }
 
         /// <summary>Рисует окно смерти с грустным смайликом и сообщением игроку.</summary>

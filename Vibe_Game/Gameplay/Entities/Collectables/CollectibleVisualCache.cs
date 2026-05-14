@@ -6,106 +6,104 @@ using Vibe_Game.Core.Settings;
 
 namespace Vibe_Game.Gameplay.Entities.Collectables;
 
-/// <summary>Текстуры предметов: при наличии PNG в Content подхватываются, иначе создаются простые полоски кадров.</summary>
+/// <summary>Все визуалы пьедестала и предметов — один спрайт-лист <see cref="CollectibleConfig.CollectablesTexture"/>.</summary>
 public sealed class CollectibleVisualCache
 {
-    private Texture2D _totemSheet;
-    private Texture2D _featherSheet;
-    private Texture2D _fangSheet;
-    private Texture2D _weaponProjectileSheet;
-    private Texture2D _weaponSwordSheet;
-    private Texture2D _health1;
-    private Texture2D _health2;
+    private Texture2D _sheet;
+
+    public Texture2D Sheet => _sheet;
 
     public void Load(ContentManager content, GraphicsDevice device)
     {
-        _totemSheet = TryLoadOrCreateStrip(content, device, PedestalConfig.TotemTextureAsset, new Color(180, 120, 40), new Color(200, 140, 55), new Color(160, 100, 30), new Color(190, 130, 45));
-        _featherSheet = TryLoadOrCreateStrip(content, device, PedestalConfig.FeatherTextureAsset, new Color(220, 220, 255), new Color(200, 200, 250), new Color(240, 240, 255), new Color(210, 210, 245));
-        _fangSheet = TryLoadOrCreateStrip(content, device, PedestalConfig.FangTextureAsset, new Color(200, 80, 80), new Color(220, 100, 100), new Color(180, 60, 60), new Color(210, 90, 90));
-        _weaponProjectileSheet = TryLoadOrCreateStrip(content, device, PedestalConfig.WeaponProjectilePedestalTextureAsset, new Color(120, 200, 255), new Color(100, 180, 240), new Color(140, 220, 255), new Color(110, 190, 245));
-        _weaponSwordSheet = TryLoadOrCreateStrip(content, device, PedestalConfig.WeaponSwordPedestalTextureAsset, new Color(200, 200, 220), new Color(220, 220, 240), new Color(180, 180, 200), new Color(210, 210, 230));
-        _health1 = TryLoadOrCreateSolid(content, device, "pickup_health_1", new Color(255, 90, 110));
-        _health2 = TryLoadOrCreateSolid(content, device, "pickup_health_2", new Color(255, 50, 80));
+        _sheet = TryLoadSheet(content, device);
     }
 
-    public Texture2D GetSheet(CollectableKind kind) =>
+    public Texture2D GetSheet(CollectableKind _) => _sheet;
+
+    public Texture2D GetHealthTexture(CollectableKind _) => _sheet;
+
+    public static int GetSheetRow(CollectableKind kind) =>
         kind switch
         {
-            CollectableKind.Totem => _totemSheet,
-            CollectableKind.Feather => _featherSheet,
-            CollectableKind.Fang => _fangSheet,
-            CollectableKind.WeaponProjectile => _weaponProjectileSheet,
-            CollectableKind.WeaponSword => _weaponSwordSheet,
-            _ => _health1
+            CollectableKind.Totem => CollectibleConfig.CollectablesSheetTotemRow,
+            CollectableKind.Feather => CollectibleConfig.CollectablesSheetFeatherRow,
+            CollectableKind.Fang => CollectibleConfig.CollectablesSheetFangRow,
+            CollectableKind.WeaponProjectile => CollectibleConfig.CollectablesSheetWeaponProjectileRow,
+            CollectableKind.WeaponSword => CollectibleConfig.CollectablesSheetWeaponSwordRow,
+            CollectableKind.HealthSmall => CollectibleConfig.CollectablesSheetHealthSmallRow,
+            CollectableKind.HealthLarge => CollectibleConfig.CollectablesSheetHealthLargeRow,
+            _ => CollectibleConfig.CollectablesSheetTotemRow
         };
 
-    public Texture2D GetHealthTexture(CollectableKind kind) =>
-        kind == CollectableKind.HealthLarge ? _health2 : _health1;
+    public Rectangle GetSourceRect(CollectableKind kind, int frameIndex)
+    {
+        int row = GetSheetRow(kind);
+        return GetSourceRect(row, frameIndex);
+    }
 
-    private static Texture2D TryLoadOrCreateStrip(ContentManager content, GraphicsDevice device, string assetName, Color a, Color b, Color c, Color d)
+    public Rectangle GetPedestalBaseSourceRect(int frameIndex) =>
+        GetSourceRect(CollectibleConfig.CollectablesSheetPedestalRow, frameIndex);
+
+    public Rectangle GetSourceRect(int row, int frameIndex)
+    {
+        if (_sheet == null)
+            return Rectangle.Empty;
+
+        int rows = Math.Max(1, CollectibleConfig.CollectablesSheetRowCount);
+        int cols = Math.Max(1, CollectibleConfig.CollectablesSheetFramesPerRow);
+        int fh = Math.Max(1, _sheet.Height / rows);
+        int fw = Math.Max(1, _sheet.Width / cols);
+        int f = Math.Abs(frameIndex) % cols;
+        int r = Math.Clamp(row, 0, rows - 1);
+        return new Rectangle(f * fw, r * fh, fw, fh);
+    }
+
+    private static Texture2D TryLoadSheet(ContentManager content, GraphicsDevice device)
     {
         if (content != null)
         {
             try
             {
-                return content.Load<Texture2D>(assetName);
-            }
-            catch
-            {
-                // ignore
-            }
-        }
-
-        return CreateFourFrameStrip(device, a, b, c, d);
-    }
-
-    private static Texture2D TryLoadOrCreateSolid(ContentManager content, GraphicsDevice device, string assetName, Color color)
-    {
-        if (content != null)
-        {
-            try
-            {
-                return content.Load<Texture2D>(assetName);
+                return content.Load<Texture2D>(CollectibleConfig.CollectablesTexture);
             }
             catch
             {
             }
         }
 
-        return CreateSolid(device, 20, 20, color);
+        return CreatePlaceholderCombinedSheet(device);
     }
 
-    private static Texture2D CreateFourFrameStrip(GraphicsDevice device, Color c0, Color c1, Color c2, Color c3)
+    private static Texture2D CreatePlaceholderCombinedSheet(GraphicsDevice device)
     {
+        int cols = CollectibleConfig.CollectablesSheetFramesPerRow;
+        int rows = CollectibleConfig.CollectablesSheetRowCount;
         const int fw = 18;
         const int fh = 18;
-        int fc = PedestalConfig.SpriteFrameCount;
-        var tex = new Texture2D(device, fw * fc, fh);
-        Color[] data = new Color[fw * fc * fh];
-        Color[] frames = { c0, c1, c2, c3 };
+        var tex = new Texture2D(device, fw * cols, fh * rows);
+        Color[] data = new Color[fw * cols * fh * rows];
 
-        for (int fi = 0; fi < fc; fi++)
+        for (int row = 0; row < rows; row++)
         {
-            for (int y = 0; y < fh; y++)
+            float hue = row / (float)Math.Max(1, rows - 1);
+            Color baseColor = Color.Lerp(new Color(120, 90, 70), new Color(200, 180, 140), hue);
+
+            for (int fi = 0; fi < cols; fi++)
             {
-                for (int x = 0; x < fw; x++)
+                for (int y = 0; y < fh; y++)
                 {
-                    bool edge = x == 0 || y == 0 || x == fw - 1 || y == fh - 1;
-                    data[y * (fw * fc) + fi * fw + x] = edge ? frames[fi] * 0.55f : frames[fi];
+                    for (int x = 0; x < fw; x++)
+                    {
+                        bool edge = x == 0 || y == 0 || x == fw - 1 || y == fh - 1;
+                        int px = fi * fw + x;
+                        int py = row * fh + y;
+                        Color c = edge ? baseColor * 0.55f : baseColor * (0.75f + fi * 0.06f);
+                        data[py * (fw * cols) + px] = c;
+                    }
                 }
             }
         }
 
-        tex.SetData(data);
-        return tex;
-    }
-
-    private static Texture2D CreateSolid(GraphicsDevice device, int w, int h, Color color)
-    {
-        var tex = new Texture2D(device, w, h);
-        Color[] data = new Color[w * h];
-        for (int i = 0; i < data.Length; i++)
-            data[i] = color;
         tex.SetData(data);
         return tex;
     }

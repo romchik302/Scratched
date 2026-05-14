@@ -42,7 +42,10 @@ namespace Vibe_Game.Scenes
                 args.RecoilForce,
                 args.IsFriendlyToPlayer,
                 args.IgnoreWallCollisions,
-                args.Length
+                args.Length,
+                args.HostileTextureOverride,
+                args.HostileTextureFrameColumns,
+                args.HostileProjectileDrawSize
             );
 
             // Загружаем контент для нового проджектайла

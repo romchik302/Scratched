@@ -29,6 +29,12 @@ internal class PlayerRenderer : IPlayerRenderer
     private const int IDLE_ROWS_COUNT = 3;
     private const int IDLE_FRAMES = 5;
 
+    /// <summary>Строка подбора предмета (под idle-рядами 4–6).</summary>
+    private const int PICKUP_ROW = 7;
+    private const int PICKUP_FRAMES = 5;
+    private const float PICKUP_FRAME_DURATION = 0.1f;
+    private const float PICKUP_ANIM_TOTAL = 0.45f;
+
     private const float IDLE_FRAME_DURATION = 0.18f;
     private const float IDLE_COOLDOWN = 3f;          // пауза между idle
     private const float STOP_COOLDOWN = 5f;          // пауза после движения
@@ -42,15 +48,36 @@ internal class PlayerRenderer : IPlayerRenderer
     private bool _wasMoving = false;
     private bool _idleFinished = false;
 
+    private float _pickupAnimRemaining;
+
     public PlayerRenderer(Texture2D spriteSheet)
     {
         _spriteSheet = spriteSheet ?? throw new ArgumentNullException(nameof(spriteSheet));
         _currentFrame = new Rectangle(0, 0, _frameWidth, _frameHeight);
     }
 
+    public void BeginPickupAnimation()
+    {
+        _pickupAnimRemaining = PICKUP_ANIM_TOTAL;
+        _animationTimer = 0f;
+        _currentFrameIndex = 0;
+        _isIdlePlaying = false;
+        _idleFinished = false;
+        _wasMoving = false;
+    }
+
     public void Update(GameTime gameTime, Vector2 velocity, Vector2 shootDirection)
     {
         float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+        if (_pickupAnimRemaining > 0f)
+        {
+            _pickupAnimRemaining -= dt;
+            UpdatePickupAnimation(dt);
+            UpdateCurrentFramePickup();
+            return;
+        }
+
         _animationTimer += dt;
 
         _isMoving = velocity.LengthSquared() > 0.01f;
@@ -68,6 +95,24 @@ internal class PlayerRenderer : IPlayerRenderer
         }
 
         UpdateCurrentFrame();
+    }
+
+    private void UpdatePickupAnimation(float dt)
+    {
+        _animationTimer += dt;
+        while (_animationTimer >= PICKUP_FRAME_DURATION)
+        {
+            _animationTimer -= PICKUP_FRAME_DURATION;
+            _currentFrameIndex = Math.Min(PICKUP_FRAMES - 1, _currentFrameIndex + 1);
+        }
+    }
+
+    private void UpdateCurrentFramePickup()
+    {
+        _currentFrame.X = _currentFrameIndex * _frameWidth;
+        _currentFrame.Y = PICKUP_ROW * _frameHeight;
+        _currentFrame.Width = _frameWidth;
+        _currentFrame.Height = _frameHeight;
     }
 
     private void UpdateWalk()

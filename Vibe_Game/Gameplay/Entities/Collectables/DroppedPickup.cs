@@ -1,16 +1,19 @@
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Vibe_Game.Core.Services;
 using Vibe_Game.Core.Settings;
 using Vibe_Game.Gameplay.Entities;
 
 namespace Vibe_Game.Gameplay.Entities.Collectables;
 
-/// <summary>Сердечко на полу (без анимации), подбирается при пересечении с игроком.</summary>
+/// <summary>Сердечко на полу: idle-анимация по кадрам строки хила в спрайт-листе, подбор при пересечении.</summary>
 public sealed class DroppedPickup : Entity
 {
     private readonly CollectibleVisualCache _visuals;
     private float _bobPhase;
+    private float _idleAnimTimer;
+    private int _frameIndex;
 
     public DroppedPickup(Vector2 worldPosition, CollectableKind kind, CollectibleVisualCache visuals)
         : base()
@@ -34,10 +37,21 @@ public sealed class DroppedPickup : Entity
         if (!IsAlive || player == null)
             return;
 
-        _bobPhase += (float)gameTime.ElapsedGameTime.TotalSeconds * CollectibleConfig.FloorPickupBobSpeed;
+        float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+        _bobPhase += dt * CollectibleConfig.FloorPickupBobSpeed;
+
+        _idleAnimTimer += dt;
+        float frameDur = 1f / Math.Max(1f, CollectibleConfig.FloorPickupIdleAnimFps);
+        if (_idleAnimTimer >= frameDur)
+        {
+            _idleAnimTimer = 0f;
+            int fc = Math.Max(1, CollectibleConfig.CollectablesSheetFramesPerRow);
+            _frameIndex = (_frameIndex + 1) % fc;
+        }
 
         if (GetBounds().Intersects(player.GetBounds()))
         {
+            player.TryPlayPickupAnimation();
             ApplyHeal(player);
             IsAlive = false;
         }
@@ -47,6 +61,7 @@ public sealed class DroppedPickup : Entity
     {
         float amount = Kind == CollectableKind.HealthLarge ? 2f : 1f;
         player.Stats.Health = MathHelper.Min(player.Stats.MaxHealth, player.Stats.Health + amount);
+        GameplayAudio.PlayPlayerHeal();
     }
 
     public override void Draw(SpriteBatch spriteBatch)
@@ -54,13 +69,14 @@ public sealed class DroppedPickup : Entity
         if (!IsAlive || _visuals == null)
             return;
 
-        Texture2D tex = _visuals.GetHealthTexture(Kind);
+        Texture2D tex = _visuals.GetSheet(Kind);
         if (tex == null)
             return;
 
+        Rectangle src = _visuals.GetSourceRect(Kind, _frameIndex);
         int s = CollectibleConfig.FloorPickupSize;
         float bob = MathF.Sin(_bobPhase) * CollectibleConfig.FloorPickupBobAmplitude;
         var dest = new Rectangle((int)Position.X - s / 2, (int)(Position.Y - s / 2 + bob), s, s);
-        spriteBatch.Draw(tex, dest, Color.White * 0.95f);
+        spriteBatch.Draw(tex, dest, src, Color.White * 0.95f);
     }
 }

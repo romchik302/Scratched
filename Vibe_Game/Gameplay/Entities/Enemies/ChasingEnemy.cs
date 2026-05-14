@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Vibe_Game.Core.Interfaces;
+using Vibe_Game.Core.Services;
 using Vibe_Game.Core.Settings;
 
 namespace Vibe_Game.Gameplay.Entities.Enemies;
@@ -235,6 +236,12 @@ public class ChasingEnemy : Enemy
         _frameIndex = (_frameIndex + 1) % _frameCount;
 
         _sourceRect.X = _frameIndex * _frameWidth;
+    }
+
+    protected override void OnActivated()
+    {
+        if (!ActivationSkippedDelay)
+            GameplayAudio.PlayEnemySlime();
     }
 
     private void RefreshHitboxParameters()

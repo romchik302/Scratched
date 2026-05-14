@@ -175,10 +175,16 @@ namespace Vibe_Game.Scenes
             if (room == null)
                 return;
 
+            bool crossedFromNeighbor =
+                roomGrid != previousRoomGrid
+                && Math.Abs(roomGrid.X - previousRoomGrid.X) + Math.Abs(roomGrid.Y - previousRoomGrid.Y) == 1;
+
             if (room.Type == LevelGenerator.RoomType.Start && room.RequiresStartingWeaponChoice)
             {
                 room.IsLocked = true;
                 RefreshDoorStatesAround(roomGrid);
+                if (crossedFromNeighbor)
+                    GameplayAudio.PlayMapClosedDoor();
                 return;
             }
 
@@ -194,6 +200,8 @@ namespace Vibe_Game.Scenes
                 MovePlayerInsideRoom(roomGrid, previousRoomGrid);
                 room.IsLocked = true;
                 RefreshDoorStatesAround(roomGrid);
+                if (crossedFromNeighbor)
+                    GameplayAudio.PlayMapClosedDoor();
             }
         }
 
@@ -271,10 +279,18 @@ namespace Vibe_Game.Scenes
 
             TryPressRoomButton(room);
 
+            bool wasCleared = room.IsCleared;
+
             if (AreUnlockRequirementsMet(room))
             {
                 room.IsLocked = false;
                 room.IsCleared = true;
+                if (!wasCleared)
+                {
+                    GameplayAudio.PlayRoomCleared();
+                    GameplayAudio.PlayMapOpenDoor();
+                }
+
                 EnsureFloorExit(room);
                 RefreshDoorStatesAround(_state.CurrentRoomGrid);
                 return;
@@ -577,7 +593,10 @@ namespace Vibe_Game.Scenes
             );
 
             if (playerRect.Intersects(buttonRect))
+            {
                 room.PressButton();
+                GameplayAudio.PlayMapButton();
+            }
         }
 
         private static bool ShouldLockRoom(Room room)
@@ -681,6 +700,7 @@ namespace Vibe_Game.Scenes
                         pedestal.Collectable.Update(gameTime);
                         if (pedestal.Collectable.TryBeginPickupIfOverlapping(playerBounds, roomGrid))
                         {
+                            _state.Player.TryPlayPickupAnimation();
                             CollectableKind kind = pedestal.Collectable.Kind;
                             if (room.RequiresStartingWeaponChoice && IsStartingWeaponPedestalKind(kind))
                             {
@@ -752,6 +772,39 @@ namespace Vibe_Game.Scenes
                         room.SetTile(x, y, new FloorTile(new Point(x, y)));
                 }
             }
+        }
+
+        /// <summary>Для звука шагов: рядом с ногами есть камень или граница комнаты (каменный «каркас»).</summary>
+        public bool IsNearRockFootstepSurface(Vector2 worldPosition)
+        {
+            Point roomGrid = GetRoomGridAtWorldPosition(worldPosition);
+            Room room = GetRoomAtGrid(roomGrid);
+            if (room == null)
+                return false;
+
+            float lx = worldPosition.X - roomGrid.X * WorldConfig.RoomWidthPx;
+            float ly = worldPosition.Y - roomGrid.Y * WorldConfig.RoomHeightPx;
+            if (lx < 0) lx += WorldConfig.RoomWidthPx;
+            if (ly < 0) ly += WorldConfig.RoomHeightPx;
+
+            int cx = (int)Math.Floor(lx / WorldConfig.TileSize);
+            int cy = (int)Math.Floor(ly / WorldConfig.TileSize);
+
+            for (int dy = -1; dy <= 1; dy++)
+            {
+                for (int dx = -1; dx <= 1; dx++)
+                {
+                    int tx = cx + dx;
+                    int ty = cy + dy;
+                    if (tx < 0 || tx >= WorldConfig.RoomWidthTiles || ty < 0 || ty >= WorldConfig.RoomHeightTiles)
+                        return true;
+
+                    if (room.GetTile(tx, ty) is RockTile)
+                        return true;
+                }
+            }
+
+            return false;
         }
     }
 }

@@ -106,6 +106,13 @@ namespace Vibe_Game.Scenes
                         if (!enemy.IsAlive)
                         {
                             TrySpawnHealthPickup(enemy.Position);
+                            float r = GetEnemyRadius(enemy);
+                            _state.EnemyDeathAnimations.Add(new EnemyDeathVfx(enemy.Position, r, enemy is BossEnemy));
+                            if (enemy is BossEnemy)
+                                GameplayAudio.PlayBossDeath();
+                            else
+                                GameplayAudio.PlayEnemyDeath();
+
                             room.enemies.RemoveAt(i);
                         }
                     }
@@ -157,8 +164,29 @@ namespace Vibe_Game.Scenes
             }
 
             _world.RefreshEnemyOccupancy();
+
+            UpdateEnemyDeathAnimations(gameTime);
         }
 
+        private void UpdateEnemyDeathAnimations(GameTime gameTime)
+        {
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            for (int i = _state.EnemyDeathAnimations.Count - 1; i >= 0; i--)
+            {
+                EnemyDeathVfx vfx = _state.EnemyDeathAnimations[i];
+                vfx.Update(dt);
+                if (vfx.IsFinished)
+                    _state.EnemyDeathAnimations.RemoveAt(i);
+            }
+        }
+
+        public void DrawEnemyDeathAnimations(SpriteBatch spriteBatch)
+        {
+            Texture2D death = Enemy.SharedDeathTexture;
+            Texture2D boss = Enemy.SharedBossTexture;
+            foreach (EnemyDeathVfx vfx in _state.EnemyDeathAnimations)
+                vfx.Draw(spriteBatch, death, boss);
+        }
 
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -445,7 +473,8 @@ namespace Vibe_Game.Scenes
             }
 
             AssignEnemyFloor(enemy, _state.CurrentFloorIndex);
-            enemy.Activate(skipDelay: true); // Пропускаем задержку для призванных врагов
+            enemy.Activate(skipDelay: false);
+            enemy.PrimeSpriteConfiguration();
             room.enemies.Add(enemy);
         }
 

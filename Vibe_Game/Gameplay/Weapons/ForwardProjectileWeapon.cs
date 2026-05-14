@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Vibe_Game.Core.Services;
 
 namespace Vibe_Game.Gameplay.Weapons;
 
@@ -55,6 +56,8 @@ public sealed class ForwardProjectileWeapon : WeaponBase
             RecoilForce = _recoilForce,
             IsFriendlyToPlayer = true
         });
+
+        GameplayAudio.PlayRangedAttack();
 
         return true;
     }

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Vibe_Game.Core.Interfaces;
+using Vibe_Game.Core.Services;
 using Vibe_Game.Core.Settings;
 
 namespace Vibe_Game.Gameplay.Entities.Enemies;
@@ -175,5 +176,11 @@ internal class AdaptiveChasingEnemy : ChasingEnemy
             _spriteSheet.Height / EnemyConfig.AdaptiveChasingAnimationRows;
 
         _sourceRect = new Rectangle(0, 0, _frameWidth, _frameHeight);
+    }
+
+    protected override void OnActivated()
+    {
+        if (!ActivationSkippedDelay)
+            GameplayAudio.PlayEnemyTreant();
     }
 }
