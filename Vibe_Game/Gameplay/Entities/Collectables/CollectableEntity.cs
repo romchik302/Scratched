@@ -155,7 +155,7 @@ public sealed class CollectableEntity : Entity
             tint,
             0f,
             new Vector2(frameW / 2f, frameH / 2f),
-            scale,
+            scale * 0.9f,
             SpriteEffects.None,
             0f);
 

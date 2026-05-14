@@ -196,7 +196,7 @@ namespace Vibe_Game.Scenes
                 var cache = _state.CollectibleVisualCache;
                 Rectangle src = cache.GetPedestalBaseSourceRect(pedestal.Collectable.PedestalIdleFrameIndex);
                 Vector2 center = tileBounds.Center.ToVector2()
-                    + new Vector2(PedestalConfig.PedestalBaseOffsetXPixels, PedestalConfig.PedestalBaseOffsetYPixels + pedestal.Collectable.PedestalBobOffsetY);
+                    + new Vector2(PedestalConfig.PedestalBaseOffsetXPixels, PedestalConfig.PedestalBaseOffsetYPixels);
                 float pickupLift = (1f - s) * 14f;
                 center.Y -= pickupLift;
                 float scale = s * PedestalConfig.PedestalBaseScaleMultiplier * (WorldConfig.TileSize / (float)Math.Max(src.Width, src.Height));

@@ -192,8 +192,6 @@ namespace Vibe_Game.Scenes
             {
                 room.IsLocked = false;
                 RefreshDoorStatesAround(roomGrid);
-                if (crossedFromNeighbor)
-                    GameplayAudio.PlayMapOpenDoor();
                 return;
             }
 
