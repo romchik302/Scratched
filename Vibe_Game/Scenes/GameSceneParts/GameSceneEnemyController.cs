@@ -107,7 +107,7 @@ namespace Vibe_Game.Scenes
                         {
                             TrySpawnHealthPickup(enemy.Position);
                             float r = GetEnemyRadius(enemy);
-                            _state.EnemyDeathAnimations.Add(new EnemyDeathVfx(enemy.Position, r));
+                            _state.EnemyDeathAnimations.Add(new EnemyDeathVfx(enemy.Position, r, enemy is BossEnemy));
                             if (enemy is BossEnemy)
                                 GameplayAudio.PlayBossDeath();
                             else
@@ -183,11 +183,9 @@ namespace Vibe_Game.Scenes
         public void DrawEnemyDeathAnimations(SpriteBatch spriteBatch)
         {
             Texture2D death = Enemy.SharedDeathTexture;
-            if (death == null)
-                return;
-
+            Texture2D boss = Enemy.SharedBossTexture;
             foreach (EnemyDeathVfx vfx in _state.EnemyDeathAnimations)
-                vfx.Draw(spriteBatch, death);
+                vfx.Draw(spriteBatch, death, boss);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -475,7 +473,7 @@ namespace Vibe_Game.Scenes
             }
 
             AssignEnemyFloor(enemy, _state.CurrentFloorIndex);
-            enemy.Activate(skipDelay: true); // Пропускаем задержку для призванных врагов
+            enemy.Activate(skipDelay: false);
             room.enemies.Add(enemy);
         }
 

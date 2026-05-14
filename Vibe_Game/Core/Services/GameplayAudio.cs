@@ -59,6 +59,7 @@ public static class GameplayAudio
         TryAddEffect(content, SoundConfig.MapBossEntry);
         TryAddEffect(content, SoundConfig.MapButton);
         TryAddEffect(content, SoundConfig.MapClosedDoor);
+        // Загрузка без воспроизведения: отдельный эффект разблокировки пока не используется в геймплее.
         TryAddEffect(content, SoundConfig.MapDoorUnlock);
         TryAddEffect(content, SoundConfig.MapOpenDoor);
         TryAddEffect(content, SoundConfig.RoomCleared);
@@ -181,6 +182,32 @@ public static class GameplayAudio
     public static void PlayUiSelect() => PlayEffect(SoundConfig.UISelect);
 
     public static void PlayUiConfirm() => PlayEffect(SoundConfig.UIConfirm);
+
+    public static void PlayMapOpenDoor() => PlayEffect(SoundConfig.MapOpenDoor);
+
+    public static void PlayMapClosedDoor() => PlayEffect(SoundConfig.MapClosedDoor);
+
+    public static void PlayMapButton() => PlayEffect(SoundConfig.MapButton);
+
+    public static void PlayMapBossEntry() => PlayEffect(SoundConfig.MapBossEntry);
+
+    public static void PlayBossEntering() => PlayEffect(SoundConfig.BossEntering);
+
+    public static void PlayBossBurrow() => PlayEffect(SoundConfig.BossBurrow);
+
+    public static void PlayBossEmerge() => PlayEffect(SoundConfig.BossEmerge);
+
+    public static void PlayBossStatic() => PlayEffect(SoundConfig.BossStatic);
+
+    public static void PlayBossAttack() => PlayEffect(SoundConfig.BossAttack);
+
+    public static void PlayEnemyFly() => PlayEffect(SoundConfig.EnemyFly);
+
+    public static void PlayEnemySlime() => PlayEffect(SoundConfig.EnemySlime);
+
+    public static void PlayEnemyTreant() => PlayEffect(SoundConfig.EnemyTreant);
+
+    public static void PlayPlayerDeath() => PlayEffect(SoundConfig.PlayerDeath);
 
     public static void PlayFootstep(bool preferStone)
     {

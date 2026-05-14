@@ -34,6 +34,8 @@ public sealed class SwordWeapon : WeaponBase
     private float _endAngle;
     private float _handleOffsetFromBottom = 13f;
 
+    private float _visualScale = 1.3f;
+
     // Кто уже получил урон в этой атаке
     private HashSet<object> _hitEnemies = new();
 
@@ -242,12 +244,13 @@ public sealed class SwordWeapon : WeaponBase
             if (_swordTexture != null)
             {
                 Vector2 swordDir = tip - handle;
-                float swordAngle = (float)Math.Atan2(swordDir.Y, swordDir.X);
-                float uniformScale = _swordLength / _swordTexture.Height;
-
-                // При ударе вверх меч отрисовывается перед персонажем (layerDepth > 0)
-                // В остальных случаях - перед персонажем (layerDepth = 0)
+                float swordAngle = (float)Math.Atan2(swordDir.Y, swordDir.X); 
                 float layerDepth = _attackDirection.Y < -0.5f ? 0.1f : 0f;
+
+                float lengthScale = _swordLength / _swordTexture.Height;
+
+                // коэффициент можно подобрать
+                float widthScale = (_swordWidth / _swordTexture.Width);
 
                 spriteBatch.Draw(
                     _swordTexture,
@@ -255,16 +258,11 @@ public sealed class SwordWeapon : WeaponBase
                     null,
                     swordColor,
                     swordAngle + MathHelper.PiOver2,
-
-                    // origin
                     new Vector2(
                         _swordTexture.Width / 2f,
                         _swordTexture.Height - _handleOffsetFromBottom
                     ),
-
-                    // uniform scale — без некорректного растягивания по осям при вращении
-                    new Vector2(uniformScale, uniformScale),
-
+                    new Vector2(widthScale, lengthScale) * _visualScale,
                     SpriteEffects.None,
                     layerDepth
                 );

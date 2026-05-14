@@ -13,6 +13,30 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin boss_long_projectile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:boss_long_projectile.png
+
+#begin boss_sheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:boss_sheet.png
+
 #begin collectables_sheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -140,23 +164,23 @@
 /processorParam:TextureFormat=Compressed
 /build:room_font.spritefont
 
-#begin sounds/boss_death.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
+#begin sounds/boss_death.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:sounds/boss_death.mp3
+/build:sounds/boss_death.wav
 
-#begin sounds/enemy_death.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
+#begin sounds/enemy_death.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:sounds/enemy_death.mp3
+/build:sounds/enemy_death.wav
 
-#begin sounds/enemy_fly.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
+#begin sounds/enemy_fly.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:sounds/enemy_fly.mp3
+/build:sounds/enemy_fly.wav
 
 #begin sounds/enemy_slime.wav
 /importer:WavImporter
@@ -170,11 +194,11 @@
 /processorParam:Quality=Best
 /build:sounds/enemy_treant.wav
 
-#begin sounds/map_boss_entry.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
+#begin sounds/map_boss_entry.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:sounds/map_boss_entry.mp3
+/build:sounds/map_boss_entry.wav
 
 #begin sounds/map_button.wav
 /importer:WavImporter
@@ -182,29 +206,29 @@
 /processorParam:Quality=Best
 /build:sounds/map_button.wav
 
-#begin sounds/map_closeddoor.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
+#begin sounds/map_closeddoor.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:sounds/map_closeddoor.mp3
+/build:sounds/map_closeddoor.wav
 
-#begin sounds/map_door_unlock.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
+#begin sounds/map_door_unlock.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:sounds/map_door_unlock.mp3
+/build:sounds/map_door_unlock.wav
 
-#begin sounds/map_opendoor.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
+#begin sounds/map_opendoor.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:sounds/map_opendoor.mp3
+/build:sounds/map_opendoor.wav
 
-#begin sounds/mc_death.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
+#begin sounds/mc_death.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:sounds/mc_death.mp3
+/build:sounds/mc_death.wav
 
 #begin sounds/mc_footsteps_grass.wav
 /importer:WavImporter

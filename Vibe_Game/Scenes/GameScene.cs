@@ -179,6 +179,8 @@ namespace Vibe_Game.Scenes
             _world.InitializeDoorStates();
             _enemyController.SpawnEnemies(_state.CurrentFloorIndex);
             _world.RefreshEnemyOccupancy();
+
+            GameplayAudio.PlayMapOpenDoor();
         }
 
         /// <summary>Запоминает соседние комнаты, которые игрок уже увидел на миникарте.</summary>

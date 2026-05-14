@@ -51,6 +51,7 @@ public sealed class DroppedPickup : Entity
 
         if (GetBounds().Intersects(player.GetBounds()))
         {
+            player.TryPlayPickupAnimation();
             ApplyHeal(player);
             IsAlive = false;
         }

@@ -218,6 +218,7 @@ namespace Vibe_Game
         public void ShowDeathScreen()
         {
             GameplayAudio.StopAllMusic();
+            GameplayAudio.PlayPlayerDeath();
 
             if (_deathScene == null)
             {

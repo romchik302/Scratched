@@ -133,6 +133,11 @@ namespace Vibe_Game.Gameplay.Entities.Player
             base.Update(gameTime);
         }
 
+        public void TryPlayPickupAnimation()
+        {
+            _animationRenderer?.BeginPickupAnimation();
+        }
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             _renderer.Draw(spriteBatch, Position, _lastShootDirection, Color);

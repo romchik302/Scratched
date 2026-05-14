@@ -20,6 +20,13 @@ public sealed class CollectableEntity : Entity
     private float _idleAnimTimer;
     private float _pickupAnimTimer;
     private int _frameIndex;
+    private float _bobPhase;
+
+    public Point TilePositionInRoom { get; }
+    public CollectableKind Kind { get; }
+
+    /// <summary>Вертикальное смещение покачивания на пьедестале (как дроп хила на полу).</summary>
+    public float PedestalBobOffsetY { get; private set; }
 
     public CollectableEntity(Point tilePositionInRoom, CollectableKind kind)
     {
@@ -27,9 +34,6 @@ public sealed class CollectableEntity : Entity
         Kind = kind;
         IsAlive = true;
     }
-
-    public Point TilePositionInRoom { get; }
-    public CollectableKind Kind { get; }
 
     /// <summary>Текущий кадр idle на пьедестале (для синхронной отрисовки основания пьедестала из того же листа).</summary>
     public int PedestalIdleFrameIndex => _frameIndex;
@@ -49,6 +53,9 @@ public sealed class CollectableEntity : Entity
 
         if (_state == CollectState.Idle)
         {
+            _bobPhase += dt * CollectibleConfig.FloorPickupBobSpeed;
+            PedestalBobOffsetY = MathF.Sin(_bobPhase) * CollectibleConfig.FloorPickupBobAmplitude;
+
             _idleAnimTimer += dt;
             float frameDur = 1f / Math.Max(1f, PedestalConfig.IdleAnimFps);
             if (_idleAnimTimer >= frameDur)
@@ -59,6 +66,9 @@ public sealed class CollectableEntity : Entity
         }
         else if (_state == CollectState.PickupAnimating)
         {
+            _bobPhase += dt * CollectibleConfig.FloorPickupBobSpeed;
+            PedestalBobOffsetY = MathF.Sin(_bobPhase) * CollectibleConfig.FloorPickupBobAmplitude;
+
             _pickupAnimTimer += dt;
             float t = MathHelper.Clamp(_pickupAnimTimer / PedestalConfig.PickupAnimDurationSeconds, 0f, 1f);
             VisualScale = 1f - t;
@@ -134,7 +144,7 @@ public sealed class CollectableEntity : Entity
         int frameH = source.Height;
 
         Vector2 center = tileBounds.Center.ToVector2()
-            + new Vector2(PedestalConfig.CollectableOnPedestalOffsetXPixels, -PedestalConfig.CollectableOnPedestalOffsetYUpPixels);
+            + new Vector2(PedestalConfig.CollectableOnPedestalOffsetXPixels, -PedestalConfig.CollectableOnPedestalOffsetYUpPixels + PedestalBobOffsetY);
         float scale = PedestalConfig.CollectableOnPedestalScaleMultiplier * VisualScale * (WorldConfig.TileSize / (float)Math.Max(frameW, frameH));
         Color tint = Color.White * VisualAlpha;
 

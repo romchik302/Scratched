@@ -94,6 +94,27 @@ namespace Vibe_Game.Core.Settings
         public const float BossSpikeBurstProjectileRadius = 6f;
         public const float BossSpikeBurstSpawnRadius = 22f;
 
+        /// <summary>Длинные шипы burst-атаки: отдельный лист <see cref="BossLongProjectileTexture"/>.</summary>
+        public const string BossLongProjectileTexture = "boss_long_projectile";
+        public const int BossLongProjectileFrameColumns = 4;
+        public const float BossLongProjectileDrawSize = 30f;
+
+        public const int BossBurstSpecialProjectileCount = 4;
+        public const float BossBurstSpecialProjectileSpeed = 260f;
+        public const float BossBurstSpecialProjectileLifetime = 2.2f;
+        public const float BossBurstSpecialProjectileRadius = 5f;
+        public const float BossBurstSpecialProjectileLength = 34f;
+        public const float BossBurstSpecialSpreadHalfAngle = 0.35f;
+
+        /// <summary>Строк в спрайт-листе босса (0..N-1).</summary>
+        public const int BossSheetRowCount = 7;
+
+        public const float BossCommonAnimFrameDurationSeconds = 0.11f;
+        public const float BossFlyIdleAnimFrameDurationSeconds = 0.09f;
+        public const float BossIdleRowFrameDurationSeconds = 0.14f;
+        public const int BossDeathAnimationFramesCount = 4;
+        public const float BossDeathAnimationFrameDurationSeconds = 0.12f;
+
         public const int BossSpinningSpikeCount = 7;
         public const float BossSpinningSpikeOrbitRadius = 70f;
         public const float BossSpinningSpikeAngularSpeed = 2.2f;
@@ -104,6 +125,19 @@ namespace Vibe_Game.Core.Settings
         public const float BossBurrowTrailSpeed = 40f;
         public const float BossBurrowStrikeRadius = 44f;
         public const bool BossInvulnerableDuringBurrow = true;
+
+        public const string BossTexture = "boss_sheet";
+        public const int BossSheetRotateRow = 0; // босс поворачивается
+        public const int BossSheetAttackRow = 1; // босс начинает атаку(burst/spinning)
+        public const int BossSheetFliesAttackIdleRow = 2; // босс во время того как атака со спавном противников происходит
+        public const int BossSheetBurrowRow = 3; // босс зарывается под землю
+        public const int BossSheetDiggingRow = 4; // босс ползет под землей
+        public const int BossSheetIdleRow = 5; // босс когда не атакует и стоит на месте
+        public const int BossSheetDeathRow = 6; // босс умирает
+
+        public const int BossSheetFramesCount = 8; // всего кадров в спрайт листе
+        public const int BossSheetCommonFramesCount = 4;// базовое количество кадров
+        public const int BossSheetFliesAttckFramesCount = 8; // только тут 8 кадров, в остальных по 4
     }
 
     public static class WeaponConfig
@@ -219,7 +253,7 @@ namespace Vibe_Game.Core.Settings
 
         /// <summary>Смещение основания пьедестала в пикселях (от центра тайла).</summary>
         public const float PedestalBaseOffsetXPixels = 0f;
-        public const float PedestalBaseOffsetYPixels = 10f;
+        public const float PedestalBaseOffsetYPixels = 4f;
 
         /// <summary>Множитель масштаба предмета на пьедестале (относительно размера тайла).</summary>
         public const float CollectableOnPedestalScaleMultiplier = 0.7f;
@@ -228,7 +262,7 @@ namespace Vibe_Game.Core.Settings
         public const float CollectableOnPedestalOffsetXPixels = 0f;
 
         /// <summary>Поднять предмет над центром тайла на столько пикселей (+Y вверх на экране).</summary>
-        public const float CollectableOnPedestalOffsetYUpPixels = 0f;
+        public const float CollectableOnPedestalOffsetYUpPixels = 4f;
     }
 
     /// <summary>Параметры экземпляров оружия при выборе на первом этаже.</summary>

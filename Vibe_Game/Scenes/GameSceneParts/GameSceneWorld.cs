@@ -175,10 +175,16 @@ namespace Vibe_Game.Scenes
             if (room == null)
                 return;
 
+            bool crossedFromNeighbor =
+                roomGrid != previousRoomGrid
+                && Math.Abs(roomGrid.X - previousRoomGrid.X) + Math.Abs(roomGrid.Y - previousRoomGrid.Y) == 1;
+
             if (room.Type == LevelGenerator.RoomType.Start && room.RequiresStartingWeaponChoice)
             {
                 room.IsLocked = true;
                 RefreshDoorStatesAround(roomGrid);
+                if (crossedFromNeighbor)
+                    GameplayAudio.PlayMapClosedDoor();
                 return;
             }
 
@@ -186,6 +192,8 @@ namespace Vibe_Game.Scenes
             {
                 room.IsLocked = false;
                 RefreshDoorStatesAround(roomGrid);
+                if (crossedFromNeighbor)
+                    GameplayAudio.PlayMapOpenDoor();
                 return;
             }
 
@@ -194,6 +202,8 @@ namespace Vibe_Game.Scenes
                 MovePlayerInsideRoom(roomGrid, previousRoomGrid);
                 room.IsLocked = true;
                 RefreshDoorStatesAround(roomGrid);
+                if (crossedFromNeighbor)
+                    GameplayAudio.PlayMapClosedDoor();
             }
         }
 
@@ -278,7 +288,10 @@ namespace Vibe_Game.Scenes
                 room.IsLocked = false;
                 room.IsCleared = true;
                 if (!wasCleared)
+                {
                     GameplayAudio.PlayRoomCleared();
+                    GameplayAudio.PlayMapOpenDoor();
+                }
 
                 EnsureFloorExit(room);
                 RefreshDoorStatesAround(_state.CurrentRoomGrid);
@@ -582,7 +595,10 @@ namespace Vibe_Game.Scenes
             );
 
             if (playerRect.Intersects(buttonRect))
+            {
                 room.PressButton();
+                GameplayAudio.PlayMapButton();
+            }
         }
 
         private static bool ShouldLockRoom(Room room)
@@ -686,6 +702,7 @@ namespace Vibe_Game.Scenes
                         pedestal.Collectable.Update(gameTime);
                         if (pedestal.Collectable.TryBeginPickupIfOverlapping(playerBounds, roomGrid))
                         {
+                            _state.Player.TryPlayPickupAnimation();
                             CollectableKind kind = pedestal.Collectable.Kind;
                             if (room.RequiresStartingWeaponChoice && IsStartingWeaponPedestalKind(kind))
                             {
