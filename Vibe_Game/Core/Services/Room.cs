@@ -210,6 +210,7 @@ namespace Vibe_Game.Core.Services
         {
             int obstacleChance = GetInteriorObstacleChance(Type);
             int overgrowthChance = GetInteriorOvergrowthChance(Type);
+            List<Point> placedObstacles = new List<Point>();
 
             for (int x = 0; x < WidthInTiles; x++)
             {
@@ -228,21 +229,105 @@ namespace Vibe_Game.Core.Services
                             continue;
                         }
 
+                        if (IsWithinDoorObstacleExclusion(tilePosition))
+                        {
+                            Tiles[x, y] = new FloorTile(tilePosition);
+                            continue;
+                        }
+
                         bool shouldPlaceObstacle = obstacleChance > 0 && _random.Next(100) < obstacleChance;
+                        if (shouldPlaceObstacle && IsTooCloseToAnotherObstacle(tilePosition, placedObstacles))
+                            shouldPlaceObstacle = false;
+
                         bool shouldPlaceOvergrowth = !shouldPlaceObstacle && overgrowthChance > 0 && _random.Next(100) < overgrowthChance;
-                        Tiles[x, y] = shouldPlaceObstacle
-                            ? new RockTile(tilePosition)
-                            : shouldPlaceOvergrowth
+                        if (shouldPlaceObstacle)
+                        {
+                            placedObstacles.Add(tilePosition);
+                            Tiles[x, y] = new RockTile(tilePosition);
+                        }
+                        else
+                        {
+                            Tiles[x, y] = shouldPlaceOvergrowth
                                 ? new OvergrowthTile(tilePosition)
                                 : new FloorTile(tilePosition);
+                        }
                     }
                 }
             }
         }
 
+        private static bool IsTooCloseToAnotherObstacle(Point tile, List<Point> placedObstacles)
+        {
+            int minSeparation = WorldConfig.ObstacleMinSeparationTiles;
+            foreach (Point other in placedObstacles)
+            {
+                int dx = Math.Abs(tile.X - other.X);
+                int dy = Math.Abs(tile.Y - other.Y);
+                if (Math.Max(dx, dy) <= minSeparation)
+                    return true;
+            }
+
+            return false;
+        }
+
         private bool IsNearHorizontalWall(int y)
         {
             return y == 1 || y == HeightInTiles - 2;
+        }
+
+        /// <summary>Клетки в радиусе <see cref="WorldConfig.DoorObstacleClearanceTiles"/> от прохода двери — только пол.</summary>
+        private static bool IsWithinDoorObstacleExclusion(Point tile)
+        {
+            int clearance = WorldConfig.DoorObstacleClearanceTiles;
+            foreach (Point anchor in GetDoorApproachAnchors())
+            {
+                int dx = Math.Abs(tile.X - anchor.X);
+                int dy = Math.Abs(tile.Y - anchor.Y);
+                if (Math.Max(dx, dy) <= clearance)
+                    return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>Внутренние клетки у каждого возможного проёма двери (совпадают с <see cref="LevelGenerator"/>).</summary>
+        private static Point[] GetDoorApproachAnchors()
+        {
+            int w = WorldConfig.RoomWidthTiles;
+            int h = WorldConfig.RoomHeightTiles;
+            int verticalY1 = h / 2;
+            int verticalY2 = verticalY1 + 1;
+            int horizontalX1 = w / 2 - 1;
+            int horizontalX2 = w / 2;
+
+            return new[]
+            {
+                new Point(1, verticalY1),
+                new Point(1, verticalY2),
+                new Point(w - 2, verticalY1),
+                new Point(w - 2, verticalY2),
+                new Point(horizontalX1, 1),
+                new Point(horizontalX2, 1),
+                new Point(horizontalX1, h - 2),
+                new Point(horizontalX2, h - 2),
+            };
+        }
+
+        /// <summary>Убирает камни и заросли в зоне подхода к дверям (после расстановки дверей на карте).</summary>
+        public void ClearObstaclesNearDoorApproaches()
+        {
+            for (int x = 1; x < WidthInTiles - 1; x++)
+            {
+                for (int y = 1; y < HeightInTiles - 1; y++)
+                {
+                    Point tilePosition = new Point(x, y);
+                    if (!IsWithinDoorObstacleExclusion(tilePosition))
+                        continue;
+
+                    if (GetTile(x, y) is RockTile or OvergrowthTile)
+                        SetTile(x, y, new FloorTile(tilePosition));
+                }
+            }
         }
 
         private void CarveCenterArea(int radius)

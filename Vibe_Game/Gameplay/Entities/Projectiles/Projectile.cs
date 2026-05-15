@@ -1,7 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
-using System;
 using Vibe_Game.Gameplay.Entities;
 using Vibe_Game.Core.Settings;
 using Vibe_Game.Core.Utilities;
@@ -35,6 +35,7 @@ public sealed class Projectile : Entity
     private bool _isImpacting;
     private float _rotation;
     private bool _canDealDamage = true;
+    private Func<Vector2> _orbitCenterFollow;
 
     private readonly string _hostileTextureOverride;
     private int _sheetFrameColumns = WeaponConfig.ProjectileFrameCount;
@@ -119,6 +120,17 @@ public sealed class Projectile : Entity
         {
             if (IsOrbiting)
             {
+                if (_orbitCenterFollow != null)
+                {
+                    Vector2 trackedCenter = _orbitCenterFollow();
+                    Vector2 delta = trackedCenter - OrbitCenter;
+                    if (delta.LengthSquared() > 0f)
+                    {
+                        OrbitCenter = trackedCenter;
+                        Position += delta;
+                    }
+                }
+
                 OrbitAngle += OrbitAngularSpeed * dt;
                 Position = OrbitCenter + new Vector2(MathF.Cos(OrbitAngle), MathF.Sin(OrbitAngle)) * OrbitRadius;
                 OrbitTimeLeft -= dt;
@@ -269,9 +281,11 @@ public sealed class Projectile : Entity
         float angularSpeed,
         float durationSeconds,
         bool releaseAfterOrbit,
-        Vector2 releaseDirection)
+        Vector2 releaseDirection,
+        Func<Vector2> centerFollow = null)
     {
         IsOrbiting = true;
+        _orbitCenterFollow = centerFollow;
         OrbitCenter = center;
         OrbitRadius = radius;
         OrbitAngle = startAngle;

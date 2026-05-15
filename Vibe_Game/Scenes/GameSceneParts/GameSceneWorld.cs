@@ -316,6 +316,18 @@ namespace Vibe_Game.Scenes
             camera?.Follow(_state.CameraPosition);
         }
 
+        public Vector2 GetRoomCenterWorldPosition(int gx, int gy)
+        {
+            Vector2 centerPos = new Vector2(
+                gx * WorldConfig.RoomWidthPx + WorldConfig.RoomWidthPx / 2f,
+                gy * WorldConfig.RoomHeightPx + WorldConfig.RoomHeightPx / 2f);
+
+            if (IsPointBlockedByAllWalls(centerPos))
+                return FindNearestFreePosition(centerPos, gx, gy);
+
+            return centerPos;
+        }
+
         public Vector2 GetRandomFreeTilePosition(Room room, int gx, int gy, Random rng)
         {
             for (int attempt = 0; attempt < 50; attempt++)
@@ -335,19 +347,7 @@ namespace Vibe_Game.Scenes
                 }
             }
 
-            // Fallback to room center
-            Vector2 centerPos = new Vector2(
-                gx * WorldConfig.RoomWidthPx + WorldConfig.RoomWidthPx / 2f,
-                gy * WorldConfig.RoomHeightPx + WorldConfig.RoomHeightPx / 2f
-            );
-
-            // If center is blocked, try to find nearest free position
-            if (IsPointBlockedByAllWalls(centerPos))
-            {
-                return FindNearestFreePosition(centerPos, gx, gy);
-            }
-
-            return centerPos;
+            return GetRoomCenterWorldPosition(gx, gy);
         }
 
         private Vector2 FindNearestFreePosition(Vector2 blockedPos, int gx, int gy)

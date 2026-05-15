@@ -63,7 +63,8 @@ namespace Vibe_Game.Scenes
                     args.OrbitAngularSpeed,
                     args.OrbitDurationSeconds,
                     args.ReleaseAfterOrbit,
-                    args.ReleaseDirection
+                    args.ReleaseDirection,
+                    args.OrbitCenterFollow
                 );
             }
 

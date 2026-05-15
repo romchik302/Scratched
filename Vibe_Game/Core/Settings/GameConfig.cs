@@ -13,6 +13,12 @@ namespace Vibe_Game.Core.Settings
         public const int RoomWidthPx = RoomWidthTiles * TileSize;
         public const int RoomHeightPx = RoomHeightTiles * TileSize;
 
+        /// <summary>Сколько клеток от внутренней кромки двери остаётся свободным от камней и зарослей.</summary>
+        public const int DoorObstacleClearanceTiles = 2;
+
+        /// <summary>Минимальное расстояние (радиус по Чебышёву) между камнями при генерации комнаты.</summary>
+        public const int ObstacleMinSeparationTiles = 2;
+
         public const int GridSize = 13;
         public const int CenterGrid = 6;
     }
@@ -73,7 +79,7 @@ namespace Vibe_Game.Core.Settings
         public const float ShooterProjectileSpeed = 150f;
         public const int ShooterProjectileDamage = 1;
         public const float ShooterProjectileLifetime = 2.2f;
-        public const float ShooterProjectileRadius = 3f;
+        public const float ShooterProjectileRadius = 4f;
         public const float ShooterProjectileRecoilForce = 0f;
         public const float ShooterSpawnChancePerRoom = 0.4f;
 
@@ -89,6 +95,8 @@ namespace Vibe_Game.Core.Settings
         public const int BossSummonMinCount = 2;
         public const int BossSummonMaxCount = 4;
         public const float BossSummonSpawnRadius = 30f;
+        /// <summary>Сколько полных циклов анимации строки <see cref="BossSheetFliesAttackIdleRow"/> играет во время призыва.</summary>
+        public const int BossSummonFliesAnimLoopCount = 3;
 
         public const int BossSpikeBurstProjectileCount = 10;
         public const float BossSpikeBurstProjectileSpeed = 210f;

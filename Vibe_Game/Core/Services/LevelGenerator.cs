@@ -321,6 +321,8 @@ namespace Vibe_Game.Core.Services
 
                     if (y < WorldConfig.GridSize - 1 && grid[x, y + 1] != null)
                         CreateVerticalDoorway(room, isTopSide: false);
+
+                    room.ClearObstaclesNearDoorApproaches();
                 }
             }
         }

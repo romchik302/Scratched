@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+using System;
+using Microsoft.Xna.Framework;
 
 namespace Vibe_Game.Gameplay.Weapons;
 
@@ -14,6 +15,8 @@ public readonly struct ProjectileSpawnArgs
     public bool IsFriendlyToPlayer { get; init; }
     public bool UseOrbitMotion { get; init; }
     public Vector2 OrbitCenter { get; init; }
+    /// <summary>When set, orbiting projectiles track this position each frame (e.g. boss attacks).</summary>
+    public Func<Vector2> OrbitCenterFollow { get; init; }
     public float OrbitRadius { get; init; }
     public float OrbitStartAngle { get; init; }
     public float OrbitAngularSpeed { get; init; }
