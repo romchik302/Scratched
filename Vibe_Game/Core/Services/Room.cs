@@ -29,13 +29,14 @@ namespace Vibe_Game.Core.Services
         public List<Enemy> enemies { get; } = new();
 
         private readonly Random _random = new Random();
+        private readonly List<ExitButtonTile> _floorExitButtons = new();
 
         public Room(int widthInTiles, int heightInTiles, LevelGenerator.RoomType type)
         {
             WidthInTiles = widthInTiles;
             HeightInTiles = heightInTiles;
             Type = type;
-            HasButton = type is LevelGenerator.RoomType.Battle or LevelGenerator.RoomType.Challenge;
+            HasButton = type == LevelGenerator.RoomType.Battle;
             IsCleared = type == LevelGenerator.RoomType.Start;
             Tiles = new Tile[WidthInTiles, HeightInTiles];
 
@@ -80,6 +81,63 @@ namespace Vibe_Game.Core.Services
         public void PressButton()
         {
             ButtonTile?.Press();
+        }
+
+        public void RemoveRoomButton()
+        {
+            HasButton = false;
+
+            if (ButtonTile == null)
+                return;
+
+            Point pos = ButtonTile.GridPosition;
+            SetTile(pos.X, pos.Y, new FloorTile(pos));
+        }
+
+        public void PlaceFloorExitButtonMarkers()
+        {
+            if (_floorExitButtons.Count > 0)
+                return;
+
+            Point center = new Point(WidthInTiles / 2, HeightInTiles / 2);
+            Point[] markerOffsets =
+            {
+                new(-2, -1),
+                new(0, -2),
+                new(2, -1),
+                new(-2, 1),
+                new(0, 2),
+                new(2, 1)
+            };
+
+            foreach (Point offset in markerOffsets)
+            {
+                Point pos = new Point(center.X + offset.X, center.Y + offset.Y);
+                Tile tile = GetTile(pos.X, pos.Y);
+                if (tile == null ||
+                    tile is WallTile ||
+                    tile is DoorTile ||
+                    tile is PedestalTile ||
+                    tile is TrapdoorTile ||
+                    tile is ButtonTile)
+                    continue;
+
+                ExitButtonTile marker = new ExitButtonTile(pos);
+                _floorExitButtons.Add(marker);
+                SetTile(pos.X, pos.Y, marker);
+            }
+        }
+
+        public void ActivateFloorExitButtonMarkers()
+        {
+            foreach (ExitButtonTile marker in _floorExitButtons)
+                marker.Activate();
+        }
+
+        public void UpdateFloorExitButtonMarkers(float deltaSeconds)
+        {
+            foreach (ExitButtonTile marker in _floorExitButtons)
+                marker.Update(deltaSeconds);
         }
 
         public void CreateFloorExit(int targetFloorIndex)
@@ -164,6 +222,12 @@ namespace Vibe_Game.Core.Services
                     }
                     else
                     {
+                        if (IsNearHorizontalWall(y))
+                        {
+                            Tiles[x, y] = new FloorTile(tilePosition);
+                            continue;
+                        }
+
                         bool shouldPlaceObstacle = obstacleChance > 0 && _random.Next(100) < obstacleChance;
                         bool shouldPlaceOvergrowth = !shouldPlaceObstacle && overgrowthChance > 0 && _random.Next(100) < overgrowthChance;
                         Tiles[x, y] = shouldPlaceObstacle
@@ -174,6 +238,11 @@ namespace Vibe_Game.Core.Services
                     }
                 }
             }
+        }
+
+        private bool IsNearHorizontalWall(int y)
+        {
+            return y == 1 || y == HeightInTiles - 2;
         }
 
         private void CarveCenterArea(int radius)
@@ -204,9 +273,9 @@ namespace Vibe_Game.Core.Services
         {
             return roomType switch
             {
+                LevelGenerator.RoomType.Start => 0,
                 LevelGenerator.RoomType.Boss => 1,
                 LevelGenerator.RoomType.Treasure => 0,
-                LevelGenerator.RoomType.Challenge => 3,
                 _ => 5
             };
         }
@@ -216,6 +285,7 @@ namespace Vibe_Game.Core.Services
         {
             return roomType switch
             {
+                LevelGenerator.RoomType.Start => 0,
                 LevelGenerator.RoomType.Treasure => 2,
                 LevelGenerator.RoomType.Boss => 1,
                 _ => 8

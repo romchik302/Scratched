@@ -261,6 +261,8 @@ namespace Vibe_Game.Scenes
             if (room == null)
                 return;
 
+            UpdateRoomButtonAnimation(room);
+
             EnsureFloorExit(room);
 
             if (room.Type == LevelGenerator.RoomType.Start)
@@ -599,6 +601,12 @@ namespace Vibe_Game.Scenes
             }
         }
 
+        private static void UpdateRoomButtonAnimation(Room room)
+        {
+            room.ButtonTile?.Update(1f / 60f);
+            room.UpdateFloorExitButtonMarkers(1f / 60f);
+        }
+
         private static bool ShouldLockRoom(Room room)
         {
             return room.HasButton || HasAliveEnemies(room);
@@ -615,6 +623,9 @@ namespace Vibe_Game.Scenes
         {
             if (!ShouldCreateFloorExit(room))
                 return;
+
+            if (room.IsFloorExitRoom && _state.CurrentFloorIndex == FloorConfig.FirstFloorIndex)
+                room.ActivateFloorExitButtonMarkers();
 
             room.CreateFloorExit(_state.CurrentFloorIndex + 1);
         }

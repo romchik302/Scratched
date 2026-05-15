@@ -249,7 +249,7 @@ namespace Vibe_Game.Scenes
             bool anyAlive = room.enemies != null && room.enemies.Any(e => e.IsAlive);
             bool bossFight = room.Type == LevelGenerator.RoomType.Boss && anyAlive;
             bool combat = !bossFight && anyAlive && !room.IsCleared
-                && (room.Type == LevelGenerator.RoomType.Battle || room.Type == LevelGenerator.RoomType.Challenge);
+                && room.Type == LevelGenerator.RoomType.Battle;
 
             GameplayAudio.UpdateGameSceneBgm(bossFight, combat);
         }

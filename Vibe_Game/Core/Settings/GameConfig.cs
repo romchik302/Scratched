@@ -396,18 +396,30 @@ namespace Vibe_Game.Core.Settings
         public static readonly Color MinimapBattle = new Color(96, 98, 108);
         public static readonly Color MinimapBoss = new Color(224, 42, 48);
         public static readonly Color MinimapTreasure = new Color(240, 202, 58);
-        public static readonly Color MinimapChallenge = new Color(58, 134, 238);
         public static readonly Color MinimapCurrent = Color.Red;
         public static readonly Color MinimapDefault = new Color(96, 98, 108);
-        public static readonly Color MinimapVisitedOutline = new Color(235, 235, 230);
+        public static readonly Color MinimapVisitedOutline = new Color(216, 188, 88);
+        public static readonly Color MinimapCurrentOutline = new Color(236, 232, 148);
         public static readonly Color RoomLabel = new Color(245, 245, 235);
         public static readonly Color RoomLabelShadow = new Color(20, 20, 26, 180);
         public static readonly Color FloorHint = new Color(232, 216, 160);
-        public static readonly Color MenuBackground = new Color(12, 10, 18);
-        public static readonly Color MenuPanel = new Color(28, 24, 36, 232);
-        public static readonly Color MenuOutline = new Color(170, 150, 120);
-        public static readonly Color MenuSelection = new Color(214, 162, 88);
-        public static readonly Color MenuMuted = new Color(170, 170, 176);
-        public static readonly Color MenuOverlay = new Color(8, 8, 12, 180);
+        public static readonly Color MenuBackground = new Color(18, 24, 16);
+        public static readonly Color MenuPanel = new Color(36, 44, 30, 238);
+        public static readonly Color MenuOutline = new Color(118, 103, 76);
+        public static readonly Color MenuSelection = new Color(126, 138, 70);
+        public static readonly Color MenuMuted = new Color(164, 166, 124);
+        public static readonly Color MenuOverlay = new Color(8, 12, 8, 184);
+
+        public static readonly Color DeathBackground = new Color(10, 2, 4);
+        public static readonly Color DeathPanel = new Color(38, 8, 12, 242);
+        public static readonly Color DeathOutline = new Color(142, 24, 30);
+        public static readonly Color DeathText = new Color(238, 42, 48);
+        public static readonly Color DeathMuted = new Color(154, 90, 88);
+
+        public static readonly Color VictoryBackground = new Color(24, 25, 10);
+        public static readonly Color VictoryPanel = new Color(55, 50, 24, 238);
+        public static readonly Color VictoryOutline = new Color(236, 190, 82);
+        public static readonly Color VictoryText = new Color(255, 235, 132);
+        public static readonly Color VictoryAccent = new Color(142, 190, 92);
     }
 }

@@ -44,15 +44,15 @@ namespace Vibe_Game.Scenes
             Viewport viewport = GameInstance.GraphicsDevice.Viewport;
             Rectangle panelRect = new Rectangle(viewport.Width / 2 - 260, viewport.Height / 2 - 160, 520, 320);
 
-            GameInstance.GraphicsDevice.Clear(GameColors.MenuBackground);
+            GameInstance.GraphicsDevice.Clear(GameColors.DeathBackground);
 
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
-            spriteBatch.Draw(pixel, panelRect, GameColors.MenuPanel);
+            spriteBatch.Draw(pixel, panelRect, GameColors.DeathPanel);
             DrawBorder(spriteBatch, pixel, panelRect);
-            DrawCenteredText(spriteBatch, "x_x", new Vector2(viewport.Width / 2f, panelRect.Y + 84f), GameColors.RoomLabel, 1.7f, GameColors.RoomLabelShadow);
-            DrawCenteredText(spriteBatch, "HAHAHAAGDHGHSHSHADSGJHGDASH LOSER", new Vector2(viewport.Width / 2f, panelRect.Y + 164f), GameColors.MenuSelection, 1f, GameColors.RoomLabelShadow);
-            DrawCenteredText(spriteBatch, "PRESS ANY GAME KEY", new Vector2(viewport.Width / 2f, panelRect.Bottom - 66f), GameColors.MenuMuted, 0.62f);
+            DrawCenteredText(spriteBatch, "x_x", new Vector2(viewport.Width / 2f, panelRect.Y + 84f), GameColors.DeathText, 1.7f, GameColors.RoomLabelShadow);
+            DrawCenteredText(spriteBatch, "hah loser", new Vector2(viewport.Width / 2f, panelRect.Y + 164f), GameColors.DeathText, 1.05f, GameColors.RoomLabelShadow);
+            DrawCenteredText(spriteBatch, "PRESS ANY GAME KEY", new Vector2(viewport.Width / 2f, panelRect.Bottom - 66f), GameColors.DeathMuted, 0.62f);
 
             spriteBatch.End();
         }
@@ -76,10 +76,10 @@ namespace Vibe_Game.Scenes
         /// <summary>Рисует рамку панели смерти в общем стиле меню.</summary>
         private static void DrawBorder(SpriteBatch spriteBatch, Texture2D pixel, Rectangle panelRect)
         {
-            spriteBatch.Draw(pixel, new Rectangle(panelRect.X - 3, panelRect.Y - 3, panelRect.Width + 6, 3), GameColors.MenuOutline);
-            spriteBatch.Draw(pixel, new Rectangle(panelRect.X - 3, panelRect.Bottom, panelRect.Width + 6, 3), GameColors.MenuOutline);
-            spriteBatch.Draw(pixel, new Rectangle(panelRect.X - 3, panelRect.Y, 3, panelRect.Height), GameColors.MenuOutline);
-            spriteBatch.Draw(pixel, new Rectangle(panelRect.Right, panelRect.Y, 3, panelRect.Height), GameColors.MenuOutline);
+            spriteBatch.Draw(pixel, new Rectangle(panelRect.X - 3, panelRect.Y - 3, panelRect.Width + 6, 3), GameColors.DeathOutline);
+            spriteBatch.Draw(pixel, new Rectangle(panelRect.X - 3, panelRect.Bottom, panelRect.Width + 6, 3), GameColors.DeathOutline);
+            spriteBatch.Draw(pixel, new Rectangle(panelRect.X - 3, panelRect.Y, 3, panelRect.Height), GameColors.DeathOutline);
+            spriteBatch.Draw(pixel, new Rectangle(panelRect.Right, panelRect.Y, 3, panelRect.Height), GameColors.DeathOutline);
         }
 
         /// <summary>Рисует текст по центру выбранной точки с необязательной тенью.</summary>
