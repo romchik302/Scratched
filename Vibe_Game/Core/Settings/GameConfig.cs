@@ -114,6 +114,7 @@ namespace Vibe_Game.Core.Settings
         public const float BossCommonAnimFrameDurationSeconds = 0.11f;
         public const float BossFlyIdleAnimFrameDurationSeconds = 0.09f;
         public const float BossIdleRowFrameDurationSeconds = 0.14f;
+        
         public const int BossDeathAnimationFramesCount = 4;
         public const float BossDeathAnimationFrameDurationSeconds = 0.12f;
 
@@ -124,7 +125,7 @@ namespace Vibe_Game.Core.Settings
         public const float BossSpinningSpikeReleaseSpeed = 150f;
 
         public const float BossBurrowTravelDuration = 1.5f;
-        public const float BossBurrowTrailSpeed = 40f;
+        public const float BossBurrowTrailSpeed = 70f;
         public const float BossBurrowStrikeRadius = 44f;
         public const bool BossInvulnerableDuringBurrow = true;
 
@@ -337,11 +338,11 @@ namespace Vibe_Game.Core.Settings
 
         // Эффекты босса
         public const string BossDeath = "boss_death";
-        public const string BossEntering = "boss_entering";     // заготовка
-        public const string BossBurrow = "boss_burrow";         // заготовка
-        public const string BossEmerge = "boss_emerge";         // заготовка
-        public const string BossStatic = "boss_static";         // заготовка
-        public const string BossAttack = "boss_attack";         // заготовка
+        public const string BossEntering = "boss_emerge";     
+        public const string BossBurrow = "boss_burrow";        
+        public const string BossEmerge = "boss_emerge";         
+        public const string BossStatic = "boss_static";         // заготовка 
+        public const string BossAttack = "boss_attack";        
 
         // Эффекты UI и карты
         public const string UIConfirm = "ui_confirm";
@@ -353,14 +354,14 @@ namespace Vibe_Game.Core.Settings
         public const string MapOpenDoor = "map_opendoor";
 
         // Музыка
-        public const string MusicMainMenu = "music_main_menu";           // заготовка
-        public const string MusicEmptyRoom = "music_empty_room";         // заготовка
-        public const string MusicCombatRoom = "music_combat_room";       // заготовка
-        public const string MusicBossRoom = "music_boss_room";           // заготовка
-        public const string MusicCredits = "music_credits";              // заготовка
+        public const string MusicMainMenu = "music_main_menu";           
+        public const string MusicEmptyRoom = "music_empty_room";         
+        public const string MusicCombatRoom = "music_combat_room";       
+        public const string MusicBossRoom = "music_boss_room";           
+        public const string MusicCredits = "music_credits";             
 
         // Переходы (звуки очистки комнаты)
-        public const string RoomCleared = "room_cleared";                // заготовка
+        public const string RoomCleared = "room_cleared";                
 
         public const float DefaultSoundEffectVolume = 0.3f;
 

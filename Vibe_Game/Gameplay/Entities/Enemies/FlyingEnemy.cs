@@ -195,4 +195,11 @@ public class FlyingEnemy : Enemy
         if (!ActivationSkippedDelay)
             GameplayAudio.PlayEnemyFly();
     }
+
+    protected override float AmbientSoundInterval => 1.2f;
+
+    protected override void PlayAmbientSound()
+    {
+        GameplayAudio.PlayEnemyFly();
+    }
 }
