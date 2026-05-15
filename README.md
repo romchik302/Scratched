@@ -1,37 +1,101 @@
-# Vibe_Game
+# Scratched
 
-Сам проект начинается с Program.cs который запускает Game1.cs
+> A small dark fantasy action game about a battle-scarred cat surviving through a corrupted forest.
 
-**Game1.cs** отвечает за последовательную отрисовку и обновление игровых активностей, анимаций и прочее
+## About
+
+**Scratched** is a short top-down action game inspired by classic dungeon crawlers.  
+The player controls a lone cat fighting through procedurally generated rooms filled with hostile creatures, including giant flies, corrupted tree stumps, and slime-like mutant cats.
+
+Armed with either a sword or ranged spit attacks, the player must survive the forest and defeat the final boss — a towering feline creature hidden deep within the ruins.
+
+The game focuses on:
+- fast combat
+- procedural room generation
+- weapon choice
+- arcade-style gameplay
+- challenging experience
+- cool background music
+
+Unlike traditional roguelikes, the game does **not** feature permadeath progression systems or permanent unlocks. The procedural generation is used mainly to create replayable room layouts and combat encounters.
 
 ---
-Далее проект начинает делится на 4 основных директории(В процессе возможно добавление новых):
-**Content** отвечает за внутреигровой контент, например предметы оружия и текстуры(на данный момент лежит только текстура пикселя для дебага(ее можно бесконечно дублировать чтобы получить фигуру)
 
-**Core** отвечает за главную логику игры и делится на 2 директории:
-- **Engine** отвечает за основые процессы игры, в нем содерожатся:
-  
-- - **Camera** - отвечает за перемещение игровой камеры за игроком(Например игровое поле имеет большее разрешение, чем экран и камера преследует игрока создавая иллюзию передвижения по игровому пространству)
-- - **GameManager** - предоставляет статический доступ ко всем системам, в нем хранится состояние игры, сервисы и тд
-- - **InputManager** - отвечает за обработку клавиш и движений мыши(пока что только клавиш)
-- - **SceneManager** - отвечает за внутриигровые сцены(чуть далее будет про них), *с ним какой то косяк, он не работает*
-      
-- **Utilities** - это дополнительные штуки(перегрузки методов классов из библиотек фреймворков). Все написано нейросетью и не прочитано мной, я хз что там
+## Features
 
-**Gameplay** - директория, отвечающая за игровые объекты:
-- **Entity.cs** - базовый абстрактный класс существа, от которого наследуются разных видов враги и сам игровой персонаж
+- Procedurally generated floors and room layouts
+- Multiple enemy types with unique behavior
+- Boss fight with custom attack patterns
+- Two weapon styles:
+  - melee sword combat
+  - ranged projectile attacks
+- Dynamic music transitions
+- Pixel-art inspired visuals
+- Minimap system
+- Animated UI and health bar system
 
-- **Player** - директория, в которой все классы связанные с игровым персонажем:
-- - **Player.cs** - основной класс игрового персонажа(*сложная штука*)
-- - **PlayerController** - это буквально InputManager, но для игрового персонажа
-- - **PlayerStats** - характеристики персонажа(пока что как заглушка, но с потенциалом для развития)
+---
 
-- **Enemimies** - директория для файлов, описывающих врагов (пока что просто заглушка)
-- **Projectiles** - снаряды с физикой для броска
+## Controls
 
-**Scenes** - директория игровых сцен (*Вступление, пауза, загрузка и тд*)
-- **BaseScene** - базовый абстрактный класс сцены, с которого можно разрабатывать остальные
-- **GameScene** - класс сцены, на которой будет происходить игровой процесс
+| Action | Key |
+|---|---|
+| Move | `W A S D` |
+| Shoot (ranged weapon) | Arrow Keys |
+| Sword Attack | `Space + Arrow Keys` |
 
-# ПОЖАЛУЙСТА СДЕЛАЙТЕ ТАК ЧТОБЫ ИГРА ЗАПУСТИЛАСЬ, ПОКА ЧТО ВСЕ ЭТО МОЖЕТ РАБОТАТЬ ТОЛЬКО НА СЛОВАХ
-# NY PLEASE BLYAT'
+---
+
+## Technologies
+
+- **C#**
+- **MonoGame Framework**
+- **.NET**
+
+---
+
+## Running The Project
+
+1. Open the solution in Visual Studio.
+2. Restore NuGet packages if needed.
+3. Build the project.
+4. Run `Game1.cs`.
+
+---
+
+## Audio & Assets Disclaimer
+
+This project was created for educational and non-commercial purposes.
+
+Some audio assets and temporary resources may originate from external games, public sources, or prototype materials and are used strictly for experimentation and learning.
+
+If any asset owner wishes their content to be removed, it can be replaced immediately.
+
+---
+
+## Screenshots
+
+_Add screenshots or GIFs here._
+
+```md
+![Gameplay](screenshots/gameplay.png)
+```
+
+---
+
+## Credits
+
+Created as a group project / indie game project using MonoGame.
+
+Inspired by:
+- The Binding of Isaac
+- classic dungeon crawlers
+- retro action games
+
+---
+
+## License
+
+This repository is provided for educational and portfolio purposes only.
+
+Commercial redistribution of third-party assets contained in the project may not be permitted.
