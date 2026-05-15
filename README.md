@@ -73,12 +73,10 @@ If any asset owner wishes their content to be removed, it can be replaced immedi
 
 ---
 
-## Screenshots
+## Screenshots![Uploading изображение_2026-05-15_074556518.png…]()
+![Uploading Vibe_Game_ELpUgNXWlC.png…]()
 
-_Add screenshots or GIFs here._
 
-```md
-![Gameplay](screenshots/gameplay.png)
 ```
 
 ---
