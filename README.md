@@ -41,7 +41,7 @@ Unlike traditional roguelikes, the game does **not** feature permadeath progress
 | Action | Key |
 |---|---|
 | Move | `W A S D` |
-| Shoot (ranged weapon) | 'Arrow Keys' |
+| Shoot (ranged weapon) | `Arrow Keys` |
 | Sword Attack | `Space + Arrow Keys` |
 
 ---
