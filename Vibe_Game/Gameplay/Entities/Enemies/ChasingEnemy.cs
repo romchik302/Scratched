@@ -244,6 +244,14 @@ public class ChasingEnemy : Enemy
             GameplayAudio.PlayEnemySlime();
     }
 
+    protected override float AmbientSoundInterval => 1.15f;
+
+    protected override void PlayAmbientSound()
+    {
+        GameplayAudio.PlayEnemySlime();
+    }
+
+
     private void RefreshHitboxParameters()
     {
         _bodyRadius = _collisionRadius * BodyHitboxScale;

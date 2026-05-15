@@ -178,9 +178,11 @@ internal class AdaptiveChasingEnemy : ChasingEnemy
         _sourceRect = new Rectangle(0, 0, _frameWidth, _frameHeight);
     }
 
-    protected override void OnActivated()
+    protected override float AmbientSoundInterval => 0.8f;
+
+    protected override void PlayAmbientSound()
     {
-        if (!ActivationSkippedDelay)
-            GameplayAudio.PlayEnemyTreant();
+        if(_hasPlayerEnteredRadius) GameplayAudio.PlayEnemyTreant();
     }
+
 }

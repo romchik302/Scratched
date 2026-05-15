@@ -164,11 +164,29 @@
 /processorParam:TextureFormat=Compressed
 /build:room_font.spritefont
 
+#begin sounds/boss_attack.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/boss_attack.wav
+
+#begin sounds/boss_burrow.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/boss_burrow.wav
+
 #begin sounds/boss_death.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:sounds/boss_death.wav
+
+#begin sounds/boss_emerge.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/boss_emerge.wav
 
 #begin sounds/enemy_death.wav
 /importer:WavImporter
@@ -271,6 +289,36 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:sounds/mc_sword_attack2.wav
+
+#begin sounds/music_boss_room.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/music_boss_room.mp3
+
+#begin sounds/music_combat_room.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/music_combat_room.mp3
+
+#begin sounds/music_credits.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/music_credits.mp3
+
+#begin sounds/music_empty_room.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/music_empty_room.mp3
+
+#begin sounds/music_main_menu.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/music_main_menu.mp3
 
 #begin sounds/ui_confirm.wav
 /importer:WavImporter

@@ -11,6 +11,13 @@ namespace Vibe_Game.Gameplay.Entities.Enemies;
 /// </summary>
 public abstract class Enemy : Entity
 {
+
+    // Таймер повторяющегося звука
+    protected float _ambientSoundTimer;
+
+    // Интервал звука по умолчанию
+    protected virtual float AmbientSoundInterval => 1.5f;
+
     protected enum RandomMovementMode
     {
         None,
@@ -193,6 +200,20 @@ public abstract class Enemy : Entity
     {
         if (!IsAlive)
             return;
+        if (!IsActivated)
+            return;
+        float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+        if (IsActivated && _canMove)
+        {
+            _ambientSoundTimer += dt;
+
+            if (_ambientSoundTimer >= AmbientSoundInterval)
+            {
+                _ambientSoundTimer = 0f;
+                PlayAmbientSound();
+            }
+        }
 
         // Обработка задержки перед началом движения
         if (!_canMove)
@@ -226,6 +247,7 @@ public abstract class Enemy : Entity
             if (_recoilVelocity.LengthSquared() < 0.01f)
                 _recoilVelocity = Vector2.Zero;
         }
+
 
         UpdateEnemy(gameTime);
     }
@@ -424,6 +446,11 @@ public abstract class Enemy : Entity
         Rectangle bounds = GetBounds();
         return new Vector2(bounds.Center.X, bounds.Center.Y);
     }
+    protected virtual void PlayAmbientSound() 
+    {
+        if (!IsActivated || !IsAlive)
+            return;
+    }
 
 #if DEBUG
     protected void DrawDebugOverlay(SpriteBatch spriteBatch)
@@ -499,5 +526,6 @@ public abstract class Enemy : Entity
     }
 #else
     protected void DrawDebugOverlay(SpriteBatch spriteBatch) { }
+    
 #endif
 }

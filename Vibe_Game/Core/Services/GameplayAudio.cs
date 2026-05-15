@@ -19,6 +19,11 @@ public static class GameplayAudio
     private static Song _songMainMenu;
     private static Song _songCredits;
 
+    private static float _emptyRoomVolume = 0.25f;
+    private static float _combatRoomVolume = 0.08f;
+    private static float _bossRoomVolume = 0.08f;
+    private static float _menuVolume = 0.3f;
+
     private enum Bgm
     {
         None,
@@ -32,6 +37,15 @@ public static class GameplayAudio
     private static Bgm _activeBgm = Bgm.None;
     private static TimeSpan _savedEmptyRoomPosition;
     private static bool _hasSavedEmptyRoomPosition;
+
+    private static Song _pendingSong;
+    private static Bgm _pendingBgm;
+
+    private static bool _isTransitioning;
+    private static bool _fadeOutPhase = true;
+
+    private static float _musicFadeSpeed = 0.25f;
+    private static float _targetVolume = 0.3f;
 
     public static void Load(ContentManager content)
     {
@@ -69,6 +83,8 @@ public static class GameplayAudio
         _songBossRoom = TryLoadSong(content, SoundConfig.MusicBossRoom);
         _songMainMenu = TryLoadSong(content, SoundConfig.MusicMainMenu);
         _songCredits = TryLoadSong(content, SoundConfig.MusicCredits);
+
+        MediaPlayer.Volume = _menuVolume;
     }
 
     /// <summary>Сброс позиции спокойной музыки при новом забеге / новом этаже.</summary>
@@ -81,13 +97,30 @@ public static class GameplayAudio
     public static void StopAllMusic()
     {
         MediaPlayer.Stop();
+
         _activeBgm = Bgm.None;
+
+        _isTransitioning = false;
+        _fadeOutPhase = true;
+
+        MediaPlayer.Volume = 0f;
     }
 
     public static void OnEnterMainMenu()
     {
         StopAllMusic();
-        TryStartBgm(_songMainMenu, Bgm.MainMenu);
+
+        MediaPlayer.Volume = 0f;
+
+        _pendingSong = _songMainMenu;
+        _pendingBgm = Bgm.MainMenu;
+
+        _fadeOutPhase = false;
+        _isTransitioning = true;
+
+        MediaPlayer.Play(_songMainMenu);
+
+        _activeBgm = Bgm.MainMenu;
     }
 
     public static void OnEnterCredits()
@@ -164,10 +197,10 @@ public static class GameplayAudio
         string name = Random.Shared.Next(2) == 0
             ? SoundConfig.PlayerSwordAttack1
             : SoundConfig.PlayerSwordAttack2;
-        PlayEffect(name);
+        PlayEffect(name,0.25f);
     }
 
-    public static void PlayRangedAttack() => PlayEffect(SoundConfig.PlayerRangedAttack);
+    public static void PlayRangedAttack() => PlayEffect(SoundConfig.PlayerRangedAttack, 0.25f);
 
     public static void PlayPlayerHit() => PlayEffect(SoundConfig.PlayerGetHit);
 
@@ -201,11 +234,11 @@ public static class GameplayAudio
 
     public static void PlayBossAttack() => PlayEffect(SoundConfig.BossAttack);
 
-    public static void PlayEnemyFly() => PlayEffect(SoundConfig.EnemyFly);
+    public static void PlayEnemyFly() => PlayEffect(SoundConfig.EnemyFly,0.3f);
 
     public static void PlayEnemySlime() => PlayEffect(SoundConfig.EnemySlime);
 
-    public static void PlayEnemyTreant() => PlayEffect(SoundConfig.EnemyTreant);
+    public static void PlayEnemyTreant() => PlayEffect(SoundConfig.EnemyTreant,0.25f);
 
     public static void PlayPlayerDeath() => PlayEffect(SoundConfig.PlayerDeath);
 
@@ -221,13 +254,18 @@ public static class GameplayAudio
             PlayEffect(SoundConfig.PlayerFootstepsGrass);
     }
 
-    public static void PlayEffect(string assetName)
+    public static void PlayEffect(string assetName, float volume)
     {
         if (string.IsNullOrEmpty(assetName))
             return;
 
         if (Effects.TryGetValue(assetName, out SoundEffect fx))
-            fx.Play(SoundConfig.DefaultSoundEffectVolume, 0f, 0f);
+            fx.Play(volume, 0f, 0f);
+    }
+
+    public static void PlayEffect(string assetName)
+    { 
+        PlayEffect(assetName, SoundConfig.DefaultSoundEffectVolume);
     }
 
     private static string ResolveAudioPath(string assetName)
@@ -268,21 +306,25 @@ public static class GameplayAudio
             return null;
         }
     }
-
     private static void TryStartBgm(Song song, Bgm kind, TimeSpan? resumeFrom = null)
     {
         if (song == null)
             return;
 
-        if (_activeBgm == kind && MediaPlayer.State == MediaState.Playing)
+        // Во время transition ничего нового не запускаем
+        if (_isTransitioning)
             return;
 
-        MediaPlayer.IsRepeating = true;
-        MediaPlayer.Play(song);
-        _activeBgm = kind;
+        // Уже играет нужная музыка
+        if (_activeBgm == kind &&
+            MediaPlayer.State == MediaState.Playing)
+            return;
 
-        if (resumeFrom.HasValue && kind == Bgm.EmptyRoom)
-            TrySetMediaPlayerPosition(resumeFrom.Value);
+        _pendingSong = song;
+        _pendingBgm = kind;
+
+        _fadeOutPhase = true;
+        _isTransitioning = true;
     }
 
     private static void TrySetMediaPlayerPosition(TimeSpan position)
@@ -297,4 +339,67 @@ public static class GameplayAudio
         {
         }
     }
+
+    public static void Update(float dt)
+    {
+        if (!_isTransitioning)
+
+            return;
+
+        if (_fadeOutPhase)
+        {
+            MediaPlayer.Volume -= _musicFadeSpeed * dt;
+
+            if (MediaPlayer.Volume <= 0f)
+            {
+                MediaPlayer.Volume = 0f;
+
+                MediaPlayer.Play(_pendingSong);
+                if (_pendingBgm == Bgm.EmptyRoom && _hasSavedEmptyRoomPosition)
+                {
+                    TrySetMediaPlayerPosition(_savedEmptyRoomPosition);
+                }
+                MediaPlayer.Volume = 0f;
+                _activeBgm = _pendingBgm;
+
+                MediaPlayer.IsRepeating = true;
+
+                switch (_pendingBgm)
+                {
+                    case Bgm.EmptyRoom:
+                        _targetVolume = _emptyRoomVolume;
+                        break;
+
+                    case Bgm.CombatRoom:
+                        _targetVolume = _combatRoomVolume;
+                        break;
+
+                    case Bgm.BossRoom:
+                        _targetVolume = _bossRoomVolume;
+                        break;
+
+                    case Bgm.MainMenu:
+                        _targetVolume = _menuVolume;
+                        break;
+
+                    default:
+                        _targetVolume = 0.5f;
+                        break;
+                }
+
+                _fadeOutPhase = false;
+            }
+        }
+        else
+        {
+            MediaPlayer.Volume += _musicFadeSpeed * dt;
+
+            if (MediaPlayer.Volume >= _targetVolume)
+            {
+                MediaPlayer.Volume = _targetVolume;
+                _isTransitioning = false;
+            }
+        }
+    }
+
 }

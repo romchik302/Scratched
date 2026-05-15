@@ -64,6 +64,8 @@ namespace Vibe_Game.Gameplay.Entities.Player
         {
             SyncEquipmentFromStats();
 
+            GameplayAudio.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
+
             Controller.Update(gameTime);
 
             _lastShootDirection = Controller.ShootDirection;

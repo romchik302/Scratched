@@ -235,6 +235,8 @@ namespace Vibe_Game
             _inputService.Update();
             HandleFullscreenToggle();
 
+            GameplayAudio.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
+
             // Базовое обновление (включает обновление SceneManager)
             base.Update(gameTime);
         }

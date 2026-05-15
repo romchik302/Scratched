@@ -22,7 +22,8 @@ public sealed class BossEnemy : Enemy
     {
         None,
         Windup,
-        MovingTrail
+        MovingTrail,
+        Emerging
     }
 
     private readonly IWallCollisionChecker _collision;
@@ -115,7 +116,6 @@ public sealed class BossEnemy : Enemy
         if (_burrowPhase != BurrowPhase.None)
         {
             UpdateBurrow(dt);
-            UpdateBossSpriteAnimation(dt);
             return;
         }
 
@@ -266,7 +266,7 @@ public sealed class BossEnemy : Enemy
 
         GetBossCellPixelSize(sheet, out fw, out fh);
         anchor = GetBossDrawAnchor();
-        scale = (CollisionRadius * 2.1f) / Math.Max(fw, fh);
+        scale = ((CollisionRadius * 2.1f) / Math.Max(fw, fh)) * 2f;
         return true;
     }
 
@@ -438,12 +438,34 @@ public sealed class BossEnemy : Enemy
             frameCount = EnemyConfig.BossSheetCommonFramesCount;
             frameDur = EnemyConfig.BossCommonAnimFrameDurationSeconds;
         }
+        else if (_burrowPhase == BurrowPhase.Emerging)
+        {
+            _spriteRow = EnemyConfig.BossSheetBurrowRow;
+            frameCount = EnemyConfig.BossSheetCommonFramesCount;
+            frameDur = EnemyConfig.BossCommonAnimFrameDurationSeconds;
+        }
 
         _spriteAnimTimer += dt;
+
         if (_spriteAnimTimer >= frameDur)
         {
             _spriteAnimTimer = 0f;
-            _spriteFrame = (_spriteFrame + 1) % Math.Max(1, frameCount);
+
+            if (_burrowPhase == BurrowPhase.Emerging)
+            {
+                _spriteFrame--;
+
+                if (_spriteFrame <= 0)
+                {
+                    _spriteFrame = 0;
+                    _burrowPhase = BurrowPhase.None;
+                    EndAttackAndEnterCooldown();
+                }
+            }
+            else
+            {
+                _spriteFrame = (_spriteFrame + 1) % frameCount;
+            }
         }
     }
 
@@ -555,6 +577,10 @@ public sealed class BossEnemy : Enemy
     private void BeginBurrow()
     {
         _burrowPhase = BurrowPhase.Windup;
+
+        _spriteFrame = 0;
+        _spriteAnimTimer = 0f;
+
         _burrowTrailPosition = Position;
         _burrowWindupRemaining = EnemyConfig.BossSheetCommonFramesCount * EnemyConfig.BossCommonAnimFrameDurationSeconds;
         _attackTimer = _burrowWindupRemaining + BurrowTravelDuration;
@@ -563,39 +589,38 @@ public sealed class BossEnemy : Enemy
 
     private void UpdateBurrow(float dt)
     {
-        _attackTimer -= dt;
+        
+            _attackTimer -= dt;
+            if (_burrowPhase == BurrowPhase.Windup) {
+                _burrowWindupRemaining -= dt;
+                if (_burrowWindupRemaining <= 0f)
+                    _burrowPhase = BurrowPhase.MovingTrail;
+                UpdateBossSpriteAnimation(dt);
+                return;
+            }
+            if (_burrowPhase == BurrowPhase.MovingTrail) { 
 
-        if (_burrowPhase == BurrowPhase.Windup)
-        {
-            _burrowWindupRemaining -= dt;
-            if (_burrowWindupRemaining <= 0f)
-                _burrowPhase = BurrowPhase.MovingTrail;
+                Vector2 toTarget = ChaseTarget - _burrowTrailPosition;
 
-            UpdateBossSpriteAnimation(dt);
-            return;
-        }
+                if (toTarget.LengthSquared() > 1f) { 
+                    Vector2 dir = Vector2.Normalize(toTarget);
+                    _burrowTrailPosition += dir * BurrowTrailSpeed * dt; 
+                }
 
-        if (_burrowPhase != BurrowPhase.MovingTrail)
-            return;
-
-        Vector2 toTarget = ChaseTarget - _burrowTrailPosition;
-        if (toTarget.LengthSquared() > 1f)
-        {
-            Vector2 dir = Vector2.Normalize(toTarget);
-            _burrowTrailPosition += dir * BurrowTrailSpeed * dt;
-        }
-
-        if (_attackTimer > 0f)
-        {
-            UpdateBossSpriteAnimation(dt);
-            return;
-        }
-
-        Position = _burrowTrailPosition;
-        _burrowPhase = BurrowPhase.None;
-        GameplayAudio.PlayBossEmerge();
-        TryBurrowStrikePlayer();
-        EndAttackAndEnterCooldown();
+                if (_attackTimer <= 0f) { 
+                    Position = _burrowTrailPosition;
+                    _burrowPhase = BurrowPhase.Emerging;
+                    _spriteRow = EnemyConfig.BossSheetBurrowRow;
+                    _spriteFrame = EnemyConfig.BossSheetCommonFramesCount - 1;
+                    _spriteAnimTimer = 0f; GameplayAudio.PlayBossEmerge();
+                    TryBurrowStrikePlayer();
+                }
+                UpdateBossSpriteAnimation(dt);
+                return;
+            }
+            if (_burrowPhase == BurrowPhase.Emerging) { 
+                UpdateBossSpriteAnimation(dt); 
+            }
     }
 
     private void TryBurrowStrikePlayer()
@@ -668,7 +693,7 @@ public sealed class BossEnemy : Enemy
 
     protected override void OnActivated()
     {
-        GameplayAudio.PlayBossEntering();
+        GameplayAudio.PlayBossEmerge();
         GameplayAudio.PlayMapBossEntry();
     }
 }
