@@ -73,9 +73,10 @@ If any asset owner wishes their content to be removed, it can be replaced immedi
 
 ---
 
-## Screenshots![Uploading изображение_2026-05-15_074556518.png…]()
-![Uploading Vibe_Game_ELpUgNXWlC.png…]()
-
+## Screenshots
+<img width="1920" height="1080" alt="Vibe_Game_x8MS9ABykX" src="https://github.com/user-attachments/assets/b1ccc80b-303c-4142-bcbf-d2d153e10c95" />
+<img width="1317" height="842" alt="Vibe_Game_ELpUgNXWlC" src="https://github.com/user-attachments/assets/656c4266-53df-4827-8ad5-998d40f79bb4" />
+<img width="1920" height="1080" alt="изображение_2026-05-15_074804866" src="https://github.com/user-attachments/assets/4e5ad208-367c-40da-b77f-e8aead235241" />
 
 ```
 
