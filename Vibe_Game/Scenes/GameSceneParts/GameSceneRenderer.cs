@@ -19,6 +19,22 @@ namespace Vibe_Game.Scenes
         private const int MinimapRoomSize = 34;
         private const int MinimapSpacing = 38;
         private const int MinimapOffset = 12;
+        private const int RoomTilesetFrameCount = 25;
+        private const int DoorFrameCount = 6;
+        private const int ItemBackgroundFrameCount = 5;
+        private const int ItemTrapdoorFrame = 0;
+        private const int ItemLeavesFrame = 0;
+        private const int ItemMushroomFrame = 1;
+        private const int ItemOvergrowthFrame = 2;
+        private const int ItemRockFrame = 3;
+        private const int ItemButtonFrame = 4;
+        private const int ButtonSheetColumns = 2;
+        private const int ButtonUnpressedRow = 0;
+        private const int ButtonPressRow = 1;
+        private const int ButtonActiveRow = 2;
+        private const int InstructionMaxWidth = 316;
+        private const int InstructionMaxHeight = 120;
+        private const int InstructionTopOffset = 42;
 
         private readonly Game _game;
         private readonly GameSceneState _state;
@@ -26,6 +42,15 @@ namespace Vibe_Game.Scenes
         private readonly GameSceneEnemyController _enemies;
         private SpriteFont _roomFont;
         private Texture2D _tileTexture;
+        private Texture2D _roomTilesetTexture;
+        private Texture2D _doorLeftTexture;
+        private Texture2D _doorRightTexture;
+        private Texture2D _doorUpTexture;
+        private Texture2D _doorDownTexture;
+        private Texture2D _itemsBackgroundTexture;
+        private Texture2D _birchTileTexture;
+        private Texture2D _instructionTexture;
+        private Texture2D _buttonTexture;
         private Texture2D _healthHudTexture;
         private readonly List<HealthHudCellRuntime> _healthHudCells = new();
         private float _healthHudIdleDelayTimer;
@@ -48,6 +73,15 @@ namespace Vibe_Game.Scenes
         {
             _roomFont = content.Load<SpriteFont>("room_font");
             _tileTexture = content.Load<Texture2D>("player_sheet");
+            _roomTilesetTexture = LoadOptionalTexture(content, "tileset");
+            _doorLeftTexture = LoadOptionalTexture(content, "door-left-tile");
+            _doorRightTexture = LoadOptionalTexture(content, "door-right-tile");
+            _doorUpTexture = LoadOptionalTexture(content, "door-up-tile");
+            _doorDownTexture = LoadOptionalTexture(content, "door-down-tile");
+            _itemsBackgroundTexture = LoadOptionalTexture(content, "items-background");
+            _birchTileTexture = LoadOptionalTexture(content, "birch-tile");
+            _instructionTexture = LoadOptionalTexture(content, "instruction-picture");
+            _buttonTexture = LoadOptionalTexture(content, "button");
             try
             {
                 _healthHudTexture = content.Load<Texture2D>(HealthHudConfig.TextureAsset);
@@ -113,7 +147,7 @@ namespace Vibe_Game.Scenes
 
             _enemies.DrawEnemyDeathAnimations(spriteBatch);
 
-            DrawCurrentRoomLabel(spriteBatch);
+            DrawFloorExitHint(spriteBatch);
 
             // При ударе в других направлениях меч отрисовывается ПОСЛЕ игрока
             if (!shouldDrawSwordBeforePlayer && _state.Player.EquippedWeapon is SwordWeapon sword2)
@@ -168,22 +202,249 @@ namespace Vibe_Game.Scenes
 
                     if (tile is PedestalTile pedestal)
                     {
-                        spriteBatch.Draw(_tileTexture ?? pixel, tileBounds, GameColors.Floor);
+                        DrawBackgroundTile(spriteBatch, pixel, room, tile, tileBounds, tx, ty);
                         DrawPedestalBase(spriteBatch, pixel, tileBounds, pedestal);
                         if (_state.CollectibleVisualCache != null)
                             pedestal.Collectable.DrawOnPedestal(spriteBatch, _state.CollectibleVisualCache, pixel, tileBounds);
                     }
                     else
                     {
-                        spriteBatch.Draw(
-                            _tileTexture ?? pixel,
-                            tileBounds,
-                            tile.Tint
-                        );
+                        DrawBackgroundTile(spriteBatch, pixel, room, tile, tileBounds, tx, ty);
                         DrawTileEntity(spriteBatch, pixel, tile, tileBounds);
                     }
                 }
             }
+
+            DrawStartRoomInstruction(spriteBatch, room, wx, wy);
+        }
+
+        private void DrawStartRoomInstruction(SpriteBatch spriteBatch, Room room, int wx, int wy)
+        {
+            if (_instructionTexture == null ||
+                room.Type != LevelGenerator.RoomType.Start ||
+                _state.CurrentFloorIndex != FloorConfig.FirstFloorIndex)
+                return;
+
+            float scale = Math.Min(
+                InstructionMaxWidth / (float)_instructionTexture.Width,
+                InstructionMaxHeight / (float)_instructionTexture.Height);
+            int width = Math.Max(1, (int)MathF.Round(_instructionTexture.Width * scale));
+            int height = Math.Max(1, (int)MathF.Round(_instructionTexture.Height * scale));
+            int x = wx + (WorldConfig.RoomWidthPx - width) / 2;
+            int y = wy + InstructionTopOffset;
+            spriteBatch.Draw(_instructionTexture, new Rectangle(x, y, width, height), Color.White);
+        }
+
+        private void DrawBackgroundTile(SpriteBatch spriteBatch, Texture2D pixel, Room room, Tile tile, Rectangle tileBounds, int tx, int ty)
+        {
+            if (tile is DoorTile doorTile && TryDrawDoorTile(spriteBatch, doorTile, tileBounds))
+                return;
+
+            if (_roomTilesetTexture != null)
+            {
+                int tileNumber = IsInsideOpenDoorway(room, tx, ty)
+                    ? 13
+                    : GetRoomTemplateTileNumber(tx, ty);
+                Rectangle source = GetRoomTilesetSource(tileNumber);
+                spriteBatch.Draw(_roomTilesetTexture, tileBounds, source, Color.White);
+                return;
+            }
+
+            spriteBatch.Draw(_tileTexture ?? pixel, tileBounds, tile.Tint);
+        }
+
+        private bool TryDrawDoorTile(SpriteBatch spriteBatch, DoorTile doorTile, Rectangle tileBounds)
+        {
+            Texture2D texture = GetDoorTexture(doorTile.GridPosition);
+            if (texture == null)
+                return false;
+
+            int frameWidth = Math.Max(1, texture.Width / DoorFrameCount);
+            int frameIndex = GetDoorFrameIndex(doorTile);
+            Rectangle source = new Rectangle(frameWidth * frameIndex, 0, frameWidth, texture.Height);
+            spriteBatch.Draw(texture, tileBounds, source, Color.White, 0f, Vector2.Zero, GetDoorSpriteEffects(doorTile), 0f);
+            return true;
+        }
+
+        private static int GetDoorFrameIndex(DoorTile doorTile)
+        {
+            Point p = doorTile.GridPosition;
+            if (p.X == 0)
+                return doorTile.IsOpen
+                    ? GetVerticalDoorHalfFrame(p, topFrame: 0, bottomFrame: 4)
+                    : GetVerticalDoorHalfFrame(p, topFrame: 1, bottomFrame: 5);
+
+            if (p.X == WorldConfig.RoomWidthTiles - 1)
+                return doorTile.IsOpen
+                    ? GetVerticalDoorHalfFrame(p, topFrame: 1, bottomFrame: 5)
+                    : GetVerticalDoorHalfFrame(p, topFrame: 0, bottomFrame: 4);
+
+            if (p.Y == 0)
+                return doorTile.IsOpen
+                    ? 4
+                    : GetHorizontalDoorHalfFrame(p, leftFrame: 0, rightFrame: 2);
+
+            if (p.Y == WorldConfig.RoomHeightTiles - 1)
+                return doorTile.IsOpen
+                    ? 1
+                    : GetHorizontalDoorHalfFrame(p, leftFrame: 3, rightFrame: 5);
+
+            return 0;
+        }
+
+        private static int GetHorizontalDoorHalfFrame(Point p, int leftFrame, int rightFrame)
+        {
+            int leftDoorX = WorldConfig.RoomWidthTiles / 2 - 1;
+            return p.X == leftDoorX ? leftFrame : rightFrame;
+        }
+
+        private static int GetVerticalDoorHalfFrame(Point p, int topFrame, int bottomFrame)
+        {
+            int topDoorY = WorldConfig.RoomHeightTiles / 2;
+            return p.Y == topDoorY ? topFrame : bottomFrame;
+        }
+
+        private static SpriteEffects GetDoorSpriteEffects(DoorTile doorTile)
+        {
+            Point p = doorTile.GridPosition;
+            if (p.X == 0)
+                return SpriteEffects.FlipHorizontally;
+
+            if (p.X == WorldConfig.RoomWidthTiles - 1)
+                return SpriteEffects.FlipHorizontally | SpriteEffects.FlipVertically;
+
+            return SpriteEffects.None;
+        }
+
+        private static bool IsInsideOpenDoorway(Room room, int tx, int ty)
+        {
+            if (room == null)
+                return false;
+
+            int leftDoorX = 0;
+            int rightDoorX = WorldConfig.RoomWidthTiles - 1;
+            int topDoorY = 0;
+            int bottomDoorY = WorldConfig.RoomHeightTiles - 1;
+            int horizontalDoorX1 = WorldConfig.RoomWidthTiles / 2 - 1;
+            int horizontalDoorX2 = WorldConfig.RoomWidthTiles / 2;
+            int verticalDoorY1 = WorldConfig.RoomHeightTiles / 2;
+            int verticalDoorY2 = verticalDoorY1 + 1;
+
+            if (tx == 1 && (ty == verticalDoorY1 || ty == verticalDoorY2) && room.GetTile(leftDoorX, ty) is DoorTile leftDoor && leftDoor.IsOpen)
+                return true;
+
+            if (tx == WorldConfig.RoomWidthTiles - 2 && (ty == verticalDoorY1 || ty == verticalDoorY2) && room.GetTile(rightDoorX, ty) is DoorTile rightDoor && rightDoor.IsOpen)
+                return true;
+
+            if (ty == 1 && (tx == horizontalDoorX1 || tx == horizontalDoorX2) && room.GetTile(tx, topDoorY) is DoorTile topDoor && topDoor.IsOpen)
+                return true;
+
+            if (ty == WorldConfig.RoomHeightTiles - 2 && (tx == horizontalDoorX1 || tx == horizontalDoorX2) && room.GetTile(tx, bottomDoorY) is DoorTile bottomDoor && bottomDoor.IsOpen)
+                return true;
+
+            return false;
+        }
+
+        private Texture2D GetDoorTexture(Point tilePosition)
+        {
+            if (tilePosition.X == 0)
+                return _doorLeftTexture;
+
+            if (tilePosition.X == WorldConfig.RoomWidthTiles - 1)
+                return _doorRightTexture;
+
+            if (tilePosition.Y == 0)
+                return _doorUpTexture;
+
+            if (tilePosition.Y == WorldConfig.RoomHeightTiles - 1)
+                return _doorDownTexture;
+
+            return null;
+        }
+
+        private Rectangle GetRoomTilesetSource(int tileNumber)
+        {
+            int frameWidth = Math.Max(1, _roomTilesetTexture.Width / RoomTilesetFrameCount);
+            int frameIndex = Math.Clamp(tileNumber - 1, 0, RoomTilesetFrameCount - 1);
+            return new Rectangle(frameIndex * frameWidth, 0, frameWidth, _roomTilesetTexture.Height);
+        }
+
+        private static int GetRoomTemplateTileNumber(int tx, int ty)
+        {
+            bool isLeft = tx == 0;
+            bool isRight = tx == WorldConfig.RoomWidthTiles - 1;
+            bool isTop = ty == 0;
+            bool isBottom = ty == WorldConfig.RoomHeightTiles - 1;
+
+            if (isTop)
+                return GetHorizontalEdgeTile(tx, top: true);
+
+            if (isBottom)
+                return GetHorizontalEdgeTile(tx, top: false);
+
+            if (isLeft)
+                return GetVerticalEdgeTile(ty, left: true);
+
+            if (isRight)
+                return GetVerticalEdgeTile(ty, left: false);
+
+            if (ty == 1)
+                return GetTopGrassTransitionTile(tx);
+
+            if (ty == WorldConfig.RoomHeightTiles - 2)
+                return GetBottomGrassTransitionTile(tx);
+
+            if (tx == 1)
+                return 12;
+
+            if (tx == WorldConfig.RoomWidthTiles - 2)
+                return 14;
+
+            return 13;
+        }
+
+        private static int GetHorizontalEdgeTile(int tx, bool top)
+        {
+            if (tx == 0)
+                return top ? 1 : 21;
+
+            if (tx == WorldConfig.RoomWidthTiles - 1)
+                return top ? 5 : 25;
+
+            int band = Math.Clamp(tx * 3 / WorldConfig.RoomWidthTiles, 0, 2);
+            return top
+                ? 2 + band
+                : 22 + band;
+        }
+
+        private static int GetVerticalEdgeTile(int ty, bool left)
+        {
+            int band = Math.Clamp((ty - 1) * 3 / Math.Max(1, WorldConfig.RoomHeightTiles - 2), 0, 2);
+            return left
+                ? 6 + band * 5
+                : 10 + band * 5;
+        }
+
+        private static int GetTopGrassTransitionTile(int tx)
+        {
+            if (tx <= 1)
+                return 7;
+
+            if (tx >= WorldConfig.RoomWidthTiles - 2)
+                return 9;
+
+            return 8;
+        }
+
+        private static int GetBottomGrassTransitionTile(int tx)
+        {
+            if (tx <= 1)
+                return 17;
+
+            if (tx >= WorldConfig.RoomWidthTiles - 2)
+                return 19;
+
+            return 18;
         }
 
         private void DrawPedestalBase(SpriteBatch spriteBatch, Texture2D pixel, Rectangle tileBounds, PedestalTile pedestal)
@@ -216,10 +477,129 @@ namespace Vibe_Game.Scenes
         }
 
         /// <summary>Рисует сущность, которая живёт внутри тайла (кроме пьедестала — он рисуется отдельно).</summary>
-        private static void DrawTileEntity(SpriteBatch spriteBatch, Texture2D pixel, Tile tile, Rectangle tileBounds)
+        private void DrawTileEntity(SpriteBatch spriteBatch, Texture2D pixel, Tile tile, Rectangle tileBounds)
         {
-            if (tile is PedestalTile)
+            if (tile is PedestalTile or FloorTile or WallTile or DoorTile)
                 return;
+
+            if (tile is TrapdoorTile)
+            {
+                if (TryDrawItemBackground(spriteBatch, tileBounds, ItemTrapdoorFrame))
+                    return;
+
+                spriteBatch.Draw(pixel, tileBounds, GameColors.Trapdoor);
+                return;
+            }
+
+            if (tile is ButtonTile)
+            {
+                if (TryDrawButton(spriteBatch, (ButtonTile)tile, tileBounds))
+                    return;
+
+                spriteBatch.Draw(pixel, tileBounds, tile.Tint);
+                return;
+            }
+
+            if (tile is ExitButtonTile)
+            {
+                if (TryDrawExitButton(spriteBatch, (ExitButtonTile)tile, tileBounds))
+                    return;
+
+                spriteBatch.Draw(pixel, tileBounds, tile.Tint);
+                return;
+            }
+
+            if (tile is OvergrowthTile)
+            {
+                OvergrowthTile overgrowth = (OvergrowthTile)tile;
+                int frame = overgrowth.VisualFrame ?? GetOvergrowthFrame(tile.GridPosition);
+
+                if (TryDrawItemBackground(spriteBatch, tileBounds, frame))
+                    return;
+            }
+
+            if (tile is RockTile)
+            {
+                if (_birchTileTexture != null)
+                {
+                    spriteBatch.Draw(_birchTileTexture, tileBounds, Color.White);
+                    return;
+                }
+
+                spriteBatch.Draw(pixel, tileBounds, GameColors.Rock * 0.88f);
+            }
+        }
+
+        private static int GetOvergrowthFrame(Point gridPosition)
+        {
+            int variant = Math.Abs(gridPosition.X * 17 + gridPosition.Y * 31) % 4;
+            return variant switch
+                {
+                    0 => ItemLeavesFrame,
+                    1 => ItemMushroomFrame,
+                    2 => ItemRockFrame,
+                    _ => ItemOvergrowthFrame
+                };
+        }
+
+        private bool TryDrawItemBackground(SpriteBatch spriteBatch, Rectangle tileBounds, int frameIndex)
+        {
+            if (_itemsBackgroundTexture == null)
+                return false;
+
+            int frameWidth = Math.Max(1, _itemsBackgroundTexture.Width / ItemBackgroundFrameCount);
+            Rectangle source = new Rectangle(
+                Math.Clamp(frameIndex, 0, ItemBackgroundFrameCount - 1) * frameWidth,
+                0,
+                frameWidth,
+                _itemsBackgroundTexture.Height);
+            spriteBatch.Draw(_itemsBackgroundTexture, tileBounds, source, Color.White);
+            return true;
+        }
+
+        private bool TryDrawButton(SpriteBatch spriteBatch, ButtonTile buttonTile, Rectangle tileBounds)
+        {
+            if (_buttonTexture == null)
+                return false;
+
+            int frameWidth = Math.Max(1, _buttonTexture.Width / ButtonSheetColumns);
+            int frameHeight = Math.Max(1, _buttonTexture.Height / 3);
+            int row;
+            int col;
+
+            if (!buttonTile.IsPressed)
+            {
+                row = ButtonUnpressedRow;
+                col = 0;
+            }
+            else if (buttonTile.IsPressAnimationPlaying)
+            {
+                row = ButtonPressRow;
+                col = 0;
+            }
+            else
+            {
+                row = ButtonActiveRow;
+                col = Math.Clamp(buttonTile.ActiveIdleFrame, 0, ButtonSheetColumns - 1);
+            }
+
+            Rectangle source = new Rectangle(col * frameWidth, row * frameHeight, frameWidth, frameHeight);
+            spriteBatch.Draw(_buttonTexture, tileBounds, source, Color.White);
+            return true;
+        }
+
+        private bool TryDrawExitButton(SpriteBatch spriteBatch, ExitButtonTile buttonTile, Rectangle tileBounds)
+        {
+            if (_buttonTexture == null)
+                return false;
+
+            int frameWidth = Math.Max(1, _buttonTexture.Width / ButtonSheetColumns);
+            int frameHeight = Math.Max(1, _buttonTexture.Height / 3);
+            int row = buttonTile.IsActive ? ButtonActiveRow : ButtonUnpressedRow;
+            int col = buttonTile.IsActive ? Math.Clamp(buttonTile.ActiveIdleFrame, 0, ButtonSheetColumns - 1) : 0;
+            Rectangle source = new Rectangle(col * frameWidth, row * frameHeight, frameWidth, frameHeight);
+            spriteBatch.Draw(_buttonTexture, tileBounds, source, Color.White);
+            return true;
         }
 
         /// <summary>Рисует посещённые комнаты миникарты от верхнего левого угла экрана.</summary>
@@ -252,10 +632,16 @@ namespace Vibe_Game.Scenes
                     spriteBatch.Draw(pixel, rect, fillColor);
                     spriteBatch.DrawRectangle(pixel, rect, new Color(12, 12, 18, 220), 2);
 
+                    if (isVisited)
+                    {
+                        Rectangle visitedRect = new Rectangle(rect.X - 1, rect.Y - 1, rect.Width + 2, rect.Height + 2);
+                        spriteBatch.DrawRectangle(pixel, visitedRect, GameColors.MinimapVisitedOutline, 2);
+                    }
+
                     if (isCurrent)
                     {
                         Rectangle currentRect = new Rectangle(rect.X - 3, rect.Y - 3, rect.Width + 6, rect.Height + 6);
-                        spriteBatch.DrawRectangle(pixel, currentRect, GameColors.MinimapVisitedOutline, 3);
+                        spriteBatch.DrawRectangle(pixel, currentRect, GameColors.MinimapCurrentOutline, 3);
                     }
                 }
             }
@@ -305,12 +691,11 @@ namespace Vibe_Game.Scenes
                 LevelGenerator.RoomType.Battle => GameColors.MinimapBattle,
                 LevelGenerator.RoomType.Boss => GameColors.MinimapBoss,
                 LevelGenerator.RoomType.Treasure => GameColors.MinimapTreasure,
-                LevelGenerator.RoomType.Challenge => GameColors.MinimapChallenge,
                 _ => GameColors.MinimapDefault
             };
         }
 
-        private void DrawCurrentRoomLabel(SpriteBatch spriteBatch)
+        private void DrawFloorExitHint(SpriteBatch spriteBatch)
         {
             if (_roomFont == null)
                 return;
@@ -324,33 +709,17 @@ namespace Vibe_Game.Scenes
                 _state.CurrentRoomGrid.Y * WorldConfig.RoomHeightPx + WorldConfig.RoomHeightPx / 2f - 24f
             );
 
-            string label = GetRoomTypeLabel(room.Type);
-            DrawCenteredText(spriteBatch, label, _roomFont, roomCenter, GameColors.RoomLabel, 1f, GameColors.RoomLabelShadow);
-
             if (_state.IsPlayerStandingOnFloorExit)
             {
                 DrawCenteredText(
                     spriteBatch,
-                    "PRESS E TO DESCEND",
+                    "PRESS E TO CONTINUE",
                     _roomFont,
-                    roomCenter + new Vector2(0f, 34f),
+                    roomCenter + new Vector2(0f, 116f),
                     GameColors.FloorHint,
                     0.7f,
                     GameColors.RoomLabelShadow);
             }
-        }
-
-        private static string GetRoomTypeLabel(LevelGenerator.RoomType roomType)
-        {
-            return roomType switch
-            {
-                LevelGenerator.RoomType.Start => "START ROOM",
-                LevelGenerator.RoomType.Battle => "BATTLE ROOM",
-                LevelGenerator.RoomType.Boss => "BOSS ROOM",
-                LevelGenerator.RoomType.Treasure => "TREASURE ROOM",
-                LevelGenerator.RoomType.Challenge => "CHALLENGE ROOM",
-                _ => "ROOM"
-            };
         }
 
         private static void DrawCenteredText(
@@ -691,6 +1060,18 @@ namespace Vibe_Game.Scenes
                 new Vector2(optionRect.Center.X, optionRect.Center.Y),
                 isSelected ? GameColors.MenuBackground : GameColors.RoomLabel,
                 0.75f);
+        }
+
+        private static Texture2D LoadOptionalTexture(ContentManager content, string assetName)
+        {
+            try
+            {
+                return content.Load<Texture2D>(assetName);
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

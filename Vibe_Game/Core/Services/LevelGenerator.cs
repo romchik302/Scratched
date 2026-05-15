@@ -23,7 +23,6 @@ namespace Vibe_Game.Core.Services
         {
             Start,
             Battle,
-            Challenge,
             Treasure,
             Boss
         }
@@ -166,15 +165,6 @@ namespace Vibe_Game.Core.Services
             if (treasureRoom != Point.Zero || deadEnds.Contains(Point.Zero))
                 AssignRoomType(grid, treasureRoom, RoomType.Treasure, assigned);
 
-            if (floorIndex >= 1)
-            {
-                Point challengeRoom = occupiedRooms
-                    .Where(point => !assigned.Contains(point) && CountOccupiedNeighbors(grid, point) <= 2)
-                    .OrderByDescending(point => distances.GetValueOrDefault(point))
-                    .FirstOrDefault();
-                if (challengeRoom != Point.Zero || occupiedRooms.Contains(Point.Zero))
-                    AssignRoomType(grid, challengeRoom, RoomType.Challenge, assigned);
-            }
         }
 
         /// <summary>Считает тупиковые комнаты, которые не являются стартовой комнатой.</summary>
@@ -214,6 +204,8 @@ namespace Vibe_Game.Core.Services
                 return;
 
             room.IsFloorExitRoom = true;
+            room.RemoveRoomButton();
+            room.PlaceFloorExitButtonMarkers();
             assigned.Add(point);
         }
 

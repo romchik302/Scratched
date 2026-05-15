@@ -16,7 +16,7 @@ namespace Vibe_Game.Scenes
             _inputService = inputService;
         }
 
-        /// <summary>Загружает шрифт, которым рисуется временный экран титров.</summary>
+        /// <summary>Загружает шрифт, которым рисуется экран титров.</summary>
         public override void LoadContent()
         {
             _font = GameInstance.Content.Load<SpriteFont>("room_font");
@@ -29,7 +29,7 @@ namespace Vibe_Game.Scenes
                 ((Game1)GameInstance).ShowMainMenu();
         }
 
-        /// <summary>Рисует отдельный экран титров с временным текстом.</summary>
+        /// <summary>Рисует отдельный экран титров.</summary>
         public override void Draw(GameTime gameTime)
         {
             SpriteBatch spriteBatch = GetSpriteBatch();
@@ -40,15 +40,19 @@ namespace Vibe_Game.Scenes
             Viewport viewport = GameInstance.GraphicsDevice.Viewport;
             Rectangle panelRect = new Rectangle(viewport.Width / 2 - 300, viewport.Height / 2 - 180, 600, 360);
 
-            GameInstance.GraphicsDevice.Clear(GameColors.MenuBackground);
+            GameInstance.GraphicsDevice.Clear(GameColors.VictoryBackground);
 
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
-            spriteBatch.Draw(pixel, panelRect, GameColors.MenuPanel);
+            spriteBatch.Draw(pixel, panelRect, GameColors.VictoryPanel);
             DrawBorder(spriteBatch, pixel, panelRect);
-            DrawCenteredText(spriteBatch, "CREDITS", new Vector2(viewport.Width / 2f, panelRect.Y + 76f), GameColors.RoomLabel, 1.25f, GameColors.RoomLabelShadow);
-            DrawCenteredText(spriteBatch, "TEXT WILL BE ADDED LATER", new Vector2(viewport.Width / 2f, panelRect.Y + 158f), GameColors.MenuMuted, 0.75f);
-            DrawCenteredText(spriteBatch, "PRESS ANY GAME KEY TO SKIP", new Vector2(viewport.Width / 2f, panelRect.Bottom - 78f), GameColors.FloorHint, 0.62f);
+            DrawCenteredText(spriteBatch, "VICTORY", new Vector2(viewport.Width / 2f, panelRect.Y + 76f), GameColors.VictoryText, 1.25f, GameColors.RoomLabelShadow);
+            DrawCenteredText(spriteBatch, "created by", new Vector2(viewport.Width / 2f, panelRect.Y + 136f), GameColors.VictoryAccent, 0.62f);
+            DrawCenteredText(spriteBatch, "Roman Akst, Yana Egorova-Ekimkova", new Vector2(viewport.Width / 2f, panelRect.Y + 174f), GameColors.VictoryText, 0.48f);
+            DrawCenteredText(spriteBatch, "Kamilla Dzhumasheva, Michail Rodomakin", new Vector2(viewport.Width / 2f, panelRect.Y + 204f), GameColors.VictoryText, 0.48f);
+            DrawCenteredText(spriteBatch, "contact email: not available yet", new Vector2(viewport.Width / 2f, panelRect.Y + 252f), GameColors.VictoryAccent, 0.46f);
+            DrawCenteredText(spriteBatch, "leave a review on the site. the site is not available yet either", new Vector2(viewport.Width / 2f, panelRect.Y + 282f), GameColors.VictoryAccent, 0.38f);
+            DrawCenteredText(spriteBatch, "PRESS ANY GAME KEY TO SKIP", new Vector2(viewport.Width / 2f, panelRect.Bottom - 78f), GameColors.VictoryText, 0.62f);
 
             spriteBatch.End();
         }
@@ -72,10 +76,10 @@ namespace Vibe_Game.Scenes
         /// <summary>Рисует рамку панели титров тем же стилем, что и остальные меню.</summary>
         private static void DrawBorder(SpriteBatch spriteBatch, Texture2D pixel, Rectangle panelRect)
         {
-            spriteBatch.Draw(pixel, new Rectangle(panelRect.X - 3, panelRect.Y - 3, panelRect.Width + 6, 3), GameColors.MenuOutline);
-            spriteBatch.Draw(pixel, new Rectangle(panelRect.X - 3, panelRect.Bottom, panelRect.Width + 6, 3), GameColors.MenuOutline);
-            spriteBatch.Draw(pixel, new Rectangle(panelRect.X - 3, panelRect.Y, 3, panelRect.Height), GameColors.MenuOutline);
-            spriteBatch.Draw(pixel, new Rectangle(panelRect.Right, panelRect.Y, 3, panelRect.Height), GameColors.MenuOutline);
+            spriteBatch.Draw(pixel, new Rectangle(panelRect.X - 3, panelRect.Y - 3, panelRect.Width + 6, 3), GameColors.VictoryOutline);
+            spriteBatch.Draw(pixel, new Rectangle(panelRect.X - 3, panelRect.Bottom, panelRect.Width + 6, 3), GameColors.VictoryOutline);
+            spriteBatch.Draw(pixel, new Rectangle(panelRect.X - 3, panelRect.Y, 3, panelRect.Height), GameColors.VictoryOutline);
+            spriteBatch.Draw(pixel, new Rectangle(panelRect.Right, panelRect.Y, 3, panelRect.Height), GameColors.VictoryOutline);
         }
 
         /// <summary>Рисует текст по центру выбранной точки с необязательной тенью.</summary>

@@ -510,8 +510,7 @@ namespace Vibe_Game.Scenes
 
         private static bool CanSpawnRegularEnemies(LevelGenerator.RoomType roomType)
         {
-            return roomType is LevelGenerator.RoomType.Battle
-                or LevelGenerator.RoomType.Challenge;
+            return roomType == LevelGenerator.RoomType.Battle;
         }
 
         private static float GetEnemyRadius(Enemy enemy)

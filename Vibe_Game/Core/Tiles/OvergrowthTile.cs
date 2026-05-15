@@ -7,9 +7,12 @@ namespace Vibe_Game.Core.Tiles
     public sealed class OvergrowthTile : Tile
     {
         /// <summary>Создаёт проходимую заросль в указанной клетке комнаты.</summary>
-        public OvergrowthTile(Point gridPosition) : base(gridPosition)
+        public OvergrowthTile(Point gridPosition, int? visualFrame = null) : base(gridPosition)
         {
+            VisualFrame = visualFrame;
         }
+
+        public int? VisualFrame { get; }
 
         public override bool CanHostEnemy => false;
         public override Color Tint => GameColors.Overgrowth;
