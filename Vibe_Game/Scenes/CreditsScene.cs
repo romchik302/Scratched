@@ -50,8 +50,6 @@ namespace Vibe_Game.Scenes
             DrawCenteredText(spriteBatch, "created by", new Vector2(viewport.Width / 2f, panelRect.Y + 136f), GameColors.VictoryAccent, 0.62f);
             DrawCenteredText(spriteBatch, "Roman Akst, Yana Egorova-Ekimkova", new Vector2(viewport.Width / 2f, panelRect.Y + 174f), GameColors.VictoryText, 0.48f);
             DrawCenteredText(spriteBatch, "Kamilla Dzhumasheva, Michail Rodomakin", new Vector2(viewport.Width / 2f, panelRect.Y + 204f), GameColors.VictoryText, 0.48f);
-            DrawCenteredText(spriteBatch, "contact email: not available yet", new Vector2(viewport.Width / 2f, panelRect.Y + 252f), GameColors.VictoryAccent, 0.46f);
-            DrawCenteredText(spriteBatch, "leave a review on the site. the site is not available yet either", new Vector2(viewport.Width / 2f, panelRect.Y + 282f), GameColors.VictoryAccent, 0.38f);
             DrawCenteredText(spriteBatch, "PRESS ANY GAME KEY TO SKIP", new Vector2(viewport.Width / 2f, panelRect.Bottom - 78f), GameColors.VictoryText, 0.62f);
 
             spriteBatch.End();
