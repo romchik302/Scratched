@@ -32,7 +32,6 @@ namespace Vibe_Game.Gameplay.Entities.Player
 
         public void TakeDamage(float amount)
         {
-            if (amount <= 0) return;
             Health -= amount;
             if (Health < 0) Health = 0;
         }

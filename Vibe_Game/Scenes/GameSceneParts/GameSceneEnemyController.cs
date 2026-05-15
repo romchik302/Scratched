@@ -421,8 +421,6 @@ namespace Vibe_Game.Scenes
             if (floorIndex != FloorConfig.BossFloorIndex)
                 return;
 
-            var rng = new Random(unchecked(floorIndex * 911 ^ 0xB055));
-
             for (int gx = 0; gx < WorldConfig.GridSize; gx++)
             {
                 for (int gy = 0; gy < WorldConfig.GridSize; gy++)
@@ -431,7 +429,7 @@ namespace Vibe_Game.Scenes
                     if (room?.Type != LevelGenerator.RoomType.Boss)
                         continue;
 
-                    Vector2 spawnWorld = _world.GetRandomFreeTilePosition(room, gx, gy, rng);
+                    Vector2 spawnWorld = _world.GetRoomCenterWorldPosition(gx, gy);
                     spawnWorld = _world.PushEnemyOutOfWalls(spawnWorld, EnemyConfig.BossRadius);
                     BossEnemy boss = new BossEnemy(spawnWorld, _wallCollision)
                     {
@@ -473,7 +471,7 @@ namespace Vibe_Game.Scenes
             }
 
             AssignEnemyFloor(enemy, _state.CurrentFloorIndex);
-            enemy.Activate(skipDelay: false);
+            enemy.Activate(skipDelay: true);
             enemy.PrimeSpriteConfiguration();
             room.enemies.Add(enemy);
         }

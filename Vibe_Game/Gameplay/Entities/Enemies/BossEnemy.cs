@@ -109,6 +109,8 @@ public sealed class BossEnemy : Enemy
     {
     }
 
+    private Vector2 AttackOrigin => GetBossDrawAnchor();
+
     protected override void UpdateEnemy(GameTime gameTime)
     {
         float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -163,7 +165,7 @@ public sealed class BossEnemy : Enemy
             return;
         }
 
-        MoveTowardPlayer(dt);
+        Velocity = Vector2.Zero;
         _spriteRow = EnemyConfig.BossSheetIdleRow;
         UpdateBossSpriteAnimation(dt);
         StartAttack(ChooseNextAttack());
@@ -270,20 +272,6 @@ public sealed class BossEnemy : Enemy
         return true;
     }
 
-    private void MoveTowardPlayer(float dt)
-    {
-        Vector2 toTarget = ChaseTarget - Position;
-        if (toTarget.LengthSquared() < 4f)
-        {
-            Velocity = Vector2.Zero;
-            return;
-        }
-
-        toTarget.Normalize();
-        Position = ResolveWallCollision(Position, toTarget * MoveSpeed * dt);
-        Velocity = Vector2.Zero;
-    }
-
     private BossAttackType ChooseNextAttack()
     {
         (BossAttackType type, float weight)[] weighted =
@@ -352,8 +340,11 @@ public sealed class BossEnemy : Enemy
                 break;
 
             case BossAttackType.SummonMinions:
-                _summonIntroRemaining = EnemyConfig.BossSheetCommonFramesCount * commonDur;
-                _attackTimer = _summonIntroRemaining + GetSummonStaticDurationSeconds();
+                _summonIntroRemaining = rotateDur;
+                _attackTimer = GetSummonAttackDurationSeconds();
+                _spriteRow = EnemyConfig.BossSheetAttackRow;
+                _spriteFrame = 0;
+                _spriteAnimTimer = 0f;
                 break;
         }
 
@@ -361,12 +352,12 @@ public sealed class BossEnemy : Enemy
             GameplayAudio.PlayBossAttack();
     }
 
-    private static float GetSummonStaticDurationSeconds()
+    private static float GetSummonAttackDurationSeconds()
     {
-        float idleLoop = EnemyConfig.BossSheetCommonFramesCount * EnemyConfig.BossIdleRowFrameDurationSeconds;
-        float need = EnemyConfig.EnemyActivationDelaySeconds;
-        int n = (int)Math.Ceiling(need / Math.Max(0.01f, idleLoop));
-        return Math.Max(1, n) * idleLoop;
+        float intro = EnemyConfig.BossSheetCommonFramesCount * EnemyConfig.BossCommonAnimFrameDurationSeconds;
+        float fliesLoop = EnemyConfig.BossSheetFliesAttckFramesCount * EnemyConfig.BossFlyIdleAnimFrameDurationSeconds;
+        int loops = Math.Max(1, EnemyConfig.BossSummonFliesAnimLoopCount);
+        return intro + loops * fliesLoop;
     }
 
     private void EndAttackAndEnterCooldown()
@@ -398,10 +389,9 @@ public sealed class BossEnemy : Enemy
                 break;
 
             case BossAttackType.SummonMinions:
-                if (_summonIntroRemaining > 0f)
-                    _spriteRow = EnemyConfig.BossSheetAttackRow;
-                else
-                    _spriteRow = EnemyConfig.BossSheetFliesAttackIdleRow;
+                _spriteRow = _summonSpawned
+                    ? EnemyConfig.BossSheetFliesAttackIdleRow
+                    : EnemyConfig.BossSheetAttackRow;
                 break;
 
             default:
@@ -474,6 +464,7 @@ public sealed class BossEnemy : Enemy
         if (ProjectileSpawner == null)
             return;
 
+        Vector2 origin = AttackOrigin;
         int count = Math.Max(8, SpikeBurstProjectileCount);
         float step = MathHelper.TwoPi / count;
 
@@ -483,7 +474,7 @@ public sealed class BossEnemy : Enemy
             Vector2 dir = new Vector2(MathF.Cos(angle), MathF.Sin(angle));
             ProjectileSpawner.Invoke(new ProjectileSpawnArgs
             {
-                Position = Position + dir * SpikeBurstSpawnRadius,
+                Position = origin + dir * SpikeBurstSpawnRadius,
                 Direction = dir,
                 Speed = SpikeBurstProjectileSpeed,
                 Damage = ContactDamage,
@@ -508,7 +499,8 @@ public sealed class BossEnemy : Enemy
         if (special == 0)
             return;
 
-        Vector2 toPlayer = ChaseTarget - Position;
+        Vector2 origin = AttackOrigin;
+        Vector2 toPlayer = ChaseTarget - origin;
         if (toPlayer.LengthSquared() < 0.0001f)
             toPlayer = Vector2.UnitY;
         else
@@ -522,7 +514,7 @@ public sealed class BossEnemy : Enemy
             Vector2 dir = new Vector2(MathF.Cos(ang), MathF.Sin(ang));
             ProjectileSpawner.Invoke(new ProjectileSpawnArgs
             {
-                Position = Position + dir * (SpikeBurstSpawnRadius * 0.4f),
+                Position = origin + dir * (SpikeBurstSpawnRadius * 0.4f),
                 Direction = dir,
                 Speed = EnemyConfig.BossBurstSpecialProjectileSpeed,
                 Damage = ContactDamage,
@@ -544,6 +536,7 @@ public sealed class BossEnemy : Enemy
         if (ProjectileSpawner == null)
             return;
 
+        Vector2 origin = AttackOrigin;
         int count = Math.Max(6, SpinningSpikeCount);
         float step = MathHelper.TwoPi / count;
 
@@ -553,7 +546,7 @@ public sealed class BossEnemy : Enemy
             Vector2 outward = new Vector2(MathF.Cos(angle), MathF.Sin(angle));
             ProjectileSpawner.Invoke(new ProjectileSpawnArgs
             {
-                Position = Position + outward * SpinningSpikeOrbitRadius,
+                Position = origin + outward * SpinningSpikeOrbitRadius,
                 Direction = Vector2.Zero,
                 Speed = SpinningSpikeReleaseSpeed,
                 Damage = ContactDamage,
@@ -562,7 +555,8 @@ public sealed class BossEnemy : Enemy
                 RecoilForce = 0f,
                 IsFriendlyToPlayer = false,
                 UseOrbitMotion = true,
-                OrbitCenter = Position,
+                OrbitCenter = origin,
+                OrbitCenterFollow = () => AttackOrigin,
                 OrbitRadius = SpinningSpikeOrbitRadius,
                 OrbitStartAngle = angle,
                 OrbitAngularSpeed = SpinningSpikeAngularSpeed,
@@ -581,7 +575,7 @@ public sealed class BossEnemy : Enemy
         _spriteFrame = 0;
         _spriteAnimTimer = 0f;
 
-        _burrowTrailPosition = Position;
+        _burrowTrailPosition = AttackOrigin;
         _burrowWindupRemaining = EnemyConfig.BossSheetCommonFramesCount * EnemyConfig.BossCommonAnimFrameDurationSeconds;
         _attackTimer = _burrowWindupRemaining + BurrowTravelDuration;
         _spriteRow = EnemyConfig.BossSheetBurrowRow;
@@ -602,9 +596,10 @@ public sealed class BossEnemy : Enemy
 
                 Vector2 toTarget = ChaseTarget - _burrowTrailPosition;
 
-                if (toTarget.LengthSquared() > 1f) { 
+                if (toTarget.LengthSquared() > 1f)
+                {
                     Vector2 dir = Vector2.Normalize(toTarget);
-                    _burrowTrailPosition += dir * BurrowTrailSpeed * dt; 
+                    _burrowTrailPosition = ResolveWallCollision(_burrowTrailPosition, dir * BurrowTrailSpeed * dt);
                 }
 
                 if (_attackTimer <= 0f) { 
@@ -638,12 +633,17 @@ public sealed class BossEnemy : Enemy
         if (SummonEnemy == null)
             return;
 
-        int summonCount = _rng.Next(Math.Max(1, SummonMinCount), Math.Max(SummonMinCount + 1, SummonMaxCount + 1));
+        _spriteRow = EnemyConfig.BossSheetFliesAttackIdleRow;
+        _spriteFrame = 0;
+        _spriteAnimTimer = 0f;
+
+        int summonCount = _rng.Next(SummonMinCount, SummonMaxCount + 1);
+        summonCount = Math.Clamp(summonCount, SummonMinCount, SummonMaxCount);
         for (int i = 0; i < summonCount; i++)
         {
             float angle = (float)_rng.NextDouble() * MathHelper.TwoPi;
             float radius = NextRange(SummonSpawnRadius * 0.55f, SummonSpawnRadius);
-            Vector2 spawnPos = Position + new Vector2(MathF.Cos(angle), MathF.Sin(angle)) * radius;
+            Vector2 spawnPos = AttackOrigin + new Vector2(MathF.Cos(angle), MathF.Sin(angle)) * radius;
             bool spawnShooter = _rng.NextDouble() < SummonShooterChance;
             SummonEnemy.Invoke(spawnPos, spawnShooter);
         }
