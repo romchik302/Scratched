@@ -466,7 +466,7 @@
   },
   "index.html": {
     "href": "index.html",
-    "title": "This is the HOMEPAGE.",
-    "summary": "This is the HOMEPAGE. Refer to Markdown for how to write markdown files. Quick Start Notes: Add images to the images folder if the file is referencing an image."
+    "title": "Добро пожаловать в техническую документацию игры Scratched!",
+    "summary": "Markdown Добро пожаловать в техническую документацию игры Scratched! Быстрый старт Для просмотра описания классов и методов проекта откройте Справочник API(Код). Важно: Перед сборкой проекта убедитесь, что у вас установлена библиотека MonoGame/XNA актуальной версии."
   }
 }
