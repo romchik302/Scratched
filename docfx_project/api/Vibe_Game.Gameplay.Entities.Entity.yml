@@ -1,0 +1,838 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Gameplay.Entities.Entity
+  commentId: T:Vibe_Game.Gameplay.Entities.Entity
+  id: Entity
+  parent: Vibe_Game.Gameplay.Entities
+  children:
+  - Vibe_Game.Gameplay.Entities.Entity.#ctor
+  - Vibe_Game.Gameplay.Entities.Entity.Color
+  - Vibe_Game.Gameplay.Entities.Entity.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  - Vibe_Game.Gameplay.Entities.Entity.GetBounds
+  - Vibe_Game.Gameplay.Entities.Entity.IsAlive
+  - Vibe_Game.Gameplay.Entities.Entity.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+  - Vibe_Game.Gameplay.Entities.Entity.Origin
+  - Vibe_Game.Gameplay.Entities.Entity.Position
+  - Vibe_Game.Gameplay.Entities.Entity.Texture
+  - Vibe_Game.Gameplay.Entities.Entity.Update(Microsoft.Xna.Framework.GameTime)
+  - Vibe_Game.Gameplay.Entities.Entity.Velocity
+  langs:
+  - csharp
+  - vb
+  name: Entity
+  nameWithType: Entity
+  fullName: Vibe_Game.Gameplay.Entities.Entity
+  type: Class
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Entity.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities
+  summary: 'Базовый игровой объект. Предоставляет общую функциональность для всех сущностей игры: позицию, движение, отрисовку, загрузку ресурсов и коллизии.'
+  example: []
+  syntax:
+    content: public abstract class Entity
+    content.vb: Public MustInherit Class Entity
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity
+  - Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  - Vibe_Game.Gameplay.Entities.Player.Player
+  - Vibe_Game.Gameplay.Projectiles.Projectile
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Vibe_Game.Gameplay.Entities.Entity.Origin
+  commentId: F:Vibe_Game.Gameplay.Entities.Entity.Origin
+  id: Origin
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: Origin
+  nameWithType: Entity.Origin
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Origin
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Entity.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities
+  summary: Точка привязки спрайта при отрисовке. По умолчанию находится в начале координат текстуры.
+  example: []
+  syntax:
+    content: protected Vector2 Origin
+    return:
+      type: Microsoft.Xna.Framework.Vector2
+    content.vb: Protected Origin As Vector2
+- uid: Vibe_Game.Gameplay.Entities.Entity.Update(Microsoft.Xna.Framework.GameTime)
+  commentId: M:Vibe_Game.Gameplay.Entities.Entity.Update(Microsoft.Xna.Framework.GameTime)
+  id: Update(Microsoft.Xna.Framework.GameTime)
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: Update(GameTime)
+  nameWithType: Entity.Update(GameTime)
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Update(Microsoft.Xna.Framework.GameTime)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Entity.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities
+  summary: Обновляет состояние объекта. Базовая реализация выполняет перемещение на основе текущей скорости.
+  example: []
+  syntax:
+    content: public virtual void Update(GameTime gameTime)
+    parameters:
+    - id: gameTime
+      type: Microsoft.Xna.Framework.GameTime
+      description: Время, прошедшее с момента последнего обновления.
+    content.vb: Public Overridable Sub Update(gameTime As GameTime)
+  overload: Vibe_Game.Gameplay.Entities.Entity.Update*
+- uid: Vibe_Game.Gameplay.Entities.Entity.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  commentId: M:Vibe_Game.Gameplay.Entities.Entity.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  id: Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: Draw(SpriteBatch)
+  nameWithType: Entity.Draw(SpriteBatch)
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Entity.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities
+  summary: Отрисовывает объект на экране. Использует текстуру, позицию и цвет сущности.
+  example: []
+  syntax:
+    content: public virtual void Draw(SpriteBatch spriteBatch)
+    parameters:
+    - id: spriteBatch
+      type: Microsoft.Xna.Framework.Graphics.SpriteBatch
+      description: Экземпляр SpriteBatch, используемый для отрисовки графики.
+    content.vb: Public Overridable Sub Draw(spriteBatch As SpriteBatch)
+  overload: Vibe_Game.Gameplay.Entities.Entity.Draw*
+- uid: Vibe_Game.Gameplay.Entities.Entity.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+  commentId: M:Vibe_Game.Gameplay.Entities.Entity.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+  id: LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: LoadContent(ContentManager)
+  nameWithType: Entity.LoadContent(ContentManager)
+  fullName: Vibe_Game.Gameplay.Entities.Entity.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Entity.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities
+  summary: Загружает ресурсы объекта. Переопределяется наследниками при необходимости.
+  example: []
+  syntax:
+    content: public virtual void LoadContent(ContentManager content)
+    parameters:
+    - id: content
+      type: Microsoft.Xna.Framework.Content.ContentManager
+      description: Менеджер контента MonoGame для загрузки графических ресурсов.
+    content.vb: Public Overridable Sub LoadContent(content As ContentManager)
+  overload: Vibe_Game.Gameplay.Entities.Entity.LoadContent*
+- uid: Vibe_Game.Gameplay.Entities.Entity.GetBounds
+  commentId: M:Vibe_Game.Gameplay.Entities.Entity.GetBounds
+  id: GetBounds
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: GetBounds()
+  nameWithType: Entity.GetBounds()
+  fullName: Vibe_Game.Gameplay.Entities.Entity.GetBounds()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Entity.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities
+  summary: Возвращает область столкновения объекта. Используется системой коллизий и проверкой попаданий.
+  example: []
+  syntax:
+    content: public virtual Rectangle GetBounds()
+    return:
+      type: Microsoft.Xna.Framework.Rectangle
+    content.vb: Public Overridable Function GetBounds() As Rectangle
+  overload: Vibe_Game.Gameplay.Entities.Entity.GetBounds*
+- uid: Vibe_Game.Gameplay.Entities.Entity.#ctor
+  commentId: M:Vibe_Game.Gameplay.Entities.Entity.#ctor
+  id: '#ctor'
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: Entity()
+  nameWithType: Entity.Entity()
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Entity()
+  type: Constructor
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Entity.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities
+  syntax:
+    content: protected Entity()
+    content.vb: Protected Sub New()
+  overload: Vibe_Game.Gameplay.Entities.Entity.#ctor*
+  nameWithType.vb: Entity.New()
+  fullName.vb: Vibe_Game.Gameplay.Entities.Entity.New()
+  name.vb: New()
+- uid: Vibe_Game.Gameplay.Entities.Entity.Position
+  commentId: P:Vibe_Game.Gameplay.Entities.Entity.Position
+  id: Position
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: Position
+  nameWithType: Entity.Position
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Position
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Entity.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities
+  summary: Текущая позиция объекта в мировых координатах.
+  example: []
+  syntax:
+    content: public Vector2 Position { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Vector2
+    content.vb: Public Property Position As Vector2
+  overload: Vibe_Game.Gameplay.Entities.Entity.Position*
+- uid: Vibe_Game.Gameplay.Entities.Entity.Velocity
+  commentId: P:Vibe_Game.Gameplay.Entities.Entity.Velocity
+  id: Velocity
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: Velocity
+  nameWithType: Entity.Velocity
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Velocity
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Entity.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities
+  summary: Текущая скорость объекта. Используется для расчета перемещения между кадрами.
+  example: []
+  syntax:
+    content: public Vector2 Velocity { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Vector2
+    content.vb: Public Property Velocity As Vector2
+  overload: Vibe_Game.Gameplay.Entities.Entity.Velocity*
+- uid: Vibe_Game.Gameplay.Entities.Entity.IsAlive
+  commentId: P:Vibe_Game.Gameplay.Entities.Entity.IsAlive
+  id: IsAlive
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: IsAlive
+  nameWithType: Entity.IsAlive
+  fullName: Vibe_Game.Gameplay.Entities.Entity.IsAlive
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Entity.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities
+  summary: Показывает, активен ли объект. Если значение равно false, объект считается уничтоженным.
+  example: []
+  syntax:
+    content: public bool IsAlive { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsAlive As Boolean
+  overload: Vibe_Game.Gameplay.Entities.Entity.IsAlive*
+- uid: Vibe_Game.Gameplay.Entities.Entity.Texture
+  commentId: P:Vibe_Game.Gameplay.Entities.Entity.Texture
+  id: Texture
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: Texture
+  nameWithType: Entity.Texture
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Texture
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Entity.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities
+  summary: Основная текстура объекта. Используется базовой реализацией отрисовки.
+  example: []
+  syntax:
+    content: protected Texture2D Texture { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Graphics.Texture2D
+    content.vb: Protected Property Texture As Texture2D
+  overload: Vibe_Game.Gameplay.Entities.Entity.Texture*
+- uid: Vibe_Game.Gameplay.Entities.Entity.Color
+  commentId: P:Vibe_Game.Gameplay.Entities.Entity.Color
+  id: Color
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: Color
+  nameWithType: Entity.Color
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Color
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Entity.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities
+  summary: Цветовой множитель, применяемый при отрисовке. Может использоваться для эффектов урона, прозрачности и других визуальных состояний.
+  example: []
+  syntax:
+    content: protected Color Color { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Protected Property Color As Color
+  overload: Vibe_Game.Gameplay.Entities.Entity.Color*
+references:
+- uid: Vibe_Game.Gameplay.Entities
+  commentId: N:Vibe_Game.Gameplay.Entities
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Gameplay.Entities
+  nameWithType: Vibe_Game.Gameplay.Entities
+  fullName: Vibe_Game.Gameplay.Entities
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.Xna.Framework.Vector2
+  commentId: T:Microsoft.Xna.Framework.Vector2
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Microsoft.Xna.Framework.Vector2
+- uid: Microsoft.Xna.Framework
+  commentId: N:Microsoft.Xna.Framework
+  isExternal: true
+  name: Microsoft.Xna.Framework
+  nameWithType: Microsoft.Xna.Framework
+  fullName: Microsoft.Xna.Framework
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+- uid: Vibe_Game.Gameplay.Entities.Entity.Update*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Entity.Update
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Update_Microsoft_Xna_Framework_GameTime_
+  name: Update
+  nameWithType: Entity.Update
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Update
+- uid: Microsoft.Xna.Framework.GameTime
+  commentId: T:Microsoft.Xna.Framework.GameTime
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: GameTime
+  nameWithType: GameTime
+  fullName: Microsoft.Xna.Framework.GameTime
+- uid: Vibe_Game.Gameplay.Entities.Entity.Draw*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Entity.Draw
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_
+  name: Draw
+  nameWithType: Entity.Draw
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Draw
+- uid: Microsoft.Xna.Framework.Graphics.SpriteBatch
+  commentId: T:Microsoft.Xna.Framework.Graphics.SpriteBatch
+  parent: Microsoft.Xna.Framework.Graphics
+  isExternal: true
+  name: SpriteBatch
+  nameWithType: SpriteBatch
+  fullName: Microsoft.Xna.Framework.Graphics.SpriteBatch
+- uid: Microsoft.Xna.Framework.Graphics
+  commentId: N:Microsoft.Xna.Framework.Graphics
+  isExternal: true
+  name: Microsoft.Xna.Framework.Graphics
+  nameWithType: Microsoft.Xna.Framework.Graphics
+  fullName: Microsoft.Xna.Framework.Graphics
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework.Graphics
+    name: Graphics
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework.Graphics
+    name: Graphics
+    isExternal: true
+- uid: Vibe_Game.Gameplay.Entities.Entity.LoadContent*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Entity.LoadContent
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_LoadContent_Microsoft_Xna_Framework_Content_ContentManager_
+  name: LoadContent
+  nameWithType: Entity.LoadContent
+  fullName: Vibe_Game.Gameplay.Entities.Entity.LoadContent
+- uid: Microsoft.Xna.Framework.Content.ContentManager
+  commentId: T:Microsoft.Xna.Framework.Content.ContentManager
+  parent: Microsoft.Xna.Framework.Content
+  isExternal: true
+  name: ContentManager
+  nameWithType: ContentManager
+  fullName: Microsoft.Xna.Framework.Content.ContentManager
+- uid: Microsoft.Xna.Framework.Content
+  commentId: N:Microsoft.Xna.Framework.Content
+  isExternal: true
+  name: Microsoft.Xna.Framework.Content
+  nameWithType: Microsoft.Xna.Framework.Content
+  fullName: Microsoft.Xna.Framework.Content
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework.Content
+    name: Content
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework.Content
+    name: Content
+    isExternal: true
+- uid: Vibe_Game.Gameplay.Entities.Entity.GetBounds*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Entity.GetBounds
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_GetBounds
+  name: GetBounds
+  nameWithType: Entity.GetBounds
+  fullName: Vibe_Game.Gameplay.Entities.Entity.GetBounds
+- uid: Microsoft.Xna.Framework.Rectangle
+  commentId: T:Microsoft.Xna.Framework.Rectangle
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Rectangle
+  nameWithType: Rectangle
+  fullName: Microsoft.Xna.Framework.Rectangle
+- uid: Vibe_Game.Gameplay.Entities.Entity.#ctor*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Entity.#ctor
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity__ctor
+  name: Entity
+  nameWithType: Entity.Entity
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Entity
+  nameWithType.vb: Entity.New
+  fullName.vb: Vibe_Game.Gameplay.Entities.Entity.New
+  name.vb: New
+- uid: Vibe_Game.Gameplay.Entities.Entity.Position*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Entity.Position
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Position
+  name: Position
+  nameWithType: Entity.Position
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Position
+- uid: Vibe_Game.Gameplay.Entities.Entity.Velocity*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Entity.Velocity
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Velocity
+  name: Velocity
+  nameWithType: Entity.Velocity
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Velocity
+- uid: Vibe_Game.Gameplay.Entities.Entity.IsAlive*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Entity.IsAlive
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_IsAlive
+  name: IsAlive
+  nameWithType: Entity.IsAlive
+  fullName: Vibe_Game.Gameplay.Entities.Entity.IsAlive
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vibe_Game.Gameplay.Entities.Entity.Texture*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Entity.Texture
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Texture
+  name: Texture
+  nameWithType: Entity.Texture
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Texture
+- uid: Microsoft.Xna.Framework.Graphics.Texture2D
+  commentId: T:Microsoft.Xna.Framework.Graphics.Texture2D
+  parent: Microsoft.Xna.Framework.Graphics
+  isExternal: true
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: Microsoft.Xna.Framework.Graphics.Texture2D
+- uid: Vibe_Game.Gameplay.Entities.Entity.Color*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Entity.Color
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Color
+  name: Color
+  nameWithType: Entity.Color
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Color
+- uid: Microsoft.Xna.Framework.Color
+  commentId: T:Microsoft.Xna.Framework.Color
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Color
+  nameWithType: Color
+  fullName: Microsoft.Xna.Framework.Color

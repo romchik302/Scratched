@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Enemy </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Enemy ">
+      
+      <meta name="description" content="Базовый враг: здоровье, активация при входе в комнату, общий жизненный цикл. Конкретное поведение (как ходит, какая коллизия) — в наследниках через . Наследует : позиция, IsAlive, при желании Texture для отрисовки по умолчанию.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy">
+
+
+
+  <h1 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy" class="text-break">
+Class Enemy  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vibe_Game.html">Vibe_Game</a>.<a class="xref" href="Vibe_Game.Gameplay.html">Gameplay</a>.<a class="xref" href="Vibe_Game.Gameplay.Entities.html">Entities</a>.<a class="xref" href="Vibe_Game.Gameplay.Entities.Enemies.html">Enemies</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Vibe_Game.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Базовый враг: здоровье, активация при входе в комнату, общий жизненный цикл.
+Конкретное поведение (как ходит, какая коллизия) — в наследниках через <a class="xref" href="Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_UpdateEnemy_Microsoft_Xna_Framework_GameTime_">UpdateEnemy(GameTime)</a>.
+Наследует <a class="xref" href="Vibe_Game.Gameplay.Entities.Entity.html">Entity</a>: позиция, IsAlive, при желании Texture для отрисовки по умолчанию.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class Enemy : Entity</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Vibe_Game.Gameplay.Entities.Entity.html">Entity</a></div>
+      <div><span class="xref">Enemy</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="Vibe_Game.Gameplay.Entities.Enemies.BossEnemy.html">BossEnemy</a></div>
+      <div><a class="xref" href="Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html">ChasingEnemy</a></div>
+      <div><a class="xref" href="Vibe_Game.Gameplay.Entities.Enemies.FlyingEnemy.html">FlyingEnemy</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Origin">Entity.Origin</a>
+    </div>
+    <div>
+      <a class="xref" href="Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_LoadContent_Microsoft_Xna_Framework_Content_ContentManager_">Entity.LoadContent(ContentManager)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_GetBounds">Entity.GetBounds()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Position">Entity.Position</a>
+    </div>
+    <div>
+      <a class="xref" href="Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Velocity">Entity.Velocity</a>
+    </div>
+    <div>
+      <a class="xref" href="Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_IsAlive">Entity.IsAlive</a>
+    </div>
+    <div>
+      <a class="xref" href="Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Texture">Entity.Texture</a>
+    </div>
+    <div>
+      <a class="xref" href="Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Color">Entity.Color</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy__ctor_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.#ctor*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy__ctor_Microsoft_Xna_Framework_Vector2_System_Int32_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.#ctor(Microsoft.Xna.Framework.Vector2,System.Int32)">
+  Enemy(Vector2, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Инициализирует базовые параметры сущности врага.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Enemy(Vector2 position, int maxHealth)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>position</code> <span class="xref">Vector2</span></dt>
+    <dd><p>Начальная позиция спавна врага в мировых координатах.</p>
+</dd>
+    <dt><code>maxHealth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Максимальное количество очков здоровья.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy__ambientSoundTimer" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy._ambientSoundTimer">
+  _ambientSoundTimer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Таймер для отсчета интервала между воспроизведением фоновых (эмбиент) звуков врага.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected float _ambientSoundTimer</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_ActivationSkippedDelay_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.ActivationSkippedDelay*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_ActivationSkippedDelay" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.ActivationSkippedDelay">
+  ActivationSkippedDelay
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>True, если активация была с <code class="paramref">skipDelay</code> (призыв босса и т.п.).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool ActivationSkippedDelay { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_AmbientSoundInterval_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.AmbientSoundInterval*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_AmbientSoundInterval" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.AmbientSoundInterval">
+  AmbientSoundInterval
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Интервал времени (в секундах) между автоматическими повторениями фонового звука.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual float AmbientSoundInterval { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_CanDealContactDamage_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.CanDealContactDamage*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_CanDealContactDamage" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.CanDealContactDamage">
+  CanDealContactDamage
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Определяет, может ли враг наносить контактный урон игроку.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool CanDealContactDamage { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_Facing_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.Facing*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_Facing" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.Facing">
+  Facing
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Enemy.FacingDirection Facing { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vibe_Game.Gameplay.Entities.Enemies.Enemy.html">Enemy</a>.<a class="xref" href="Vibe_Game.Gameplay.Entities.Enemies.Enemy.FacingDirection.html">FacingDirection</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_FloorIndex_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.FloorIndex*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_FloorIndex" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.FloorIndex">
+  FloorIndex
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Номер этажа, на котором находится враг. Влияет на масштабирование характеристик (HP, урон).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int FloorIndex { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_Health_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.Health*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_Health" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.Health">
+  Health
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Текущее количество здоровья врага. Если здоровье равно 0, враг считается мертвым.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Health { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_IsActivated_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.IsActivated*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_IsActivated" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.IsActivated">
+  IsActivated
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Пока false — AI и движение не крутятся (враг «спит» до входа игрока в комнату).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsActivated { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_IsInvulnerable_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.IsInvulnerable*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_IsInvulnerable" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.IsInvulnerable">
+  IsInvulnerable
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Определяет, может ли враг получать урон.
+Переопределяется особыми типами врагов.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool IsInvulnerable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_MaxHealth_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.MaxHealth*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_MaxHealth" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.MaxHealth">
+  MaxHealth
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Максимальное количество здоровья врага, используемое при инициализации.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxHealth { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_PenetrationRadius_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.PenetrationRadius*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_PenetrationRadius" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.PenetrationRadius">
+  PenetrationRadius
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Радиус врезания в игрока (на какое расстояние враг может зайти в игрока).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float PenetrationRadius { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomBehaviorChance_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomBehaviorChance*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomBehaviorChance" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomBehaviorChance">
+  RandomBehaviorChance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float RandomBehaviorChance { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomOrbitInwardWeight_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitInwardWeight*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomOrbitInwardWeight" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitInwardWeight">
+  RandomOrbitInwardWeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float RandomOrbitInwardWeight { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomOrbitLateralWeight_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitLateralWeight*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomOrbitLateralWeight" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitLateralWeight">
+  RandomOrbitLateralWeight
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float RandomOrbitLateralWeight { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomOrbitMaxDuration_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitMaxDuration*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomOrbitMaxDuration" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitMaxDuration">
+  RandomOrbitMaxDuration
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float RandomOrbitMaxDuration { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomOrbitMinDuration_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitMinDuration*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomOrbitMinDuration" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitMinDuration">
+  RandomOrbitMinDuration
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float RandomOrbitMinDuration { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomOrbitSpeedMultiplier_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitSpeedMultiplier*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomOrbitSpeedMultiplier" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitSpeedMultiplier">
+  RandomOrbitSpeedMultiplier
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float RandomOrbitSpeedMultiplier { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomPauseMaxDuration_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomPauseMaxDuration*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomPauseMaxDuration" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomPauseMaxDuration">
+  RandomPauseMaxDuration
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float RandomPauseMaxDuration { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomPauseMinDuration_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomPauseMinDuration*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomPauseMinDuration" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomPauseMinDuration">
+  RandomPauseMinDuration
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float RandomPauseMinDuration { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomSideDashMaxDuration_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomSideDashMaxDuration*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomSideDashMaxDuration" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomSideDashMaxDuration">
+  RandomSideDashMaxDuration
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float RandomSideDashMaxDuration { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomSideDashMinDuration_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomSideDashMinDuration*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomSideDashMinDuration" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomSideDashMinDuration">
+  RandomSideDashMinDuration
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float RandomSideDashMinDuration { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomSideDashSpeedMultiplier_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomSideDashSpeedMultiplier*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomSideDashSpeedMultiplier" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomSideDashSpeedMultiplier">
+  RandomSideDashSpeedMultiplier
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float RandomSideDashSpeedMultiplier { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomZigzagAmplitude_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagAmplitude*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomZigzagAmplitude" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagAmplitude">
+  RandomZigzagAmplitude
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float RandomZigzagAmplitude { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomZigzagDirectionChangeInterval_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagDirectionChangeInterval*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomZigzagDirectionChangeInterval" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagDirectionChangeInterval">
+  RandomZigzagDirectionChangeInterval
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float RandomZigzagDirectionChangeInterval { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomZigzagMaxDuration_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagMaxDuration*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomZigzagMaxDuration" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagMaxDuration">
+  RandomZigzagMaxDuration
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float RandomZigzagMaxDuration { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomZigzagMinDuration_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagMinDuration*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomZigzagMinDuration" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagMinDuration">
+  RandomZigzagMinDuration
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float RandomZigzagMinDuration { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomZigzagSpeedMultiplier_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagSpeedMultiplier*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomZigzagSpeedMultiplier" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagSpeedMultiplier">
+  RandomZigzagSpeedMultiplier
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float RandomZigzagSpeedMultiplier { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RecoilResistance_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RecoilResistance*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_RecoilResistance" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.RecoilResistance">
+  RecoilResistance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Сопротивление отдаче (0.0 = полная отдача, 1.0 = не отталкивается).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float RecoilResistance { get; protected set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_SharedAdaptiveTexture_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedAdaptiveTexture*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_SharedAdaptiveTexture" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedAdaptiveTexture">
+  SharedAdaptiveTexture
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static Texture2D SharedAdaptiveTexture { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Texture2D</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_SharedBossTexture_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedBossTexture*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_SharedBossTexture" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedBossTexture">
+  SharedBossTexture
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Texture2D SharedBossTexture { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Texture2D</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_SharedChasingTexture_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedChasingTexture*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_SharedChasingTexture" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedChasingTexture">
+  SharedChasingTexture
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static Texture2D SharedChasingTexture { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Texture2D</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_SharedDeathTexture_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedDeathTexture*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_SharedDeathTexture" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedDeathTexture">
+  SharedDeathTexture
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Texture2D SharedDeathTexture { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Texture2D</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_SharedFlyingTexture_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedFlyingTexture*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_SharedFlyingTexture" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedFlyingTexture">
+  SharedFlyingTexture
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static Texture2D SharedFlyingTexture { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Texture2D</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_Activate_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.Activate*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_Activate_System_Boolean_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.Activate(System.Boolean)">
+  Activate(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Переводит врага в активное состояние, запуская его ИИ и движение.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Activate(bool skipDelay = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>skipDelay</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Если true, пропускает задержку активации (используется для немедленного появления).</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_ApplyRecoil_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.ApplyRecoil*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_ApplyRecoil_Microsoft_Xna_Framework_Vector2_System_Single_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.ApplyRecoil(Microsoft.Xna.Framework.Vector2,System.Single)">
+  ApplyRecoil(Vector2, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Применяет импульс отталкивания к врагу.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void ApplyRecoil(Vector2 recoilDirection, float recoilForce)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>recoilDirection</code> <span class="xref">Vector2</span></dt>
+    <dd><p>Вектор направления отталкивания.</p>
+</dd>
+    <dt><code>recoilForce</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Сила отталкивания (умножается на (1 - RecoilResistance)).</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_Draw_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.Draw*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+  Draw(SpriteBatch)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Отрисовывает объект на экране. Использует текстуру, позицию и цвет сущности.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Draw(SpriteBatch spriteBatch)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>spriteBatch</code> <span class="xref">SpriteBatch</span></dt>
+    <dd><p>Экземпляр SpriteBatch, используемый для отрисовки графики.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_DrawDebugOverlay_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.DrawDebugOverlay*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_DrawDebugOverlay_Microsoft_Xna_Framework_Graphics_SpriteBatch_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.DrawDebugOverlay(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+  DrawDebugOverlay(SpriteBatch)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void DrawDebugOverlay(SpriteBatch spriteBatch)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>spriteBatch</code> <span class="xref">SpriteBatch</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_EnsureSpriteConfigured_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.EnsureSpriteConfigured*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_EnsureSpriteConfigured" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.EnsureSpriteConfigured">
+  EnsureSpriteConfigured()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Настраивает параметры спрайта, рассчитывает размеры кадров и вычленяет текстурные атласы.
+Вызывается автоматически перед отрисовкой или обновлением.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void EnsureSpriteConfigured()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetCollisionRadius_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetCollisionRadius*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetCollisionRadius" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetCollisionRadius">
+  GetCollisionRadius()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Возвращает радиус физической окружности коллизии врага, используемый по умолчанию для проверок столкновений.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual float GetCollisionRadius()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Радиус коллизии в пикселях.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugAggroRadius_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugAggroRadius*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugAggroRadius" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugAggroRadius">
+  GetDebugAggroRadius()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Возвращает текущий радиус агрессии (обнаружения) для отрисовки зеленой окружности.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual float? GetDebugAggroRadius()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd><p>Радиус в пикселях или <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>, если радиус не используется.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugAttackBounds_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugAttackBounds*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugAttackBounds" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugAttackBounds">
+  GetDebugAttackBounds()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Возвращает границы триггера атаки для отладочной визуализации.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual Rectangle? GetDebugAttackBounds()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Rectangle</span>?</dt>
+    <dd><p>Прямоугольник зоны атаки или <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>, если зоны нет.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugBodyBounds_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugBodyBounds*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugBodyBounds" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugBodyBounds">
+  GetDebugBodyBounds()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Возвращает габариты тела врага для отрисовки отладочной рамки. По умолчанию возвращает физические границы.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual Rectangle? GetDebugBodyBounds()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Rectangle</span>?</dt>
+    <dd><p>Прямоугольник коллизии или <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>, если отрисовка не требуется.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugCenter_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugCenter*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugCenter" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugCenter">
+  GetDebugCenter()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Вычисляет центральную точку сущности, используемую в качестве центра для отрисовки отладочных кругов.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual Vector2 GetDebugCenter()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector2</span></dt>
+    <dd><p>Вектор координат центра врага.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetHorizontalSpriteEffect_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetHorizontalSpriteEffect*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetHorizontalSpriteEffect" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetHorizontalSpriteEffect">
+  GetHorizontalSpriteEffect()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Возвращает параметры отражения спрайта
+для корректного отображения направления взгляда.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected SpriteEffects GetHorizontalSpriteEffect()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">SpriteEffects</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetMovementDirectionWithRandomBehavior_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetMovementDirectionWithRandomBehavior*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetMovementDirectionWithRandomBehavior_Microsoft_Xna_Framework_Vector2_System_Single_System_Single__" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetMovementDirectionWithRandomBehavior(Microsoft.Xna.Framework.Vector2,System.Single,System.Single@)">
+  GetMovementDirectionWithRandomBehavior(Vector2, float, out float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Вычисляет итоговый вектор движения с учетом случайных модификаторов поведения (зигзаги, орбиты, паузы).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Vector2 GetMovementDirectionWithRandomBehavior(Vector2 toTarget, float dt, out float speedMultiplier)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>toTarget</code> <span class="xref">Vector2</span></dt>
+    <dd><p>Вектор направления к игроку.</p>
+</dd>
+    <dt><code>dt</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Время, прошедшее с последнего кадра (DeltaTime).</p>
+</dd>
+    <dt><code>speedMultiplier</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Выходной множитель скорости для текущего поведения.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector2</span></dt>
+    <dd><p>Нормализованный вектор направления движения.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_LoadSharedTextures_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.LoadSharedTextures*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_LoadSharedTextures_Microsoft_Xna_Framework_Content_ContentManager_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.LoadSharedTextures(Microsoft.Xna.Framework.Content.ContentManager)">
+  LoadSharedTextures(ContentManager)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Загружает и кэширует общие текстуры врагов.
+Вызывается один раз и переиспользует ресурсы между экземплярами.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void LoadSharedTextures(ContentManager content)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>content</code> <span class="xref">ContentManager</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_OnActivated_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.OnActivated*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_OnActivated" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.OnActivated">
+  OnActivated()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Виртуальный метод-хук, вызываемый в момент активации врага (например, для воспроизведения стартового звука появления).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnActivated()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_PlayAmbientSound_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.PlayAmbientSound*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_PlayAmbientSound" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.PlayAmbientSound">
+  PlayAmbientSound()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит уникальный фоновый (эмбиент) звук, если враг активен и жив.
+Переопределяется в наследниках для кастомной озвучки.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void PlayAmbientSound()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_PrimeSpriteConfiguration_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.PrimeSpriteConfiguration*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_PrimeSpriteConfiguration" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.PrimeSpriteConfiguration">
+  PrimeSpriteConfiguration()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Подготавливает параметры анимации и отображения спрайта.
+Используется перед началом работы системы анимации.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PrimeSpriteConfiguration()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_ResetRandomMovementBehavior_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.ResetRandomMovementBehavior*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_ResetRandomMovementBehavior" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.ResetRandomMovementBehavior">
+  ResetRandomMovementBehavior()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Сбрасывает текущее случайное поведение врага.
+После вызова используется стандартное преследование цели.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void ResetRandomMovementBehavior()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_ResolveRecoilCollision_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.ResolveRecoilCollision*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_ResolveRecoilCollision_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.ResolveRecoilCollision(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)">
+  ResolveRecoilCollision(Vector2, Vector2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Рассчитывает и корректирует позицию врага при получении импульса отдачи, предотвращая прохождение сквозь стены.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual Vector2 ResolveRecoilCollision(Vector2 oldPos, Vector2 newPos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>oldPos</code> <span class="xref">Vector2</span></dt>
+    <dd><p>Позиция врага до применения смещения от отдачи.</p>
+</dd>
+    <dt><code>newPos</code> <span class="xref">Vector2</span></dt>
+    <dd><p>Желаемая позиция после применения смещения.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector2</span></dt>
+    <dd><p>Скорректированная координата <span class="xref">Microsoft.Xna.Framework.Vector2</span>, безопасная для перемещения.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_SetFloorIndex_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.SetFloorIndex*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_SetFloorIndex_System_Int32_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.SetFloorIndex(System.Int32)">
+  SetFloorIndex(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Устанавливает номер текущего этажа для масштабирования сложности.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetFloorIndex(int floorIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>floorIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Номер этажа (минимальное значение 1).</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_TakeDamage_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.TakeDamage*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_TakeDamage_System_Int32_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.TakeDamage(System.Int32)">
+  TakeDamage(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void TakeDamage(int amount)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>amount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_Update_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.Update*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_Update_Microsoft_Xna_Framework_GameTime_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.Update(Microsoft.Xna.Framework.GameTime)">
+  Update(GameTime)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Обновляет состояние объекта. Базовая реализация выполняет перемещение на основе текущей скорости.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Update(GameTime gameTime)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gameTime</code> <span class="xref">GameTime</span></dt>
+    <dd><p>Время, прошедшее с момента последнего обновления.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_UpdateAnimation_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateAnimation*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_UpdateAnimation_Microsoft_Xna_Framework_GameTime_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateAnimation(Microsoft.Xna.Framework.GameTime)">
+  UpdateAnimation(GameTime)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Виртуальный метод для обновления анимационных таймеров и индексов кадров.
+Переопределяется в подклассах, обладающих анимацией.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void UpdateAnimation(GameTime gameTime)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gameTime</code> <span class="xref">GameTime</span></dt>
+    <dd><p>Текущее игровое время.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_UpdateEnemy_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateEnemy*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_UpdateEnemy_Microsoft_Xna_Framework_GameTime_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateEnemy(Microsoft.Xna.Framework.GameTime)">
+  UpdateEnemy(GameTime)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Обновляет уникальную логику поведения, ИИ и перемещения конкретного типа врага.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract void UpdateEnemy(GameTime gameTime)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gameTime</code> <span class="xref">GameTime</span></dt>
+    <dd><p>Текущее игровое время.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_UpdateFacingFromDirection_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateFacingFromDirection*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_Enemy_UpdateFacingFromDirection_Microsoft_Xna_Framework_Vector2_System_Boolean_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateFacingFromDirection(Microsoft.Xna.Framework.Vector2,System.Boolean)">
+  UpdateFacingFromDirection(Vector2, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Обновляет направление взгляда (Facing) на основе вектора движения.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void UpdateFacingFromDirection(Vector2 direction, bool allowVertical = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>direction</code> <span class="xref">Vector2</span></dt>
+    <dd><p>Вектор направления движения.</p>
+</dd>
+    <dt><code>allowVertical</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Разрешает установку вертикальных направлений (Up/Down).</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

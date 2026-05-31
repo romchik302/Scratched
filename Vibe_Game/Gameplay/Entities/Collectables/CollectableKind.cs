@@ -6,7 +6,9 @@ public enum CollectableKind
     Totem,
     Feather,
     Fang,
+    /// <summary>Малое восстановление здоровья.</summary>
     HealthSmall,
+    /// <summary>Большое восстановление здоровья.</summary>
     HealthLarge,
     /// <summary>Стартовый выбор: дальнобойное оружие (только пьедестал на первом этаже).</summary>
     WeaponProjectile,

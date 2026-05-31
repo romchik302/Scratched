@@ -8,25 +8,34 @@ using Vibe_Game.Core.Utilities;
 
 namespace Vibe_Game.Gameplay.Projectiles;
 
+/// <summary>
+/// Представляет снаряд в игре. Обрабатывает логику движения, орбитального вращения, 
+/// отрисовку спрайтов и анимацию при столкновении.
+/// </summary>
 public sealed class Projectile : Entity
 {
     public Vector2 Direction { get; private set; }
     public float Speed { get; }
     public float Damage { get; }
+    /// <summary>Оставшееся время жизни снаряда в секундах.</summary>
     public float LifeLeft { get; private set; }
     public float Radius { get; private set; }
+    /// <summary>Сила отталкивания при попадании.</summary>
     public float RecoilForce { get; }
     public bool IsFriendlyToPlayer { get; }
+    /// <summary>Флаг нахождения снаряда на орбите.</summary>
     public bool IsOrbiting { get; private set; }
     public Vector2 OrbitCenter { get; private set; }
     public float OrbitRadius { get; private set; }
     public float OrbitAngle { get; private set; }
     public float OrbitAngularSpeed { get; private set; }
     public float OrbitTimeLeft { get; private set; }
+    /// <summary>Должен ли снаряд вылететь с орбиты по направлению после завершения таймера.</summary>
     public bool ReleaseAfterOrbit { get; private set; }
     public Vector2 ReleaseDirection { get; private set; }
     public bool IgnoreWallCollisions { get; private set; }
     public float Length { get; private set; }
+    /// <summary>Может ли снаряд в текущий момент наносить урон.</summary>
     public bool CanDealDamage => _canDealDamage;
 
     private Texture2D _texture;
@@ -41,6 +50,9 @@ public sealed class Projectile : Entity
     private int _sheetFrameColumns = WeaponConfig.ProjectileFrameCount;
     private float _drawSize = WeaponConfig.ProjectileSize;
 
+    /// <summary>
+    /// Инициализирует новый экземпляр снаряда.
+    /// </summary>
     public Projectile(
         Vector2 position,
         Vector2 direction,
@@ -77,6 +89,7 @@ public sealed class Projectile : Entity
         _rotation = MathF.Atan2(Direction.Y, Direction.X);
     }
 
+    /// <inheritdoc/>
     public override void LoadContent(ContentManager content)
     {
         base.LoadContent(content);
@@ -110,6 +123,7 @@ public sealed class Projectile : Entity
         }
     }
 
+    /// <inheritdoc/>
     public override void Update(GameTime gameTime)
     {
         float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -187,6 +201,10 @@ public sealed class Projectile : Entity
         }
     }
 
+    /// <summary>
+    /// Обновляет состояние анимации снаряда (полет или анимация удара).
+    /// </summary>
+    /// <param name="deltaTime">Время, прошедшее с последнего кадра в секундах.</param>
     private void UpdateAnimation(float deltaTime)
     {
         _animationTimer += deltaTime;
@@ -210,6 +228,9 @@ public sealed class Projectile : Entity
         _animationTimer = 0f;
     }
 
+    /// <summary>
+    /// Запускает анимацию удара снаряда (например, взрыв или исчезновение).
+    /// </summary>
     public void StartImpactAnimation()
     {
         if (!_isImpacting)
@@ -225,6 +246,7 @@ public sealed class Projectile : Entity
         }
     }
 
+    /// <inheritdoc/>
     public override Rectangle GetBounds()
     {
         int r = (int)Radius;
@@ -236,6 +258,7 @@ public sealed class Projectile : Entity
         );
     }
 
+    /// <inheritdoc/>
     public override void Draw(SpriteBatch spriteBatch)
     {
         if (_texture != null)
@@ -274,6 +297,17 @@ public sealed class Projectile : Entity
         return texture;
     }
 
+    /// <summary>
+    /// Конфигурирует снаряд для движения по орбите вокруг цели.
+    /// </summary>
+    /// <param name="center">Центр орбиты.</param>
+    /// <param name="radius">Радиус орбиты.</param>
+    /// <param name="startAngle">Начальный угол.</param>
+    /// <param name="angularSpeed">Скорость вращения.</param>
+    /// <param name="durationSeconds">Длительность орбитального полета.</param>
+    /// <param name="releaseAfterOrbit">Вылетит ли снаряд после завершения орбиты.</param>
+    /// <param name="releaseDirection">Направление вылета.</param>
+    /// <param name="centerFollow">Опциональный делегат для слежения за движущимся центром.</param>
     public void ConfigureOrbit(
         Vector2 center,
         float radius,

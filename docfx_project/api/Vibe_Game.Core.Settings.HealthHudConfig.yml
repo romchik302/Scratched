@@ -1,0 +1,874 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Core.Settings.HealthHudConfig
+  commentId: T:Vibe_Game.Core.Settings.HealthHudConfig
+  id: HealthHudConfig
+  parent: Vibe_Game.Core.Settings
+  children:
+  - Vibe_Game.Core.Settings.HealthHudConfig.CellHeight
+  - Vibe_Game.Core.Settings.HealthHudConfig.CellOffsetX
+  - Vibe_Game.Core.Settings.HealthHudConfig.CellOffsetY
+  - Vibe_Game.Core.Settings.HealthHudConfig.CellSpacing
+  - Vibe_Game.Core.Settings.HealthHudConfig.CellWidth
+  - Vibe_Game.Core.Settings.HealthHudConfig.Columns
+  - Vibe_Game.Core.Settings.HealthHudConfig.EmptyIdleRow
+  - Vibe_Game.Core.Settings.HealthHudConfig.EmptyToFullRow
+  - Vibe_Game.Core.Settings.HealthHudConfig.EmptyToHalfRow
+  - Vibe_Game.Core.Settings.HealthHudConfig.ExtraLivesTextOffsetY
+  - Vibe_Game.Core.Settings.HealthHudConfig.ExtraLivesTextScale
+  - Vibe_Game.Core.Settings.HealthHudConfig.FullIdleRow
+  - Vibe_Game.Core.Settings.HealthHudConfig.FullToHalfRow
+  - Vibe_Game.Core.Settings.HealthHudConfig.HalfIdleRow
+  - Vibe_Game.Core.Settings.HealthHudConfig.HalfToEmptyRow
+  - Vibe_Game.Core.Settings.HealthHudConfig.HalfToFullRow
+  - Vibe_Game.Core.Settings.HealthHudConfig.IdleCellIntervalSeconds
+  - Vibe_Game.Core.Settings.HealthHudConfig.IdleCycleIntervalSeconds
+  - Vibe_Game.Core.Settings.HealthHudConfig.IdleFrameDurationSeconds
+  - Vibe_Game.Core.Settings.HealthHudConfig.MarginRight
+  - Vibe_Game.Core.Settings.HealthHudConfig.MarginTop
+  - Vibe_Game.Core.Settings.HealthHudConfig.Rows
+  - Vibe_Game.Core.Settings.HealthHudConfig.TextureAsset
+  - Vibe_Game.Core.Settings.HealthHudConfig.TransitionFrameDurationSeconds
+  langs:
+  - csharp
+  - vb
+  name: HealthHudConfig
+  nameWithType: HealthHudConfig
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig
+  type: Class
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  summary: Конфиг отрисовки полоски здоровья игрока из спрайт-листа 8x4.
+  example: []
+  syntax:
+    content: public static class HealthHudConfig
+    content.vb: Public Module HealthHudConfig
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.TextureAsset
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.TextureAsset
+  id: TextureAsset
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: TextureAsset
+  nameWithType: HealthHudConfig.TextureAsset
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.TextureAsset
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const string TextureAsset = "healthbar_sheet"
+    return:
+      type: System.String
+    content.vb: Public Const TextureAsset As String = "healthbar_sheet"
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.Columns
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.Columns
+  id: Columns
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: Columns
+  nameWithType: HealthHudConfig.Columns
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.Columns
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int Columns = 4
+    return:
+      type: System.Int32
+    content.vb: Public Const Columns As Integer = 4
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.Rows
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.Rows
+  id: Rows
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: Rows
+  nameWithType: HealthHudConfig.Rows
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.Rows
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int Rows = 8
+    return:
+      type: System.Int32
+    content.vb: Public Const Rows As Integer = 8
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.FullIdleRow
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.FullIdleRow
+  id: FullIdleRow
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: FullIdleRow
+  nameWithType: HealthHudConfig.FullIdleRow
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.FullIdleRow
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int FullIdleRow = 0
+    return:
+      type: System.Int32
+    content.vb: Public Const FullIdleRow As Integer = 0
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.HalfIdleRow
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.HalfIdleRow
+  id: HalfIdleRow
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: HalfIdleRow
+  nameWithType: HealthHudConfig.HalfIdleRow
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.HalfIdleRow
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int HalfIdleRow = 1
+    return:
+      type: System.Int32
+    content.vb: Public Const HalfIdleRow As Integer = 1
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.EmptyIdleRow
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.EmptyIdleRow
+  id: EmptyIdleRow
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: EmptyIdleRow
+  nameWithType: HealthHudConfig.EmptyIdleRow
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.EmptyIdleRow
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int EmptyIdleRow = 2
+    return:
+      type: System.Int32
+    content.vb: Public Const EmptyIdleRow As Integer = 2
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.EmptyToHalfRow
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.EmptyToHalfRow
+  id: EmptyToHalfRow
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: EmptyToHalfRow
+  nameWithType: HealthHudConfig.EmptyToHalfRow
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.EmptyToHalfRow
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int EmptyToHalfRow = 3
+    return:
+      type: System.Int32
+    content.vb: Public Const EmptyToHalfRow As Integer = 3
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.HalfToEmptyRow
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.HalfToEmptyRow
+  id: HalfToEmptyRow
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: HalfToEmptyRow
+  nameWithType: HealthHudConfig.HalfToEmptyRow
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.HalfToEmptyRow
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int HalfToEmptyRow = 4
+    return:
+      type: System.Int32
+    content.vb: Public Const HalfToEmptyRow As Integer = 4
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.FullToHalfRow
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.FullToHalfRow
+  id: FullToHalfRow
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: FullToHalfRow
+  nameWithType: HealthHudConfig.FullToHalfRow
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.FullToHalfRow
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int FullToHalfRow = 5
+    return:
+      type: System.Int32
+    content.vb: Public Const FullToHalfRow As Integer = 5
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.EmptyToFullRow
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.EmptyToFullRow
+  id: EmptyToFullRow
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: EmptyToFullRow
+  nameWithType: HealthHudConfig.EmptyToFullRow
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.EmptyToFullRow
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int EmptyToFullRow = 6
+    return:
+      type: System.Int32
+    content.vb: Public Const EmptyToFullRow As Integer = 6
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.HalfToFullRow
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.HalfToFullRow
+  id: HalfToFullRow
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: HalfToFullRow
+  nameWithType: HealthHudConfig.HalfToFullRow
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.HalfToFullRow
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int HalfToFullRow = 7
+    return:
+      type: System.Int32
+    content.vb: Public Const HalfToFullRow As Integer = 7
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.IdleFrameDurationSeconds
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.IdleFrameDurationSeconds
+  id: IdleFrameDurationSeconds
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: IdleFrameDurationSeconds
+  nameWithType: HealthHudConfig.IdleFrameDurationSeconds
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.IdleFrameDurationSeconds
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const float IdleFrameDurationSeconds = 0.08
+    return:
+      type: System.Single
+    content.vb: Public Const IdleFrameDurationSeconds As Single = 0.08
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.TransitionFrameDurationSeconds
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.TransitionFrameDurationSeconds
+  id: TransitionFrameDurationSeconds
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: TransitionFrameDurationSeconds
+  nameWithType: HealthHudConfig.TransitionFrameDurationSeconds
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.TransitionFrameDurationSeconds
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const float TransitionFrameDurationSeconds = 0.05
+    return:
+      type: System.Single
+    content.vb: Public Const TransitionFrameDurationSeconds As Single = 0.05
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.IdleCellIntervalSeconds
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.IdleCellIntervalSeconds
+  id: IdleCellIntervalSeconds
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: IdleCellIntervalSeconds
+  nameWithType: HealthHudConfig.IdleCellIntervalSeconds
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.IdleCellIntervalSeconds
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  summary: Пауза между анимациями соседних ячеек в одном проходе.
+  example: []
+  syntax:
+    content: public const float IdleCellIntervalSeconds = 0.1
+    return:
+      type: System.Single
+    content.vb: Public Const IdleCellIntervalSeconds As Single = 0.1
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.IdleCycleIntervalSeconds
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.IdleCycleIntervalSeconds
+  id: IdleCycleIntervalSeconds
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: IdleCycleIntervalSeconds
+  nameWithType: HealthHudConfig.IdleCycleIntervalSeconds
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.IdleCycleIntervalSeconds
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  summary: Пауза перед запуском нового полного прохода по всем ячейкам.
+  example: []
+  syntax:
+    content: public const float IdleCycleIntervalSeconds = 3
+    return:
+      type: System.Single
+    content.vb: Public Const IdleCycleIntervalSeconds As Single = 3
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.CellWidth
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.CellWidth
+  id: CellWidth
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: CellWidth
+  nameWithType: HealthHudConfig.CellWidth
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.CellWidth
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int CellWidth = 50
+    return:
+      type: System.Int32
+    content.vb: Public Const CellWidth As Integer = 50
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.CellHeight
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.CellHeight
+  id: CellHeight
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: CellHeight
+  nameWithType: HealthHudConfig.CellHeight
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.CellHeight
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int CellHeight = 50
+    return:
+      type: System.Int32
+    content.vb: Public Const CellHeight As Integer = 50
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.CellSpacing
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.CellSpacing
+  id: CellSpacing
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: CellSpacing
+  nameWithType: HealthHudConfig.CellSpacing
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.CellSpacing
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int CellSpacing = 4
+    return:
+      type: System.Int32
+    content.vb: Public Const CellSpacing As Integer = 4
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.MarginRight
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.MarginRight
+  id: MarginRight
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: MarginRight
+  nameWithType: HealthHudConfig.MarginRight
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.MarginRight
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int MarginRight = 20
+    return:
+      type: System.Int32
+    content.vb: Public Const MarginRight As Integer = 20
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.MarginTop
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.MarginTop
+  id: MarginTop
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: MarginTop
+  nameWithType: HealthHudConfig.MarginTop
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.MarginTop
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int MarginTop = 20
+    return:
+      type: System.Int32
+    content.vb: Public Const MarginTop As Integer = 20
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.CellOffsetX
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.CellOffsetX
+  id: CellOffsetX
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: CellOffsetX
+  nameWithType: HealthHudConfig.CellOffsetX
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.CellOffsetX
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int CellOffsetX = 2
+    return:
+      type: System.Int32
+    content.vb: Public Const CellOffsetX As Integer = 2
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.CellOffsetY
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.CellOffsetY
+  id: CellOffsetY
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: CellOffsetY
+  nameWithType: HealthHudConfig.CellOffsetY
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.CellOffsetY
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int CellOffsetY = 2
+    return:
+      type: System.Int32
+    content.vb: Public Const CellOffsetY As Integer = 2
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.ExtraLivesTextScale
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.ExtraLivesTextScale
+  id: ExtraLivesTextScale
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: ExtraLivesTextScale
+  nameWithType: HealthHudConfig.ExtraLivesTextScale
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.ExtraLivesTextScale
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const float ExtraLivesTextScale = 0.55
+    return:
+      type: System.Single
+    content.vb: Public Const ExtraLivesTextScale As Single = 0.55
+- uid: Vibe_Game.Core.Settings.HealthHudConfig.ExtraLivesTextOffsetY
+  commentId: F:Vibe_Game.Core.Settings.HealthHudConfig.ExtraLivesTextOffsetY
+  id: ExtraLivesTextOffsetY
+  parent: Vibe_Game.Core.Settings.HealthHudConfig
+  langs:
+  - csharp
+  - vb
+  name: ExtraLivesTextOffsetY
+  nameWithType: HealthHudConfig.ExtraLivesTextOffsetY
+  fullName: Vibe_Game.Core.Settings.HealthHudConfig.ExtraLivesTextOffsetY
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int ExtraLivesTextOffsetY = 4
+    return:
+      type: System.Int32
+    content.vb: Public Const ExtraLivesTextOffsetY As Integer = 4
+references:
+- uid: Vibe_Game.Core.Settings
+  commentId: N:Vibe_Game.Core.Settings
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Core.Settings
+  nameWithType: Vibe_Game.Core.Settings
+  fullName: Vibe_Game.Core.Settings
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Settings
+    name: Settings
+    isExternal: true
+    href: Vibe_Game.Core.Settings.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Settings
+    name: Settings
+    isExternal: true
+    href: Vibe_Game.Core.Settings.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single

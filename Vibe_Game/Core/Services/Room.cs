@@ -8,29 +8,59 @@ using Vibe_Game.Gameplay.Entities.Enemies;
 
 namespace Vibe_Game.Core.Services
 {
+    /// <summary>
+    /// Представляет отдельную комнату на сгенерированном этаже. 
+    /// Управляет сеткой тайлов (Tiles), логикой расстановки препятствий, декораций и интерактивных объектов (пьедесталы, кнопки, люки).
+    /// Также хранит состояние комнаты (зачищена, заблокирована), её тип (Start, Battle, Boss, Treasure) и список находящихся внутри врагов.
+    /// </summary>
     public class Room
     {
+        /// <summary>Двумерный массив плиток (тайлов), из которых состоит комната.</summary>
         public Tile[,] Tiles { get; private set; }
+
+        /// <summary>Ширина комнаты, измеряемая в количестве тайлов.</summary>
         public int WidthInTiles { get; private set; }
+
+        /// <summary>Высота комнаты, измеряемая в количестве тайлов.</summary>
         public int HeightInTiles { get; private set; }
+
+        /// <summary>Тип комнаты (Стартовая, Босс, Сокровищница или Обычная битва).</summary>
         public LevelGenerator.RoomType Type { get; set; }
 
+        /// <summary>Указывает, заблокированы ли двери комнаты (например, во время боя).</summary>
         public bool IsLocked { get; set; }
+
+        /// <summary>Указывает, должна ли в комнате присутствовать кнопка для старта события/боя.</summary>
         public bool HasButton { get; set; }
+
+        /// <summary>Возвращает true, если кнопка в этой комнате была нажата.</summary>
         public bool IsButtonPressed => ButtonTile?.IsPressed ?? false;
+
+        /// <summary>Указывает, зачищена ли комната (пройдена или изначально безопасна).</summary>
         public bool IsCleared { get; set; }
+
+        /// <summary>Указывает, является ли эта комната точкой выхода на следующий этаж.</summary>
         public bool IsFloorExitRoom { get; set; }
+
         /// <summary>На первом этаже: комната закрыта, пока не взят один из стартовых видов оружия с пьедесталов.</summary>
         public bool RequiresStartingWeaponChoice { get; set; }
+
+        /// <summary>Возвращает координаты тайла кнопки в сетке комнаты, либо Point.Zero, если кнопки нет.</summary>
         public Point ButtonPos => ButtonTile?.GridPosition ?? Point.Zero;
+
+        /// <summary>Ссылка на объект тайла кнопки в этой комнате.</summary>
         public ButtonTile ButtonTile { get; private set; }
+
+        /// <summary>Ссылка на объект тайла люка (выхода на следующий этаж) в этой комнате.</summary>
         public TrapdoorTile FloorExitTile { get; private set; }
 
+        /// <summary>Список врагов, находящихся в данной комнате.</summary>
         public List<Enemy> enemies { get; } = new();
 
         private readonly Random _random = new Random();
         private readonly List<ExitButtonTile> _floorExitButtons = new();
 
+        /// <summary>Инициализирует новую комнату с заданными размерами и типом, создаёт базовую сетку тайлов и настраивает поведение в зависимости от типа комнаты.</summary>
         public Room(int widthInTiles, int heightInTiles, LevelGenerator.RoomType type)
         {
             WidthInTiles = widthInTiles;
@@ -47,22 +77,26 @@ namespace Vibe_Game.Core.Services
                 PlaceButton();
         }
 
+        /// <summary>Проверяет, находятся ли указанные координаты внутри границ сетки тайлов комнаты.</summary>
         public bool IsInside(int x, int y)
         {
             return x >= 0 && x < WidthInTiles && y >= 0 && y < HeightInTiles;
         }
 
+        /// <summary>Возвращает тайл по указанным координатам, если они валидны, иначе возвращает null.</summary>
         public Tile GetTile(int x, int y)
         {
             return IsInside(x, y) ? Tiles[x, y] : null;
         }
 
+        /// <summary>Заменяет тайл по указанным координатам на новый. Обновляет ссылки на специальные тайлы (кнопки, люки).</summary>
         public void SetTile(int x, int y, Tile tile)
         {
             if (!IsInside(x, y))
                 return;
 
             Tile existingTile = Tiles[x, y];
+
             if (existingTile == ButtonTile)
                 ButtonTile = null;
 
@@ -78,11 +112,13 @@ namespace Vibe_Game.Core.Services
                 FloorExitTile = trapdoorTile;
         }
 
+        /// <summary>Вызывает логику нажатия кнопки комнаты, если она существует.</summary>
         public void PressButton()
         {
             ButtonTile?.Press();
         }
 
+        /// <summary>Удаляет кнопку из комнаты и заменяет её на обычный пол.</summary>
         public void RemoveRoomButton()
         {
             HasButton = false;
@@ -94,12 +130,14 @@ namespace Vibe_Game.Core.Services
             SetTile(pos.X, pos.Y, new FloorTile(pos));
         }
 
+        /// <summary>Размещает декоративные маркеры выхода на этаж вокруг центра комнаты.</summary>
         public void PlaceFloorExitButtonMarkers()
         {
             if (_floorExitButtons.Count > 0)
                 return;
 
             Point center = new Point(WidthInTiles / 2, HeightInTiles / 2);
+
             Point[] markerOffsets =
             {
                 new(-2, -1),
@@ -114,6 +152,7 @@ namespace Vibe_Game.Core.Services
             {
                 Point pos = new Point(center.X + offset.X, center.Y + offset.Y);
                 Tile tile = GetTile(pos.X, pos.Y);
+
                 if (tile == null ||
                     tile is WallTile ||
                     tile is DoorTile ||
@@ -128,18 +167,21 @@ namespace Vibe_Game.Core.Services
             }
         }
 
+        /// <summary>Активирует все ранее размещённые маркеры выхода в комнате.</summary>
         public void ActivateFloorExitButtonMarkers()
         {
             foreach (ExitButtonTile marker in _floorExitButtons)
                 marker.Activate();
         }
 
+        /// <summary>Обновляет состояние маркеров выхода в зависимости от времени.</summary>
         public void UpdateFloorExitButtonMarkers(float deltaSeconds)
         {
             foreach (ExitButtonTile marker in _floorExitButtons)
                 marker.Update(deltaSeconds);
         }
 
+        /// <summary>Создаёт люк перехода на указанный этаж в центре комнаты.</summary>
         public void CreateFloorExit(int targetFloorIndex)
         {
             if (FloorExitTile != null)
@@ -156,17 +198,19 @@ namespace Vibe_Game.Core.Services
                 return;
 
             List<Point> candidates = GetPedestalCandidates();
+
             for (int i = 0; i < count && candidates.Count > 0; i++)
             {
-                int candidateIndex = _random.Next(candidates.Count);
-                Point pedestalPos = candidates[candidateIndex];
-                candidates.RemoveAt(candidateIndex);
+                int index = _random.Next(candidates.Count);
+                Point pos = candidates[index];
+                candidates.RemoveAt(index);
+
                 CollectableKind kind = PickRandomPedestalKind();
-                SetTile(pedestalPos.X, pedestalPos.Y, new PedestalTile(pedestalPos, kind));
+                SetTile(pos.X, pos.Y, new PedestalTile(pos, kind));
             }
         }
 
-        /// <summary>Один пьедестал строго в центре комнаты (сокровищница).</summary>
+        /// <summary>Размещает один пьедестал в центре комнаты (сокровищница).</summary>
         public void PlaceTreasurePedestalAtCenter()
         {
             Point center = new Point(WidthInTiles / 2, HeightInTiles / 2);
@@ -174,14 +218,16 @@ namespace Vibe_Game.Core.Services
             SetTile(center.X, center.Y, new PedestalTile(center, kind));
         }
 
-        /// <summary>Два пьедестала выбора оружия слева и справа от центра (координаты из конфига).</summary>
+        /// <summary>Размещает стартовые пьедесталы выбора оружия.</summary>
         public void PlaceStartingWeaponPedestals()
         {
             Point center = new Point(WidthInTiles / 2, HeightInTiles / 2);
+
             for (int i = 0; i < PedestalConfig.StartingWeaponPedestalOffsetsFromCenter.Length; i++)
             {
                 Point delta = PedestalConfig.StartingWeaponPedestalOffsetsFromCenter[i];
                 Point pos = new Point(center.X + delta.X, center.Y + delta.Y);
+
                 if (!IsInside(pos.X, pos.Y))
                     continue;
 
@@ -190,18 +236,19 @@ namespace Vibe_Game.Core.Services
             }
         }
 
+        /// <summary>Очищает флаг занятости врагами у всех тайлов комнаты.</summary>
         public void ClearEnemyOccupancy()
         {
             for (int x = 0; x < WidthInTiles; x++)
-            {
                 for (int y = 0; y < HeightInTiles; y++)
                     Tiles[x, y].HasEnemy = false;
-            }
         }
 
+        /// <summary>Помечает тайл как занятый врагом.</summary>
         public void MarkEnemyOccupancy(int tileX, int tileY)
         {
             Tile tile = GetTile(tileX, tileY);
+
             if (tile != null)
                 tile.HasEnemy = true;
         }

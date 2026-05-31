@@ -1,0 +1,98 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Gameplay.Entities.Collectables
+  commentId: N:Vibe_Game.Gameplay.Entities.Collectables
+  id: Vibe_Game.Gameplay.Entities.Collectables
+  children:
+  - Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity
+  - Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+  - Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache
+  - Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup
+  langs:
+  - csharp
+  - vb
+  name: Vibe_Game.Gameplay.Entities.Collectables
+  nameWithType: Vibe_Game.Gameplay.Entities.Collectables
+  fullName: Vibe_Game.Gameplay.Entities.Collectables
+  type: Namespace
+  assemblies:
+  - Vibe_Game
+references:
+- uid: Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity
+  commentId: T:Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity
+  parent: Vibe_Game.Gameplay.Entities.Collectables
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.html
+  name: CollectableEntity
+  nameWithType: CollectableEntity
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity
+- uid: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+  commentId: T:Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+  parent: Vibe_Game.Gameplay.Entities.Collectables
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.html
+  name: CollectableKind
+  nameWithType: CollectableKind
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+- uid: Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache
+  commentId: T:Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache
+  parent: Vibe_Game.Gameplay.Entities.Collectables
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache.html
+  name: CollectibleVisualCache
+  nameWithType: CollectibleVisualCache
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache
+- uid: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup
+  commentId: T:Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.html
+  name: DroppedPickup
+  nameWithType: DroppedPickup
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup
+- uid: Vibe_Game.Gameplay.Entities.Collectables
+  commentId: N:Vibe_Game.Gameplay.Entities.Collectables
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Gameplay.Entities.Collectables
+  nameWithType: Vibe_Game.Gameplay.Entities.Collectables
+  fullName: Vibe_Game.Gameplay.Entities.Collectables
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Collectables
+    name: Collectables
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Collectables.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Collectables
+    name: Collectables
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Collectables.html

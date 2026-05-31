@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Vibe_Game.Core.Interfaces;
@@ -8,6 +8,7 @@ using Vibe_Game.Gameplay.Weapons;
 
 namespace Vibe_Game.Gameplay.Entities.Enemies;
 
+/// <summary>Главный босс игры, обладающий несколькими фазами атак (выброс шипов, вращающиеся снаряды, рывок под землей, призыв миньонов).</summary>
 public sealed class BossEnemy : Enemy
 {
     private enum BossAttackType
@@ -50,44 +51,97 @@ public sealed class BossEnemy : Enemy
     private int _spriteFrame;
     private float _spriteAnimTimer;
 
+    /// <summary>Делегат для спавна снарядов босса (инициализируется сценой).</summary>
     public Action<ProjectileSpawnArgs> ProjectileSpawner { get; set; }
+
+    /// <summary>Делегат для спавна миньонов (передает позицию и флаг стрелка, инициализируется сценой).</summary>
     public Action<Vector2, bool> SummonEnemy { get; set; }
+
+    /// <summary>Делегат для нанесения прямого урона игроку (например, при атаке из-под земли).</summary>
     public Action<float> DamagePlayer { get; set; }
 
+    /// <summary>Целевая позиция игрока для отслеживания и атак.</summary>
     public Vector2 ChaseTarget { get; set; }
 
+    /// <summary>Базовая скорость перемещения босса.</summary>
     public float MoveSpeed { get; set; } = EnemyConfig.BossMoveSpeed;
+
+    /// <summary>Радиус физического хитбокса босса.</summary>
     public float CollisionRadius { get; set; } = EnemyConfig.BossRadius;
+
+    /// <summary>Минимальная пауза между атаками в секундах.</summary>
     public float AttackPauseMin { get; set; } = EnemyConfig.BossAttackPauseMin;
+
+    /// <summary>Максимальная пауза между атаками в секундах.</summary>
     public float AttackPauseMax { get; set; } = EnemyConfig.BossAttackPauseMax;
+
+    /// <summary>Урон от прямого контакта с боссом или его атаки из-под земли.</summary>
     public float ContactDamage { get; set; } = 1f;
 
+    /// <summary>Количество снарядов при базовой атаке взрывом шипов.</summary>
     public int SpikeBurstProjectileCount { get; set; } = EnemyConfig.BossSpikeBurstProjectileCount;
+
+    /// <summary>Скорость полета снарядов при атаке взрывом шипов.</summary>
     public float SpikeBurstProjectileSpeed { get; set; } = EnemyConfig.BossSpikeBurstProjectileSpeed;
+
+    /// <summary>Время жизни снарядов при атаке взрывом шипов.</summary>
     public float SpikeBurstProjectileLifetime { get; set; } = EnemyConfig.BossSpikeBurstProjectileLifetime;
+
+    /// <summary>Радиус хитбокса снарядов при атаке взрывом шипов.</summary>
     public float SpikeBurstProjectileRadius { get; set; } = EnemyConfig.BossSpikeBurstProjectileRadius;
+
+    /// <summary>Радиус от центра босса, на котором появляются снаряды при взрыве шипов.</summary>
     public float SpikeBurstSpawnRadius { get; set; } = EnemyConfig.BossSpikeBurstSpawnRadius;
 
+    /// <summary>Количество шипов в атаке с вращающимися вокруг босса снарядами.</summary>
     public int SpinningSpikeCount { get; set; } = EnemyConfig.BossSpinningSpikeCount;
+
+    /// <summary>Радиус орбиты, по которой вращаются шипы.</summary>
     public float SpinningSpikeOrbitRadius { get; set; } = EnemyConfig.BossSpinningSpikeOrbitRadius;
+
+    /// <summary>Угловая скорость вращения шипов по орбите.</summary>
     public float SpinningSpikeAngularSpeed { get; set; } = EnemyConfig.BossSpinningSpikeAngularSpeed;
+
+    /// <summary>Продолжительность фазы вращения шипов до их запуска.</summary>
     public float SpinningSpikeOrbitDuration { get; set; } = EnemyConfig.BossSpinningSpikeOrbitDuration;
+
+    /// <summary>Скорость полета вращающихся шипов после срыва с орбиты.</summary>
     public float SpinningSpikeReleaseSpeed { get; set; } = EnemyConfig.BossSpinningSpikeReleaseSpeed;
 
+    /// <summary>Длительность перемещения босса под землей во время атаки.</summary>
     public float BurrowTravelDuration { get; set; } = EnemyConfig.BossBurrowTravelDuration;
+
+    /// <summary>Скорость перемещения следа от босса под землей.</summary>
     public float BurrowTrailSpeed { get; set; } = EnemyConfig.BossBurrowTrailSpeed;
+
+    /// <summary>Радиус поражения при выныривании босса из-под земли.</summary>
     public float BurrowStrikeRadius { get; set; } = EnemyConfig.BossBurrowStrikeRadius;
+
+    /// <summary>Определяет, неуязвим ли босс во время нахождения под землей.</summary>
     public bool IsInvulnerableDuringBurrow { get; set; } = EnemyConfig.BossInvulnerableDuringBurrow;
 
+    /// <summary>Минимальное количество призываемых миньонов.</summary>
     public int SummonMinCount { get; set; } = EnemyConfig.BossSummonMinCount;
+
+    /// <summary>Максимальное количество призываемых миньонов.</summary>
     public int SummonMaxCount { get; set; } = EnemyConfig.BossSummonMaxCount;
+
+    /// <summary>Радиус, в пределах которого вокруг босса появляются миньоны.</summary>
     public float SummonSpawnRadius { get; set; } = EnemyConfig.BossSummonSpawnRadius;
+
+    /// <summary>Шанс (от 0 до 1) того, что призванный миньон будет стрелком.</summary>
     public float SummonShooterChance { get; set; } = EnemyConfig.BossSummonShooterChance;
+
+    /// <summary>Вес атаки призыва миньонов для системы случайного выбора (влияет на частоту применения).</summary>
     public float SummonAttackWeight { get; set; } = EnemyConfig.BossSummonAttackWeight;
 
+    /// <summary>Указывает, неуязвим ли босс в данный момент (зависит от фазы нахождения под землей).</summary>
     public override bool IsInvulnerable => IsInvulnerableDuringBurrow && _burrowPhase != BurrowPhase.None;
+
+    /// <summary>Указывает, может ли босс наносить контактный урон (отключено во время фазы закапывания).</summary>
     public override bool CanDealContactDamage => _burrowPhase == BurrowPhase.None;
 
+    /// <summary>Инициализирует босса с полным набором параметров движения, здоровья и коллизий.</summary>
     public BossEnemy(
         Vector2 position,
         IWallCollisionChecker collision,
@@ -104,6 +158,7 @@ public sealed class BossEnemy : Enemy
         RandomBehaviorChance = 0f;
     }
 
+    /// <summary>Инициализирует босса со стандартными параметрами из конфигурации.</summary>
     public BossEnemy(Vector2 position, IWallCollisionChecker collision)
         : this(position, collision, EnemyConfig.BossMoveSpeed, EnemyConfig.BossMaxHealth, EnemyConfig.BossRadius)
     {
@@ -171,6 +226,7 @@ public sealed class BossEnemy : Enemy
         StartAttack(ChooseNextAttack());
     }
 
+    /// <inheritdoc />
     public override void Draw(SpriteBatch spriteBatch)
     {
         if (!IsAlive || !IsActivated || spriteBatch == null)
@@ -224,6 +280,7 @@ public sealed class BossEnemy : Enemy
         DrawDebugOverlay(spriteBatch);
     }
 
+    /// <summary>Возвращает текущий хитбокс босса, размер и положение которого зависят от активной фазы способности.</summary>
     public override Rectangle GetBounds()
     {
         Texture2D sheet = SharedBossTexture;
@@ -583,39 +640,42 @@ public sealed class BossEnemy : Enemy
 
     private void UpdateBurrow(float dt)
     {
-        
-            _attackTimer -= dt;
-            if (_burrowPhase == BurrowPhase.Windup) {
-                _burrowWindupRemaining -= dt;
-                if (_burrowWindupRemaining <= 0f)
-                    _burrowPhase = BurrowPhase.MovingTrail;
-                UpdateBossSpriteAnimation(dt);
-                return;
-            }
-            if (_burrowPhase == BurrowPhase.MovingTrail) { 
+        _attackTimer -= dt;
+        if (_burrowPhase == BurrowPhase.Windup)
+        {
+            _burrowWindupRemaining -= dt;
+            if (_burrowWindupRemaining <= 0f)
+                _burrowPhase = BurrowPhase.MovingTrail;
+            UpdateBossSpriteAnimation(dt);
+            return;
+        }
+        if (_burrowPhase == BurrowPhase.MovingTrail)
+        {
+            Vector2 toTarget = ChaseTarget - _burrowTrailPosition;
 
-                Vector2 toTarget = ChaseTarget - _burrowTrailPosition;
-
-                if (toTarget.LengthSquared() > 1f)
-                {
-                    Vector2 dir = Vector2.Normalize(toTarget);
-                    _burrowTrailPosition = ResolveWallCollision(_burrowTrailPosition, dir * BurrowTrailSpeed * dt);
-                }
-
-                if (_attackTimer <= 0f) { 
-                    Position = _burrowTrailPosition;
-                    _burrowPhase = BurrowPhase.Emerging;
-                    _spriteRow = EnemyConfig.BossSheetBurrowRow;
-                    _spriteFrame = EnemyConfig.BossSheetCommonFramesCount - 1;
-                    _spriteAnimTimer = 0f; GameplayAudio.PlayBossEmerge();
-                    TryBurrowStrikePlayer();
-                }
-                UpdateBossSpriteAnimation(dt);
-                return;
+            if (toTarget.LengthSquared() > 1f)
+            {
+                Vector2 dir = Vector2.Normalize(toTarget);
+                _burrowTrailPosition = ResolveWallCollision(_burrowTrailPosition, dir * BurrowTrailSpeed * dt);
             }
-            if (_burrowPhase == BurrowPhase.Emerging) { 
-                UpdateBossSpriteAnimation(dt); 
+
+            if (_attackTimer <= 0f)
+            {
+                Position = _burrowTrailPosition;
+                _burrowPhase = BurrowPhase.Emerging;
+                _spriteRow = EnemyConfig.BossSheetBurrowRow;
+                _spriteFrame = EnemyConfig.BossSheetCommonFramesCount - 1;
+                _spriteAnimTimer = 0f;
+                GameplayAudio.PlayBossEmerge();
+                TryBurrowStrikePlayer();
             }
+            UpdateBossSpriteAnimation(dt);
+            return;
+        }
+        if (_burrowPhase == BurrowPhase.Emerging)
+        {
+            UpdateBossSpriteAnimation(dt);
+        }
     }
 
     private void TryBurrowStrikePlayer()

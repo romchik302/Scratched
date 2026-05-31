@@ -8,12 +8,27 @@ namespace Vibe_Game.Gameplay.Entities.Enemies;
 /// <summary>Анимация смерти врага или босса: кадры из соответствующего спрайт-листа и затухание по альфе.</summary>
 public sealed class EnemyDeathVfx
 {
+    /// <summary>
+    /// Позиция центра эффекта смерти в игровом мире.
+    /// </summary>
     public Vector2 Position { get; }
+    /// <summary>
+    /// Радиус, определяющий итоговый размер отрисовываемого эффекта.
+    /// </summary>
     public float DisplayRadius { get; }
+    /// <summary>
+    /// Указывает, используется ли анимация смерти для босса (true) или для обычного врага (false).
+    /// </summary>
     public bool IsBossDeath { get; }
 
     private float _elapsed;
 
+    /// <summary>
+    /// Инициализирует новый экземпляр визуального эффекта смерти.
+    /// </summary>
+    /// <param name="position">Позиция, в которой будет проигрываться анимация.</param>
+    /// <param name="displayRadius">Радиус для масштабирования спрайта смерти.</param>
+    /// <param name="isBossDeath">Флаг, указывающий, является ли умерший враг боссом.</param>
     public EnemyDeathVfx(Vector2 position, float displayRadius, bool isBossDeath = false)
     {
         Position = position;
@@ -21,21 +36,35 @@ public sealed class EnemyDeathVfx
         IsBossDeath = isBossDeath;
     }
 
+
     private int FrameCount =>
         IsBossDeath ? EnemyConfig.BossDeathAnimationFramesCount : EnemyConfig.DeathAnimationFramesCount;
 
     private float FrameDuration =>
         IsBossDeath ? EnemyConfig.BossDeathAnimationFrameDurationSeconds : EnemyConfig.DeathAnimationFrameDurationSeconds;
 
+    /// <summary>
+    /// Возвращает true, если время проигрывания анимации подошло к концу.
+    /// </summary>
     public bool IsFinished =>
         _elapsed >= FrameCount * FrameDuration;
 
+    /// <summary>
+    /// Обновляет таймер анимации смерти.
+    /// </summary>
+    /// <param name="deltaSeconds">Время, прошедшее с последнего кадра, в секундах.</param>
     public void Update(float deltaSeconds)
     {
         if (!IsFinished)
             _elapsed += deltaSeconds;
     }
 
+    /// <summary>
+    /// Отрисовывает текущий кадр анимации смерти с учетом масштаба и прозрачности.
+    /// </summary>
+    /// <param name="spriteBatch">Пакет спрайтов для отрисовки.</param>
+    /// <param name="normalDeathSheet">Текстура (спрайт-лист) смерти обычного врага.</param>
+    /// <param name="bossSheet">Текстура (спрайт-лист) анимаций босса.</param>
     public void Draw(SpriteBatch spriteBatch, Texture2D normalDeathSheet, Texture2D bossSheet)
     {
         if (spriteBatch == null)

@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class GameplayAudio </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class GameplayAudio ">
+      
+      <meta name="description" content="Статический сервис для управления звуковыми эффектами (SFX) и фоновой музыкой (BGM) в игровом процессе. Обеспечивает плавные переходы между треками, управление громкостью и безопасную загрузку ассетов.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vibe_Game.Core.Services.GameplayAudio">
+
+
+
+  <h1 id="Vibe_Game_Core_Services_GameplayAudio" data-uid="Vibe_Game.Core.Services.GameplayAudio" class="text-break">
+Class GameplayAudio  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vibe_Game.html">Vibe_Game</a>.<a class="xref" href="Vibe_Game.Core.html">Core</a>.<a class="xref" href="Vibe_Game.Core.Services.html">Services</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Vibe_Game.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Статический сервис для управления звуковыми эффектами (SFX) и фоновой музыкой (BGM) в игровом процессе.
+Обеспечивает плавные переходы между треками, управление громкостью и безопасную загрузку ассетов.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class GameplayAudio</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">GameplayAudio</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_Load_" data-uid="Vibe_Game.Core.Services.GameplayAudio.Load*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_Load_Microsoft_Xna_Framework_Content_ContentManager_" data-uid="Vibe_Game.Core.Services.GameplayAudio.Load(Microsoft.Xna.Framework.Content.ContentManager)">
+  Load(ContentManager)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Загружает все необходимые звуковые эффекты и музыкальные композиции из контента игры.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Load(ContentManager content)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>content</code> <span class="xref">ContentManager</span></dt>
+    <dd><p>Менеджер контента MonoGame для загрузки ресурсов.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_OnEnterCredits_" data-uid="Vibe_Game.Core.Services.GameplayAudio.OnEnterCredits*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_OnEnterCredits" data-uid="Vibe_Game.Core.Services.GameplayAudio.OnEnterCredits">
+  OnEnterCredits()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Запускает музыку экрана титров.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void OnEnterCredits()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_OnEnterGameScene_" data-uid="Vibe_Game.Core.Services.GameplayAudio.OnEnterGameScene*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_OnEnterGameScene" data-uid="Vibe_Game.Core.Services.GameplayAudio.OnEnterGameScene">
+  OnEnterGameScene()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Вызывается при входе в игровую сцену: останавливает музыку меню/титров.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void OnEnterGameScene()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_OnEnterMainMenu_" data-uid="Vibe_Game.Core.Services.GameplayAudio.OnEnterMainMenu*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_OnEnterMainMenu" data-uid="Vibe_Game.Core.Services.GameplayAudio.OnEnterMainMenu">
+  OnEnterMainMenu()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Запускает музыку главного меню.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void OnEnterMainMenu()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayBossAttack_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayBossAttack*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayBossAttack" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayBossAttack">
+  PlayBossAttack()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук атаки босса.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayBossAttack()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayBossBurrow_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayBossBurrow*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayBossBurrow" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayBossBurrow">
+  PlayBossBurrow()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук закапывания босса.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayBossBurrow()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayBossDeath_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayBossDeath*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayBossDeath" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayBossDeath">
+  PlayBossDeath()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук смерти босса.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayBossDeath()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayBossEmerge_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayBossEmerge*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayBossEmerge" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayBossEmerge">
+  PlayBossEmerge()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук появления босса из-под земли.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayBossEmerge()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayBossEntering_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayBossEntering*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayBossEntering" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayBossEntering">
+  PlayBossEntering()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук появления босса.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayBossEntering()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayBossStatic_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayBossStatic*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayBossStatic" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayBossStatic">
+  PlayBossStatic()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук статического шума босса.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayBossStatic()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayEffect_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayEffect*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayEffect_System_String_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayEffect(System.String)">
+  PlayEffect(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звуковой эффект по имени ассета с громкостью по умолчанию.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayEffect(string assetName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>assetName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Имя ассета в контенте.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayEffect_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayEffect*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayEffect_System_String_System_Single_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayEffect(System.String,System.Single)">
+  PlayEffect(string, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звуковой эффект по имени ассета с указанной громкостью.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayEffect(string assetName, float volume)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>assetName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Имя ассета в контенте.</p>
+</dd>
+    <dt><code>volume</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Уровень громкости (0.0 - 1.0).</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayEnemyDeath_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayEnemyDeath*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayEnemyDeath" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayEnemyDeath">
+  PlayEnemyDeath()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук смерти обычного врага.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayEnemyDeath()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayEnemyFly_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayEnemyFly*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayEnemyFly" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayEnemyFly">
+  PlayEnemyFly()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук летающего врага.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayEnemyFly()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayEnemySlime_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayEnemySlime*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayEnemySlime" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayEnemySlime">
+  PlayEnemySlime()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук слайма.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayEnemySlime()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayEnemyTreant_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayEnemyTreant*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayEnemyTreant" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayEnemyTreant">
+  PlayEnemyTreant()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук треанта.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayEnemyTreant()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayFootstep_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayFootstep*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayFootstep_System_Boolean_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayFootstep(System.Boolean)">
+  PlayFootstep(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук шага в зависимости от поверхности.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayFootstep(bool preferStone)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>preferStone</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Если true, выбиравет звук по камню.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayMapBossEntry_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayMapBossEntry*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayMapBossEntry" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayMapBossEntry">
+  PlayMapBossEntry()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук входа в комнату босса.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayMapBossEntry()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayMapButton_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayMapButton*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayMapButton" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayMapButton">
+  PlayMapButton()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук нажатия кнопки на карте.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayMapButton()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayMapClosedDoor_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayMapClosedDoor*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayMapClosedDoor" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayMapClosedDoor">
+  PlayMapClosedDoor()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук закрытия двери на карте.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayMapClosedDoor()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayMapOpenDoor_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayMapOpenDoor*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayMapOpenDoor" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayMapOpenDoor">
+  PlayMapOpenDoor()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук открытия двери на карте.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayMapOpenDoor()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayPlayerDeath_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayPlayerDeath*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayPlayerDeath" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayPlayerDeath">
+  PlayPlayerDeath()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук смерти игрока.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayPlayerDeath()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayPlayerHeal_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayPlayerHeal*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayPlayerHeal" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayPlayerHeal">
+  PlayPlayerHeal()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук лечения игрока.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayPlayerHeal()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayPlayerHit_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayPlayerHit*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayPlayerHit" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayPlayerHit">
+  PlayPlayerHit()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук получения урона игроком.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayPlayerHit()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayRangedAttack_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayRangedAttack*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayRangedAttack" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayRangedAttack">
+  PlayRangedAttack()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук атаки дальнего боя.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayRangedAttack()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayRoomCleared_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayRoomCleared*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayRoomCleared" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayRoomCleared">
+  PlayRoomCleared()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук зачистки комнаты.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayRoomCleared()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlaySwordSwing_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlaySwordSwing*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlaySwordSwing" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlaySwordSwing">
+  PlaySwordSwing()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит случайный звук взмаха мечом.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlaySwordSwing()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayUiConfirm_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayUiConfirm*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayUiConfirm" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayUiConfirm">
+  PlayUiConfirm()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук подтверждения действия в UI.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayUiConfirm()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_PlayUiSelect_" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayUiSelect*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_PlayUiSelect" data-uid="Vibe_Game.Core.Services.GameplayAudio.PlayUiSelect">
+  PlayUiSelect()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Воспроизводит звук выбора пункта в UI.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PlayUiSelect()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_ResetExplorationMusicBookmark_" data-uid="Vibe_Game.Core.Services.GameplayAudio.ResetExplorationMusicBookmark*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_ResetExplorationMusicBookmark" data-uid="Vibe_Game.Core.Services.GameplayAudio.ResetExplorationMusicBookmark">
+  ResetExplorationMusicBookmark()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Сбрасывает сохраненную позицию проигрывания музыки исследования.
+Полезно при начале нового забега или смене уровня.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ResetExplorationMusicBookmark()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_StopAllMusic_" data-uid="Vibe_Game.Core.Services.GameplayAudio.StopAllMusic*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_StopAllMusic" data-uid="Vibe_Game.Core.Services.GameplayAudio.StopAllMusic">
+  StopAllMusic()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Полностью останавливает воспроизведение музыки и сбрасывает состояние переходов.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void StopAllMusic()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_Update_" data-uid="Vibe_Game.Core.Services.GameplayAudio.Update*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_Update_System_Single_" data-uid="Vibe_Game.Core.Services.GameplayAudio.Update(System.Single)">
+  Update(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Обновляет логику воспроизведения музыки: обрабатывает плавные переходы (Fade In/Out).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Update(float dt)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dt</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Время, прошедшее с последнего кадра (Delta Time).</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_GameplayAudio_UpdateGameSceneBgm_" data-uid="Vibe_Game.Core.Services.GameplayAudio.UpdateGameSceneBgm*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_GameplayAudio_UpdateGameSceneBgm_System_Boolean_System_Boolean_" data-uid="Vibe_Game.Core.Services.GameplayAudio.UpdateGameSceneBgm(System.Boolean,System.Boolean)">
+  UpdateGameSceneBgm(bool, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Обновляет фоновую музыку (BGM) в зависимости от текущего состояния комнаты.
+Автоматически переключается между музыкой битвы (с боссом или обычными врагами)
+и спокойной музыкой исследования. Сохраняет прогресс трека исследования при переключении.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void UpdateGameSceneBgm(bool bossFightWithLivingBoss, bool combatWithLivingEnemies)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bossFightWithLivingBoss</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Признак того, идет ли битва с боссом.</p>
+</dd>
+    <dt><code>combatWithLivingEnemies</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Признак того, идет ли битва с обычными врагами.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameplayAudio.cs" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

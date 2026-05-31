@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class RandomHelper </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class RandomHelper ">
+      
+      <meta name="description" content="Вспомогательный класс для генерации случайных чисел и значений, упрощающий работу с рандомизацией в игре.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vibe_Game.Core.Utilities.RandomHelper">
+
+
+
+  <h1 id="Vibe_Game_Core_Utilities_RandomHelper" data-uid="Vibe_Game.Core.Utilities.RandomHelper" class="text-break">
+Class RandomHelper  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Utilities/RandomHelper.cs"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vibe_Game.html">Vibe_Game</a>.<a class="xref" href="Vibe_Game.Core.html">Core</a>.<a class="xref" href="Vibe_Game.Core.Utilities.html">Utilities</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Vibe_Game.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Вспомогательный класс для генерации случайных чисел и значений, упрощающий работу с рандомизацией в игре.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class RandomHelper</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">RandomHelper</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Vibe_Game_Core_Utilities_RandomHelper__ctor_" data-uid="Vibe_Game.Core.Utilities.RandomHelper.#ctor*"></a>
+
+  <h3 id="Vibe_Game_Core_Utilities_RandomHelper__ctor" data-uid="Vibe_Game.Core.Utilities.RandomHelper.#ctor">
+  RandomHelper()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Utilities/RandomHelper.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RandomHelper()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vibe_Game_Core_Utilities_RandomHelper_Chance_" data-uid="Vibe_Game.Core.Utilities.RandomHelper.Chance*"></a>
+
+  <h3 id="Vibe_Game_Core_Utilities_RandomHelper_Chance_System_Single_" data-uid="Vibe_Game.Core.Utilities.RandomHelper.Chance(System.Single)">
+  Chance(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Utilities/RandomHelper.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Выполняет проверку вероятности наступления события.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Chance(float probability)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>probability</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Вероятность успеха от 0.0 до 1.0.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True, если событие произошло, иначе false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Utilities_RandomHelper_Next_" data-uid="Vibe_Game.Core.Utilities.RandomHelper.Next*"></a>
+
+  <h3 id="Vibe_Game_Core_Utilities_RandomHelper_Next_System_Int32_" data-uid="Vibe_Game.Core.Utilities.RandomHelper.Next(System.Int32)">
+  Next(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Utilities/RandomHelper.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Возвращает случайное целое число от 0 (включительно) до указанного максимума (не включая).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Next(int max)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Верхняя граница диапазона.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Случайное целое число.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Utilities_RandomHelper_Next_" data-uid="Vibe_Game.Core.Utilities.RandomHelper.Next*"></a>
+
+  <h3 id="Vibe_Game_Core_Utilities_RandomHelper_Next_System_Int32_System_Int32_" data-uid="Vibe_Game.Core.Utilities.RandomHelper.Next(System.Int32,System.Int32)">
+  Next(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Utilities/RandomHelper.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Возвращает случайное целое число в заданном диапазоне.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Next(int min, int max)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Нижняя граница диапазона (включительно).</p>
+</dd>
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Верхняя граница диапазона (не включая).</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Случайное целое число.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Utilities_RandomHelper_NextFloat_" data-uid="Vibe_Game.Core.Utilities.RandomHelper.NextFloat*"></a>
+
+  <h3 id="Vibe_Game_Core_Utilities_RandomHelper_NextFloat" data-uid="Vibe_Game.Core.Utilities.RandomHelper.NextFloat">
+  NextFloat()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Utilities/RandomHelper.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Возвращает случайное число с плавающей запятой в диапазоне [0.0, 1.0).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float NextFloat()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Случайное число типа float.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Utilities_RandomHelper_NextFloat_" data-uid="Vibe_Game.Core.Utilities.RandomHelper.NextFloat*"></a>
+
+  <h3 id="Vibe_Game_Core_Utilities_RandomHelper_NextFloat_System_Single_System_Single_" data-uid="Vibe_Game.Core.Utilities.RandomHelper.NextFloat(System.Single,System.Single)">
+  NextFloat(float, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Utilities/RandomHelper.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Возвращает случайное число с плавающей запятой в заданном диапазоне.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float NextFloat(float min, float max)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Минимальное значение.</p>
+</dd>
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Максимальное значение.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Случайное число типа float в диапазоне [min, max].</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Utilities_RandomHelper_RandomDirection4Way_" data-uid="Vibe_Game.Core.Utilities.RandomHelper.RandomDirection4Way*"></a>
+
+  <h3 id="Vibe_Game_Core_Utilities_RandomHelper_RandomDirection4Way" data-uid="Vibe_Game.Core.Utilities.RandomHelper.RandomDirection4Way">
+  RandomDirection4Way()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Utilities/RandomHelper.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Возвращает случайный вектор направления для 4-х сторон (вверх, вниз, влево, вправо).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 RandomDirection4Way()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector2</span></dt>
+    <dd><p>Вектор направления типа <span class="xref">Microsoft.Xna.Framework.Vector2</span>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Utilities_RandomHelper_RandomItem_" data-uid="Vibe_Game.Core.Utilities.RandomHelper.RandomItem*"></a>
+
+  <h3 id="Vibe_Game_Core_Utilities_RandomHelper_RandomItem__1_System_Collections_Generic_List___0__" data-uid="Vibe_Game.Core.Utilities.RandomHelper.RandomItem``1(System.Collections.Generic.List{``0})">
+  RandomItem&lt;T&gt;(List&lt;T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Utilities/RandomHelper.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Выбирает случайный элемент из списка.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T RandomItem&lt;T&gt;(List&lt;T&gt; list)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>list</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd><p>Список, из которого нужно выбрать элемент.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd><p>Случайный элемент типа T.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>Тип элементов списка.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Utilities/RandomHelper.cs" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

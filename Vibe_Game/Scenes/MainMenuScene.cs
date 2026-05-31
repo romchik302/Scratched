@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Vibe_Game.Core.Interfaces;
@@ -7,6 +7,11 @@ using Vibe_Game.Core.Settings;
 
 namespace Vibe_Game.Scenes
 {
+    /// <summary>
+    /// Сцена главного меню игры.
+    /// Предоставляет интерфейс для запуска нового игрового забега или выхода из приложения,
+    /// а также обрабатывает навигацию между пунктами меню.
+    /// </summary>
     internal sealed class MainMenuScene : BaseScene
     {
         private readonly IInputService _inputService;
@@ -14,17 +19,24 @@ namespace Vibe_Game.Scenes
         private SpriteFont _font;
         private int _selectedIndex;
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="MainMenuScene"/>.
+        /// </summary>
+        /// <param name="game">Основной экземпляр игры MonoGame.</param>
+        /// <param name="inputService">Сервис для проверки нажатия клавиш навигации и выбора.</param>
         public MainMenuScene(Game game, IInputService inputService)
             : base(game)
         {
             _inputService = inputService;
         }
 
+        /// <inheritdoc />
         public override void LoadContent()
         {
             _font = GameInstance.Content.Load<SpriteFont>("room_font");
         }
 
+        /// <inheritdoc />
         public override void Update(GameTime gameTime)
         {
             int prev = _selectedIndex;
@@ -45,6 +57,7 @@ namespace Vibe_Game.Scenes
             }
         }
 
+        /// <inheritdoc />
         public override void Draw(GameTime gameTime)
         {
             SpriteBatch spriteBatch = GetSpriteBatch();

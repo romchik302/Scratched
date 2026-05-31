@@ -1,0 +1,797 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Core.Engine.DefaultInputBindings
+  commentId: T:Vibe_Game.Core.Engine.DefaultInputBindings
+  id: DefaultInputBindings
+  parent: Vibe_Game.Core.Engine
+  children:
+  - Vibe_Game.Core.Engine.DefaultInputBindings.#ctor
+  - Vibe_Game.Core.Engine.DefaultInputBindings.GetKeysForAction(Vibe_Game.Core.Interfaces.InputAction)
+  - Vibe_Game.Core.Engine.DefaultInputBindings.LoadFromFile(System.String)
+  - Vibe_Game.Core.Engine.DefaultInputBindings.SaveToFile(System.String)
+  - Vibe_Game.Core.Engine.DefaultInputBindings.SetBinding(Vibe_Game.Core.Interfaces.InputAction,Microsoft.Xna.Framework.Input.Keys[])
+  langs:
+  - csharp
+  - vb
+  name: DefaultInputBindings
+  nameWithType: DefaultInputBindings
+  fullName: Vibe_Game.Core.Engine.DefaultInputBindings
+  type: Class
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Engine/DefaultInputBindings.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Engine
+  summary: Реализация привязок клавиш по умолчанию.
+  example: []
+  syntax:
+    content: 'public class DefaultInputBindings : IInputBindings'
+    content.vb: Public Class DefaultInputBindings Implements IInputBindings
+  inheritance:
+  - System.Object
+  implements:
+  - Vibe_Game.Core.Interfaces.IInputBindings
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Vibe_Game.Core.Engine.DefaultInputBindings.#ctor
+  commentId: M:Vibe_Game.Core.Engine.DefaultInputBindings.#ctor
+  id: '#ctor'
+  parent: Vibe_Game.Core.Engine.DefaultInputBindings
+  langs:
+  - csharp
+  - vb
+  name: DefaultInputBindings()
+  nameWithType: DefaultInputBindings.DefaultInputBindings()
+  fullName: Vibe_Game.Core.Engine.DefaultInputBindings.DefaultInputBindings()
+  type: Constructor
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Engine/DefaultInputBindings.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Engine
+  summary: Инициализирует новый экземпляр класса DefaultInputBindings и задаёт привязки клавиш по умолчанию.
+  example: []
+  syntax:
+    content: public DefaultInputBindings()
+    content.vb: Public Sub New()
+  overload: Vibe_Game.Core.Engine.DefaultInputBindings.#ctor*
+  nameWithType.vb: DefaultInputBindings.New()
+  fullName.vb: Vibe_Game.Core.Engine.DefaultInputBindings.New()
+  name.vb: New()
+- uid: Vibe_Game.Core.Engine.DefaultInputBindings.GetKeysForAction(Vibe_Game.Core.Interfaces.InputAction)
+  commentId: M:Vibe_Game.Core.Engine.DefaultInputBindings.GetKeysForAction(Vibe_Game.Core.Interfaces.InputAction)
+  id: GetKeysForAction(Vibe_Game.Core.Interfaces.InputAction)
+  parent: Vibe_Game.Core.Engine.DefaultInputBindings
+  langs:
+  - csharp
+  - vb
+  name: GetKeysForAction(InputAction)
+  nameWithType: DefaultInputBindings.GetKeysForAction(InputAction)
+  fullName: Vibe_Game.Core.Engine.DefaultInputBindings.GetKeysForAction(Vibe_Game.Core.Interfaces.InputAction)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Engine/DefaultInputBindings.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Engine
+  summary: Возвращает перечисление клавиш, привязанных к указанному игровому действию.
+  example: []
+  syntax:
+    content: public IEnumerable<Keys> GetKeysForAction(InputAction action)
+    parameters:
+    - id: action
+      type: Vibe_Game.Core.Interfaces.InputAction
+    return:
+      type: System.Collections.Generic.IEnumerable{Microsoft.Xna.Framework.Input.Keys}
+    content.vb: Public Function GetKeysForAction(action As InputAction) As IEnumerable(Of Keys)
+  overload: Vibe_Game.Core.Engine.DefaultInputBindings.GetKeysForAction*
+- uid: Vibe_Game.Core.Engine.DefaultInputBindings.SetBinding(Vibe_Game.Core.Interfaces.InputAction,Microsoft.Xna.Framework.Input.Keys[])
+  commentId: M:Vibe_Game.Core.Engine.DefaultInputBindings.SetBinding(Vibe_Game.Core.Interfaces.InputAction,Microsoft.Xna.Framework.Input.Keys[])
+  id: SetBinding(Vibe_Game.Core.Interfaces.InputAction,Microsoft.Xna.Framework.Input.Keys[])
+  parent: Vibe_Game.Core.Engine.DefaultInputBindings
+  langs:
+  - csharp
+  - vb
+  name: SetBinding(InputAction, Keys[])
+  nameWithType: DefaultInputBindings.SetBinding(InputAction, Keys[])
+  fullName: Vibe_Game.Core.Engine.DefaultInputBindings.SetBinding(Vibe_Game.Core.Interfaces.InputAction, Microsoft.Xna.Framework.Input.Keys[])
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Engine/DefaultInputBindings.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Engine
+  summary: Назначает массив клавиш для определённого игрового действия.
+  example: []
+  syntax:
+    content: public void SetBinding(InputAction action, Keys[] keys)
+    parameters:
+    - id: action
+      type: Vibe_Game.Core.Interfaces.InputAction
+      description: Игровое действие, для которого изменяется привязка.
+    - id: keys
+      type: Microsoft.Xna.Framework.Input.Keys[]
+      description: Массив клавиш, которые будут назначены на данное действие.
+    content.vb: Public Sub SetBinding(action As InputAction, keys As Keys())
+  overload: Vibe_Game.Core.Engine.DefaultInputBindings.SetBinding*
+  implements:
+  - Vibe_Game.Core.Interfaces.IInputBindings.SetBinding(Vibe_Game.Core.Interfaces.InputAction,Microsoft.Xna.Framework.Input.Keys[])
+  nameWithType.vb: DefaultInputBindings.SetBinding(InputAction, Keys())
+  fullName.vb: Vibe_Game.Core.Engine.DefaultInputBindings.SetBinding(Vibe_Game.Core.Interfaces.InputAction, Microsoft.Xna.Framework.Input.Keys())
+  name.vb: SetBinding(InputAction, Keys())
+- uid: Vibe_Game.Core.Engine.DefaultInputBindings.LoadFromFile(System.String)
+  commentId: M:Vibe_Game.Core.Engine.DefaultInputBindings.LoadFromFile(System.String)
+  id: LoadFromFile(System.String)
+  parent: Vibe_Game.Core.Engine.DefaultInputBindings
+  langs:
+  - csharp
+  - vb
+  name: LoadFromFile(string)
+  nameWithType: DefaultInputBindings.LoadFromFile(string)
+  fullName: Vibe_Game.Core.Engine.DefaultInputBindings.LoadFromFile(string)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Engine/DefaultInputBindings.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Engine
+  summary: Загружает настройки привязок клавиш из файла конфигурации.
+  example: []
+  syntax:
+    content: public void LoadFromFile(string path)
+    parameters:
+    - id: path
+      type: System.String
+      description: Путь к файлу конфигурации (JSON/XML).
+    content.vb: Public Sub LoadFromFile(path As String)
+  overload: Vibe_Game.Core.Engine.DefaultInputBindings.LoadFromFile*
+  implements:
+  - Vibe_Game.Core.Interfaces.IInputBindings.LoadFromFile(System.String)
+  nameWithType.vb: DefaultInputBindings.LoadFromFile(String)
+  fullName.vb: Vibe_Game.Core.Engine.DefaultInputBindings.LoadFromFile(String)
+  name.vb: LoadFromFile(String)
+- uid: Vibe_Game.Core.Engine.DefaultInputBindings.SaveToFile(System.String)
+  commentId: M:Vibe_Game.Core.Engine.DefaultInputBindings.SaveToFile(System.String)
+  id: SaveToFile(System.String)
+  parent: Vibe_Game.Core.Engine.DefaultInputBindings
+  langs:
+  - csharp
+  - vb
+  name: SaveToFile(string)
+  nameWithType: DefaultInputBindings.SaveToFile(string)
+  fullName: Vibe_Game.Core.Engine.DefaultInputBindings.SaveToFile(string)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Engine/DefaultInputBindings.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Engine
+  summary: Сохраняет текущие настройки привязок клавиш в файл конфигурации.
+  example: []
+  syntax:
+    content: public void SaveToFile(string path)
+    parameters:
+    - id: path
+      type: System.String
+      description: Путь к файлу, в который будут записаны настройки.
+    content.vb: Public Sub SaveToFile(path As String)
+  overload: Vibe_Game.Core.Engine.DefaultInputBindings.SaveToFile*
+  implements:
+  - Vibe_Game.Core.Interfaces.IInputBindings.SaveToFile(System.String)
+  nameWithType.vb: DefaultInputBindings.SaveToFile(String)
+  fullName.vb: Vibe_Game.Core.Engine.DefaultInputBindings.SaveToFile(String)
+  name.vb: SaveToFile(String)
+references:
+- uid: Vibe_Game.Core.Engine
+  commentId: N:Vibe_Game.Core.Engine
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Core.Engine
+  nameWithType: Vibe_Game.Core.Engine
+  fullName: Vibe_Game.Core.Engine
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Engine
+    name: Engine
+    isExternal: true
+    href: Vibe_Game.Core.Engine.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Engine
+    name: Engine
+    isExternal: true
+    href: Vibe_Game.Core.Engine.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vibe_Game.Core.Interfaces.IInputBindings
+  commentId: T:Vibe_Game.Core.Interfaces.IInputBindings
+  parent: Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IInputBindings.html
+  name: IInputBindings
+  nameWithType: IInputBindings
+  fullName: Vibe_Game.Core.Interfaces.IInputBindings
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vibe_Game.Core.Interfaces
+  commentId: N:Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Core.Interfaces
+  nameWithType: Vibe_Game.Core.Interfaces
+  fullName: Vibe_Game.Core.Interfaces
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Interfaces
+    name: Interfaces
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Interfaces
+    name: Interfaces
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.html
+- uid: Vibe_Game.Core.Engine.DefaultInputBindings.#ctor*
+  commentId: Overload:Vibe_Game.Core.Engine.DefaultInputBindings.#ctor
+  isExternal: true
+  href: Vibe_Game.Core.Engine.DefaultInputBindings.html#Vibe_Game_Core_Engine_DefaultInputBindings__ctor
+  name: DefaultInputBindings
+  nameWithType: DefaultInputBindings.DefaultInputBindings
+  fullName: Vibe_Game.Core.Engine.DefaultInputBindings.DefaultInputBindings
+  nameWithType.vb: DefaultInputBindings.New
+  fullName.vb: Vibe_Game.Core.Engine.DefaultInputBindings.New
+  name.vb: New
+- uid: Vibe_Game.Core.Engine.DefaultInputBindings.GetKeysForAction*
+  commentId: Overload:Vibe_Game.Core.Engine.DefaultInputBindings.GetKeysForAction
+  isExternal: true
+  href: Vibe_Game.Core.Engine.DefaultInputBindings.html#Vibe_Game_Core_Engine_DefaultInputBindings_GetKeysForAction_Vibe_Game_Core_Interfaces_InputAction_
+  name: GetKeysForAction
+  nameWithType: DefaultInputBindings.GetKeysForAction
+  fullName: Vibe_Game.Core.Engine.DefaultInputBindings.GetKeysForAction
+- uid: Vibe_Game.Core.Interfaces.InputAction
+  commentId: T:Vibe_Game.Core.Interfaces.InputAction
+  parent: Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.InputAction.html
+  name: InputAction
+  nameWithType: InputAction
+  fullName: Vibe_Game.Core.Interfaces.InputAction
+- uid: System.Collections.Generic.IEnumerable{Microsoft.Xna.Framework.Input.Keys}
+  commentId: T:System.Collections.Generic.IEnumerable{Microsoft.Xna.Framework.Input.Keys}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<Keys>
+  nameWithType: IEnumerable<Keys>
+  fullName: System.Collections.Generic.IEnumerable<Microsoft.Xna.Framework.Input.Keys>
+  nameWithType.vb: IEnumerable(Of Keys)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Microsoft.Xna.Framework.Input.Keys)
+  name.vb: IEnumerable(Of Keys)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Microsoft.Xna.Framework.Input.Keys
+    name: Keys
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.Xna.Framework.Input.Keys
+    name: Keys
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vibe_Game.Core.Engine.DefaultInputBindings.SetBinding*
+  commentId: Overload:Vibe_Game.Core.Engine.DefaultInputBindings.SetBinding
+  isExternal: true
+  href: Vibe_Game.Core.Engine.DefaultInputBindings.html#Vibe_Game_Core_Engine_DefaultInputBindings_SetBinding_Vibe_Game_Core_Interfaces_InputAction_Microsoft_Xna_Framework_Input_Keys___
+  name: SetBinding
+  nameWithType: DefaultInputBindings.SetBinding
+  fullName: Vibe_Game.Core.Engine.DefaultInputBindings.SetBinding
+- uid: Vibe_Game.Core.Interfaces.IInputBindings.SetBinding(Vibe_Game.Core.Interfaces.InputAction,Microsoft.Xna.Framework.Input.Keys[])
+  commentId: M:Vibe_Game.Core.Interfaces.IInputBindings.SetBinding(Vibe_Game.Core.Interfaces.InputAction,Microsoft.Xna.Framework.Input.Keys[])
+  parent: Vibe_Game.Core.Interfaces.IInputBindings
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IInputBindings.html#Vibe_Game_Core_Interfaces_IInputBindings_SetBinding_Vibe_Game_Core_Interfaces_InputAction_Microsoft_Xna_Framework_Input_Keys___
+  name: SetBinding(InputAction, Keys[])
+  nameWithType: IInputBindings.SetBinding(InputAction, Keys[])
+  fullName: Vibe_Game.Core.Interfaces.IInputBindings.SetBinding(Vibe_Game.Core.Interfaces.InputAction, Microsoft.Xna.Framework.Input.Keys[])
+  nameWithType.vb: IInputBindings.SetBinding(InputAction, Keys())
+  fullName.vb: Vibe_Game.Core.Interfaces.IInputBindings.SetBinding(Vibe_Game.Core.Interfaces.InputAction, Microsoft.Xna.Framework.Input.Keys())
+  name.vb: SetBinding(InputAction, Keys())
+  spec.csharp:
+  - uid: Vibe_Game.Core.Interfaces.IInputBindings.SetBinding(Vibe_Game.Core.Interfaces.InputAction,Microsoft.Xna.Framework.Input.Keys[])
+    name: SetBinding
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.IInputBindings.html#Vibe_Game_Core_Interfaces_IInputBindings_SetBinding_Vibe_Game_Core_Interfaces_InputAction_Microsoft_Xna_Framework_Input_Keys___
+  - name: (
+  - uid: Vibe_Game.Core.Interfaces.InputAction
+    name: InputAction
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.InputAction.html
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Xna.Framework.Input.Keys
+    name: Keys
+    isExternal: true
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Core.Interfaces.IInputBindings.SetBinding(Vibe_Game.Core.Interfaces.InputAction,Microsoft.Xna.Framework.Input.Keys[])
+    name: SetBinding
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.IInputBindings.html#Vibe_Game_Core_Interfaces_IInputBindings_SetBinding_Vibe_Game_Core_Interfaces_InputAction_Microsoft_Xna_Framework_Input_Keys___
+  - name: (
+  - uid: Vibe_Game.Core.Interfaces.InputAction
+    name: InputAction
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.InputAction.html
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Xna.Framework.Input.Keys
+    name: Keys
+    isExternal: true
+  - name: (
+  - name: )
+  - name: )
+- uid: Microsoft.Xna.Framework.Input.Keys[]
+  isExternal: true
+  name: Keys[]
+  nameWithType: Keys[]
+  fullName: Microsoft.Xna.Framework.Input.Keys[]
+  nameWithType.vb: Keys()
+  fullName.vb: Microsoft.Xna.Framework.Input.Keys()
+  name.vb: Keys()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Input.Keys
+    name: Keys
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Input.Keys
+    name: Keys
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Vibe_Game.Core.Engine.DefaultInputBindings.LoadFromFile*
+  commentId: Overload:Vibe_Game.Core.Engine.DefaultInputBindings.LoadFromFile
+  isExternal: true
+  href: Vibe_Game.Core.Engine.DefaultInputBindings.html#Vibe_Game_Core_Engine_DefaultInputBindings_LoadFromFile_System_String_
+  name: LoadFromFile
+  nameWithType: DefaultInputBindings.LoadFromFile
+  fullName: Vibe_Game.Core.Engine.DefaultInputBindings.LoadFromFile
+- uid: Vibe_Game.Core.Interfaces.IInputBindings.LoadFromFile(System.String)
+  commentId: M:Vibe_Game.Core.Interfaces.IInputBindings.LoadFromFile(System.String)
+  parent: Vibe_Game.Core.Interfaces.IInputBindings
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IInputBindings.html#Vibe_Game_Core_Interfaces_IInputBindings_LoadFromFile_System_String_
+  name: LoadFromFile(string)
+  nameWithType: IInputBindings.LoadFromFile(string)
+  fullName: Vibe_Game.Core.Interfaces.IInputBindings.LoadFromFile(string)
+  nameWithType.vb: IInputBindings.LoadFromFile(String)
+  fullName.vb: Vibe_Game.Core.Interfaces.IInputBindings.LoadFromFile(String)
+  name.vb: LoadFromFile(String)
+  spec.csharp:
+  - uid: Vibe_Game.Core.Interfaces.IInputBindings.LoadFromFile(System.String)
+    name: LoadFromFile
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.IInputBindings.html#Vibe_Game_Core_Interfaces_IInputBindings_LoadFromFile_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Core.Interfaces.IInputBindings.LoadFromFile(System.String)
+    name: LoadFromFile
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.IInputBindings.html#Vibe_Game_Core_Interfaces_IInputBindings_LoadFromFile_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vibe_Game.Core.Engine.DefaultInputBindings.SaveToFile*
+  commentId: Overload:Vibe_Game.Core.Engine.DefaultInputBindings.SaveToFile
+  isExternal: true
+  href: Vibe_Game.Core.Engine.DefaultInputBindings.html#Vibe_Game_Core_Engine_DefaultInputBindings_SaveToFile_System_String_
+  name: SaveToFile
+  nameWithType: DefaultInputBindings.SaveToFile
+  fullName: Vibe_Game.Core.Engine.DefaultInputBindings.SaveToFile
+- uid: Vibe_Game.Core.Interfaces.IInputBindings.SaveToFile(System.String)
+  commentId: M:Vibe_Game.Core.Interfaces.IInputBindings.SaveToFile(System.String)
+  parent: Vibe_Game.Core.Interfaces.IInputBindings
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IInputBindings.html#Vibe_Game_Core_Interfaces_IInputBindings_SaveToFile_System_String_
+  name: SaveToFile(string)
+  nameWithType: IInputBindings.SaveToFile(string)
+  fullName: Vibe_Game.Core.Interfaces.IInputBindings.SaveToFile(string)
+  nameWithType.vb: IInputBindings.SaveToFile(String)
+  fullName.vb: Vibe_Game.Core.Interfaces.IInputBindings.SaveToFile(String)
+  name.vb: SaveToFile(String)
+  spec.csharp:
+  - uid: Vibe_Game.Core.Interfaces.IInputBindings.SaveToFile(System.String)
+    name: SaveToFile
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.IInputBindings.html#Vibe_Game_Core_Interfaces_IInputBindings_SaveToFile_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Core.Interfaces.IInputBindings.SaveToFile(System.String)
+    name: SaveToFile
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.IInputBindings.html#Vibe_Game_Core_Interfaces_IInputBindings_SaveToFile_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )

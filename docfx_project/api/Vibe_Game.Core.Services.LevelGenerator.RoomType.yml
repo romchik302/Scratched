@@ -1,0 +1,174 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Core.Services.LevelGenerator.RoomType
+  commentId: T:Vibe_Game.Core.Services.LevelGenerator.RoomType
+  id: LevelGenerator.RoomType
+  parent: Vibe_Game.Core.Services
+  children:
+  - Vibe_Game.Core.Services.LevelGenerator.RoomType.Battle
+  - Vibe_Game.Core.Services.LevelGenerator.RoomType.Boss
+  - Vibe_Game.Core.Services.LevelGenerator.RoomType.Start
+  - Vibe_Game.Core.Services.LevelGenerator.RoomType.Treasure
+  langs:
+  - csharp
+  - vb
+  name: LevelGenerator.RoomType
+  nameWithType: LevelGenerator.RoomType
+  fullName: Vibe_Game.Core.Services.LevelGenerator.RoomType
+  type: Enum
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/LevelGenerator.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Перечисление возможных типов игровых комнат.
+  example: []
+  syntax:
+    content: public enum LevelGenerator.RoomType
+    content.vb: Public Enum LevelGenerator.RoomType
+- uid: Vibe_Game.Core.Services.LevelGenerator.RoomType.Start
+  commentId: F:Vibe_Game.Core.Services.LevelGenerator.RoomType.Start
+  id: Start
+  parent: Vibe_Game.Core.Services.LevelGenerator.RoomType
+  langs:
+  - csharp
+  - vb
+  name: Start
+  nameWithType: LevelGenerator.RoomType.Start
+  fullName: Vibe_Game.Core.Services.LevelGenerator.RoomType.Start
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/LevelGenerator.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  syntax:
+    content: Start = 0
+    return:
+      type: Vibe_Game.Core.Services.LevelGenerator.RoomType
+- uid: Vibe_Game.Core.Services.LevelGenerator.RoomType.Battle
+  commentId: F:Vibe_Game.Core.Services.LevelGenerator.RoomType.Battle
+  id: Battle
+  parent: Vibe_Game.Core.Services.LevelGenerator.RoomType
+  langs:
+  - csharp
+  - vb
+  name: Battle
+  nameWithType: LevelGenerator.RoomType.Battle
+  fullName: Vibe_Game.Core.Services.LevelGenerator.RoomType.Battle
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/LevelGenerator.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  syntax:
+    content: Battle = 1
+    return:
+      type: Vibe_Game.Core.Services.LevelGenerator.RoomType
+- uid: Vibe_Game.Core.Services.LevelGenerator.RoomType.Treasure
+  commentId: F:Vibe_Game.Core.Services.LevelGenerator.RoomType.Treasure
+  id: Treasure
+  parent: Vibe_Game.Core.Services.LevelGenerator.RoomType
+  langs:
+  - csharp
+  - vb
+  name: Treasure
+  nameWithType: LevelGenerator.RoomType.Treasure
+  fullName: Vibe_Game.Core.Services.LevelGenerator.RoomType.Treasure
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/LevelGenerator.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  syntax:
+    content: Treasure = 2
+    return:
+      type: Vibe_Game.Core.Services.LevelGenerator.RoomType
+- uid: Vibe_Game.Core.Services.LevelGenerator.RoomType.Boss
+  commentId: F:Vibe_Game.Core.Services.LevelGenerator.RoomType.Boss
+  id: Boss
+  parent: Vibe_Game.Core.Services.LevelGenerator.RoomType
+  langs:
+  - csharp
+  - vb
+  name: Boss
+  nameWithType: LevelGenerator.RoomType.Boss
+  fullName: Vibe_Game.Core.Services.LevelGenerator.RoomType.Boss
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/LevelGenerator.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  syntax:
+    content: Boss = 3
+    return:
+      type: Vibe_Game.Core.Services.LevelGenerator.RoomType
+references:
+- uid: Vibe_Game.Core.Services
+  commentId: N:Vibe_Game.Core.Services
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Core.Services
+  nameWithType: Vibe_Game.Core.Services
+  fullName: Vibe_Game.Core.Services
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Services
+    name: Services
+    isExternal: true
+    href: Vibe_Game.Core.Services.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Services
+    name: Services
+    isExternal: true
+    href: Vibe_Game.Core.Services.html
+- uid: Vibe_Game.Core.Services.LevelGenerator.RoomType
+  commentId: T:Vibe_Game.Core.Services.LevelGenerator.RoomType
+  parent: Vibe_Game.Core.Services
+  isExternal: true
+  href: Vibe_Game.Core.Services.LevelGenerator.html
+  name: LevelGenerator.RoomType
+  nameWithType: LevelGenerator.RoomType
+  fullName: Vibe_Game.Core.Services.LevelGenerator.RoomType
+  spec.csharp:
+  - uid: Vibe_Game.Core.Services.LevelGenerator
+    name: LevelGenerator
+    isExternal: true
+    href: Vibe_Game.Core.Services.LevelGenerator.html
+  - name: .
+  - uid: Vibe_Game.Core.Services.LevelGenerator.RoomType
+    name: RoomType
+    isExternal: true
+    href: Vibe_Game.Core.Services.LevelGenerator.RoomType.html
+  spec.vb:
+  - uid: Vibe_Game.Core.Services.LevelGenerator
+    name: LevelGenerator
+    isExternal: true
+    href: Vibe_Game.Core.Services.LevelGenerator.html
+  - name: .
+  - uid: Vibe_Game.Core.Services.LevelGenerator.RoomType
+    name: RoomType
+    isExternal: true
+    href: Vibe_Game.Core.Services.LevelGenerator.RoomType.html

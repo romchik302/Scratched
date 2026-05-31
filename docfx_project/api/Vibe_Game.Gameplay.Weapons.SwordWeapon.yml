@@ -1,0 +1,1144 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon
+  commentId: T:Vibe_Game.Gameplay.Weapons.SwordWeapon
+  id: SwordWeapon
+  parent: Vibe_Game.Gameplay.Weapons
+  children:
+  - Vibe_Game.Gameplay.Weapons.SwordWeapon.#ctor(System.Single)
+  - Vibe_Game.Gameplay.Weapons.SwordWeapon.AttackDirection
+  - Vibe_Game.Gameplay.Weapons.SwordWeapon.BaseRecoil
+  - Vibe_Game.Gameplay.Weapons.SwordWeapon.Damage
+  - Vibe_Game.Gameplay.Weapons.SwordWeapon.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,IAttackContext)
+  - Vibe_Game.Gameplay.Weapons.SwordWeapon.ExternalDamageBonus
+  - Vibe_Game.Gameplay.Weapons.SwordWeapon.FireMode
+  - Vibe_Game.Gameplay.Weapons.SwordWeapon.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+  - Vibe_Game.Gameplay.Weapons.SwordWeapon.SetCooldownMultiplier(System.Single)
+  - Vibe_Game.Gameplay.Weapons.SwordWeapon.SwordLength
+  - Vibe_Game.Gameplay.Weapons.SwordWeapon.SwordWidth
+  - Vibe_Game.Gameplay.Weapons.SwordWeapon.TryPrimaryAttack(IAttackContext,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  - Vibe_Game.Gameplay.Weapons.SwordWeapon.Update(Microsoft.Xna.Framework.GameTime,IAttackContext)
+  - Vibe_Game.Gameplay.Weapons.SwordWeapon.UpdateOwnerPosition(Microsoft.Xna.Framework.Vector2)
+  langs:
+  - csharp
+  - vb
+  name: SwordWeapon
+  nameWithType: SwordWeapon
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon
+  type: Class
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/SwordWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: >-
+    Оружие ближнего боя (меч), выполняющее круговой взмах по дуге, рассчитывающее динамический 
+
+    хитбокс атаки каждый кадр и генерирующее анимированные частицы шлейфа (следа).
+  example: []
+  syntax:
+    content: 'public sealed class SwordWeapon : WeaponBase, IWeapon'
+    content.vb: Public NotInheritable Class SwordWeapon Inherits WeaponBase Implements IWeapon
+  inheritance:
+  - System.Object
+  - Vibe_Game.Gameplay.Weapons.WeaponBase
+  implements:
+  - Vibe_Game.Gameplay.Weapons.IWeapon
+  inheritedMembers:
+  - Vibe_Game.Gameplay.Weapons.WeaponBase.DisplayName
+  - System.Object.GetType
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.#ctor(System.Single)
+  commentId: M:Vibe_Game.Gameplay.Weapons.SwordWeapon.#ctor(System.Single)
+  id: '#ctor(System.Single)'
+  parent: Vibe_Game.Gameplay.Weapons.SwordWeapon
+  langs:
+  - csharp
+  - vb
+  name: SwordWeapon(float)
+  nameWithType: SwordWeapon.SwordWeapon(float)
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.SwordWeapon(float)
+  type: Constructor
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/SwordWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: Инициализирует новый экземпляр меча с базовым временем отката.
+  example: []
+  syntax:
+    content: public SwordWeapon(float cooldownSeconds = 0.4)
+    parameters:
+    - id: cooldownSeconds
+      type: System.Single
+      description: Базовое время перезарядки оружия в секундах.
+    content.vb: Public Sub New(cooldownSeconds As Single = 0.4)
+  overload: Vibe_Game.Gameplay.Weapons.SwordWeapon.#ctor*
+  nameWithType.vb: SwordWeapon.New(Single)
+  fullName.vb: Vibe_Game.Gameplay.Weapons.SwordWeapon.New(Single)
+  name.vb: New(Single)
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.SetCooldownMultiplier(System.Single)
+  commentId: M:Vibe_Game.Gameplay.Weapons.SwordWeapon.SetCooldownMultiplier(System.Single)
+  id: SetCooldownMultiplier(System.Single)
+  parent: Vibe_Game.Gameplay.Weapons.SwordWeapon
+  langs:
+  - csharp
+  - vb
+  name: SetCooldownMultiplier(float)
+  nameWithType: SwordWeapon.SetCooldownMultiplier(float)
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.SetCooldownMultiplier(float)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/SwordWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: Устанавливает динамический множитель скорости атаки, изменяя итоговое время отката оружия.
+  example: []
+  syntax:
+    content: public void SetCooldownMultiplier(float multiplier)
+    parameters:
+    - id: multiplier
+      type: System.Single
+      description: Множитель времени отката (чем меньше значение, тем быстрее перезарядка).
+    content.vb: Public Sub SetCooldownMultiplier(multiplier As Single)
+  overload: Vibe_Game.Gameplay.Weapons.SwordWeapon.SetCooldownMultiplier*
+  nameWithType.vb: SwordWeapon.SetCooldownMultiplier(Single)
+  fullName.vb: Vibe_Game.Gameplay.Weapons.SwordWeapon.SetCooldownMultiplier(Single)
+  name.vb: SetCooldownMultiplier(Single)
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+  commentId: M:Vibe_Game.Gameplay.Weapons.SwordWeapon.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+  id: LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+  parent: Vibe_Game.Gameplay.Weapons.SwordWeapon
+  langs:
+  - csharp
+  - vb
+  name: LoadContent(ContentManager)
+  nameWithType: SwordWeapon.LoadContent(ContentManager)
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/SwordWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: Загружает графические ассеты меча и текстуры частиц следа из менеджера ресурсов.
+  example: []
+  syntax:
+    content: public void LoadContent(ContentManager content)
+    parameters:
+    - id: content
+      type: Microsoft.Xna.Framework.Content.ContentManager
+      description: Менеджер игрового контента.
+    content.vb: Public Sub LoadContent(content As ContentManager)
+  overload: Vibe_Game.Gameplay.Weapons.SwordWeapon.LoadContent*
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.Update(Microsoft.Xna.Framework.GameTime,IAttackContext)
+  commentId: M:Vibe_Game.Gameplay.Weapons.SwordWeapon.Update(Microsoft.Xna.Framework.GameTime,IAttackContext)
+  id: Update(Microsoft.Xna.Framework.GameTime,IAttackContext)
+  parent: Vibe_Game.Gameplay.Weapons.SwordWeapon
+  langs:
+  - csharp
+  - vb
+  name: Update(GameTime, IAttackContext)
+  nameWithType: SwordWeapon.Update(GameTime, IAttackContext)
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.Update(Microsoft.Xna.Framework.GameTime, IAttackContext)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/SwordWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: Обновляет внутреннее состояние оружия и уменьшает оставшееся время отката.
+  example: []
+  syntax:
+    content: public override void Update(GameTime gameTime, IAttackContext context)
+    parameters:
+    - id: gameTime
+      type: Microsoft.Xna.Framework.GameTime
+      description: Текущее игровое время.
+    - id: context
+      type: IAttackContext
+      description: Контекст выполнения боевых действий и взаимодействия с миром.
+    content.vb: Public Overrides Sub Update(gameTime As GameTime, context As IAttackContext)
+  overridden: Vibe_Game.Gameplay.Weapons.WeaponBase.Update(Microsoft.Xna.Framework.GameTime,IAttackContext)
+  overload: Vibe_Game.Gameplay.Weapons.SwordWeapon.Update*
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.TryPrimaryAttack(IAttackContext,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  commentId: M:Vibe_Game.Gameplay.Weapons.SwordWeapon.TryPrimaryAttack(IAttackContext,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  id: TryPrimaryAttack(IAttackContext,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  parent: Vibe_Game.Gameplay.Weapons.SwordWeapon
+  langs:
+  - csharp
+  - vb
+  name: TryPrimaryAttack(IAttackContext, Vector2, Vector2)
+  nameWithType: SwordWeapon.TryPrimaryAttack(IAttackContext, Vector2, Vector2)
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.TryPrimaryAttack(IAttackContext, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Vector2)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/SwordWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: Выполняет основную атаку оружия из указанной позиции в заданном направлении.
+  example: []
+  syntax:
+    content: public override bool TryPrimaryAttack(IAttackContext context, Vector2 ownerPosition, Vector2 facingDirection)
+    parameters:
+    - id: context
+      type: IAttackContext
+      description: Контекст боевой системы для регистрации попаданий или спавна снарядов.
+    - id: ownerPosition
+      type: Microsoft.Xna.Framework.Vector2
+      description: Позиция владельца оружия в мировых координатах.
+    - id: facingDirection
+      type: Microsoft.Xna.Framework.Vector2
+      description: Вектор направления атаки.
+    return:
+      type: System.Boolean
+      description: Значение <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, если атака была успешно произведена; иначе — <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Overrides Function TryPrimaryAttack(context As IAttackContext, ownerPosition As Vector2, facingDirection As Vector2) As Boolean
+  overridden: Vibe_Game.Gameplay.Weapons.WeaponBase.TryPrimaryAttack(IAttackContext,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  overload: Vibe_Game.Gameplay.Weapons.SwordWeapon.TryPrimaryAttack*
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.UpdateOwnerPosition(Microsoft.Xna.Framework.Vector2)
+  commentId: M:Vibe_Game.Gameplay.Weapons.SwordWeapon.UpdateOwnerPosition(Microsoft.Xna.Framework.Vector2)
+  id: UpdateOwnerPosition(Microsoft.Xna.Framework.Vector2)
+  parent: Vibe_Game.Gameplay.Weapons.SwordWeapon
+  langs:
+  - csharp
+  - vb
+  name: UpdateOwnerPosition(Vector2)
+  nameWithType: SwordWeapon.UpdateOwnerPosition(Vector2)
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.UpdateOwnerPosition(Microsoft.Xna.Framework.Vector2)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/SwordWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: Синхронизирует и обновляет позицию владельца оружия для корректного расчета смещения рукояти во время движения.
+  example: []
+  syntax:
+    content: public void UpdateOwnerPosition(Vector2 ownerPosition)
+    parameters:
+    - id: ownerPosition
+      type: Microsoft.Xna.Framework.Vector2
+      description: Новая позиция владельца меча в мировых координатах.
+    content.vb: Public Sub UpdateOwnerPosition(ownerPosition As Vector2)
+  overload: Vibe_Game.Gameplay.Weapons.SwordWeapon.UpdateOwnerPosition*
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,IAttackContext)
+  commentId: M:Vibe_Game.Gameplay.Weapons.SwordWeapon.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,IAttackContext)
+  id: Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,IAttackContext)
+  parent: Vibe_Game.Gameplay.Weapons.SwordWeapon
+  langs:
+  - csharp
+  - vb
+  name: Draw(SpriteBatch, IAttackContext)
+  nameWithType: SwordWeapon.Draw(SpriteBatch, IAttackContext)
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch, IAttackContext)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/SwordWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: Отрисовывает визуальные элементы, спрайты или графические эффекты оружия в игровом мире.
+  example: []
+  syntax:
+    content: public override void Draw(SpriteBatch spriteBatch, IAttackContext context)
+    parameters:
+    - id: spriteBatch
+      type: Microsoft.Xna.Framework.Graphics.SpriteBatch
+      description: Пакет спрайтов для графического вывода.
+    - id: context
+      type: IAttackContext
+      description: Контекст боевой системы.
+    content.vb: Public Overrides Sub Draw(spriteBatch As SpriteBatch, context As IAttackContext)
+  overridden: Vibe_Game.Gameplay.Weapons.WeaponBase.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,IAttackContext)
+  overload: Vibe_Game.Gameplay.Weapons.SwordWeapon.Draw*
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.FireMode
+  commentId: P:Vibe_Game.Gameplay.Weapons.SwordWeapon.FireMode
+  id: FireMode
+  parent: Vibe_Game.Gameplay.Weapons.SwordWeapon
+  langs:
+  - csharp
+  - vb
+  name: FireMode
+  nameWithType: SwordWeapon.FireMode
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.FireMode
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/SwordWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: >-
+    Режим стрельбы оружия.
+
+    По умолчанию атака выполняется при удержании направления.
+  example: []
+  syntax:
+    content: public override WeaponFireMode FireMode { get; }
+    parameters: []
+    return:
+      type: Vibe_Game.Gameplay.Weapons.WeaponFireMode
+    content.vb: Public Overrides ReadOnly Property FireMode As WeaponFireMode
+  overridden: Vibe_Game.Gameplay.Weapons.WeaponBase.FireMode
+  overload: Vibe_Game.Gameplay.Weapons.SwordWeapon.FireMode*
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.BaseRecoil
+  commentId: P:Vibe_Game.Gameplay.Weapons.SwordWeapon.BaseRecoil
+  id: BaseRecoil
+  parent: Vibe_Game.Gameplay.Weapons.SwordWeapon
+  langs:
+  - csharp
+  - vb
+  name: BaseRecoil
+  nameWithType: SwordWeapon.BaseRecoil
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.BaseRecoil
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/SwordWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: Базовая отдача оружия (сила толчка в обратную сторону от направления атаки).
+  example: []
+  syntax:
+    content: public override float BaseRecoil { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Overrides ReadOnly Property BaseRecoil As Single
+  overridden: Vibe_Game.Gameplay.Weapons.WeaponBase.BaseRecoil
+  overload: Vibe_Game.Gameplay.Weapons.SwordWeapon.BaseRecoil*
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.SwordLength
+  commentId: P:Vibe_Game.Gameplay.Weapons.SwordWeapon.SwordLength
+  id: SwordLength
+  parent: Vibe_Game.Gameplay.Weapons.SwordWeapon
+  langs:
+  - csharp
+  - vb
+  name: SwordLength
+  nameWithType: SwordWeapon.SwordLength
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.SwordLength
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/SwordWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: Длина лезвия меча в пикселях. Ограничена снизу минимальным значением.
+  example: []
+  syntax:
+    content: public float SwordLength { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property SwordLength As Single
+  overload: Vibe_Game.Gameplay.Weapons.SwordWeapon.SwordLength*
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.SwordWidth
+  commentId: P:Vibe_Game.Gameplay.Weapons.SwordWeapon.SwordWidth
+  id: SwordWidth
+  parent: Vibe_Game.Gameplay.Weapons.SwordWeapon
+  langs:
+  - csharp
+  - vb
+  name: SwordWidth
+  nameWithType: SwordWeapon.SwordWidth
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.SwordWidth
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/SwordWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: Ширина (толщина) лезвия меча в пикселях. Ограничена снизу минимальным значением.
+  example: []
+  syntax:
+    content: public float SwordWidth { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property SwordWidth As Single
+  overload: Vibe_Game.Gameplay.Weapons.SwordWeapon.SwordWidth*
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.ExternalDamageBonus
+  commentId: P:Vibe_Game.Gameplay.Weapons.SwordWeapon.ExternalDamageBonus
+  id: ExternalDamageBonus
+  parent: Vibe_Game.Gameplay.Weapons.SwordWeapon
+  langs:
+  - csharp
+  - vb
+  name: ExternalDamageBonus
+  nameWithType: SwordWeapon.ExternalDamageBonus
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.ExternalDamageBonus
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/SwordWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: Дополнительный бонус к базовому урону меча, получаемый от внешних модификаторов или характеристик персонажа.
+  example: []
+  syntax:
+    content: public int ExternalDamageBonus { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ExternalDamageBonus As Integer
+  overload: Vibe_Game.Gameplay.Weapons.SwordWeapon.ExternalDamageBonus*
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.AttackDirection
+  commentId: P:Vibe_Game.Gameplay.Weapons.SwordWeapon.AttackDirection
+  id: AttackDirection
+  parent: Vibe_Game.Gameplay.Weapons.SwordWeapon
+  langs:
+  - csharp
+  - vb
+  name: AttackDirection
+  nameWithType: SwordWeapon.AttackDirection
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.AttackDirection
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/SwordWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: Нормализованный вектор направления текущей или последней совершенной атаки.
+  example: []
+  syntax:
+    content: public Vector2 AttackDirection { get; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Vector2
+    content.vb: Public ReadOnly Property AttackDirection As Vector2
+  overload: Vibe_Game.Gameplay.Weapons.SwordWeapon.AttackDirection*
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.Damage
+  commentId: P:Vibe_Game.Gameplay.Weapons.SwordWeapon.Damage
+  id: Damage
+  parent: Vibe_Game.Gameplay.Weapons.SwordWeapon
+  langs:
+  - csharp
+  - vb
+  name: Damage
+  nameWithType: SwordWeapon.Damage
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.Damage
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/SwordWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: Базовый урон, наносимый мечом без учета внешних бонусов.
+  example: []
+  syntax:
+    content: public int Damage { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Damage As Integer
+  overload: Vibe_Game.Gameplay.Weapons.SwordWeapon.Damage*
+references:
+- uid: Vibe_Game.Gameplay.Weapons
+  commentId: N:Vibe_Game.Gameplay.Weapons
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Gameplay.Weapons
+  nameWithType: Vibe_Game.Gameplay.Weapons
+  fullName: Vibe_Game.Gameplay.Weapons
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Weapons
+    name: Weapons
+    isExternal: true
+    href: Vibe_Game.Gameplay.Weapons.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Weapons
+    name: Weapons
+    isExternal: true
+    href: Vibe_Game.Gameplay.Weapons.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vibe_Game.Gameplay.Weapons.WeaponBase
+  commentId: T:Vibe_Game.Gameplay.Weapons.WeaponBase
+  parent: Vibe_Game.Gameplay.Weapons
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.WeaponBase.html
+  name: WeaponBase
+  nameWithType: WeaponBase
+  fullName: Vibe_Game.Gameplay.Weapons.WeaponBase
+- uid: Vibe_Game.Gameplay.Weapons.IWeapon
+  commentId: T:Vibe_Game.Gameplay.Weapons.IWeapon
+  parent: Vibe_Game.Gameplay.Weapons
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.IWeapon.html
+  name: IWeapon
+  nameWithType: IWeapon
+  fullName: Vibe_Game.Gameplay.Weapons.IWeapon
+- uid: Vibe_Game.Gameplay.Weapons.WeaponBase.DisplayName
+  commentId: P:Vibe_Game.Gameplay.Weapons.WeaponBase.DisplayName
+  parent: Vibe_Game.Gameplay.Weapons.WeaponBase
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_DisplayName
+  name: DisplayName
+  nameWithType: WeaponBase.DisplayName
+  fullName: Vibe_Game.Gameplay.Weapons.WeaponBase.DisplayName
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.#ctor*
+  commentId: Overload:Vibe_Game.Gameplay.Weapons.SwordWeapon.#ctor
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.SwordWeapon.html#Vibe_Game_Gameplay_Weapons_SwordWeapon__ctor_System_Single_
+  name: SwordWeapon
+  nameWithType: SwordWeapon.SwordWeapon
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.SwordWeapon
+  nameWithType.vb: SwordWeapon.New
+  fullName.vb: Vibe_Game.Gameplay.Weapons.SwordWeapon.New
+  name.vb: New
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.SetCooldownMultiplier*
+  commentId: Overload:Vibe_Game.Gameplay.Weapons.SwordWeapon.SetCooldownMultiplier
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.SwordWeapon.html#Vibe_Game_Gameplay_Weapons_SwordWeapon_SetCooldownMultiplier_System_Single_
+  name: SetCooldownMultiplier
+  nameWithType: SwordWeapon.SetCooldownMultiplier
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.SetCooldownMultiplier
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.LoadContent*
+  commentId: Overload:Vibe_Game.Gameplay.Weapons.SwordWeapon.LoadContent
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.SwordWeapon.html#Vibe_Game_Gameplay_Weapons_SwordWeapon_LoadContent_Microsoft_Xna_Framework_Content_ContentManager_
+  name: LoadContent
+  nameWithType: SwordWeapon.LoadContent
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.LoadContent
+- uid: Microsoft.Xna.Framework.Content.ContentManager
+  commentId: T:Microsoft.Xna.Framework.Content.ContentManager
+  parent: Microsoft.Xna.Framework.Content
+  isExternal: true
+  name: ContentManager
+  nameWithType: ContentManager
+  fullName: Microsoft.Xna.Framework.Content.ContentManager
+- uid: Microsoft.Xna.Framework.Content
+  commentId: N:Microsoft.Xna.Framework.Content
+  isExternal: true
+  name: Microsoft.Xna.Framework.Content
+  nameWithType: Microsoft.Xna.Framework.Content
+  fullName: Microsoft.Xna.Framework.Content
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework.Content
+    name: Content
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework.Content
+    name: Content
+    isExternal: true
+- uid: Vibe_Game.Gameplay.Weapons.WeaponBase.Update(Microsoft.Xna.Framework.GameTime,IAttackContext)
+  commentId: M:Vibe_Game.Gameplay.Weapons.WeaponBase.Update(Microsoft.Xna.Framework.GameTime,IAttackContext)
+  parent: Vibe_Game.Gameplay.Weapons.WeaponBase
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_Update_Microsoft_Xna_Framework_GameTime_IAttackContext_
+  name: Update(GameTime, IAttackContext)
+  nameWithType: WeaponBase.Update(GameTime, IAttackContext)
+  fullName: Vibe_Game.Gameplay.Weapons.WeaponBase.Update(Microsoft.Xna.Framework.GameTime, IAttackContext)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Weapons.WeaponBase.Update(Microsoft.Xna.Framework.GameTime,IAttackContext)
+    name: Update
+    isExternal: true
+    href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_Update_Microsoft_Xna_Framework_GameTime_IAttackContext_
+  - name: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: IAttackContext
+    name: IAttackContext
+    isExternal: true
+    href: IAttackContext.html
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Weapons.WeaponBase.Update(Microsoft.Xna.Framework.GameTime,IAttackContext)
+    name: Update
+    isExternal: true
+    href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_Update_Microsoft_Xna_Framework_GameTime_IAttackContext_
+  - name: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: IAttackContext
+    name: IAttackContext
+    isExternal: true
+    href: IAttackContext.html
+  - name: )
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.Update*
+  commentId: Overload:Vibe_Game.Gameplay.Weapons.SwordWeapon.Update
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.SwordWeapon.html#Vibe_Game_Gameplay_Weapons_SwordWeapon_Update_Microsoft_Xna_Framework_GameTime_IAttackContext_
+  name: Update
+  nameWithType: SwordWeapon.Update
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.Update
+- uid: Microsoft.Xna.Framework.GameTime
+  commentId: T:Microsoft.Xna.Framework.GameTime
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: GameTime
+  nameWithType: GameTime
+  fullName: Microsoft.Xna.Framework.GameTime
+- uid: IAttackContext
+  commentId: T:IAttackContext
+  isExternal: true
+  href: IAttackContext.html
+  name: IAttackContext
+  nameWithType: IAttackContext
+  fullName: IAttackContext
+- uid: Microsoft.Xna.Framework
+  commentId: N:Microsoft.Xna.Framework
+  isExternal: true
+  name: Microsoft.Xna.Framework
+  nameWithType: Microsoft.Xna.Framework
+  fullName: Microsoft.Xna.Framework
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+- uid: Vibe_Game.Gameplay.Weapons.WeaponBase.TryPrimaryAttack(IAttackContext,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  commentId: M:Vibe_Game.Gameplay.Weapons.WeaponBase.TryPrimaryAttack(IAttackContext,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  parent: Vibe_Game.Gameplay.Weapons.WeaponBase
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_TryPrimaryAttack_IAttackContext_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_
+  name: TryPrimaryAttack(IAttackContext, Vector2, Vector2)
+  nameWithType: WeaponBase.TryPrimaryAttack(IAttackContext, Vector2, Vector2)
+  fullName: Vibe_Game.Gameplay.Weapons.WeaponBase.TryPrimaryAttack(IAttackContext, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Vector2)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Weapons.WeaponBase.TryPrimaryAttack(IAttackContext,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+    name: TryPrimaryAttack
+    isExternal: true
+    href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_TryPrimaryAttack_IAttackContext_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_
+  - name: (
+  - uid: IAttackContext
+    name: IAttackContext
+    isExternal: true
+    href: IAttackContext.html
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Xna.Framework.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Xna.Framework.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Weapons.WeaponBase.TryPrimaryAttack(IAttackContext,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+    name: TryPrimaryAttack
+    isExternal: true
+    href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_TryPrimaryAttack_IAttackContext_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_
+  - name: (
+  - uid: IAttackContext
+    name: IAttackContext
+    isExternal: true
+    href: IAttackContext.html
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Xna.Framework.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Xna.Framework.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.TryPrimaryAttack*
+  commentId: Overload:Vibe_Game.Gameplay.Weapons.SwordWeapon.TryPrimaryAttack
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.SwordWeapon.html#Vibe_Game_Gameplay_Weapons_SwordWeapon_TryPrimaryAttack_IAttackContext_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_
+  name: TryPrimaryAttack
+  nameWithType: SwordWeapon.TryPrimaryAttack
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.TryPrimaryAttack
+- uid: Microsoft.Xna.Framework.Vector2
+  commentId: T:Microsoft.Xna.Framework.Vector2
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Microsoft.Xna.Framework.Vector2
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.UpdateOwnerPosition*
+  commentId: Overload:Vibe_Game.Gameplay.Weapons.SwordWeapon.UpdateOwnerPosition
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.SwordWeapon.html#Vibe_Game_Gameplay_Weapons_SwordWeapon_UpdateOwnerPosition_Microsoft_Xna_Framework_Vector2_
+  name: UpdateOwnerPosition
+  nameWithType: SwordWeapon.UpdateOwnerPosition
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.UpdateOwnerPosition
+- uid: Vibe_Game.Gameplay.Weapons.WeaponBase.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,IAttackContext)
+  commentId: M:Vibe_Game.Gameplay.Weapons.WeaponBase.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,IAttackContext)
+  parent: Vibe_Game.Gameplay.Weapons.WeaponBase
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_IAttackContext_
+  name: Draw(SpriteBatch, IAttackContext)
+  nameWithType: WeaponBase.Draw(SpriteBatch, IAttackContext)
+  fullName: Vibe_Game.Gameplay.Weapons.WeaponBase.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch, IAttackContext)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Weapons.WeaponBase.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,IAttackContext)
+    name: Draw
+    isExternal: true
+    href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_IAttackContext_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Graphics.SpriteBatch
+    name: SpriteBatch
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: IAttackContext
+    name: IAttackContext
+    isExternal: true
+    href: IAttackContext.html
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Weapons.WeaponBase.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,IAttackContext)
+    name: Draw
+    isExternal: true
+    href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_IAttackContext_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Graphics.SpriteBatch
+    name: SpriteBatch
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: IAttackContext
+    name: IAttackContext
+    isExternal: true
+    href: IAttackContext.html
+  - name: )
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.Draw*
+  commentId: Overload:Vibe_Game.Gameplay.Weapons.SwordWeapon.Draw
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.SwordWeapon.html#Vibe_Game_Gameplay_Weapons_SwordWeapon_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_IAttackContext_
+  name: Draw
+  nameWithType: SwordWeapon.Draw
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.Draw
+- uid: Microsoft.Xna.Framework.Graphics.SpriteBatch
+  commentId: T:Microsoft.Xna.Framework.Graphics.SpriteBatch
+  parent: Microsoft.Xna.Framework.Graphics
+  isExternal: true
+  name: SpriteBatch
+  nameWithType: SpriteBatch
+  fullName: Microsoft.Xna.Framework.Graphics.SpriteBatch
+- uid: Microsoft.Xna.Framework.Graphics
+  commentId: N:Microsoft.Xna.Framework.Graphics
+  isExternal: true
+  name: Microsoft.Xna.Framework.Graphics
+  nameWithType: Microsoft.Xna.Framework.Graphics
+  fullName: Microsoft.Xna.Framework.Graphics
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework.Graphics
+    name: Graphics
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework.Graphics
+    name: Graphics
+    isExternal: true
+- uid: Vibe_Game.Gameplay.Weapons.WeaponBase.FireMode
+  commentId: P:Vibe_Game.Gameplay.Weapons.WeaponBase.FireMode
+  parent: Vibe_Game.Gameplay.Weapons.WeaponBase
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_FireMode
+  name: FireMode
+  nameWithType: WeaponBase.FireMode
+  fullName: Vibe_Game.Gameplay.Weapons.WeaponBase.FireMode
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.FireMode*
+  commentId: Overload:Vibe_Game.Gameplay.Weapons.SwordWeapon.FireMode
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.SwordWeapon.html#Vibe_Game_Gameplay_Weapons_SwordWeapon_FireMode
+  name: FireMode
+  nameWithType: SwordWeapon.FireMode
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.FireMode
+- uid: Vibe_Game.Gameplay.Weapons.WeaponFireMode
+  commentId: T:Vibe_Game.Gameplay.Weapons.WeaponFireMode
+  parent: Vibe_Game.Gameplay.Weapons
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.WeaponFireMode.html
+  name: WeaponFireMode
+  nameWithType: WeaponFireMode
+  fullName: Vibe_Game.Gameplay.Weapons.WeaponFireMode
+- uid: Vibe_Game.Gameplay.Weapons.WeaponBase.BaseRecoil
+  commentId: P:Vibe_Game.Gameplay.Weapons.WeaponBase.BaseRecoil
+  parent: Vibe_Game.Gameplay.Weapons.WeaponBase
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_BaseRecoil
+  name: BaseRecoil
+  nameWithType: WeaponBase.BaseRecoil
+  fullName: Vibe_Game.Gameplay.Weapons.WeaponBase.BaseRecoil
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.BaseRecoil*
+  commentId: Overload:Vibe_Game.Gameplay.Weapons.SwordWeapon.BaseRecoil
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.SwordWeapon.html#Vibe_Game_Gameplay_Weapons_SwordWeapon_BaseRecoil
+  name: BaseRecoil
+  nameWithType: SwordWeapon.BaseRecoil
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.BaseRecoil
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.SwordLength*
+  commentId: Overload:Vibe_Game.Gameplay.Weapons.SwordWeapon.SwordLength
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.SwordWeapon.html#Vibe_Game_Gameplay_Weapons_SwordWeapon_SwordLength
+  name: SwordLength
+  nameWithType: SwordWeapon.SwordLength
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.SwordLength
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.SwordWidth*
+  commentId: Overload:Vibe_Game.Gameplay.Weapons.SwordWeapon.SwordWidth
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.SwordWeapon.html#Vibe_Game_Gameplay_Weapons_SwordWeapon_SwordWidth
+  name: SwordWidth
+  nameWithType: SwordWeapon.SwordWidth
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.SwordWidth
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.ExternalDamageBonus*
+  commentId: Overload:Vibe_Game.Gameplay.Weapons.SwordWeapon.ExternalDamageBonus
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.SwordWeapon.html#Vibe_Game_Gameplay_Weapons_SwordWeapon_ExternalDamageBonus
+  name: ExternalDamageBonus
+  nameWithType: SwordWeapon.ExternalDamageBonus
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.ExternalDamageBonus
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.AttackDirection*
+  commentId: Overload:Vibe_Game.Gameplay.Weapons.SwordWeapon.AttackDirection
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.SwordWeapon.html#Vibe_Game_Gameplay_Weapons_SwordWeapon_AttackDirection
+  name: AttackDirection
+  nameWithType: SwordWeapon.AttackDirection
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.AttackDirection
+- uid: Vibe_Game.Gameplay.Weapons.SwordWeapon.Damage*
+  commentId: Overload:Vibe_Game.Gameplay.Weapons.SwordWeapon.Damage
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.SwordWeapon.html#Vibe_Game_Gameplay_Weapons_SwordWeapon_Damage
+  name: Damage
+  nameWithType: SwordWeapon.Damage
+  fullName: Vibe_Game.Gameplay.Weapons.SwordWeapon.Damage

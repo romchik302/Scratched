@@ -1,0 +1,829 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup
+  commentId: T:Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup
+  id: DroppedPickup
+  parent: Vibe_Game.Gameplay.Entities.Collectables
+  children:
+  - Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.#ctor(Microsoft.Xna.Framework.Vector2,Vibe_Game.Gameplay.Entities.Collectables.CollectableKind,Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache)
+  - Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  - Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.GetBounds
+  - Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Kind
+  - Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Update(Microsoft.Xna.Framework.GameTime,Vibe_Game.Gameplay.Entities.Player.Player)
+  langs:
+  - csharp
+  - vb
+  name: DroppedPickup
+  nameWithType: DroppedPickup
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup
+  type: Class
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/DroppedPickup.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Collectables
+  summary: >-
+    Представляет предмет, лежащий на полу (например, сердечки или другие бонусы).
+
+    Отвечает за проигрывание idle-анимации, покачивание и логику подбора игроком.
+  example: []
+  syntax:
+    content: 'public sealed class DroppedPickup : Entity'
+    content.vb: Public NotInheritable Class DroppedPickup Inherits Entity
+  inheritance:
+  - System.Object
+  - Vibe_Game.Gameplay.Entities.Entity
+  inheritedMembers:
+  - Vibe_Game.Gameplay.Entities.Entity.Update(Microsoft.Xna.Framework.GameTime)
+  - Vibe_Game.Gameplay.Entities.Entity.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+  - Vibe_Game.Gameplay.Entities.Entity.Position
+  - Vibe_Game.Gameplay.Entities.Entity.Velocity
+  - Vibe_Game.Gameplay.Entities.Entity.IsAlive
+  - System.Object.GetType
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.#ctor(Microsoft.Xna.Framework.Vector2,Vibe_Game.Gameplay.Entities.Collectables.CollectableKind,Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache)
+  commentId: M:Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.#ctor(Microsoft.Xna.Framework.Vector2,Vibe_Game.Gameplay.Entities.Collectables.CollectableKind,Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache)
+  id: '#ctor(Microsoft.Xna.Framework.Vector2,Vibe_Game.Gameplay.Entities.Collectables.CollectableKind,Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache)'
+  parent: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup
+  langs:
+  - csharp
+  - vb
+  name: DroppedPickup(Vector2, CollectableKind, CollectibleVisualCache)
+  nameWithType: DroppedPickup.DroppedPickup(Vector2, CollectableKind, CollectibleVisualCache)
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.DroppedPickup(Microsoft.Xna.Framework.Vector2, Vibe_Game.Gameplay.Entities.Collectables.CollectableKind, Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache)
+  type: Constructor
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/DroppedPickup.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Collectables
+  summary: Инициализирует новый экземпляр класса DroppedPickup.
+  example: []
+  syntax:
+    content: public DroppedPickup(Vector2 worldPosition, CollectableKind kind, CollectibleVisualCache visuals)
+    parameters:
+    - id: worldPosition
+      type: Microsoft.Xna.Framework.Vector2
+      description: Позиция появления в мире.
+    - id: kind
+      type: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+      description: Тип предмета.
+    - id: visuals
+      type: Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache
+      description: Кэш текстур для отрисовки.
+    content.vb: Public Sub New(worldPosition As Vector2, kind As CollectableKind, visuals As CollectibleVisualCache)
+  overload: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.#ctor*
+  nameWithType.vb: DroppedPickup.New(Vector2, CollectableKind, CollectibleVisualCache)
+  fullName.vb: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.New(Microsoft.Xna.Framework.Vector2, Vibe_Game.Gameplay.Entities.Collectables.CollectableKind, Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache)
+  name.vb: New(Vector2, CollectableKind, CollectibleVisualCache)
+- uid: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.GetBounds
+  commentId: M:Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.GetBounds
+  id: GetBounds
+  parent: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup
+  langs:
+  - csharp
+  - vb
+  name: GetBounds()
+  nameWithType: DroppedPickup.GetBounds()
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.GetBounds()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/DroppedPickup.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Collectables
+  summary: Возвращает область столкновения объекта. Используется системой коллизий и проверкой попаданий.
+  example: []
+  syntax:
+    content: public override Rectangle GetBounds()
+    return:
+      type: Microsoft.Xna.Framework.Rectangle
+    content.vb: Public Overrides Function GetBounds() As Rectangle
+  overridden: Vibe_Game.Gameplay.Entities.Entity.GetBounds
+  overload: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.GetBounds*
+- uid: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Update(Microsoft.Xna.Framework.GameTime,Vibe_Game.Gameplay.Entities.Player.Player)
+  commentId: M:Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Update(Microsoft.Xna.Framework.GameTime,Vibe_Game.Gameplay.Entities.Player.Player)
+  id: Update(Microsoft.Xna.Framework.GameTime,Vibe_Game.Gameplay.Entities.Player.Player)
+  parent: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup
+  langs:
+  - csharp
+  - vb
+  name: Update(GameTime, Player)
+  nameWithType: DroppedPickup.Update(GameTime, Player)
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Update(Microsoft.Xna.Framework.GameTime, Vibe_Game.Gameplay.Entities.Player.Player)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/DroppedPickup.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Collectables
+  summary: Обновляет анимацию покачивания и проверяет пересечение с игроком.
+  example: []
+  syntax:
+    content: public void Update(GameTime gameTime, Player player)
+    parameters:
+    - id: gameTime
+      type: Microsoft.Xna.Framework.GameTime
+      description: Текущее время игры.
+    - id: player
+      type: Vibe_Game.Gameplay.Entities.Player.Player
+      description: Ссылка на игрока для проверки коллизий.
+    content.vb: Public Sub Update(gameTime As GameTime, player As Player)
+  overload: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Update*
+- uid: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  commentId: M:Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  id: Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  parent: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup
+  langs:
+  - csharp
+  - vb
+  name: Draw(SpriteBatch)
+  nameWithType: DroppedPickup.Draw(SpriteBatch)
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/DroppedPickup.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Collectables
+  summary: Отрисовывает объект на экране. Использует текстуру, позицию и цвет сущности.
+  example: []
+  syntax:
+    content: public override void Draw(SpriteBatch spriteBatch)
+    parameters:
+    - id: spriteBatch
+      type: Microsoft.Xna.Framework.Graphics.SpriteBatch
+      description: Экземпляр SpriteBatch, используемый для отрисовки графики.
+    content.vb: Public Overrides Sub Draw(spriteBatch As SpriteBatch)
+  overridden: Vibe_Game.Gameplay.Entities.Entity.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  overload: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Draw*
+- uid: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Kind
+  commentId: P:Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Kind
+  id: Kind
+  parent: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup
+  langs:
+  - csharp
+  - vb
+  name: Kind
+  nameWithType: DroppedPickup.Kind
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Kind
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/DroppedPickup.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Collectables
+  summary: Тип подбираемого предмета.
+  example: []
+  syntax:
+    content: public CollectableKind Kind { get; }
+    parameters: []
+    return:
+      type: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+    content.vb: Public ReadOnly Property Kind As CollectableKind
+  overload: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Kind*
+references:
+- uid: Vibe_Game.Gameplay.Entities.Collectables
+  commentId: N:Vibe_Game.Gameplay.Entities.Collectables
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Gameplay.Entities.Collectables
+  nameWithType: Vibe_Game.Gameplay.Entities.Collectables
+  fullName: Vibe_Game.Gameplay.Entities.Collectables
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Collectables
+    name: Collectables
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Collectables.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Collectables
+    name: Collectables
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Collectables.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vibe_Game.Gameplay.Entities.Entity
+  commentId: T:Vibe_Game.Gameplay.Entities.Entity
+  parent: Vibe_Game.Gameplay.Entities
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html
+  name: Entity
+  nameWithType: Entity
+  fullName: Vibe_Game.Gameplay.Entities.Entity
+- uid: Vibe_Game.Gameplay.Entities.Entity.Update(Microsoft.Xna.Framework.GameTime)
+  commentId: M:Vibe_Game.Gameplay.Entities.Entity.Update(Microsoft.Xna.Framework.GameTime)
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Update_Microsoft_Xna_Framework_GameTime_
+  name: Update(GameTime)
+  nameWithType: Entity.Update(GameTime)
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Update(Microsoft.Xna.Framework.GameTime)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Entity.Update(Microsoft.Xna.Framework.GameTime)
+    name: Update
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Update_Microsoft_Xna_Framework_GameTime_
+  - name: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Entity.Update(Microsoft.Xna.Framework.GameTime)
+    name: Update
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Update_Microsoft_Xna_Framework_GameTime_
+  - name: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    isExternal: true
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Entity.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+  commentId: M:Vibe_Game.Gameplay.Entities.Entity.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_LoadContent_Microsoft_Xna_Framework_Content_ContentManager_
+  name: LoadContent(ContentManager)
+  nameWithType: Entity.LoadContent(ContentManager)
+  fullName: Vibe_Game.Gameplay.Entities.Entity.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Entity.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+    name: LoadContent
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_LoadContent_Microsoft_Xna_Framework_Content_ContentManager_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Content.ContentManager
+    name: ContentManager
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Entity.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+    name: LoadContent
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_LoadContent_Microsoft_Xna_Framework_Content_ContentManager_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Content.ContentManager
+    name: ContentManager
+    isExternal: true
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Entity.Position
+  commentId: P:Vibe_Game.Gameplay.Entities.Entity.Position
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Position
+  name: Position
+  nameWithType: Entity.Position
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Position
+- uid: Vibe_Game.Gameplay.Entities.Entity.Velocity
+  commentId: P:Vibe_Game.Gameplay.Entities.Entity.Velocity
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Velocity
+  name: Velocity
+  nameWithType: Entity.Velocity
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Velocity
+- uid: Vibe_Game.Gameplay.Entities.Entity.IsAlive
+  commentId: P:Vibe_Game.Gameplay.Entities.Entity.IsAlive
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_IsAlive
+  name: IsAlive
+  nameWithType: Entity.IsAlive
+  fullName: Vibe_Game.Gameplay.Entities.Entity.IsAlive
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vibe_Game.Gameplay.Entities
+  commentId: N:Vibe_Game.Gameplay.Entities
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Gameplay.Entities
+  nameWithType: Vibe_Game.Gameplay.Entities
+  fullName: Vibe_Game.Gameplay.Entities
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+- uid: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.#ctor*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.#ctor
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.html#Vibe_Game_Gameplay_Entities_Collectables_DroppedPickup__ctor_Microsoft_Xna_Framework_Vector2_Vibe_Game_Gameplay_Entities_Collectables_CollectableKind_Vibe_Game_Gameplay_Entities_Collectables_CollectibleVisualCache_
+  name: DroppedPickup
+  nameWithType: DroppedPickup.DroppedPickup
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.DroppedPickup
+  nameWithType.vb: DroppedPickup.New
+  fullName.vb: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.New
+  name.vb: New
+- uid: Microsoft.Xna.Framework.Vector2
+  commentId: T:Microsoft.Xna.Framework.Vector2
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Microsoft.Xna.Framework.Vector2
+- uid: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+  commentId: T:Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+  parent: Vibe_Game.Gameplay.Entities.Collectables
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.html
+  name: CollectableKind
+  nameWithType: CollectableKind
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+- uid: Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache
+  commentId: T:Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache
+  parent: Vibe_Game.Gameplay.Entities.Collectables
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache.html
+  name: CollectibleVisualCache
+  nameWithType: CollectibleVisualCache
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache
+- uid: Microsoft.Xna.Framework
+  commentId: N:Microsoft.Xna.Framework
+  isExternal: true
+  name: Microsoft.Xna.Framework
+  nameWithType: Microsoft.Xna.Framework
+  fullName: Microsoft.Xna.Framework
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+- uid: Vibe_Game.Gameplay.Entities.Entity.GetBounds
+  commentId: M:Vibe_Game.Gameplay.Entities.Entity.GetBounds
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_GetBounds
+  name: GetBounds()
+  nameWithType: Entity.GetBounds()
+  fullName: Vibe_Game.Gameplay.Entities.Entity.GetBounds()
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Entity.GetBounds
+    name: GetBounds
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_GetBounds
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Entity.GetBounds
+    name: GetBounds
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_GetBounds
+  - name: (
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.GetBounds*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.GetBounds
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.html#Vibe_Game_Gameplay_Entities_Collectables_DroppedPickup_GetBounds
+  name: GetBounds
+  nameWithType: DroppedPickup.GetBounds
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.GetBounds
+- uid: Microsoft.Xna.Framework.Rectangle
+  commentId: T:Microsoft.Xna.Framework.Rectangle
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Rectangle
+  nameWithType: Rectangle
+  fullName: Microsoft.Xna.Framework.Rectangle
+- uid: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Update*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Update
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.html#Vibe_Game_Gameplay_Entities_Collectables_DroppedPickup_Update_Microsoft_Xna_Framework_GameTime_Vibe_Game_Gameplay_Entities_Player_Player_
+  name: Update
+  nameWithType: DroppedPickup.Update
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Update
+- uid: Microsoft.Xna.Framework.GameTime
+  commentId: T:Microsoft.Xna.Framework.GameTime
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: GameTime
+  nameWithType: GameTime
+  fullName: Microsoft.Xna.Framework.GameTime
+- uid: Vibe_Game.Gameplay.Entities.Player.Player
+  commentId: T:Vibe_Game.Gameplay.Entities.Player.Player
+  parent: Vibe_Game.Gameplay.Entities.Player
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Player.Player.html
+  name: Player
+  nameWithType: Player
+  fullName: Vibe_Game.Gameplay.Entities.Player.Player
+- uid: Vibe_Game.Gameplay.Entities.Player
+  commentId: N:Vibe_Game.Gameplay.Entities.Player
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Gameplay.Entities.Player
+  nameWithType: Vibe_Game.Gameplay.Entities.Player
+  fullName: Vibe_Game.Gameplay.Entities.Player
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Player
+    name: Player
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Player.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Player
+    name: Player
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Player.html
+- uid: Vibe_Game.Gameplay.Entities.Entity.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  commentId: M:Vibe_Game.Gameplay.Entities.Entity.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_
+  name: Draw(SpriteBatch)
+  nameWithType: Entity.Draw(SpriteBatch)
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Entity.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+    name: Draw
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Graphics.SpriteBatch
+    name: SpriteBatch
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Entity.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+    name: Draw
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Graphics.SpriteBatch
+    name: SpriteBatch
+    isExternal: true
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Draw*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Draw
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.html#Vibe_Game_Gameplay_Entities_Collectables_DroppedPickup_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_
+  name: Draw
+  nameWithType: DroppedPickup.Draw
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Draw
+- uid: Microsoft.Xna.Framework.Graphics.SpriteBatch
+  commentId: T:Microsoft.Xna.Framework.Graphics.SpriteBatch
+  parent: Microsoft.Xna.Framework.Graphics
+  isExternal: true
+  name: SpriteBatch
+  nameWithType: SpriteBatch
+  fullName: Microsoft.Xna.Framework.Graphics.SpriteBatch
+- uid: Microsoft.Xna.Framework.Graphics
+  commentId: N:Microsoft.Xna.Framework.Graphics
+  isExternal: true
+  name: Microsoft.Xna.Framework.Graphics
+  nameWithType: Microsoft.Xna.Framework.Graphics
+  fullName: Microsoft.Xna.Framework.Graphics
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework.Graphics
+    name: Graphics
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework.Graphics
+    name: Graphics
+    isExternal: true
+- uid: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Kind*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Kind
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.html#Vibe_Game_Gameplay_Entities_Collectables_DroppedPickup_Kind
+  name: Kind
+  nameWithType: DroppedPickup.Kind
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.Kind

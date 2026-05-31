@@ -1,0 +1,78 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Core.Engine
+  commentId: N:Vibe_Game.Core.Engine
+  id: Vibe_Game.Core.Engine
+  children:
+  - Vibe_Game.Core.Engine.Camera
+  - Vibe_Game.Core.Engine.DefaultInputBindings
+  - Vibe_Game.Core.Engine.SceneManager
+  langs:
+  - csharp
+  - vb
+  name: Vibe_Game.Core.Engine
+  nameWithType: Vibe_Game.Core.Engine
+  fullName: Vibe_Game.Core.Engine
+  type: Namespace
+  assemblies:
+  - Vibe_Game
+references:
+- uid: Vibe_Game.Core.Engine.Camera
+  commentId: T:Vibe_Game.Core.Engine.Camera
+  parent: Vibe_Game.Core.Engine
+  isExternal: true
+  href: Vibe_Game.Core.Engine.Camera.html
+  name: Camera
+  nameWithType: Camera
+  fullName: Vibe_Game.Core.Engine.Camera
+- uid: Vibe_Game.Core.Engine.DefaultInputBindings
+  commentId: T:Vibe_Game.Core.Engine.DefaultInputBindings
+  isExternal: true
+  href: Vibe_Game.Core.Engine.DefaultInputBindings.html
+  name: DefaultInputBindings
+  nameWithType: DefaultInputBindings
+  fullName: Vibe_Game.Core.Engine.DefaultInputBindings
+- uid: Vibe_Game.Core.Engine.SceneManager
+  commentId: T:Vibe_Game.Core.Engine.SceneManager
+  isExternal: true
+  href: Vibe_Game.Core.Engine.SceneManager.html
+  name: SceneManager
+  nameWithType: SceneManager
+  fullName: Vibe_Game.Core.Engine.SceneManager
+- uid: Vibe_Game.Core.Engine
+  commentId: N:Vibe_Game.Core.Engine
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Core.Engine
+  nameWithType: Vibe_Game.Core.Engine
+  fullName: Vibe_Game.Core.Engine
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Engine
+    name: Engine
+    isExternal: true
+    href: Vibe_Game.Core.Engine.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Engine
+    name: Engine
+    isExternal: true
+    href: Vibe_Game.Core.Engine.html

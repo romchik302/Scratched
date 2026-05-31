@@ -1,0 +1,205 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+  commentId: T:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+  id: Enemy.RandomMovementMode
+  parent: Vibe_Game.Gameplay.Entities.Enemies
+  children:
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.None
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.Orbit
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.Pause
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.SideDash
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.Zigzag
+  langs:
+  - csharp
+  - vb
+  name: Enemy.RandomMovementMode
+  nameWithType: Enemy.RandomMovementMode
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+  type: Enum
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Режимы случайного модифицированного поведения ИИ врага при преследовании цели.
+  example: []
+  syntax:
+    content: protected enum Enemy.RandomMovementMode
+    content.vb: Protected Enum Enemy.RandomMovementMode
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.None
+  commentId: F:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.None
+  id: None
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: Enemy.RandomMovementMode.None
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.None
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  syntax:
+    content: None = 0
+    return:
+      type: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.Pause
+  commentId: F:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.Pause
+  id: Pause
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+  langs:
+  - csharp
+  - vb
+  name: Pause
+  nameWithType: Enemy.RandomMovementMode.Pause
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.Pause
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  syntax:
+    content: Pause = 1
+    return:
+      type: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.SideDash
+  commentId: F:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.SideDash
+  id: SideDash
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+  langs:
+  - csharp
+  - vb
+  name: SideDash
+  nameWithType: Enemy.RandomMovementMode.SideDash
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.SideDash
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  syntax:
+    content: SideDash = 2
+    return:
+      type: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.Zigzag
+  commentId: F:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.Zigzag
+  id: Zigzag
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+  langs:
+  - csharp
+  - vb
+  name: Zigzag
+  nameWithType: Enemy.RandomMovementMode.Zigzag
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.Zigzag
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  syntax:
+    content: Zigzag = 3
+    return:
+      type: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.Orbit
+  commentId: F:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.Orbit
+  id: Orbit
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+  langs:
+  - csharp
+  - vb
+  name: Orbit
+  nameWithType: Enemy.RandomMovementMode.Orbit
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.Orbit
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/Enemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  syntax:
+    content: Orbit = 4
+    return:
+      type: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+references:
+- uid: Vibe_Game.Gameplay.Entities.Enemies
+  commentId: N:Vibe_Game.Gameplay.Entities.Enemies
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Gameplay.Entities.Enemies
+  nameWithType: Vibe_Game.Gameplay.Entities.Enemies
+  fullName: Vibe_Game.Gameplay.Entities.Enemies
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Enemies
+    name: Enemies
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Enemies
+    name: Enemies
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.html
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+  commentId: T:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+  parent: Vibe_Game.Gameplay.Entities.Enemies
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html
+  name: Enemy.RandomMovementMode
+  nameWithType: Enemy.RandomMovementMode
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+    name: Enemy
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+    name: RandomMovementMode
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.html
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+    name: Enemy
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+    name: RandomMovementMode
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.html

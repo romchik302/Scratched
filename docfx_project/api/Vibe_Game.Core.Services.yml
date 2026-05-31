@@ -1,0 +1,122 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Core.Services
+  commentId: N:Vibe_Game.Core.Services
+  id: Vibe_Game.Core.Services
+  children:
+  - Vibe_Game.Core.Services.GameStateService
+  - Vibe_Game.Core.Services.GameplayAudio
+  - Vibe_Game.Core.Services.InputService
+  - Vibe_Game.Core.Services.LevelGenerator
+  - Vibe_Game.Core.Services.LevelGenerator.RoomType
+  - Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: Vibe_Game.Core.Services
+  nameWithType: Vibe_Game.Core.Services
+  fullName: Vibe_Game.Core.Services
+  type: Namespace
+  assemblies:
+  - Vibe_Game
+references:
+- uid: Vibe_Game.Core.Services.GameplayAudio
+  commentId: T:Vibe_Game.Core.Services.GameplayAudio
+  isExternal: true
+  href: Vibe_Game.Core.Services.GameplayAudio.html
+  name: GameplayAudio
+  nameWithType: GameplayAudio
+  fullName: Vibe_Game.Core.Services.GameplayAudio
+- uid: Vibe_Game.Core.Services.GameStateService
+  commentId: T:Vibe_Game.Core.Services.GameStateService
+  isExternal: true
+  href: Vibe_Game.Core.Services.GameStateService.html
+  name: GameStateService
+  nameWithType: GameStateService
+  fullName: Vibe_Game.Core.Services.GameStateService
+- uid: Vibe_Game.Core.Services.InputService
+  commentId: T:Vibe_Game.Core.Services.InputService
+  isExternal: true
+  href: Vibe_Game.Core.Services.InputService.html
+  name: InputService
+  nameWithType: InputService
+  fullName: Vibe_Game.Core.Services.InputService
+- uid: Vibe_Game.Core.Services.LevelGenerator
+  commentId: T:Vibe_Game.Core.Services.LevelGenerator
+  isExternal: true
+  href: Vibe_Game.Core.Services.LevelGenerator.html
+  name: LevelGenerator
+  nameWithType: LevelGenerator
+  fullName: Vibe_Game.Core.Services.LevelGenerator
+- uid: Vibe_Game.Core.Services.LevelGenerator.RoomType
+  commentId: T:Vibe_Game.Core.Services.LevelGenerator.RoomType
+  parent: Vibe_Game.Core.Services
+  isExternal: true
+  href: Vibe_Game.Core.Services.LevelGenerator.html
+  name: LevelGenerator.RoomType
+  nameWithType: LevelGenerator.RoomType
+  fullName: Vibe_Game.Core.Services.LevelGenerator.RoomType
+  spec.csharp:
+  - uid: Vibe_Game.Core.Services.LevelGenerator
+    name: LevelGenerator
+    isExternal: true
+    href: Vibe_Game.Core.Services.LevelGenerator.html
+  - name: .
+  - uid: Vibe_Game.Core.Services.LevelGenerator.RoomType
+    name: RoomType
+    isExternal: true
+    href: Vibe_Game.Core.Services.LevelGenerator.RoomType.html
+  spec.vb:
+  - uid: Vibe_Game.Core.Services.LevelGenerator
+    name: LevelGenerator
+    isExternal: true
+    href: Vibe_Game.Core.Services.LevelGenerator.html
+  - name: .
+  - uid: Vibe_Game.Core.Services.LevelGenerator.RoomType
+    name: RoomType
+    isExternal: true
+    href: Vibe_Game.Core.Services.LevelGenerator.RoomType.html
+- uid: Vibe_Game.Core.Services.Room
+  commentId: T:Vibe_Game.Core.Services.Room
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html
+  name: Room
+  nameWithType: Room
+  fullName: Vibe_Game.Core.Services.Room
+- uid: Vibe_Game.Core.Services
+  commentId: N:Vibe_Game.Core.Services
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Core.Services
+  nameWithType: Vibe_Game.Core.Services
+  fullName: Vibe_Game.Core.Services
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Services
+    name: Services
+    isExternal: true
+    href: Vibe_Game.Core.Services.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Services
+    name: Services
+    isExternal: true
+    href: Vibe_Game.Core.Services.html

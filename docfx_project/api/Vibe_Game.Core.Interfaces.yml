@@ -1,0 +1,183 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Core.Interfaces
+  commentId: N:Vibe_Game.Core.Interfaces
+  id: Vibe_Game.Core.Interfaces
+  children:
+  - Vibe_Game.Core.Interfaces.GameState
+  - Vibe_Game.Core.Interfaces.ICamera
+  - Vibe_Game.Core.Interfaces.ICameraShake
+  - Vibe_Game.Core.Interfaces.ICollidable
+  - Vibe_Game.Core.Interfaces.ICollisionSystem
+  - Vibe_Game.Core.Interfaces.IGameStateService
+  - Vibe_Game.Core.Interfaces.IInputBindings
+  - Vibe_Game.Core.Interfaces.IInputService
+  - Vibe_Game.Core.Interfaces.IItemEffect
+  - Vibe_Game.Core.Interfaces.IPlayerContentLoader
+  - Vibe_Game.Core.Interfaces.IPlayerRenderer
+  - Vibe_Game.Core.Interfaces.IStatsRepository
+  - Vibe_Game.Core.Interfaces.IWallCollisionChecker
+  - Vibe_Game.Core.Interfaces.InputAction
+  - Vibe_Game.Core.Interfaces.RunStats
+  langs:
+  - csharp
+  - vb
+  name: Vibe_Game.Core.Interfaces
+  nameWithType: Vibe_Game.Core.Interfaces
+  fullName: Vibe_Game.Core.Interfaces
+  type: Namespace
+  assemblies:
+  - Vibe_Game
+references:
+- uid: Vibe_Game.Core.Interfaces.ICamera
+  commentId: T:Vibe_Game.Core.Interfaces.ICamera
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.ICamera.html
+  name: ICamera
+  nameWithType: ICamera
+  fullName: Vibe_Game.Core.Interfaces.ICamera
+- uid: Vibe_Game.Core.Interfaces.ICameraShake
+  commentId: T:Vibe_Game.Core.Interfaces.ICameraShake
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.ICameraShake.html
+  name: ICameraShake
+  nameWithType: ICameraShake
+  fullName: Vibe_Game.Core.Interfaces.ICameraShake
+- uid: Vibe_Game.Core.Interfaces.ICollidable
+  commentId: T:Vibe_Game.Core.Interfaces.ICollidable
+  parent: Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.ICollidable.html
+  name: ICollidable
+  nameWithType: ICollidable
+  fullName: Vibe_Game.Core.Interfaces.ICollidable
+- uid: Vibe_Game.Core.Interfaces.ICollisionSystem
+  commentId: T:Vibe_Game.Core.Interfaces.ICollisionSystem
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.ICollisionSystem.html
+  name: ICollisionSystem
+  nameWithType: ICollisionSystem
+  fullName: Vibe_Game.Core.Interfaces.ICollisionSystem
+- uid: Vibe_Game.Core.Interfaces.IGameStateService
+  commentId: T:Vibe_Game.Core.Interfaces.IGameStateService
+  parent: Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IGameStateService.html
+  name: IGameStateService
+  nameWithType: IGameStateService
+  fullName: Vibe_Game.Core.Interfaces.IGameStateService
+- uid: Vibe_Game.Core.Interfaces.GameState
+  commentId: T:Vibe_Game.Core.Interfaces.GameState
+  parent: Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: Vibe_Game.Core.Interfaces.GameState
+- uid: Vibe_Game.Core.Interfaces.IInputBindings
+  commentId: T:Vibe_Game.Core.Interfaces.IInputBindings
+  parent: Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IInputBindings.html
+  name: IInputBindings
+  nameWithType: IInputBindings
+  fullName: Vibe_Game.Core.Interfaces.IInputBindings
+- uid: Vibe_Game.Core.Interfaces.IInputService
+  commentId: T:Vibe_Game.Core.Interfaces.IInputService
+  parent: Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IInputService.html
+  name: IInputService
+  nameWithType: IInputService
+  fullName: Vibe_Game.Core.Interfaces.IInputService
+- uid: Vibe_Game.Core.Interfaces.InputAction
+  commentId: T:Vibe_Game.Core.Interfaces.InputAction
+  parent: Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.InputAction.html
+  name: InputAction
+  nameWithType: InputAction
+  fullName: Vibe_Game.Core.Interfaces.InputAction
+- uid: Vibe_Game.Core.Interfaces.IItemEffect
+  commentId: T:Vibe_Game.Core.Interfaces.IItemEffect
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IItemEffect.html
+  name: IItemEffect
+  nameWithType: IItemEffect
+  fullName: Vibe_Game.Core.Interfaces.IItemEffect
+- uid: Vibe_Game.Core.Interfaces.IPlayerContentLoader
+  commentId: T:Vibe_Game.Core.Interfaces.IPlayerContentLoader
+  parent: Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IPlayerContentLoader.html
+  name: IPlayerContentLoader
+  nameWithType: IPlayerContentLoader
+  fullName: Vibe_Game.Core.Interfaces.IPlayerContentLoader
+- uid: Vibe_Game.Core.Interfaces.IPlayerRenderer
+  commentId: T:Vibe_Game.Core.Interfaces.IPlayerRenderer
+  parent: Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IPlayerRenderer.html
+  name: IPlayerRenderer
+  nameWithType: IPlayerRenderer
+  fullName: Vibe_Game.Core.Interfaces.IPlayerRenderer
+- uid: Vibe_Game.Core.Interfaces.IStatsRepository
+  commentId: T:Vibe_Game.Core.Interfaces.IStatsRepository
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IStatsRepository.html
+  name: IStatsRepository
+  nameWithType: IStatsRepository
+  fullName: Vibe_Game.Core.Interfaces.IStatsRepository
+- uid: Vibe_Game.Core.Interfaces.RunStats
+  commentId: T:Vibe_Game.Core.Interfaces.RunStats
+  parent: Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.RunStats.html
+  name: RunStats
+  nameWithType: RunStats
+  fullName: Vibe_Game.Core.Interfaces.RunStats
+- uid: Vibe_Game.Core.Interfaces.IWallCollisionChecker
+  commentId: T:Vibe_Game.Core.Interfaces.IWallCollisionChecker
+  parent: Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IWallCollisionChecker.html
+  name: IWallCollisionChecker
+  nameWithType: IWallCollisionChecker
+  fullName: Vibe_Game.Core.Interfaces.IWallCollisionChecker
+- uid: Vibe_Game.Core.Interfaces
+  commentId: N:Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Core.Interfaces
+  nameWithType: Vibe_Game.Core.Interfaces
+  fullName: Vibe_Game.Core.Interfaces
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Interfaces
+    name: Interfaces
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Interfaces
+    name: Interfaces
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.html

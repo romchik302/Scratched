@@ -11,17 +11,34 @@ using Vibe_Game.Gameplay.Weapons;
 
 namespace Vibe_Game.Scenes
 {
+    /// <summary>
+    /// Управляет мировым пространством игровой сцены, обрабатывает коллизии, 
+    /// переходы между комнатами и состояние дверей.
+    /// </summary>
     internal sealed class GameSceneWorld
     {
         private readonly GameSceneState _state;
         private readonly ContentManager _content;
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="GameSceneWorld"/>.
+        /// </summary>
+        /// <param name="state">Текущее состояние игровой сцены.</param>
+        /// <param name="content">Менеджер ресурсов для загрузки контента.</param>
         public GameSceneWorld(GameSceneState state, ContentManager content)
         {
             _state = state;
             _content = content;
         }
 
+        /// <summary>
+        /// Вычисляет координаты комнаты на сетке этажа по заданной мировой позиции.
+        /// </summary>
+        /// <remarks>
+        /// Если метод будет вынесен в интерфейс, этот блок комментов можно заменить на: /// <inheritdoc />
+        /// </remarks>
+        /// <param name="worldPosition">Мировая позиция в пикселях.</param>
+        /// <returns>Координаты комнаты в виде <see cref="Point"/>, ограниченные размерами сетки этажа.</returns>
         public Point GetRoomGridAtWorldPosition(Vector2 worldPosition)
         {
             int rx = (int)Math.Floor(worldPosition.X / WorldConfig.RoomWidthPx);
@@ -33,11 +50,23 @@ namespace Vibe_Game.Scenes
             );
         }
 
+        /// <summary>
+        /// Возвращает объект комнаты по заданным координатам сетки.
+        /// </summary>
+        /// <param name="roomGrid">Координаты комнаты на сетке этажа.</param>
+        /// <returns>Объект <see cref="Room"/> или <see langword="null"/>, если комната не найдена.</returns>
         public Room GetRoomAtGrid(Point roomGrid)
         {
             return _state.FloorMap[roomGrid.X, roomGrid.Y];
         }
 
+        /// <summary>
+        /// Проверяет, открыт ли дверной проход между указанной комнатой и её соседом в заданном направлении.
+        /// </summary>
+        /// <param name="roomGrid">Координаты текущей комнаты на сетке.</param>
+        /// <param name="deltaX">Смещение по оси X к соседней комнате (-1, 0, 1).</param>
+        /// <param name="deltaY">Смещение по оси Y к соседней комнате (-1, 0, 1).</param>
+        /// <returns><see langword="true"/>, если обе комнаты существуют и ни одна из них не заблокирована; иначе — <see langword="false"/>.</returns>
         public bool IsDoorwayOpen(Point roomGrid, int deltaX, int deltaY)
         {
             Room room = GetRoomAtGrid(roomGrid);
@@ -50,6 +79,14 @@ namespace Vibe_Game.Scenes
             return !room.IsLocked && !neighbor.IsLocked;
         }
 
+        /// <summary>
+        /// Проверяет, заблокирована ли точка для летающих сущностей.
+        /// </summary>
+        /// <remarks>
+        /// Летающие враги игнорируют внутренние препятствия комнаты, но не могут вылетать за её внешние стены.
+        /// </remarks>
+        /// <param name="worldPosition">Проверяемая мировая позиция.</param>
+        /// <returns><see langword="true"/>, если точка непроходима для полета или находится вне игровой зоны; иначе — <see langword="false"/>.</returns>
         public bool IsFlyingPointBlocked(Vector2 worldPosition)
         {
             Point roomGrid = GetRoomGridAtWorldPosition(worldPosition);
@@ -74,6 +111,11 @@ namespace Vibe_Game.Scenes
             return tile == null || !tile.IsWalkable;
         }
 
+        /// <summary>
+        /// Проверяет, заблокирована ли точка абсолютно всеми типами стен (полная проверка проходимости тайла).
+        /// </summary>
+        /// <param name="worldPosition">Проверяемая мировая позиция.</param>
+        /// <returns><see langword="true"/>, если тайл отсутствует, является непроходимым или точка выходит за границы комнаты; иначе — <see langword="false"/>.</returns>
         public bool IsPointBlockedByAllWalls(Vector2 worldPosition)
         {
             Point roomGrid = GetRoomGridAtWorldPosition(worldPosition);
@@ -96,6 +138,10 @@ namespace Vibe_Game.Scenes
             return tile == null || !tile.IsWalkable;
         }
 
+        /// <summary>
+        /// Проверяет и разрешает коллизии игрока с тайлами стен отдельно по осям X и Y, корректируя итоговую позицию.
+        /// </summary>
+        /// <param name="oldPos">Позиция игрока на предыдущем кадре.</param>
         public void CheckTileCollision(Vector2 oldPos)
         {
             Vector2 targetPos = _state.Player.Position;
@@ -145,6 +191,11 @@ namespace Vibe_Game.Scenes
             TryUpdateCurrentRoomGrid();
         }
 
+        /// <summary>
+        /// Определяет, заблокирована ли конкретная мировая координата стеной в текущей комнате.
+        /// </summary>
+        /// <param name="worldPosition">Проверяемая мировая позиция.</param>
+        /// <returns><see langword="true"/>, если точка попала в непроходимый тайл; иначе — <see langword="false"/>.</returns>
         public bool IsWorldPointBlocked(Vector2 worldPosition)
         {
             Point roomGrid = GetRoomGridAtWorldPosition(worldPosition);
@@ -160,6 +211,9 @@ namespace Vibe_Game.Scenes
             return IsPointWall(room, lx, ly);
         }
 
+        /// <summary>
+        /// Инициализирует и обновляет начальное состояние дверей для всех комнат на сетке этажа.
+        /// </summary>
         public void InitializeDoorStates()
         {
             for (int x = 0; x < WorldConfig.GridSize; x++)
@@ -169,6 +223,12 @@ namespace Vibe_Game.Scenes
             }
         }
 
+        /// <summary>
+        /// Вызывается при переходе игрока в новую комнату. Управляет блокировкой дверей, 
+        /// логикой стартовой комнаты и воспроизведением звуковых эффектов.
+        /// </summary>
+        /// <param name="roomGrid">Координаты новой комнаты на сетке.</param>
+        /// <param name="previousRoomGrid">Координаты предыдущей комнаты на сетке.</param>
         public void OnRoomEntered(Point roomGrid, Point previousRoomGrid)
         {
             Room room = GetRoomAtGrid(roomGrid);
@@ -205,6 +265,13 @@ namespace Vibe_Game.Scenes
             }
         }
 
+        /// <summary>
+        /// Разрешает коллизии геометрии стен для врагов, раздельно обсчитывая сдвиги по осям X и Y.
+        /// </summary>
+        /// <param name="enemy">Объект проверяемого врага.</param>
+        /// <param name="oldPos">Старая позиция врага до перемещения.</param>
+        /// <param name="newPos">Целевая позиция врага на текущем кадре.</param>
+        /// <returns>Скорректированная позиция <see cref="Vector2"/>, исключающая прохождение сквозь стены.</returns>
         public Vector2 ResolveEnemyWallCollision(Enemy enemy, Vector2 oldPos, Vector2 newPos)
         {
             Vector2 delta = newPos - oldPos;
@@ -255,6 +322,10 @@ namespace Vibe_Game.Scenes
             return finalPos;
         }
 
+        /// <summary>
+        /// Обновляет логическое состояние текущей комнаты: проверяет триггеры зачистки, 
+        /// нажатие кнопок, анимации тайлов и генерацию переходов на следующий этаж.
+        /// </summary>
         public void UpdateCurrentRoomState()
         {
             Room room = _state.FloorMap[_state.CurrentRoomGrid.X, _state.CurrentRoomGrid.Y];
@@ -305,6 +376,10 @@ namespace Vibe_Game.Scenes
             }
         }
 
+        /// <summary>
+        /// Плавно перемещает камеру к центру текущей комнаты с использованием линейной интерполяции (Lerp).
+        /// </summary>
+        /// <param name="camera">Объект игровой камеры.</param>
         public void UpdateCamera(Camera camera)
         {
             Vector2 target = new Vector2(
@@ -316,6 +391,13 @@ namespace Vibe_Game.Scenes
             camera?.Follow(_state.CameraPosition);
         }
 
+        /// <summary>
+        /// Возвращает мировую позицию центра комнаты. Если геометрический центр заблокирован стеной, 
+        /// запускает алгоритм поиска ближайшей свободной зоны.
+        /// </summary>
+        /// <param name="gx">Координата X комнаты на сетке этажа.</param>
+        /// <param name="gy">Координата Y комнаты на сетке этажа.</param>
+        /// <returns>Безопасная мировая позиция <see cref="Vector2"/> для спавна сущностей в центре комнаты.</returns>
         public Vector2 GetRoomCenterWorldPosition(int gx, int gy)
         {
             Vector2 centerPos = new Vector2(
@@ -328,6 +410,15 @@ namespace Vibe_Game.Scenes
             return centerPos;
         }
 
+        /// <summary>
+        /// Находит случайную свободную позицию на тайле внутри комнаты для спавна сущностей.
+        /// В случае неудачи после 50 попыток возвращает центр комнаты.
+        /// </summary>
+        /// <param name="room">Объект комнаты, в которой ищется тайл.</param>
+        /// <param name="gx">Координата X комнаты на сетке этажа.</param>
+        /// <param name="gy">Координата Y комнаты на сетке этажа.</param>
+        /// <param name="rng">Генератор случайных чисел.</param>
+        /// <returns>Мировая позиция <see cref="Vector2"/> в центре выбранного проходимого тайла.</returns>
         public Vector2 GetRandomFreeTilePosition(Room room, int gx, int gy, Random rng)
         {
             for (int attempt = 0; attempt < 50; attempt++)
@@ -373,6 +464,12 @@ namespace Vibe_Game.Scenes
             return blockedPos; // Last resort
         }
 
+        /// <summary>
+        /// Выталкивает позицию сущности из стены в ближайшем свободном направлении, если она оказалась внутри коллизии.
+        /// </summary>
+        /// <param name="position">Текущая мировая позиция сущности.</param>
+        /// <param name="radius">Радиус хитбокса сущности.</param>
+        /// <returns>Скорректированная мировая позиция <see cref="Vector2"/> вне стен.</returns>
         public Vector2 PushEnemyOutOfWalls(Vector2 position, float radius)
         {
             // Check if position is inside a wall and push it out
@@ -407,6 +504,11 @@ namespace Vibe_Game.Scenes
             return position;
         }
 
+        /// <summary>
+        /// Проверяет, находится ли игрок на люке перехода на следующий этаж, и возвращает его индекс.
+        /// </summary>
+        /// <param name="targetFloorIndex">Выходной параметр, содержащий индекс целевого этажа.</param>
+        /// <returns><see langword="true"/>, если игрок пересекается с активным люком; иначе — <see langword="false"/>.</returns>
         public bool TryGetFloorExitTarget(out int targetFloorIndex)
         {
             targetFloorIndex = 0;
@@ -461,6 +563,9 @@ namespace Vibe_Game.Scenes
             return tile == null || !tile.IsWalkable;
         }
 
+        /// <summary>
+        /// Сбрасывает и заново рассчитывает сетку занятости тайлов врагами для всех существующих комнат.
+        /// </summary>
         public void RefreshEnemyOccupancy()
         {
             for (int x = 0; x < WorldConfig.GridSize; x++)
@@ -658,6 +763,10 @@ namespace Vibe_Game.Scenes
             return 10f;
         }
 
+        /// <summary>
+        /// Определяет тип поверхности под ногами игрока и динамически изменяет коэффициент скольжения (трения), 
+        /// например, снижая его при наступлении на лужу.
+        /// </summary>
         public void UpdatePlayerFrictionByGround()
         {
             if (_state.Player == null) return;
@@ -687,7 +796,11 @@ namespace Vibe_Game.Scenes
             _state.Player.SetMovementFrictionMultiplier(frictionMultiplier);
         }
 
-        /// <summary>Обновляет предметы на пьедесталах и дроп на полу в посещённых комнатах.</summary>
+        /// <summary>
+        /// Обновляет логику подбираемых предметов во всех посещенных комнатах: обрабатывает анимации предметов на пьедесталах, 
+        /// проверяет пересечение с игроком, активирует выбор стартового оружия и обновляет жизненный цикл выпавшего лута.
+        /// </summary>
+        /// <param name="gameTime">Снапшот игрового времени.</param>
         public void UpdateCollectables(GameTime gameTime)
         {
             if (_state.Player == null)
@@ -785,7 +898,12 @@ namespace Vibe_Game.Scenes
             }
         }
 
-        /// <summary>Для звука шагов: рядом с ногами есть камень или граница комнаты (каменный «каркас»).</summary>
+        /// <summary>
+        /// Проверяет окружение вокруг переданной позиции на наличие каменных поверхностей или внешних границ каркаса комнаты. 
+        /// Используется аудиосистемой для переключения звукового контекста шагов на "камень".
+        /// </summary>
+        /// <param name="worldPosition">Проверяемая мировая позиция ног сущности.</param>
+        /// <returns><see langword="true"/>, если рядом обнаружен камень или граница уровня; иначе — <see langword="false"/>.</returns>
         public bool IsNearRockFootstepSurface(Vector2 worldPosition)
         {
             Point roomGrid = GetRoomGridAtWorldPosition(worldPosition);

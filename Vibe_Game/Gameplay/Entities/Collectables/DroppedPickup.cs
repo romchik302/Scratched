@@ -7,7 +7,10 @@ using Vibe_Game.Gameplay.Entities;
 
 namespace Vibe_Game.Gameplay.Entities.Collectables;
 
-/// <summary>Сердечко на полу: idle-анимация по кадрам строки хила в спрайт-листе, подбор при пересечении.</summary>
+/// <summary>
+/// Представляет предмет, лежащий на полу (например, сердечки или другие бонусы).
+/// Отвечает за проигрывание idle-анимации, покачивание и логику подбора игроком.
+/// </summary>
 public sealed class DroppedPickup : Entity
 {
     private readonly CollectibleVisualCache _visuals;
@@ -15,6 +18,12 @@ public sealed class DroppedPickup : Entity
     private float _idleAnimTimer;
     private int _frameIndex;
 
+    /// <summary>
+    /// Инициализирует новый экземпляр класса DroppedPickup.
+    /// </summary>
+    /// <param name="worldPosition">Позиция появления в мире.</param>
+    /// <param name="kind">Тип предмета.</param>
+    /// <param name="visuals">Кэш текстур для отрисовки.</param>
     public DroppedPickup(Vector2 worldPosition, CollectableKind kind, CollectibleVisualCache visuals)
         : base()
     {
@@ -24,14 +33,23 @@ public sealed class DroppedPickup : Entity
         IsAlive = true;
     }
 
+    /// <summary>
+    /// Тип подбираемого предмета.
+    /// </summary>
     public CollectableKind Kind { get; }
 
+    /// <inheritdoc />
     public override Rectangle GetBounds()
     {
         int s = CollectibleConfig.FloorPickupSize;
         return new Rectangle((int)Position.X - s / 2, (int)Position.Y - s / 2, s, s);
     }
 
+    /// <summary>
+    /// Обновляет анимацию покачивания и проверяет пересечение с игроком.
+    /// </summary>
+    /// <param name="gameTime">Текущее время игры.</param>
+    /// <param name="player">Ссылка на игрока для проверки коллизий.</param>
     public void Update(GameTime gameTime, global::Vibe_Game.Gameplay.Entities.Player.Player player)
     {
         if (!IsAlive || player == null)
@@ -64,6 +82,7 @@ public sealed class DroppedPickup : Entity
         GameplayAudio.PlayPlayerHeal();
     }
 
+    /// <inheritdoc />
     public override void Draw(SpriteBatch spriteBatch)
     {
         if (!IsAlive || _visuals == null)

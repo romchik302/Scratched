@@ -3,8 +3,14 @@ using System;
 
 namespace Vibe_Game
 {
+    /// <summary>
+    /// Статический класс, содержащий точку входа в приложение.
+    /// </summary>
     public static class Program
     {
+        /// <summary>
+        /// Главная точка входа в программу. Инициализирует игровой экземпляр и управляет его жизненным циклом.
+        /// </summary>
         [STAThread]
         static void Main()
         {
@@ -32,6 +38,10 @@ namespace Vibe_Game
             }   
         }
 
+        /// <summary>
+        /// Записывает детали возникшего исключения в файл "error.log".
+        /// </summary>
+        /// <param name="ex">Объект исключения, которое необходимо залогировать.</param>
         static void LogError(Exception ex)
         {
             // Запись ошибки в файл

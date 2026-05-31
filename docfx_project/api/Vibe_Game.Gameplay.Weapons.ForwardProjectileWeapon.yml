@@ -1,0 +1,751 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon
+  commentId: T:Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon
+  id: ForwardProjectileWeapon
+  parent: Vibe_Game.Gameplay.Weapons
+  children:
+  - Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.#ctor(System.Single,System.Single,System.Int32,System.Single,System.Single,System.Single,System.Single)
+  - Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.ExternalDamageBonus
+  - Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.FireMode
+  - Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.ProjectileSpeedMultiplier
+  - Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.TryPrimaryAttack(IAttackContext,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  langs:
+  - csharp
+  - vb
+  name: ForwardProjectileWeapon
+  nameWithType: ForwardProjectileWeapon
+  fullName: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon
+  type: Class
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/ForwardProjectileWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: Оружие дальнего боя, выпускающее одиночные снаряды по прямой линии в направлении взгляда или движения владельца.
+  example: []
+  syntax:
+    content: 'public sealed class ForwardProjectileWeapon : WeaponBase, IWeapon'
+    content.vb: Public NotInheritable Class ForwardProjectileWeapon Inherits WeaponBase Implements IWeapon
+  inheritance:
+  - System.Object
+  - Vibe_Game.Gameplay.Weapons.WeaponBase
+  implements:
+  - Vibe_Game.Gameplay.Weapons.IWeapon
+  inheritedMembers:
+  - Vibe_Game.Gameplay.Weapons.WeaponBase.Update(Microsoft.Xna.Framework.GameTime,IAttackContext)
+  - Vibe_Game.Gameplay.Weapons.WeaponBase.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,IAttackContext)
+  - Vibe_Game.Gameplay.Weapons.WeaponBase.DisplayName
+  - Vibe_Game.Gameplay.Weapons.WeaponBase.BaseRecoil
+  - System.Object.GetType
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.#ctor(System.Single,System.Single,System.Int32,System.Single,System.Single,System.Single,System.Single)
+  commentId: M:Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.#ctor(System.Single,System.Single,System.Int32,System.Single,System.Single,System.Single,System.Single)
+  id: '#ctor(System.Single,System.Single,System.Int32,System.Single,System.Single,System.Single,System.Single)'
+  parent: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon
+  langs:
+  - csharp
+  - vb
+  name: ForwardProjectileWeapon(float, float, int, float, float, float, float)
+  nameWithType: ForwardProjectileWeapon.ForwardProjectileWeapon(float, float, int, float, float, float, float)
+  fullName: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.ForwardProjectileWeapon(float, float, int, float, float, float, float)
+  type: Constructor
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/ForwardProjectileWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: Инициализирует новый экземпляр линейного стрелкового оружия с заданными характеристиками снаряда.
+  example: []
+  syntax:
+    content: public ForwardProjectileWeapon(float cooldownSeconds, float projectileSpeed, int damage, float spawnOffsetPixels, float lifetimeSeconds, float radius = 4, float recoilForce = 150)
+    parameters:
+    - id: cooldownSeconds
+      type: System.Single
+      description: Время перезарядки оружия между атаками в секундах.
+    - id: projectileSpeed
+      type: System.Single
+      description: Базовая скорость полета выпускаемого снаряда.
+    - id: damage
+      type: System.Int32
+      description: Базовый урон, наносимый снарядом при столкновении с целью.
+    - id: spawnOffsetPixels
+      type: System.Single
+      description: Смещение точки появления снаряда относительно центра позиции владельца в пикселях.
+    - id: lifetimeSeconds
+      type: System.Single
+      description: Максимальное время жизни снаряда в секундах до его автоматического уничтожения.
+    - id: radius
+      type: System.Single
+      description: Радиус окружности коллизии снаряда в пикселях.
+    - id: recoilForce
+      type: System.Single
+      description: Сила импульса отдачи, прикладываемая к хитбоксу цели при попадании.
+    content.vb: Public Sub New(cooldownSeconds As Single, projectileSpeed As Single, damage As Integer, spawnOffsetPixels As Single, lifetimeSeconds As Single, radius As Single = 4, recoilForce As Single = 150)
+  overload: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.#ctor*
+  nameWithType.vb: ForwardProjectileWeapon.New(Single, Single, Integer, Single, Single, Single, Single)
+  fullName.vb: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.New(Single, Single, Integer, Single, Single, Single, Single)
+  name.vb: New(Single, Single, Integer, Single, Single, Single, Single)
+- uid: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.TryPrimaryAttack(IAttackContext,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  commentId: M:Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.TryPrimaryAttack(IAttackContext,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  id: TryPrimaryAttack(IAttackContext,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  parent: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon
+  langs:
+  - csharp
+  - vb
+  name: TryPrimaryAttack(IAttackContext, Vector2, Vector2)
+  nameWithType: ForwardProjectileWeapon.TryPrimaryAttack(IAttackContext, Vector2, Vector2)
+  fullName: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.TryPrimaryAttack(IAttackContext, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Vector2)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/ForwardProjectileWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: Выполняет основную атаку оружия из указанной позиции в заданном направлении.
+  example: []
+  syntax:
+    content: public override bool TryPrimaryAttack(IAttackContext context, Vector2 ownerPosition, Vector2 facingDirection)
+    parameters:
+    - id: context
+      type: IAttackContext
+      description: Контекст боевой системы для регистрации попаданий или спавна снарядов.
+    - id: ownerPosition
+      type: Microsoft.Xna.Framework.Vector2
+      description: Позиция владельца оружия в мировых координатах.
+    - id: facingDirection
+      type: Microsoft.Xna.Framework.Vector2
+      description: Вектор направления атаки.
+    return:
+      type: System.Boolean
+      description: Значение <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, если атака была успешно произведена; иначе — <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Overrides Function TryPrimaryAttack(context As IAttackContext, ownerPosition As Vector2, facingDirection As Vector2) As Boolean
+  overridden: Vibe_Game.Gameplay.Weapons.WeaponBase.TryPrimaryAttack(IAttackContext,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  overload: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.TryPrimaryAttack*
+- uid: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.FireMode
+  commentId: P:Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.FireMode
+  id: FireMode
+  parent: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon
+  langs:
+  - csharp
+  - vb
+  name: FireMode
+  nameWithType: ForwardProjectileWeapon.FireMode
+  fullName: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.FireMode
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/ForwardProjectileWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: >-
+    Режим стрельбы оружия.
+
+    По умолчанию атака выполняется при удержании направления.
+  example: []
+  syntax:
+    content: public override WeaponFireMode FireMode { get; }
+    parameters: []
+    return:
+      type: Vibe_Game.Gameplay.Weapons.WeaponFireMode
+    content.vb: Public Overrides ReadOnly Property FireMode As WeaponFireMode
+  overridden: Vibe_Game.Gameplay.Weapons.WeaponBase.FireMode
+  overload: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.FireMode*
+- uid: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.ProjectileSpeedMultiplier
+  commentId: P:Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.ProjectileSpeedMultiplier
+  id: ProjectileSpeedMultiplier
+  parent: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon
+  langs:
+  - csharp
+  - vb
+  name: ProjectileSpeedMultiplier
+  nameWithType: ForwardProjectileWeapon.ProjectileSpeedMultiplier
+  fullName: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.ProjectileSpeedMultiplier
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/ForwardProjectileWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: Текущий множитель скорости полета создаваемых снарядов.
+  example: []
+  syntax:
+    content: public float ProjectileSpeedMultiplier { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property ProjectileSpeedMultiplier As Single
+  overload: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.ProjectileSpeedMultiplier*
+- uid: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.ExternalDamageBonus
+  commentId: P:Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.ExternalDamageBonus
+  id: ExternalDamageBonus
+  parent: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon
+  langs:
+  - csharp
+  - vb
+  name: ExternalDamageBonus
+  nameWithType: ForwardProjectileWeapon.ExternalDamageBonus
+  fullName: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.ExternalDamageBonus
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/ForwardProjectileWeapon.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Weapons
+  summary: Дополнительный бонус к базовому урону, получаемый от характеристик персонажа или внешних эффектов (баффов).
+  example: []
+  syntax:
+    content: public int ExternalDamageBonus { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property ExternalDamageBonus As Integer
+  overload: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.ExternalDamageBonus*
+references:
+- uid: Vibe_Game.Gameplay.Weapons
+  commentId: N:Vibe_Game.Gameplay.Weapons
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Gameplay.Weapons
+  nameWithType: Vibe_Game.Gameplay.Weapons
+  fullName: Vibe_Game.Gameplay.Weapons
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Weapons
+    name: Weapons
+    isExternal: true
+    href: Vibe_Game.Gameplay.Weapons.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Weapons
+    name: Weapons
+    isExternal: true
+    href: Vibe_Game.Gameplay.Weapons.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vibe_Game.Gameplay.Weapons.WeaponBase
+  commentId: T:Vibe_Game.Gameplay.Weapons.WeaponBase
+  parent: Vibe_Game.Gameplay.Weapons
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.WeaponBase.html
+  name: WeaponBase
+  nameWithType: WeaponBase
+  fullName: Vibe_Game.Gameplay.Weapons.WeaponBase
+- uid: Vibe_Game.Gameplay.Weapons.IWeapon
+  commentId: T:Vibe_Game.Gameplay.Weapons.IWeapon
+  parent: Vibe_Game.Gameplay.Weapons
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.IWeapon.html
+  name: IWeapon
+  nameWithType: IWeapon
+  fullName: Vibe_Game.Gameplay.Weapons.IWeapon
+- uid: Vibe_Game.Gameplay.Weapons.WeaponBase.Update(Microsoft.Xna.Framework.GameTime,IAttackContext)
+  commentId: M:Vibe_Game.Gameplay.Weapons.WeaponBase.Update(Microsoft.Xna.Framework.GameTime,IAttackContext)
+  parent: Vibe_Game.Gameplay.Weapons.WeaponBase
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_Update_Microsoft_Xna_Framework_GameTime_IAttackContext_
+  name: Update(GameTime, IAttackContext)
+  nameWithType: WeaponBase.Update(GameTime, IAttackContext)
+  fullName: Vibe_Game.Gameplay.Weapons.WeaponBase.Update(Microsoft.Xna.Framework.GameTime, IAttackContext)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Weapons.WeaponBase.Update(Microsoft.Xna.Framework.GameTime,IAttackContext)
+    name: Update
+    isExternal: true
+    href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_Update_Microsoft_Xna_Framework_GameTime_IAttackContext_
+  - name: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: IAttackContext
+    name: IAttackContext
+    isExternal: true
+    href: IAttackContext.html
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Weapons.WeaponBase.Update(Microsoft.Xna.Framework.GameTime,IAttackContext)
+    name: Update
+    isExternal: true
+    href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_Update_Microsoft_Xna_Framework_GameTime_IAttackContext_
+  - name: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: IAttackContext
+    name: IAttackContext
+    isExternal: true
+    href: IAttackContext.html
+  - name: )
+- uid: Vibe_Game.Gameplay.Weapons.WeaponBase.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,IAttackContext)
+  commentId: M:Vibe_Game.Gameplay.Weapons.WeaponBase.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,IAttackContext)
+  parent: Vibe_Game.Gameplay.Weapons.WeaponBase
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_IAttackContext_
+  name: Draw(SpriteBatch, IAttackContext)
+  nameWithType: WeaponBase.Draw(SpriteBatch, IAttackContext)
+  fullName: Vibe_Game.Gameplay.Weapons.WeaponBase.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch, IAttackContext)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Weapons.WeaponBase.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,IAttackContext)
+    name: Draw
+    isExternal: true
+    href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_IAttackContext_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Graphics.SpriteBatch
+    name: SpriteBatch
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: IAttackContext
+    name: IAttackContext
+    isExternal: true
+    href: IAttackContext.html
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Weapons.WeaponBase.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,IAttackContext)
+    name: Draw
+    isExternal: true
+    href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_IAttackContext_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Graphics.SpriteBatch
+    name: SpriteBatch
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: IAttackContext
+    name: IAttackContext
+    isExternal: true
+    href: IAttackContext.html
+  - name: )
+- uid: Vibe_Game.Gameplay.Weapons.WeaponBase.DisplayName
+  commentId: P:Vibe_Game.Gameplay.Weapons.WeaponBase.DisplayName
+  parent: Vibe_Game.Gameplay.Weapons.WeaponBase
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_DisplayName
+  name: DisplayName
+  nameWithType: WeaponBase.DisplayName
+  fullName: Vibe_Game.Gameplay.Weapons.WeaponBase.DisplayName
+- uid: Vibe_Game.Gameplay.Weapons.WeaponBase.BaseRecoil
+  commentId: P:Vibe_Game.Gameplay.Weapons.WeaponBase.BaseRecoil
+  parent: Vibe_Game.Gameplay.Weapons.WeaponBase
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_BaseRecoil
+  name: BaseRecoil
+  nameWithType: WeaponBase.BaseRecoil
+  fullName: Vibe_Game.Gameplay.Weapons.WeaponBase.BaseRecoil
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.#ctor*
+  commentId: Overload:Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.#ctor
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.html#Vibe_Game_Gameplay_Weapons_ForwardProjectileWeapon__ctor_System_Single_System_Single_System_Int32_System_Single_System_Single_System_Single_System_Single_
+  name: ForwardProjectileWeapon
+  nameWithType: ForwardProjectileWeapon.ForwardProjectileWeapon
+  fullName: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.ForwardProjectileWeapon
+  nameWithType.vb: ForwardProjectileWeapon.New
+  fullName.vb: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.New
+  name.vb: New
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vibe_Game.Gameplay.Weapons.WeaponBase.TryPrimaryAttack(IAttackContext,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  commentId: M:Vibe_Game.Gameplay.Weapons.WeaponBase.TryPrimaryAttack(IAttackContext,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  parent: Vibe_Game.Gameplay.Weapons.WeaponBase
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_TryPrimaryAttack_IAttackContext_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_
+  name: TryPrimaryAttack(IAttackContext, Vector2, Vector2)
+  nameWithType: WeaponBase.TryPrimaryAttack(IAttackContext, Vector2, Vector2)
+  fullName: Vibe_Game.Gameplay.Weapons.WeaponBase.TryPrimaryAttack(IAttackContext, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Vector2)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Weapons.WeaponBase.TryPrimaryAttack(IAttackContext,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+    name: TryPrimaryAttack
+    isExternal: true
+    href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_TryPrimaryAttack_IAttackContext_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_
+  - name: (
+  - uid: IAttackContext
+    name: IAttackContext
+    isExternal: true
+    href: IAttackContext.html
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Xna.Framework.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Xna.Framework.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Weapons.WeaponBase.TryPrimaryAttack(IAttackContext,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+    name: TryPrimaryAttack
+    isExternal: true
+    href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_TryPrimaryAttack_IAttackContext_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_
+  - name: (
+  - uid: IAttackContext
+    name: IAttackContext
+    isExternal: true
+    href: IAttackContext.html
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Xna.Framework.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Xna.Framework.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.TryPrimaryAttack*
+  commentId: Overload:Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.TryPrimaryAttack
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.html#Vibe_Game_Gameplay_Weapons_ForwardProjectileWeapon_TryPrimaryAttack_IAttackContext_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_
+  name: TryPrimaryAttack
+  nameWithType: ForwardProjectileWeapon.TryPrimaryAttack
+  fullName: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.TryPrimaryAttack
+- uid: IAttackContext
+  commentId: T:IAttackContext
+  isExternal: true
+  href: IAttackContext.html
+  name: IAttackContext
+  nameWithType: IAttackContext
+  fullName: IAttackContext
+- uid: Microsoft.Xna.Framework.Vector2
+  commentId: T:Microsoft.Xna.Framework.Vector2
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Microsoft.Xna.Framework.Vector2
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Microsoft.Xna.Framework
+  commentId: N:Microsoft.Xna.Framework
+  isExternal: true
+  name: Microsoft.Xna.Framework
+  nameWithType: Microsoft.Xna.Framework
+  fullName: Microsoft.Xna.Framework
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+- uid: Vibe_Game.Gameplay.Weapons.WeaponBase.FireMode
+  commentId: P:Vibe_Game.Gameplay.Weapons.WeaponBase.FireMode
+  parent: Vibe_Game.Gameplay.Weapons.WeaponBase
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.WeaponBase.html#Vibe_Game_Gameplay_Weapons_WeaponBase_FireMode
+  name: FireMode
+  nameWithType: WeaponBase.FireMode
+  fullName: Vibe_Game.Gameplay.Weapons.WeaponBase.FireMode
+- uid: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.FireMode*
+  commentId: Overload:Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.FireMode
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.html#Vibe_Game_Gameplay_Weapons_ForwardProjectileWeapon_FireMode
+  name: FireMode
+  nameWithType: ForwardProjectileWeapon.FireMode
+  fullName: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.FireMode
+- uid: Vibe_Game.Gameplay.Weapons.WeaponFireMode
+  commentId: T:Vibe_Game.Gameplay.Weapons.WeaponFireMode
+  parent: Vibe_Game.Gameplay.Weapons
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.WeaponFireMode.html
+  name: WeaponFireMode
+  nameWithType: WeaponFireMode
+  fullName: Vibe_Game.Gameplay.Weapons.WeaponFireMode
+- uid: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.ProjectileSpeedMultiplier*
+  commentId: Overload:Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.ProjectileSpeedMultiplier
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.html#Vibe_Game_Gameplay_Weapons_ForwardProjectileWeapon_ProjectileSpeedMultiplier
+  name: ProjectileSpeedMultiplier
+  nameWithType: ForwardProjectileWeapon.ProjectileSpeedMultiplier
+  fullName: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.ProjectileSpeedMultiplier
+- uid: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.ExternalDamageBonus*
+  commentId: Overload:Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.ExternalDamageBonus
+  isExternal: true
+  href: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.html#Vibe_Game_Gameplay_Weapons_ForwardProjectileWeapon_ExternalDamageBonus
+  name: ExternalDamageBonus
+  nameWithType: ForwardProjectileWeapon.ExternalDamageBonus
+  fullName: Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.ExternalDamageBonus

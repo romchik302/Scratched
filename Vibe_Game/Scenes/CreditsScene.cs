@@ -5,31 +5,40 @@ using Vibe_Game.Core.Settings;
 
 namespace Vibe_Game.Scenes
 {
+    /// <summary>
+    /// Сцена отображения финальных титров (экран победы).
+    /// Выводит информацию об авторах игры и ожидает нажатия клавиши для возврата в главное меню.
+    /// </summary>
     internal sealed class CreditsScene : BaseScene
     {
         private readonly IInputService _inputService;
         private SpriteFont _font;
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="CreditsScene"/>.
+        /// </summary>
+        /// <param name="game">Основной экземпляр игры MonoGame.</param>
+        /// <param name="inputService">Сервис для проверки нажатия клавиш.</param>
         public CreditsScene(Game game, IInputService inputService)
             : base(game)
         {
             _inputService = inputService;
         }
 
-        /// <summary>Загружает шрифт, которым рисуется экран титров.</summary>
+        /// <inheritdoc />
         public override void LoadContent()
         {
             _font = GameInstance.Content.Load<SpriteFont>("room_font");
         }
 
-        /// <summary>Проверяет нажатие любой игровой клавиши и возвращает игрока в главное меню.</summary>
+        /// <inheritdoc />
         public override void Update(GameTime gameTime)
         {
             if (IsAnySkipActionPressed())
                 ((Game1)GameInstance).ShowMainMenu();
         }
 
-        /// <summary>Рисует отдельный экран титров.</summary>
+        /// <inheritdoc />
         public override void Draw(GameTime gameTime)
         {
             SpriteBatch spriteBatch = GetSpriteBatch();
@@ -50,7 +59,7 @@ namespace Vibe_Game.Scenes
             DrawCenteredText(spriteBatch, "created by", new Vector2(viewport.Width / 2f, panelRect.Y + 136f), GameColors.VictoryAccent, 0.62f);
             DrawCenteredText(spriteBatch, "Roman Akst, Yana Egorova-Ekimkova", new Vector2(viewport.Width / 2f, panelRect.Y + 174f), GameColors.VictoryText, 0.48f);
             DrawCenteredText(spriteBatch, "Kamilla Dzhumasheva, Michail Rodomakin", new Vector2(viewport.Width / 2f, panelRect.Y + 204f), GameColors.VictoryText, 0.48f);
-            DrawCenteredText(spriteBatch, "PRESS ANY GAME KEY TO SKIP", new Vector2(viewport.Width / 2f, panelRect.Bottom - 78f), GameColors.VictoryText, 0.62f);
+            DrawCenteredText(spriteBatch, "PRESS E TO CONTINUE", new Vector2(viewport.Width / 2f, panelRect.Bottom - 78f), GameColors.VictoryText, 0.62f);
 
             spriteBatch.End();
         }
@@ -58,17 +67,7 @@ namespace Vibe_Game.Scenes
         /// <summary>Проверяет все игровые действия, которыми можно пропустить титры.</summary>
         private bool IsAnySkipActionPressed()
         {
-            return _inputService.IsActionPressed(InputAction.MoveUp) ||
-                   _inputService.IsActionPressed(InputAction.MoveDown) ||
-                   _inputService.IsActionPressed(InputAction.MoveLeft) ||
-                   _inputService.IsActionPressed(InputAction.MoveRight) ||
-                   _inputService.IsActionPressed(InputAction.ShootUp) ||
-                   _inputService.IsActionPressed(InputAction.ShootDown) ||
-                   _inputService.IsActionPressed(InputAction.ShootLeft) ||
-                   _inputService.IsActionPressed(InputAction.ShootRight) ||
-                   _inputService.IsActionPressed(InputAction.Fire) ||
-                   _inputService.IsActionPressed(InputAction.Pause) ||
-                   _inputService.IsActionPressed(InputAction.Interact);
+            return  _inputService.IsActionPressed(InputAction.Interact);
         }
 
         /// <summary>Рисует рамку панели титров тем же стилем, что и остальные меню.</summary>

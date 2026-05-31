@@ -1,0 +1,60 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Scenes
+  commentId: N:Vibe_Game.Scenes
+  id: Vibe_Game.Scenes
+  children:
+  - Vibe_Game.Scenes.BaseScene
+  - Vibe_Game.Scenes.GameScene
+  langs:
+  - csharp
+  - vb
+  name: Vibe_Game.Scenes
+  nameWithType: Vibe_Game.Scenes
+  fullName: Vibe_Game.Scenes
+  type: Namespace
+  assemblies:
+  - Vibe_Game
+references:
+- uid: Vibe_Game.Scenes.BaseScene
+  commentId: T:Vibe_Game.Scenes.BaseScene
+  parent: Vibe_Game.Scenes
+  isExternal: true
+  href: Vibe_Game.Scenes.BaseScene.html
+  name: BaseScene
+  nameWithType: BaseScene
+  fullName: Vibe_Game.Scenes.BaseScene
+- uid: Vibe_Game.Scenes.GameScene
+  commentId: T:Vibe_Game.Scenes.GameScene
+  isExternal: true
+  href: Vibe_Game.Scenes.GameScene.html
+  name: GameScene
+  nameWithType: GameScene
+  fullName: Vibe_Game.Scenes.GameScene
+- uid: Vibe_Game.Scenes
+  commentId: N:Vibe_Game.Scenes
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Scenes
+  nameWithType: Vibe_Game.Scenes
+  fullName: Vibe_Game.Scenes
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Scenes
+    name: Scenes
+    isExternal: true
+    href: Vibe_Game.Scenes.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Scenes
+    name: Scenes
+    isExternal: true
+    href: Vibe_Game.Scenes.html

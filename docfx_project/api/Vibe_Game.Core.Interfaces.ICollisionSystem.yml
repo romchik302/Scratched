@@ -1,0 +1,361 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Core.Interfaces.ICollisionSystem
+  commentId: T:Vibe_Game.Core.Interfaces.ICollisionSystem
+  id: ICollisionSystem
+  parent: Vibe_Game.Core.Interfaces
+  children:
+  - Vibe_Game.Core.Interfaces.ICollisionSystem.GetCollisions(Microsoft.Xna.Framework.Rectangle)
+  - Vibe_Game.Core.Interfaces.ICollisionSystem.Register(Vibe_Game.Core.Interfaces.ICollidable)
+  - Vibe_Game.Core.Interfaces.ICollisionSystem.Unregister(Vibe_Game.Core.Interfaces.ICollidable)
+  - Vibe_Game.Core.Interfaces.ICollisionSystem.Update(Microsoft.Xna.Framework.GameTime)
+  langs:
+  - csharp
+  - vb
+  name: ICollisionSystem
+  nameWithType: ICollisionSystem
+  fullName: Vibe_Game.Core.Interfaces.ICollisionSystem
+  type: Interface
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Interfaces/ICollisionSystem.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Interfaces
+  summary: >-
+    Интерфейс системы управления коллизиями. Отвечает за отслеживание объектов, 
+
+    пространственное индексирование и выявление столкновений между сущностями.
+  example: []
+  syntax:
+    content: public interface ICollisionSystem
+    content.vb: Public Interface ICollisionSystem
+- uid: Vibe_Game.Core.Interfaces.ICollisionSystem.Register(Vibe_Game.Core.Interfaces.ICollidable)
+  commentId: M:Vibe_Game.Core.Interfaces.ICollisionSystem.Register(Vibe_Game.Core.Interfaces.ICollidable)
+  id: Register(Vibe_Game.Core.Interfaces.ICollidable)
+  parent: Vibe_Game.Core.Interfaces.ICollisionSystem
+  langs:
+  - csharp
+  - vb
+  name: Register(ICollidable)
+  nameWithType: ICollisionSystem.Register(ICollidable)
+  fullName: Vibe_Game.Core.Interfaces.ICollisionSystem.Register(Vibe_Game.Core.Interfaces.ICollidable)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Interfaces/ICollisionSystem.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Interfaces
+  summary: Добавляет объект в систему для отслеживания столкновений.
+  example: []
+  syntax:
+    content: void Register(ICollidable collidable)
+    parameters:
+    - id: collidable
+      type: Vibe_Game.Core.Interfaces.ICollidable
+      description: Объект, реализующий ICollidable.
+    content.vb: Sub Register(collidable As ICollidable)
+  overload: Vibe_Game.Core.Interfaces.ICollisionSystem.Register*
+- uid: Vibe_Game.Core.Interfaces.ICollisionSystem.Unregister(Vibe_Game.Core.Interfaces.ICollidable)
+  commentId: M:Vibe_Game.Core.Interfaces.ICollisionSystem.Unregister(Vibe_Game.Core.Interfaces.ICollidable)
+  id: Unregister(Vibe_Game.Core.Interfaces.ICollidable)
+  parent: Vibe_Game.Core.Interfaces.ICollisionSystem
+  langs:
+  - csharp
+  - vb
+  name: Unregister(ICollidable)
+  nameWithType: ICollisionSystem.Unregister(ICollidable)
+  fullName: Vibe_Game.Core.Interfaces.ICollisionSystem.Unregister(Vibe_Game.Core.Interfaces.ICollidable)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Interfaces/ICollisionSystem.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Interfaces
+  summary: Удаляет объект из системы (например, при уничтожении сущности).
+  example: []
+  syntax:
+    content: void Unregister(ICollidable collidable)
+    parameters:
+    - id: collidable
+      type: Vibe_Game.Core.Interfaces.ICollidable
+      description: Объект, который больше не должен участвовать в расчетах.
+    content.vb: Sub Unregister(collidable As ICollidable)
+  overload: Vibe_Game.Core.Interfaces.ICollisionSystem.Unregister*
+- uid: Vibe_Game.Core.Interfaces.ICollisionSystem.GetCollisions(Microsoft.Xna.Framework.Rectangle)
+  commentId: M:Vibe_Game.Core.Interfaces.ICollisionSystem.GetCollisions(Microsoft.Xna.Framework.Rectangle)
+  id: GetCollisions(Microsoft.Xna.Framework.Rectangle)
+  parent: Vibe_Game.Core.Interfaces.ICollisionSystem
+  langs:
+  - csharp
+  - vb
+  name: GetCollisions(Rectangle)
+  nameWithType: ICollisionSystem.GetCollisions(Rectangle)
+  fullName: Vibe_Game.Core.Interfaces.ICollisionSystem.GetCollisions(Microsoft.Xna.Framework.Rectangle)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Interfaces/ICollisionSystem.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Interfaces
+  summary: >-
+    Возвращает список всех объектов, находящихся в заданной области. 
+
+    Полезно для реализации триггеров или сенсоров (например, проверка области видимости врага).
+  example: []
+  syntax:
+    content: IEnumerable<ICollidable> GetCollisions(Rectangle bounds)
+    parameters:
+    - id: bounds
+      type: Microsoft.Xna.Framework.Rectangle
+      description: Прямоугольная область для проверки.
+    return:
+      type: System.Collections.Generic.IEnumerable{Vibe_Game.Core.Interfaces.ICollidable}
+    content.vb: Function GetCollisions(bounds As Rectangle) As IEnumerable(Of ICollidable)
+  overload: Vibe_Game.Core.Interfaces.ICollisionSystem.GetCollisions*
+- uid: Vibe_Game.Core.Interfaces.ICollisionSystem.Update(Microsoft.Xna.Framework.GameTime)
+  commentId: M:Vibe_Game.Core.Interfaces.ICollisionSystem.Update(Microsoft.Xna.Framework.GameTime)
+  id: Update(Microsoft.Xna.Framework.GameTime)
+  parent: Vibe_Game.Core.Interfaces.ICollisionSystem
+  langs:
+  - csharp
+  - vb
+  name: Update(GameTime)
+  nameWithType: ICollisionSystem.Update(GameTime)
+  fullName: Vibe_Game.Core.Interfaces.ICollisionSystem.Update(Microsoft.Xna.Framework.GameTime)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Interfaces/ICollisionSystem.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Interfaces
+  summary: >-
+    Основной метод цикла игры. Выполняет проверку столкновений для всех зарегистрированных объектов 
+
+    и вызывает метод OnCollision у участников столкновения.
+  example: []
+  syntax:
+    content: void Update(GameTime gameTime)
+    parameters:
+    - id: gameTime
+      type: Microsoft.Xna.Framework.GameTime
+      description: Время кадра.
+    content.vb: Sub Update(gameTime As GameTime)
+  overload: Vibe_Game.Core.Interfaces.ICollisionSystem.Update*
+references:
+- uid: Vibe_Game.Core.Interfaces
+  commentId: N:Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Core.Interfaces
+  nameWithType: Vibe_Game.Core.Interfaces
+  fullName: Vibe_Game.Core.Interfaces
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Interfaces
+    name: Interfaces
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Interfaces
+    name: Interfaces
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.html
+- uid: Vibe_Game.Core.Interfaces.ICollisionSystem.Register*
+  commentId: Overload:Vibe_Game.Core.Interfaces.ICollisionSystem.Register
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.ICollisionSystem.html#Vibe_Game_Core_Interfaces_ICollisionSystem_Register_Vibe_Game_Core_Interfaces_ICollidable_
+  name: Register
+  nameWithType: ICollisionSystem.Register
+  fullName: Vibe_Game.Core.Interfaces.ICollisionSystem.Register
+- uid: Vibe_Game.Core.Interfaces.ICollidable
+  commentId: T:Vibe_Game.Core.Interfaces.ICollidable
+  parent: Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.ICollidable.html
+  name: ICollidable
+  nameWithType: ICollidable
+  fullName: Vibe_Game.Core.Interfaces.ICollidable
+- uid: Vibe_Game.Core.Interfaces.ICollisionSystem.Unregister*
+  commentId: Overload:Vibe_Game.Core.Interfaces.ICollisionSystem.Unregister
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.ICollisionSystem.html#Vibe_Game_Core_Interfaces_ICollisionSystem_Unregister_Vibe_Game_Core_Interfaces_ICollidable_
+  name: Unregister
+  nameWithType: ICollisionSystem.Unregister
+  fullName: Vibe_Game.Core.Interfaces.ICollisionSystem.Unregister
+- uid: Vibe_Game.Core.Interfaces.ICollisionSystem.GetCollisions*
+  commentId: Overload:Vibe_Game.Core.Interfaces.ICollisionSystem.GetCollisions
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.ICollisionSystem.html#Vibe_Game_Core_Interfaces_ICollisionSystem_GetCollisions_Microsoft_Xna_Framework_Rectangle_
+  name: GetCollisions
+  nameWithType: ICollisionSystem.GetCollisions
+  fullName: Vibe_Game.Core.Interfaces.ICollisionSystem.GetCollisions
+- uid: Microsoft.Xna.Framework.Rectangle
+  commentId: T:Microsoft.Xna.Framework.Rectangle
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Rectangle
+  nameWithType: Rectangle
+  fullName: Microsoft.Xna.Framework.Rectangle
+- uid: System.Collections.Generic.IEnumerable{Vibe_Game.Core.Interfaces.ICollidable}
+  commentId: T:System.Collections.Generic.IEnumerable{Vibe_Game.Core.Interfaces.ICollidable}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<ICollidable>
+  nameWithType: IEnumerable<ICollidable>
+  fullName: System.Collections.Generic.IEnumerable<Vibe_Game.Core.Interfaces.ICollidable>
+  nameWithType.vb: IEnumerable(Of ICollidable)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Vibe_Game.Core.Interfaces.ICollidable)
+  name.vb: IEnumerable(Of ICollidable)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Vibe_Game.Core.Interfaces.ICollidable
+    name: ICollidable
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.ICollidable.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vibe_Game.Core.Interfaces.ICollidable
+    name: ICollidable
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.ICollidable.html
+  - name: )
+- uid: Microsoft.Xna.Framework
+  commentId: N:Microsoft.Xna.Framework
+  isExternal: true
+  name: Microsoft.Xna.Framework
+  nameWithType: Microsoft.Xna.Framework
+  fullName: Microsoft.Xna.Framework
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vibe_Game.Core.Interfaces.ICollisionSystem.Update*
+  commentId: Overload:Vibe_Game.Core.Interfaces.ICollisionSystem.Update
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.ICollisionSystem.html#Vibe_Game_Core_Interfaces_ICollisionSystem_Update_Microsoft_Xna_Framework_GameTime_
+  name: Update
+  nameWithType: ICollisionSystem.Update
+  fullName: Vibe_Game.Core.Interfaces.ICollisionSystem.Update
+- uid: Microsoft.Xna.Framework.GameTime
+  commentId: T:Microsoft.Xna.Framework.GameTime
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: GameTime
+  nameWithType: GameTime
+  fullName: Microsoft.Xna.Framework.GameTime

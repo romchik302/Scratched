@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class EnemyDeathVfx </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class EnemyDeathVfx ">
+      
+      <meta name="description" content="Анимация смерти врага или босса: кадры из соответствующего спрайт-листа и затухание по альфе.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx">
+
+
+
+  <h1 id="Vibe_Game_Gameplay_Entities_Enemies_EnemyDeathVfx" data-uid="Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx" class="text-break">
+Class EnemyDeathVfx  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/EnemyDeathVfx.cs"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vibe_Game.html">Vibe_Game</a>.<a class="xref" href="Vibe_Game.Gameplay.html">Gameplay</a>.<a class="xref" href="Vibe_Game.Gameplay.Entities.html">Entities</a>.<a class="xref" href="Vibe_Game.Gameplay.Entities.Enemies.html">Enemies</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Vibe_Game.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Анимация смерти врага или босса: кадры из соответствующего спрайт-листа и затухание по альфе.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class EnemyDeathVfx</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">EnemyDeathVfx</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_EnemyDeathVfx__ctor_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx.#ctor*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_EnemyDeathVfx__ctor_Microsoft_Xna_Framework_Vector2_System_Single_System_Boolean_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx.#ctor(Microsoft.Xna.Framework.Vector2,System.Single,System.Boolean)">
+  EnemyDeathVfx(Vector2, float, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/EnemyDeathVfx.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Инициализирует новый экземпляр визуального эффекта смерти.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnemyDeathVfx(Vector2 position, float displayRadius, bool isBossDeath = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>position</code> <span class="xref">Vector2</span></dt>
+    <dd><p>Позиция, в которой будет проигрываться анимация.</p>
+</dd>
+    <dt><code>displayRadius</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Радиус для масштабирования спрайта смерти.</p>
+</dd>
+    <dt><code>isBossDeath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Флаг, указывающий, является ли умерший враг боссом.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_EnemyDeathVfx_DisplayRadius_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx.DisplayRadius*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_EnemyDeathVfx_DisplayRadius" data-uid="Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx.DisplayRadius">
+  DisplayRadius
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/EnemyDeathVfx.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Радиус, определяющий итоговый размер отрисовываемого эффекта.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float DisplayRadius { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_EnemyDeathVfx_IsBossDeath_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx.IsBossDeath*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_EnemyDeathVfx_IsBossDeath" data-uid="Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx.IsBossDeath">
+  IsBossDeath
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/EnemyDeathVfx.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Указывает, используется ли анимация смерти для босса (true) или для обычного врага (false).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsBossDeath { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_EnemyDeathVfx_IsFinished_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx.IsFinished*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_EnemyDeathVfx_IsFinished" data-uid="Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx.IsFinished">
+  IsFinished
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/EnemyDeathVfx.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Возвращает true, если время проигрывания анимации подошло к концу.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsFinished { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_EnemyDeathVfx_Position_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx.Position*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_EnemyDeathVfx_Position" data-uid="Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx.Position">
+  Position
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/EnemyDeathVfx.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Позиция центра эффекта смерти в игровом мире.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 Position { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_EnemyDeathVfx_Draw_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx.Draw*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_EnemyDeathVfx_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_Microsoft_Xna_Framework_Graphics_Texture2D_Microsoft_Xna_Framework_Graphics_Texture2D_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.Texture2D)">
+  Draw(SpriteBatch, Texture2D, Texture2D)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/EnemyDeathVfx.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Отрисовывает текущий кадр анимации смерти с учетом масштаба и прозрачности.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Draw(SpriteBatch spriteBatch, Texture2D normalDeathSheet, Texture2D bossSheet)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>spriteBatch</code> <span class="xref">SpriteBatch</span></dt>
+    <dd><p>Пакет спрайтов для отрисовки.</p>
+</dd>
+    <dt><code>normalDeathSheet</code> <span class="xref">Texture2D</span></dt>
+    <dd><p>Текстура (спрайт-лист) смерти обычного врага.</p>
+</dd>
+    <dt><code>bossSheet</code> <span class="xref">Texture2D</span></dt>
+    <dd><p>Текстура (спрайт-лист) анимаций босса.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Enemies_EnemyDeathVfx_Update_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx.Update*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Enemies_EnemyDeathVfx_Update_System_Single_" data-uid="Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx.Update(System.Single)">
+  Update(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/EnemyDeathVfx.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Обновляет таймер анимации смерти.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Update(float deltaSeconds)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>deltaSeconds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Время, прошедшее с последнего кадра, в секундах.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/EnemyDeathVfx.cs" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

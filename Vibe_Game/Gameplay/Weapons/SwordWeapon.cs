@@ -9,11 +9,16 @@ using Vibe_Game.Core.Settings;
 
 namespace Vibe_Game.Gameplay.Weapons;
 
+/// <summary>
+/// Оружие ближнего боя (меч), выполняющее круговой взмах по дуге, рассчитывающее динамический 
+/// хитбокс атаки каждый кадр и генерирующее анимированные частицы шлейфа (следа).
+/// </summary>
 public sealed class SwordWeapon : WeaponBase
 {
+    /// <inheritdoc />
     public override WeaponFireMode FireMode => WeaponFireMode.DirectionHeldPlusButtonPress;
 
-    /// <summary>Базовая отдача меча (сила толчка врага при ударе).</summary>
+    /// <inheritdoc />
     public override float BaseRecoil => WeaponConfig.SwordRecoilForce;
 
     private Texture2D _swordTexture;
@@ -36,10 +41,11 @@ public sealed class SwordWeapon : WeaponBase
 
     private float _visualScale = 1.3f;
 
-    // Кто уже получил урон в этой атаке
     private HashSet<object> _hitEnemies = new();
 
-    // Публичные свойства для изменения размера оружия в рантайме
+    /// <summary>
+    /// Длина лезвия меча в пикселях. Ограничена снизу минимальным значением.
+    /// </summary>
     public float SwordLength
     {
         get => _swordLength;
@@ -49,6 +55,9 @@ public sealed class SwordWeapon : WeaponBase
         }
     }
 
+    /// <summary>
+    /// Ширина (толщина) лезвия меча в пикселях. Ограничена снизу минимальным значением.
+    /// </summary>
     public float SwordWidth
     {
         get => _swordWidth;
@@ -58,33 +67,54 @@ public sealed class SwordWeapon : WeaponBase
         }
     }
 
+    /// <summary>
+    /// Дополнительный бонус к базовому урону меча, получаемый от внешних модификаторов или характеристик персонажа.
+    /// </summary>
     public int ExternalDamageBonus { get; set; }
 
+    /// <summary>
+    /// Нормализованный вектор направления текущей или последней совершенной атаки.
+    /// </summary>
     public Vector2 AttackDirection => _attackDirection;
 
+    /// <summary>
+    /// Базовый урон, наносимый мечом без учета внешних бонусов.
+    /// </summary>
     public int Damage
     {
         get => _damage;
     }
 
-    
+    /// <summary>
+    /// Инициализирует новый экземпляр меча с базовым временем отката.
+    /// </summary>
+    /// <param name="cooldownSeconds">Базовое время перезарядки оружия в секундах.</param>
     public SwordWeapon(float cooldownSeconds = 0.4f)
         : base("Sword", cooldownSeconds)
     {
         _baseCooldownSeconds = cooldownSeconds;
     }
 
+    /// <summary>
+    /// Устанавливает динамический множитель скорости атаки, изменяя итоговое время отката оружия.
+    /// </summary>
+    /// <param name="multiplier">Множитель времени отката (чем меньше значение, тем быстрее перезарядка).</param>
     public void SetCooldownMultiplier(float multiplier)
     {
         CooldownSeconds = Math.Max(0.04f, _baseCooldownSeconds * multiplier);
     }
 
+    /// <summary>
+    /// Загружает графические ассеты меча и текстуры частиц следа из менеджера ресурсов.
+    /// </summary>
+    /// <param name="content">Менеджер игрового контента.</param>
     public void LoadContent(ContentManager content)
     {
         _swordTexture = content.Load<Texture2D>(WeaponConfig.SwordTexture);
         _trailTexture = content.Load<Texture2D>(WeaponConfig.SwordTrailTexture);
     }
 
+    /// <inheritdoc />
     public override void Update(GameTime gameTime, IAttackContext context)
     {
         base.Update(gameTime, context);
@@ -169,6 +199,7 @@ public sealed class SwordWeapon : WeaponBase
         return new Rectangle((int)minX, (int)minY, (int)(maxX - minX), (int)(maxY - minY));
     }
 
+    /// <inheritdoc />
     public override bool TryPrimaryAttack(IAttackContext context, Vector2 ownerPosition, Vector2 facingDirection)
     {
         if (facingDirection == Vector2.Zero) return false;
@@ -190,10 +221,15 @@ public sealed class SwordWeapon : WeaponBase
         return true;
     }
 
+    /// <summary>
+    /// Синхронизирует и обновляет позицию владельца оружия для корректного расчета смещения рукояти во время движения.
+    /// </summary>
+    /// <param name="ownerPosition">Новая позиция владельца меча в мировых координатах.</param>
     public void UpdateOwnerPosition(Vector2 ownerPosition)
     {
         _currentPlayerPosition = ownerPosition;
     }
+
 
     private Vector2 GetSwordHandle()
     {
@@ -208,6 +244,7 @@ public sealed class SwordWeapon : WeaponBase
         return GetSwordHandle() + swordDir * _swordLength;
     }
 
+    /// <inheritdoc />
     public override void Draw(SpriteBatch spriteBatch, IAttackContext context)
     {
         // Рисуем меч только во время атаки
@@ -417,11 +454,15 @@ public sealed class SwordWeapon : WeaponBase
     }
 }
 
+/// <summary>
+/// Описывает состояние, параметры анимации, размеры и характеристики отображения отдельной частицы визуального следа меча.
+/// </summary>
 public class SwordTrailParticle
 {
     public Vector2 Position;
     public int CurrentFrame;
-    public int Row; // Строка в спрайт листе (0 или 1)
+    /// <summary>Индекс строки (атласа текстур) спрайт-листа, определяющий визуальный тип частицы(0 или 1).</summary>
+    public int Row;
     public float Timer;
     public float Lifetime;
     public float Size;

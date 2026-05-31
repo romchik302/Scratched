@@ -12,8 +12,13 @@ using DefaultInputBindings = Vibe_Game.Core.Engine.DefaultInputBindings;
 
 namespace Vibe_Game
 {
+    /// <summary>
+    /// Главный класс игры, управляющий жизненным циклом приложения, инициализацией сервисов, 
+    /// переключением сцен и основным циклом отрисовки.
+    /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private SceneManager _sceneManager;
@@ -30,6 +35,9 @@ namespace Vibe_Game
         private const int VirtualWidth = 1280;
         private const int VirtualHeight = 720;
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса Game1, настраивает графику и создает базовые компоненты.
+        /// </summary>
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -49,6 +57,9 @@ namespace Vibe_Game
             _contentLoader = new PlayerContentLoader();
         }
 
+        /// <summary>
+        /// Выполняет начальную настройку игры, проверку графического устройства и запуск сервисов.
+        /// </summary>
         protected override void Initialize()
         {
             System.Diagnostics.Debug.WriteLine("=== Initialize started ===");
@@ -74,6 +85,9 @@ namespace Vibe_Game
             System.Diagnostics.Debug.WriteLine("=== Initialize completed ===");
         }
 
+        /// <summary>
+        /// Регистрирует все ключевые игровые сервисы в контейнере MonoGame для обеспечения доступа из любого места.
+        /// </summary>
         private void InitializeServices()
         {
             System.Diagnostics.Debug.WriteLine("--- Initialize services ---");
@@ -100,6 +114,9 @@ namespace Vibe_Game
             System.Diagnostics.Debug.WriteLine("--- All services initialized ---");
         }
 
+        /// <summary>
+        /// Загружает все графические и аудио ресурсы, а также подготавливает RenderTarget перед началом игрового цикла.
+        /// </summary>
         protected override void LoadContent()
         {
             System.Diagnostics.Debug.WriteLine("=== LoadContent started ===");
@@ -150,6 +167,9 @@ namespace Vibe_Game
             System.Diagnostics.Debug.WriteLine("=== LoadContent completed ===");
         }
 
+        /// <summary>
+        /// Инициализирует и устанавливает стартовую сцену при запуске приложения.
+        /// </summary>
         private void LoadInitialScene()
         {
             System.Diagnostics.Debug.WriteLine("--- Loading initial scene ---");
@@ -177,6 +197,9 @@ namespace Vibe_Game
             System.Diagnostics.Debug.WriteLine("--- Initial scene loaded ---");
         }
 
+        /// <summary>
+        /// Инициализирует игровую сцену и переключает контекст приложения на игровой процесс.
+        /// </summary>
         public void StartNewGame()
         {
             GameplayAudio.OnEnterGameScene();
@@ -187,6 +210,9 @@ namespace Vibe_Game
             _sceneManager.SwitchTo("game");
         }
 
+        /// <summary>
+        /// Переключает текущую сцену на главное меню игры.
+        /// </summary>
         public void ShowMainMenu()
         {
             GameplayAudio.OnEnterMainMenu();
@@ -229,6 +255,10 @@ namespace Vibe_Game
             _sceneManager.SwitchTo("death");
         }
 
+        /// <summary>
+        /// Выполняет обновление игровой логики, обработку ввода и состояний аудио на каждом кадре.
+        /// </summary>
+        /// <param name="gameTime">Время, прошедшее с момента последнего обновления.</param>
         protected override void Update(GameTime gameTime)
         {
             // Обновляем InputManager каждый кадр
@@ -241,6 +271,9 @@ namespace Vibe_Game
             base.Update(gameTime);
         }
 
+        /// <summary>
+        /// Проверяет ввод пользователя для переключения между оконным и полноэкранным режимами.
+        /// </summary>
         private void HandleFullscreenToggle()
         {
             KeyboardState keyboard = Keyboard.GetState();
@@ -256,6 +289,10 @@ namespace Vibe_Game
             _previousKeyboardState = keyboard;
         }
 
+        /// <summary>
+        /// Выполняет отрисовку сцены в RenderTarget, а затем растягивает изображение на весь экран.
+        /// </summary>
+        /// <param name="gameTime">Время, прошедшее с момента последнего кадра.</param>
         protected override void Draw(GameTime gameTime)
         {
             EnsureSceneRenderTarget();
@@ -279,6 +316,9 @@ namespace Vibe_Game
             _spriteBatch.End();
         }
 
+        /// <summary>
+        /// Гарантирует существование RenderTarget с корректными размерами для обеспечения фиксированного виртуального разрешения.
+        /// </summary>
         private void EnsureSceneRenderTarget()
         {
             if (_sceneRenderTarget != null &&

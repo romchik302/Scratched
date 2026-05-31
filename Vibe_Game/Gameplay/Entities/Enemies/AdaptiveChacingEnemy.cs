@@ -7,8 +7,13 @@ using Vibe_Game.Core.Settings;
 
 namespace Vibe_Game.Gameplay.Entities.Enemies;
 
+/// <summary>
+/// Враг, который увеличивает радиус преследования (агрессии) 
+/// при обнаружении игрока или получении урона.
+/// </summary>
 internal class AdaptiveChasingEnemy : ChasingEnemy
 {
+    /// <inheritdoc />
     protected override float AnimFrameDuration =>
         EnemyConfig.AdaptiveChasingAnimationSpeed;
     private bool _isPlayerCurrentlyInRadius;
@@ -18,6 +23,16 @@ internal class AdaptiveChasingEnemy : ChasingEnemy
     private bool _hasPlayerEnteredRadius = false;
     private float _currentChaseRadius;
 
+    /// <summary>
+    /// Инициализирует новый экземпляр адаптивного врага с заданными параметрами.
+    /// </summary>
+    /// <param name="position">Начальная позиция врага.</param>
+    /// <param name="collision">Сервис для проверки столкновений со стенами.</param>
+    /// <param name="moveSpeed">Скорость перемещения врага.</param>
+    /// <param name="maxHealth">Максимальное количество здоровья.</param>
+    /// <param name="collisionRadius">Радиус физической коллизии врага.</param>
+    /// <param name="initialChaseRadius">Начальный (спокойный) радиус обнаружения игрока.</param>
+    /// <param name="expandedChaseRadius">Расширенный (агрессивный) радиус преследования.</param>
     public AdaptiveChasingEnemy(
         Vector2 position,
         IWallCollisionChecker collision,
@@ -34,6 +49,11 @@ internal class AdaptiveChasingEnemy : ChasingEnemy
         RecoilResistance = 0.8f;  // Тяжело отскакивает (80% сопротивление)
     }
 
+    /// <summary>
+    /// Инициализирует новый экземпляр адаптивного врага, используя стандартные настройки из конфига.
+    /// </summary>
+    /// <param name="position">Начальная позиция врага.</param>
+    /// <param name="collision">Сервис для проверки столкновений со стенами.</param>
     public AdaptiveChasingEnemy(Vector2 position, IWallCollisionChecker collision)
         : this(
             position,
@@ -46,6 +66,7 @@ internal class AdaptiveChasingEnemy : ChasingEnemy
     {
     }
 
+    /// <inheritdoc />
     protected override void UpdateEnemy(GameTime gameTime)
     {
         EnsureSpriteConfigured();
@@ -85,6 +106,11 @@ internal class AdaptiveChasingEnemy : ChasingEnemy
         Velocity = Vector2.Zero;
     }
 
+
+    /// <summary>
+    /// Проверяет дистанцию до игрока и расширяет радиус преследования, если игрок оказался слишком близко.
+    /// </summary>
+    /// <param name="distanceToPlayer">Текущая дистанция между врагом и игроком.</param>
     private void CheckPlayerEnteredRadius(float distanceToPlayer)
     {
         if (distanceToPlayer <= _currentChaseRadius && !_hasPlayerEnteredRadius)
@@ -94,7 +120,7 @@ internal class AdaptiveChasingEnemy : ChasingEnemy
         }
     }
 
-
+    /// <inheritdoc />
     public override void Draw(SpriteBatch spriteBatch)
     {
         if (!IsAlive || !IsActivated || spriteBatch == null)
@@ -145,20 +171,34 @@ internal class AdaptiveChasingEnemy : ChasingEnemy
         DrawDebugOverlay(spriteBatch);
     }
 
+
+    /// <summary>
+    /// Сбрасывает состояние агрессии врага, возвращая его к изначальному (спокойному) радиусу поиска.
+    /// </summary>
     public void ResetRadiusState()
     {
         _hasPlayerEnteredRadius = false;
         _currentChaseRadius = _initialChaseRadius;
     }
 
+    /// <summary>
+    /// Указывает, вошел ли игрок в радиус агрессии врага хотя бы один раз.
+    /// </summary>
     public bool HasPlayerEnteredRadius => _hasPlayerEnteredRadius;
+    /// <summary>
+    /// Текущий радиус преследования врага.
+    /// </summary>
     public float CurrentChaseRadius => _currentChaseRadius;
 
+    /// <inheritdoc />
     protected override float? GetDebugAggroRadius()
     {
         return _currentChaseRadius;
     }
 
+    /// <summary>
+    /// Гарантирует создание отладочной текстуры только один раз за сессию игры.
+    /// </summary>
     protected override void EnsureSpriteConfigured()
     {
         if (_spriteSheet != null)
@@ -178,8 +218,10 @@ internal class AdaptiveChasingEnemy : ChasingEnemy
         _sourceRect = new Rectangle(0, 0, _frameWidth, _frameHeight);
     }
 
+    /// <inheritdoc />
     protected override float AmbientSoundInterval => 0.8f;
 
+    /// <inheritdoc />
     protected override void PlayAmbientSound()
     {
         if(_hasPlayerEnteredRadius) GameplayAudio.PlayEnemyTreant();

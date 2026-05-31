@@ -1,4 +1,3 @@
-// Gameplay/Entities/Player/Player.cs (дополнения)
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,6 +8,11 @@ using Vibe_Game.Gameplay.Weapons;
 
 namespace Vibe_Game.Gameplay.Entities.Player
 {
+    /// <summary>
+    /// Игровой персонаж, управляемый игроком.
+    /// Отвечает за движение, получение урона, использование оружия,
+    /// воспроизведение анимаций и взаимодействие с игровыми системами.
+    /// </summary>
     public class Player : Entity
     {
         private readonly IPlayerRenderer _renderer;
@@ -16,22 +20,32 @@ namespace Vibe_Game.Gameplay.Entities.Player
         private readonly IPlayerContentLoader _contentLoader;
         private readonly IAttackContext _attackContext;
 
+        /// <summary>Контроллер управления игроком. Обрабатывает ввод и рассчитывает движение персонажа.</summary>
         public PlayerController Controller { get; private set; }
+
+        /// <summary>Набор характеристик игрока: здоровье, модификаторы скорости, урона и дополнительные жизни.</summary>
         public PlayerStats Stats { get; private set; }
+
+        /// <summary>Текущее экипированное оружие игрока. Используется для выполнения атак и обновления боевого состояния.</summary>
         public IWeapon EquippedWeapon { get; set; }
 
         private Vector2 _lastShootDirection;
 
         // Для анимации
-        private PlayerRenderer _animationRenderer; // Приведение типа для доступа к Update
+        private PlayerRenderer _animationRenderer;
 
-        // Таймер неуязвимости после получения урона (в секундах)
         private float _invincibilityTimer = 0f;
         private const float InvincibilityDuration = 1.4f;
 
         private float _flashingTimer = 0f;
         private const float FlashingDuration = 0.2f;
 
+        /// <summary>Создает нового игрока и инициализирует все связанные системы.</summary>
+        /// <param name="position">Начальная позиция игрока.</param>
+        /// <param name="renderer">Объект, отвечающий за визуальное отображение игрока.</param>
+        /// <param name="inputService">Сервис обработки пользовательского ввода.</param>
+        /// <param name="contentLoader">Загрузчик игровых ресурсов игрока.</param>
+        /// <param name="attackContext">Контекст выполнения атак и взаимодействия с боевой системой.</param>
         public Player(
             Vector2 position,
             IPlayerRenderer renderer,
@@ -51,15 +65,16 @@ namespace Vibe_Game.Gameplay.Entities.Player
 
             Color = Color.White;
 
-            // Сохраняем ссылку на анимационный рендерер, если он используется
             _animationRenderer = renderer as PlayerRenderer;
         }
 
+        /// <inheritdoc />
         public override void LoadContent(ContentManager content)
         {
             _contentLoader.LoadContent(content);
         }
 
+        /// <inheritdoc />
         public override void Update(GameTime gameTime)
         {
             SyncEquipmentFromStats();
@@ -75,12 +90,14 @@ namespace Vibe_Game.Gameplay.Entities.Player
                 EquippedWeapon.Update(gameTime, _attackContext);
 
                 Vector2 dir = Controller.ShootDirection;
+
                 switch (EquippedWeapon.FireMode)
                 {
                     case WeaponFireMode.AutoWhileDirectionHeld:
                         if (IsAnyShootDirectionHeld() && dir != Vector2.Zero)
                             EquippedWeapon.TryPrimaryAttack(_attackContext, Position, dir);
                         break;
+
                     case WeaponFireMode.DirectionHeldPlusButtonPress:
                         if (IsAnyShootDirectionHeld()
                             && dir != Vector2.Zero
@@ -91,60 +108,49 @@ namespace Vibe_Game.Gameplay.Entities.Player
             }
 
             if (EquippedWeapon is SwordWeapon sword)
-            {
                 sword.UpdateOwnerPosition(Position);
-            }
 
             Velocity = Controller.CurrentVelocity;
 
-            // ОБНОВЛЯЕМ ТАЙМЕР НЕУЯЗВИМОСТИ
             if (_invincibilityTimer > 0)
             {
                 _invincibilityTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (_invincibilityTimer < 0) _invincibilityTimer = 0;
+
+                if (_invincibilityTimer < 0)
+                    _invincibilityTimer = 0;
 
                 _flashingTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
                 if (_flashingTimer > FlashingDuration)
                 {
-                    if (Color != Color.White)
-                    {
-                        Color = Color.White;
-                    }
-                    else
-                    {
-                        Color = Color.White * 0.25f;
-                    }
-
+                    Color = Color == Color.White ? Color.White * 0.25f : Color.White;
                     _flashingTimer = 0f;
                 }
             }
             else
             {
-                // Возвращаем нормальный цвет после окончания неуязвимости
                 if (Color != Color.White)
                     Color = Color.White;
             }
 
-            // ОБНОВЛЯЕМ АНИМАЦИЮ
-            if (_animationRenderer != null)
-            {
-                _animationRenderer.Update(gameTime, Velocity, _lastShootDirection);
-            }
+            _animationRenderer?.Update(gameTime, Velocity, _lastShootDirection);
 
             base.Update(gameTime);
         }
 
+        /// <summary>Запускает анимацию подбора предмета, если поддерживается рендерером.</summary>
         public void TryPlayPickupAnimation()
         {
             _animationRenderer?.BeginPickupAnimation();
         }
 
+        /// <inheritdoc />
         public override void Draw(SpriteBatch spriteBatch)
         {
             _renderer.Draw(spriteBatch, Position, _lastShootDirection, Color);
         }
 
+        /// <inheritdoc />
         public override Rectangle GetBounds()
         {
             return new Rectangle(
@@ -155,9 +161,11 @@ namespace Vibe_Game.Gameplay.Entities.Player
             );
         }
 
+        /// <summary>Применяет урон к игроку, запускает неуязвимость и обрабатывает потерю жизней.</summary>
+        /// <param name="amount">Количество получаемого урона.</param>
         public void TakeDamage(float amount)
         {
-            if (_invincibilityTimer > 0) return; // Игрок неуязвим
+            if (_invincibilityTimer > 0) return;
             if (amount <= 0) return;
 
             Stats.TakeDamage(amount);
@@ -173,11 +181,10 @@ namespace Vibe_Game.Gameplay.Entities.Player
                 return;
 
             _invincibilityTimer = InvincibilityDuration;
-
-            // Визуальный эффект - мигание 
             Color = Color.White * 0.25f;
         }
 
+        /// <summary>Синхронизирует параметры оружия и движения с характеристиками игрока.</summary>
         private void SyncEquipmentFromStats()
         {
             Controller.MaxSpeed = CollectibleConfig.BasePlayerControllerMaxSpeed * Stats.SpeedMultiplier;
@@ -194,6 +201,7 @@ namespace Vibe_Game.Gameplay.Entities.Player
             }
         }
 
+        /// <summary>Проверяет, находится ли игрок в состоянии неуязвимости.</summary>
         public bool IsInvincible => _invincibilityTimer > 0;
 
         private bool IsAnyShootDirectionHeld()
@@ -203,6 +211,9 @@ namespace Vibe_Game.Gameplay.Entities.Player
                 || _inputService.IsActionDown(InputAction.ShootLeft)
                 || _inputService.IsActionDown(InputAction.ShootRight);
         }
+
+        /// <summary>Устанавливает модификатор трения для передвижения (например, при ходьбе по льду или слизи).</summary>
+        /// <param name="multiplier">Коэффициент трения (1.0 — стандарт).</param>
         public void SetMovementFrictionMultiplier(float multiplier)
         {
             Controller.SetFrictionMultiplier(multiplier);

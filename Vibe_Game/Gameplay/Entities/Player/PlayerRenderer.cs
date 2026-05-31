@@ -6,6 +6,10 @@ using Vibe_Game.Core.Interfaces;
 
 namespace Vibe_Game.Gameplay.Entities.Player;
 
+/// <summary>
+/// Компонент отрисовки игрока, отвечающий за обработку состояний, расчет таймингов 
+/// и выборку правильных кадров анимации (ходьба, случайный Idle, подбор предмета) из спрайт-листа.
+/// </summary>
 internal class PlayerRenderer : IPlayerRenderer
 {
     private Texture2D _spriteSheet;
@@ -50,12 +54,20 @@ internal class PlayerRenderer : IPlayerRenderer
 
     private float _pickupAnimRemaining;
 
+    /// <summary>
+    /// Инициализирует новый экземпляр класса <see cref="PlayerRenderer"/>.
+    /// </summary>
+    /// <param name="spriteSheet">Текстура спрайт-листа игрока.</param>
+    /// <exception cref="ArgumentNullException">Вызывается, если переданная текстура равна null.</exception>
     public PlayerRenderer(Texture2D spriteSheet)
     {
         _spriteSheet = spriteSheet ?? throw new ArgumentNullException(nameof(spriteSheet));
         _currentFrame = new Rectangle(0, 0, _frameWidth, _frameHeight);
     }
 
+    /// <summary>
+    /// Прерывает текущие анимации ходьбы/Idle и запускает анимацию триумфального поднятия предмета над головой.
+    /// </summary>
     public void BeginPickupAnimation()
     {
         _pickupAnimRemaining = PICKUP_ANIM_TOTAL;
@@ -66,6 +78,12 @@ internal class PlayerRenderer : IPlayerRenderer
         _wasMoving = false;
     }
 
+    /// <summary>
+    /// Обновляет логику выбора кадров анимации в зависимости от скорости, направления стрельбы и дельты времени.
+    /// </summary>
+    /// <param name="gameTime">Текущее игровое время.</param>
+    /// <param name="velocity">Вектор текущей скорости игрока для расчета движения.</param>
+    /// <param name="shootDirection">Вектор направления атаки для фиксации взгляда при стрельбе.</param>
     public void Update(GameTime gameTime, Vector2 velocity, Vector2 shootDirection)
     {
         float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -96,6 +114,7 @@ internal class PlayerRenderer : IPlayerRenderer
 
         UpdateCurrentFrame();
     }
+
 
     private void UpdatePickupAnimation(float dt)
     {
@@ -256,6 +275,13 @@ internal class PlayerRenderer : IPlayerRenderer
         _currentFrame.Height = _frameHeight;
     }
 
+    /// <summary>
+    /// Отрисовывает вырезанный кадр игрока на экране в заданной позиции с центрированием по точке начала координат (Origin).
+    /// </summary>
+    /// <param name="spriteBatch">Пакет отрисовки MonoGame/XNA.</param>
+    /// <param name="position">Мировая позиция, где должен быть отрисован центр спрайта игрока.</param>
+    /// <param name="shootDirection">Текущее направление стрельбы (не влияет на непосредственную трансформацию спрайта при Draw).</param>
+    /// <param name="color">Цветовой фильтр (например, Color.White для исходного или Color.Red при получении урона).</param>
     public void Draw(SpriteBatch spriteBatch, Vector2 position, Vector2 shootDirection, Color color)
     {
         if (_spriteSheet == null) return;

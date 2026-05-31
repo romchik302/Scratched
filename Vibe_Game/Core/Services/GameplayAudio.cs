@@ -9,9 +9,13 @@ using Vibe_Game.Core.Settings;
 
 namespace Vibe_Game.Core.Services;
 
-/// <summary>Звуки и музыка геймплея: отсутствующие ассеты пропускаются, музыка «пустых» комнат возобновляется после боя.</summary>
+/// <summary>
+/// Статический сервис для управления звуковыми эффектами (SFX) и фоновой музыкой (BGM) в игровом процессе.
+/// Обеспечивает плавные переходы между треками, управление громкостью и безопасную загрузку ассетов.
+/// </summary>
 public static class GameplayAudio
 {
+    /// <summary>Хранилище загруженных звуковых эффектов.</summary>
     private static readonly Dictionary<string, SoundEffect> Effects = new(StringComparer.Ordinal);
     private static Song _songEmptyRoom;
     private static Song _songCombatRoom;
@@ -47,6 +51,10 @@ public static class GameplayAudio
     private static float _musicFadeSpeed = 0.25f;
     private static float _targetVolume = 0.3f;
 
+    /// <summary>
+    /// Загружает все необходимые звуковые эффекты и музыкальные композиции из контента игры.
+    /// </summary>
+    /// <param name="content">Менеджер контента MonoGame для загрузки ресурсов.</param>
     public static void Load(ContentManager content)
     {
         Effects.Clear();
@@ -73,7 +81,6 @@ public static class GameplayAudio
         TryAddEffect(content, SoundConfig.MapBossEntry);
         TryAddEffect(content, SoundConfig.MapButton);
         TryAddEffect(content, SoundConfig.MapClosedDoor);
-        // Загрузка без воспроизведения: отдельный эффект разблокировки пока не используется в геймплее.
         TryAddEffect(content, SoundConfig.MapDoorUnlock);
         TryAddEffect(content, SoundConfig.MapOpenDoor);
         TryAddEffect(content, SoundConfig.RoomCleared);
@@ -87,13 +94,19 @@ public static class GameplayAudio
         MediaPlayer.Volume = _menuVolume;
     }
 
-    /// <summary>Сброс позиции спокойной музыки при новом забеге / новом этаже.</summary>
+    /// <summary>
+    /// Сбрасывает сохраненную позицию проигрывания музыки исследования.
+    /// Полезно при начале нового забега или смене уровня.
+    /// </summary>
     public static void ResetExplorationMusicBookmark()
     {
         _savedEmptyRoomPosition = TimeSpan.Zero;
         _hasSavedEmptyRoomPosition = false;
     }
 
+    /// <summary>
+    /// Полностью останавливает воспроизведение музыки и сбрасывает состояние переходов.
+    /// </summary>
     public static void StopAllMusic()
     {
         MediaPlayer.Stop();
@@ -106,6 +119,9 @@ public static class GameplayAudio
         MediaPlayer.Volume = 0f;
     }
 
+    /// <summary>
+    /// Запускает музыку главного меню.
+    /// </summary>
     public static void OnEnterMainMenu()
     {
         StopAllMusic();
@@ -123,6 +139,9 @@ public static class GameplayAudio
         _activeBgm = Bgm.MainMenu;
     }
 
+    /// <summary>
+    /// Запускает музыку экрана титров.
+    /// </summary>
     public static void OnEnterCredits()
     {
         StopAllMusic();
@@ -137,9 +156,12 @@ public static class GameplayAudio
     }
 
     /// <summary>
-    /// Обновляет фоновую музыку по состоянию текущей комнаты.
-    /// Спокойный трек <see cref="SoundConfig.MusicEmptyRoom"/> при паузе на время боя запоминает позицию и продолжается с неё.
+    /// Обновляет фоновую музыку (BGM) в зависимости от текущего состояния комнаты.
+    /// Автоматически переключается между музыкой битвы (с боссом или обычными врагами) 
+    /// и спокойной музыкой исследования. Сохраняет прогресс трека исследования при переключении.
     /// </summary>
+    /// <param name="bossFightWithLivingBoss">Признак того, идет ли битва с боссом.</param>
+    /// <param name="combatWithLivingEnemies">Признак того, идет ли битва с обычными врагами.</param>
     public static void UpdateGameSceneBgm(bool bossFightWithLivingBoss, bool combatWithLivingEnemies)
     {
         bool wantBoss = bossFightWithLivingBoss;
@@ -192,6 +214,7 @@ public static class GameplayAudio
         }
     }
 
+    /// <summary>Воспроизводит случайный звук взмаха мечом.</summary>
     public static void PlaySwordSwing()
     {
         string name = Random.Shared.Next(2) == 0
@@ -199,49 +222,73 @@ public static class GameplayAudio
             : SoundConfig.PlayerSwordAttack2;
         PlayEffect(name,0.25f);
     }
-
+    /// <summary>Воспроизводит звук атаки дальнего боя.</summary>
     public static void PlayRangedAttack() => PlayEffect(SoundConfig.PlayerRangedAttack, 0.25f);
 
+    /// <summary>Воспроизводит звук получения урона игроком.</summary>
     public static void PlayPlayerHit() => PlayEffect(SoundConfig.PlayerGetHit);
 
+    /// <summary>Воспроизводит звук лечения игрока.</summary>
     public static void PlayPlayerHeal() => PlayEffect(SoundConfig.PlayerHeal);
 
+    /// <summary>Воспроизводит звук смерти обычного врага.</summary>
     public static void PlayEnemyDeath() => PlayEffect(SoundConfig.EnemyDeath);
 
+    /// <summary>Воспроизводит звук смерти босса.</summary>
     public static void PlayBossDeath() => PlayEffect(SoundConfig.BossDeath);
 
+    /// <summary>Воспроизводит звук зачистки комнаты.</summary>
     public static void PlayRoomCleared() => PlayEffect(SoundConfig.RoomCleared);
 
+    /// <summary>Воспроизводит звук выбора пункта в UI.</summary>
     public static void PlayUiSelect() => PlayEffect(SoundConfig.UISelect);
 
+    /// <summary>Воспроизводит звук подтверждения действия в UI.</summary>
     public static void PlayUiConfirm() => PlayEffect(SoundConfig.UIConfirm);
 
+    /// <summary>Воспроизводит звук открытия двери на карте.</summary>
     public static void PlayMapOpenDoor() => PlayEffect(SoundConfig.MapOpenDoor);
 
+    /// <summary>Воспроизводит звук закрытия двери на карте.</summary>
     public static void PlayMapClosedDoor() => PlayEffect(SoundConfig.MapClosedDoor);
 
+    /// <summary>Воспроизводит звук нажатия кнопки на карте.</summary>
     public static void PlayMapButton() => PlayEffect(SoundConfig.MapButton);
 
+    /// <summary>Воспроизводит звук входа в комнату босса.</summary>
     public static void PlayMapBossEntry() => PlayEffect(SoundConfig.MapBossEntry);
 
+    /// <summary>Воспроизводит звук появления босса.</summary>
     public static void PlayBossEntering() => PlayEffect(SoundConfig.BossEntering);
 
+    /// <summary>Воспроизводит звук закапывания босса.</summary>
     public static void PlayBossBurrow() => PlayEffect(SoundConfig.BossBurrow);
 
+    /// <summary>Воспроизводит звук появления босса из-под земли.</summary>
     public static void PlayBossEmerge() => PlayEffect(SoundConfig.BossEmerge);
 
+    /// <summary>Воспроизводит звук статического шума босса.</summary>
     public static void PlayBossStatic() => PlayEffect(SoundConfig.BossStatic);
 
+    /// <summary>Воспроизводит звук атаки босса.</summary>
     public static void PlayBossAttack() => PlayEffect(SoundConfig.BossAttack);
 
-    public static void PlayEnemyFly() => PlayEffect(SoundConfig.EnemyFly,0.3f);
+    /// <summary>Воспроизводит звук летающего врага.</summary>
+    public static void PlayEnemyFly() => PlayEffect(SoundConfig.EnemyFly, 0.3f);
 
+    /// <summary>Воспроизводит звук слайма.</summary>
     public static void PlayEnemySlime() => PlayEffect(SoundConfig.EnemySlime);
 
-    public static void PlayEnemyTreant() => PlayEffect(SoundConfig.EnemyTreant,0.25f);
+    /// <summary>Воспроизводит звук треанта.</summary>
+    public static void PlayEnemyTreant() => PlayEffect(SoundConfig.EnemyTreant, 0.25f);
 
+    /// <summary>Воспроизводит звук смерти игрока.</summary>
     public static void PlayPlayerDeath() => PlayEffect(SoundConfig.PlayerDeath);
 
+    /// <summary>
+    /// Воспроизводит звук шага в зависимости от поверхности.
+    /// </summary>
+    /// <param name="preferStone">Если true, выбиравет звук по камню.</param>
     public static void PlayFootstep(bool preferStone)
     {
         bool stone = preferStone
@@ -254,6 +301,11 @@ public static class GameplayAudio
             PlayEffect(SoundConfig.PlayerFootstepsGrass);
     }
 
+    /// <summary>
+    /// Воспроизводит звуковой эффект по имени ассета с указанной громкостью.
+    /// </summary>
+    /// <param name="assetName">Имя ассета в контенте.</param>
+    /// <param name="volume">Уровень громкости (0.0 - 1.0).</param>
     public static void PlayEffect(string assetName, float volume)
     {
         if (string.IsNullOrEmpty(assetName))
@@ -263,6 +315,10 @@ public static class GameplayAudio
             fx.Play(volume, 0f, 0f);
     }
 
+    /// <summary>
+    /// Воспроизводит звуковой эффект по имени ассета с громкостью по умолчанию.
+    /// </summary>
+    /// <param name="assetName">Имя ассета в контенте.</param>
     public static void PlayEffect(string assetName)
     { 
         PlayEffect(assetName, SoundConfig.DefaultSoundEffectVolume);
@@ -274,7 +330,7 @@ public static class GameplayAudio
             return assetName;
         return assetName.Contains('/') ? assetName : "sounds/" + assetName;
     }
-
+   
     private static void TryAddEffect(ContentManager content, string assetName)
     {
         if (string.IsNullOrEmpty(assetName) || Effects.ContainsKey(assetName))
@@ -291,6 +347,7 @@ public static class GameplayAudio
             // ассета нет в Content — тихо пропускаем
         }
     }
+
 
     private static Song TryLoadSong(ContentManager content, string assetName)
     {
@@ -340,6 +397,10 @@ public static class GameplayAudio
         }
     }
 
+    /// <summary>
+    /// Обновляет логику воспроизведения музыки: обрабатывает плавные переходы (Fade In/Out).
+    /// </summary>
+    /// <param name="dt">Время, прошедшее с последнего кадра (Delta Time).</param>
     public static void Update(float dt)
     {
         if (!_isTransitioning)

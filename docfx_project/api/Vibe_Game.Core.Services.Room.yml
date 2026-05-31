@@ -1,0 +1,1609 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Core.Services.Room
+  commentId: T:Vibe_Game.Core.Services.Room
+  id: Room
+  parent: Vibe_Game.Core.Services
+  children:
+  - Vibe_Game.Core.Services.Room.#ctor(System.Int32,System.Int32,Vibe_Game.Core.Services.LevelGenerator.RoomType)
+  - Vibe_Game.Core.Services.Room.ActivateFloorExitButtonMarkers
+  - Vibe_Game.Core.Services.Room.ButtonPos
+  - Vibe_Game.Core.Services.Room.ButtonTile
+  - Vibe_Game.Core.Services.Room.ClearEnemyOccupancy
+  - Vibe_Game.Core.Services.Room.ClearObstaclesNearDoorApproaches
+  - Vibe_Game.Core.Services.Room.CreateFloorExit(System.Int32)
+  - Vibe_Game.Core.Services.Room.FloorExitTile
+  - Vibe_Game.Core.Services.Room.GetTile(System.Int32,System.Int32)
+  - Vibe_Game.Core.Services.Room.HasButton
+  - Vibe_Game.Core.Services.Room.HeightInTiles
+  - Vibe_Game.Core.Services.Room.IsButtonPressed
+  - Vibe_Game.Core.Services.Room.IsCleared
+  - Vibe_Game.Core.Services.Room.IsFloorExitRoom
+  - Vibe_Game.Core.Services.Room.IsInside(System.Int32,System.Int32)
+  - Vibe_Game.Core.Services.Room.IsLocked
+  - Vibe_Game.Core.Services.Room.MarkEnemyOccupancy(System.Int32,System.Int32)
+  - Vibe_Game.Core.Services.Room.PlaceFloorExitButtonMarkers
+  - Vibe_Game.Core.Services.Room.PlacePedestals(System.Int32)
+  - Vibe_Game.Core.Services.Room.PlaceStartingWeaponPedestals
+  - Vibe_Game.Core.Services.Room.PlaceTreasurePedestalAtCenter
+  - Vibe_Game.Core.Services.Room.PressButton
+  - Vibe_Game.Core.Services.Room.RemoveRoomButton
+  - Vibe_Game.Core.Services.Room.RequiresStartingWeaponChoice
+  - Vibe_Game.Core.Services.Room.SetTile(System.Int32,System.Int32,Vibe_Game.Core.Tiles.Tile)
+  - Vibe_Game.Core.Services.Room.Tiles
+  - Vibe_Game.Core.Services.Room.Type
+  - Vibe_Game.Core.Services.Room.UpdateFloorExitButtonMarkers(System.Single)
+  - Vibe_Game.Core.Services.Room.WidthInTiles
+  - Vibe_Game.Core.Services.Room.enemies
+  langs:
+  - csharp
+  - vb
+  name: Room
+  nameWithType: Room
+  fullName: Vibe_Game.Core.Services.Room
+  type: Class
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: >-
+    Представляет отдельную комнату на сгенерированном этаже. 
+
+    Управляет сеткой тайлов (Tiles), логикой расстановки препятствий, декораций и интерактивных объектов (пьедесталы, кнопки, люки).
+
+    Также хранит состояние комнаты (зачищена, заблокирована), её тип (Start, Battle, Boss, Treasure) и список находящихся внутри врагов.
+  example: []
+  syntax:
+    content: public class Room
+    content.vb: Public Class Room
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Vibe_Game.Core.Services.Room.#ctor(System.Int32,System.Int32,Vibe_Game.Core.Services.LevelGenerator.RoomType)
+  commentId: M:Vibe_Game.Core.Services.Room.#ctor(System.Int32,System.Int32,Vibe_Game.Core.Services.LevelGenerator.RoomType)
+  id: '#ctor(System.Int32,System.Int32,Vibe_Game.Core.Services.LevelGenerator.RoomType)'
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: Room(int, int, RoomType)
+  nameWithType: Room.Room(int, int, LevelGenerator.RoomType)
+  fullName: Vibe_Game.Core.Services.Room.Room(int, int, Vibe_Game.Core.Services.LevelGenerator.RoomType)
+  type: Constructor
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Инициализирует новую комнату с заданными размерами и типом, создаёт базовую сетку тайлов и настраивает поведение в зависимости от типа комнаты.
+  example: []
+  syntax:
+    content: public Room(int widthInTiles, int heightInTiles, LevelGenerator.RoomType type)
+    parameters:
+    - id: widthInTiles
+      type: System.Int32
+    - id: heightInTiles
+      type: System.Int32
+    - id: type
+      type: Vibe_Game.Core.Services.LevelGenerator.RoomType
+    content.vb: Public Sub New(widthInTiles As Integer, heightInTiles As Integer, type As LevelGenerator.RoomType)
+  overload: Vibe_Game.Core.Services.Room.#ctor*
+  nameWithType.vb: Room.New(Integer, Integer, LevelGenerator.RoomType)
+  fullName.vb: Vibe_Game.Core.Services.Room.New(Integer, Integer, Vibe_Game.Core.Services.LevelGenerator.RoomType)
+  name.vb: New(Integer, Integer, RoomType)
+- uid: Vibe_Game.Core.Services.Room.IsInside(System.Int32,System.Int32)
+  commentId: M:Vibe_Game.Core.Services.Room.IsInside(System.Int32,System.Int32)
+  id: IsInside(System.Int32,System.Int32)
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: IsInside(int, int)
+  nameWithType: Room.IsInside(int, int)
+  fullName: Vibe_Game.Core.Services.Room.IsInside(int, int)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Проверяет, находятся ли указанные координаты внутри границ сетки тайлов комнаты.
+  example: []
+  syntax:
+    content: public bool IsInside(int x, int y)
+    parameters:
+    - id: x
+      type: System.Int32
+    - id: y
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsInside(x As Integer, y As Integer) As Boolean
+  overload: Vibe_Game.Core.Services.Room.IsInside*
+  nameWithType.vb: Room.IsInside(Integer, Integer)
+  fullName.vb: Vibe_Game.Core.Services.Room.IsInside(Integer, Integer)
+  name.vb: IsInside(Integer, Integer)
+- uid: Vibe_Game.Core.Services.Room.GetTile(System.Int32,System.Int32)
+  commentId: M:Vibe_Game.Core.Services.Room.GetTile(System.Int32,System.Int32)
+  id: GetTile(System.Int32,System.Int32)
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: GetTile(int, int)
+  nameWithType: Room.GetTile(int, int)
+  fullName: Vibe_Game.Core.Services.Room.GetTile(int, int)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Возвращает тайл по указанным координатам, если они валидны, иначе возвращает null.
+  example: []
+  syntax:
+    content: public Tile GetTile(int x, int y)
+    parameters:
+    - id: x
+      type: System.Int32
+    - id: y
+      type: System.Int32
+    return:
+      type: Vibe_Game.Core.Tiles.Tile
+    content.vb: Public Function GetTile(x As Integer, y As Integer) As Tile
+  overload: Vibe_Game.Core.Services.Room.GetTile*
+  nameWithType.vb: Room.GetTile(Integer, Integer)
+  fullName.vb: Vibe_Game.Core.Services.Room.GetTile(Integer, Integer)
+  name.vb: GetTile(Integer, Integer)
+- uid: Vibe_Game.Core.Services.Room.SetTile(System.Int32,System.Int32,Vibe_Game.Core.Tiles.Tile)
+  commentId: M:Vibe_Game.Core.Services.Room.SetTile(System.Int32,System.Int32,Vibe_Game.Core.Tiles.Tile)
+  id: SetTile(System.Int32,System.Int32,Vibe_Game.Core.Tiles.Tile)
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: SetTile(int, int, Tile)
+  nameWithType: Room.SetTile(int, int, Tile)
+  fullName: Vibe_Game.Core.Services.Room.SetTile(int, int, Vibe_Game.Core.Tiles.Tile)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Заменяет тайл по указанным координатам на новый. Обновляет ссылки на специальные тайлы (кнопки, люки).
+  example: []
+  syntax:
+    content: public void SetTile(int x, int y, Tile tile)
+    parameters:
+    - id: x
+      type: System.Int32
+    - id: y
+      type: System.Int32
+    - id: tile
+      type: Vibe_Game.Core.Tiles.Tile
+    content.vb: Public Sub SetTile(x As Integer, y As Integer, tile As Tile)
+  overload: Vibe_Game.Core.Services.Room.SetTile*
+  nameWithType.vb: Room.SetTile(Integer, Integer, Tile)
+  fullName.vb: Vibe_Game.Core.Services.Room.SetTile(Integer, Integer, Vibe_Game.Core.Tiles.Tile)
+  name.vb: SetTile(Integer, Integer, Tile)
+- uid: Vibe_Game.Core.Services.Room.PressButton
+  commentId: M:Vibe_Game.Core.Services.Room.PressButton
+  id: PressButton
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: PressButton()
+  nameWithType: Room.PressButton()
+  fullName: Vibe_Game.Core.Services.Room.PressButton()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Вызывает логику нажатия кнопки комнаты, если она существует.
+  example: []
+  syntax:
+    content: public void PressButton()
+    content.vb: Public Sub PressButton()
+  overload: Vibe_Game.Core.Services.Room.PressButton*
+- uid: Vibe_Game.Core.Services.Room.RemoveRoomButton
+  commentId: M:Vibe_Game.Core.Services.Room.RemoveRoomButton
+  id: RemoveRoomButton
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: RemoveRoomButton()
+  nameWithType: Room.RemoveRoomButton()
+  fullName: Vibe_Game.Core.Services.Room.RemoveRoomButton()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Удаляет кнопку из комнаты и заменяет её на обычный пол.
+  example: []
+  syntax:
+    content: public void RemoveRoomButton()
+    content.vb: Public Sub RemoveRoomButton()
+  overload: Vibe_Game.Core.Services.Room.RemoveRoomButton*
+- uid: Vibe_Game.Core.Services.Room.PlaceFloorExitButtonMarkers
+  commentId: M:Vibe_Game.Core.Services.Room.PlaceFloorExitButtonMarkers
+  id: PlaceFloorExitButtonMarkers
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: PlaceFloorExitButtonMarkers()
+  nameWithType: Room.PlaceFloorExitButtonMarkers()
+  fullName: Vibe_Game.Core.Services.Room.PlaceFloorExitButtonMarkers()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Размещает декоративные маркеры выхода на этаж вокруг центра комнаты.
+  example: []
+  syntax:
+    content: public void PlaceFloorExitButtonMarkers()
+    content.vb: Public Sub PlaceFloorExitButtonMarkers()
+  overload: Vibe_Game.Core.Services.Room.PlaceFloorExitButtonMarkers*
+- uid: Vibe_Game.Core.Services.Room.ActivateFloorExitButtonMarkers
+  commentId: M:Vibe_Game.Core.Services.Room.ActivateFloorExitButtonMarkers
+  id: ActivateFloorExitButtonMarkers
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: ActivateFloorExitButtonMarkers()
+  nameWithType: Room.ActivateFloorExitButtonMarkers()
+  fullName: Vibe_Game.Core.Services.Room.ActivateFloorExitButtonMarkers()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Активирует все ранее размещённые маркеры выхода в комнате.
+  example: []
+  syntax:
+    content: public void ActivateFloorExitButtonMarkers()
+    content.vb: Public Sub ActivateFloorExitButtonMarkers()
+  overload: Vibe_Game.Core.Services.Room.ActivateFloorExitButtonMarkers*
+- uid: Vibe_Game.Core.Services.Room.UpdateFloorExitButtonMarkers(System.Single)
+  commentId: M:Vibe_Game.Core.Services.Room.UpdateFloorExitButtonMarkers(System.Single)
+  id: UpdateFloorExitButtonMarkers(System.Single)
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: UpdateFloorExitButtonMarkers(float)
+  nameWithType: Room.UpdateFloorExitButtonMarkers(float)
+  fullName: Vibe_Game.Core.Services.Room.UpdateFloorExitButtonMarkers(float)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Обновляет состояние маркеров выхода в зависимости от времени.
+  example: []
+  syntax:
+    content: public void UpdateFloorExitButtonMarkers(float deltaSeconds)
+    parameters:
+    - id: deltaSeconds
+      type: System.Single
+    content.vb: Public Sub UpdateFloorExitButtonMarkers(deltaSeconds As Single)
+  overload: Vibe_Game.Core.Services.Room.UpdateFloorExitButtonMarkers*
+  nameWithType.vb: Room.UpdateFloorExitButtonMarkers(Single)
+  fullName.vb: Vibe_Game.Core.Services.Room.UpdateFloorExitButtonMarkers(Single)
+  name.vb: UpdateFloorExitButtonMarkers(Single)
+- uid: Vibe_Game.Core.Services.Room.CreateFloorExit(System.Int32)
+  commentId: M:Vibe_Game.Core.Services.Room.CreateFloorExit(System.Int32)
+  id: CreateFloorExit(System.Int32)
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: CreateFloorExit(int)
+  nameWithType: Room.CreateFloorExit(int)
+  fullName: Vibe_Game.Core.Services.Room.CreateFloorExit(int)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Создаёт люк перехода на указанный этаж в центре комнаты.
+  example: []
+  syntax:
+    content: public void CreateFloorExit(int targetFloorIndex)
+    parameters:
+    - id: targetFloorIndex
+      type: System.Int32
+    content.vb: Public Sub CreateFloorExit(targetFloorIndex As Integer)
+  overload: Vibe_Game.Core.Services.Room.CreateFloorExit*
+  nameWithType.vb: Room.CreateFloorExit(Integer)
+  fullName.vb: Vibe_Game.Core.Services.Room.CreateFloorExit(Integer)
+  name.vb: CreateFloorExit(Integer)
+- uid: Vibe_Game.Core.Services.Room.PlacePedestals(System.Int32)
+  commentId: M:Vibe_Game.Core.Services.Room.PlacePedestals(System.Int32)
+  id: PlacePedestals(System.Int32)
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: PlacePedestals(int)
+  nameWithType: Room.PlacePedestals(int)
+  fullName: Vibe_Game.Core.Services.Room.PlacePedestals(int)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Размещает указанное количество пьедесталов на свободных клетках комнаты.
+  example: []
+  syntax:
+    content: public void PlacePedestals(int count)
+    parameters:
+    - id: count
+      type: System.Int32
+    content.vb: Public Sub PlacePedestals(count As Integer)
+  overload: Vibe_Game.Core.Services.Room.PlacePedestals*
+  nameWithType.vb: Room.PlacePedestals(Integer)
+  fullName.vb: Vibe_Game.Core.Services.Room.PlacePedestals(Integer)
+  name.vb: PlacePedestals(Integer)
+- uid: Vibe_Game.Core.Services.Room.PlaceTreasurePedestalAtCenter
+  commentId: M:Vibe_Game.Core.Services.Room.PlaceTreasurePedestalAtCenter
+  id: PlaceTreasurePedestalAtCenter
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: PlaceTreasurePedestalAtCenter()
+  nameWithType: Room.PlaceTreasurePedestalAtCenter()
+  fullName: Vibe_Game.Core.Services.Room.PlaceTreasurePedestalAtCenter()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Размещает один пьедестал в центре комнаты (сокровищница).
+  example: []
+  syntax:
+    content: public void PlaceTreasurePedestalAtCenter()
+    content.vb: Public Sub PlaceTreasurePedestalAtCenter()
+  overload: Vibe_Game.Core.Services.Room.PlaceTreasurePedestalAtCenter*
+- uid: Vibe_Game.Core.Services.Room.PlaceStartingWeaponPedestals
+  commentId: M:Vibe_Game.Core.Services.Room.PlaceStartingWeaponPedestals
+  id: PlaceStartingWeaponPedestals
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: PlaceStartingWeaponPedestals()
+  nameWithType: Room.PlaceStartingWeaponPedestals()
+  fullName: Vibe_Game.Core.Services.Room.PlaceStartingWeaponPedestals()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Размещает стартовые пьедесталы выбора оружия.
+  example: []
+  syntax:
+    content: public void PlaceStartingWeaponPedestals()
+    content.vb: Public Sub PlaceStartingWeaponPedestals()
+  overload: Vibe_Game.Core.Services.Room.PlaceStartingWeaponPedestals*
+- uid: Vibe_Game.Core.Services.Room.ClearEnemyOccupancy
+  commentId: M:Vibe_Game.Core.Services.Room.ClearEnemyOccupancy
+  id: ClearEnemyOccupancy
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: ClearEnemyOccupancy()
+  nameWithType: Room.ClearEnemyOccupancy()
+  fullName: Vibe_Game.Core.Services.Room.ClearEnemyOccupancy()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Очищает флаг занятости врагами у всех тайлов комнаты.
+  example: []
+  syntax:
+    content: public void ClearEnemyOccupancy()
+    content.vb: Public Sub ClearEnemyOccupancy()
+  overload: Vibe_Game.Core.Services.Room.ClearEnemyOccupancy*
+- uid: Vibe_Game.Core.Services.Room.MarkEnemyOccupancy(System.Int32,System.Int32)
+  commentId: M:Vibe_Game.Core.Services.Room.MarkEnemyOccupancy(System.Int32,System.Int32)
+  id: MarkEnemyOccupancy(System.Int32,System.Int32)
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: MarkEnemyOccupancy(int, int)
+  nameWithType: Room.MarkEnemyOccupancy(int, int)
+  fullName: Vibe_Game.Core.Services.Room.MarkEnemyOccupancy(int, int)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Помечает тайл как занятый врагом.
+  example: []
+  syntax:
+    content: public void MarkEnemyOccupancy(int tileX, int tileY)
+    parameters:
+    - id: tileX
+      type: System.Int32
+    - id: tileY
+      type: System.Int32
+    content.vb: Public Sub MarkEnemyOccupancy(tileX As Integer, tileY As Integer)
+  overload: Vibe_Game.Core.Services.Room.MarkEnemyOccupancy*
+  nameWithType.vb: Room.MarkEnemyOccupancy(Integer, Integer)
+  fullName.vb: Vibe_Game.Core.Services.Room.MarkEnemyOccupancy(Integer, Integer)
+  name.vb: MarkEnemyOccupancy(Integer, Integer)
+- uid: Vibe_Game.Core.Services.Room.ClearObstaclesNearDoorApproaches
+  commentId: M:Vibe_Game.Core.Services.Room.ClearObstaclesNearDoorApproaches
+  id: ClearObstaclesNearDoorApproaches
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: ClearObstaclesNearDoorApproaches()
+  nameWithType: Room.ClearObstaclesNearDoorApproaches()
+  fullName: Vibe_Game.Core.Services.Room.ClearObstaclesNearDoorApproaches()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Убирает камни и заросли в зоне подхода к дверям (после расстановки дверей на карте).
+  example: []
+  syntax:
+    content: public void ClearObstaclesNearDoorApproaches()
+    content.vb: Public Sub ClearObstaclesNearDoorApproaches()
+  overload: Vibe_Game.Core.Services.Room.ClearObstaclesNearDoorApproaches*
+- uid: Vibe_Game.Core.Services.Room.Tiles
+  commentId: P:Vibe_Game.Core.Services.Room.Tiles
+  id: Tiles
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: Tiles
+  nameWithType: Room.Tiles
+  fullName: Vibe_Game.Core.Services.Room.Tiles
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Двумерный массив плиток (тайлов), из которых состоит комната.
+  example: []
+  syntax:
+    content: public Tile[,] Tiles { get; }
+    parameters: []
+    return:
+      type: Vibe_Game.Core.Tiles.Tile[,]
+    content.vb: Public ReadOnly Property Tiles As Tile(,)
+  overload: Vibe_Game.Core.Services.Room.Tiles*
+- uid: Vibe_Game.Core.Services.Room.WidthInTiles
+  commentId: P:Vibe_Game.Core.Services.Room.WidthInTiles
+  id: WidthInTiles
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: WidthInTiles
+  nameWithType: Room.WidthInTiles
+  fullName: Vibe_Game.Core.Services.Room.WidthInTiles
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Ширина комнаты, измеряемая в количестве тайлов.
+  example: []
+  syntax:
+    content: public int WidthInTiles { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property WidthInTiles As Integer
+  overload: Vibe_Game.Core.Services.Room.WidthInTiles*
+- uid: Vibe_Game.Core.Services.Room.HeightInTiles
+  commentId: P:Vibe_Game.Core.Services.Room.HeightInTiles
+  id: HeightInTiles
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: HeightInTiles
+  nameWithType: Room.HeightInTiles
+  fullName: Vibe_Game.Core.Services.Room.HeightInTiles
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Высота комнаты, измеряемая в количестве тайлов.
+  example: []
+  syntax:
+    content: public int HeightInTiles { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property HeightInTiles As Integer
+  overload: Vibe_Game.Core.Services.Room.HeightInTiles*
+- uid: Vibe_Game.Core.Services.Room.Type
+  commentId: P:Vibe_Game.Core.Services.Room.Type
+  id: Type
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: Room.Type
+  fullName: Vibe_Game.Core.Services.Room.Type
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Тип комнаты (Стартовая, Босс, Сокровищница или Обычная битва).
+  example: []
+  syntax:
+    content: public LevelGenerator.RoomType Type { get; set; }
+    parameters: []
+    return:
+      type: Vibe_Game.Core.Services.LevelGenerator.RoomType
+    content.vb: Public Property Type As LevelGenerator.RoomType
+  overload: Vibe_Game.Core.Services.Room.Type*
+- uid: Vibe_Game.Core.Services.Room.IsLocked
+  commentId: P:Vibe_Game.Core.Services.Room.IsLocked
+  id: IsLocked
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: IsLocked
+  nameWithType: Room.IsLocked
+  fullName: Vibe_Game.Core.Services.Room.IsLocked
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Указывает, заблокированы ли двери комнаты (например, во время боя).
+  example: []
+  syntax:
+    content: public bool IsLocked { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsLocked As Boolean
+  overload: Vibe_Game.Core.Services.Room.IsLocked*
+- uid: Vibe_Game.Core.Services.Room.HasButton
+  commentId: P:Vibe_Game.Core.Services.Room.HasButton
+  id: HasButton
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: HasButton
+  nameWithType: Room.HasButton
+  fullName: Vibe_Game.Core.Services.Room.HasButton
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Указывает, должна ли в комнате присутствовать кнопка для старта события/боя.
+  example: []
+  syntax:
+    content: public bool HasButton { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property HasButton As Boolean
+  overload: Vibe_Game.Core.Services.Room.HasButton*
+- uid: Vibe_Game.Core.Services.Room.IsButtonPressed
+  commentId: P:Vibe_Game.Core.Services.Room.IsButtonPressed
+  id: IsButtonPressed
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: IsButtonPressed
+  nameWithType: Room.IsButtonPressed
+  fullName: Vibe_Game.Core.Services.Room.IsButtonPressed
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Возвращает true, если кнопка в этой комнате была нажата.
+  example: []
+  syntax:
+    content: public bool IsButtonPressed { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsButtonPressed As Boolean
+  overload: Vibe_Game.Core.Services.Room.IsButtonPressed*
+- uid: Vibe_Game.Core.Services.Room.IsCleared
+  commentId: P:Vibe_Game.Core.Services.Room.IsCleared
+  id: IsCleared
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: IsCleared
+  nameWithType: Room.IsCleared
+  fullName: Vibe_Game.Core.Services.Room.IsCleared
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Указывает, зачищена ли комната (пройдена или изначально безопасна).
+  example: []
+  syntax:
+    content: public bool IsCleared { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsCleared As Boolean
+  overload: Vibe_Game.Core.Services.Room.IsCleared*
+- uid: Vibe_Game.Core.Services.Room.IsFloorExitRoom
+  commentId: P:Vibe_Game.Core.Services.Room.IsFloorExitRoom
+  id: IsFloorExitRoom
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: IsFloorExitRoom
+  nameWithType: Room.IsFloorExitRoom
+  fullName: Vibe_Game.Core.Services.Room.IsFloorExitRoom
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Указывает, является ли эта комната точкой выхода на следующий этаж.
+  example: []
+  syntax:
+    content: public bool IsFloorExitRoom { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsFloorExitRoom As Boolean
+  overload: Vibe_Game.Core.Services.Room.IsFloorExitRoom*
+- uid: Vibe_Game.Core.Services.Room.RequiresStartingWeaponChoice
+  commentId: P:Vibe_Game.Core.Services.Room.RequiresStartingWeaponChoice
+  id: RequiresStartingWeaponChoice
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: RequiresStartingWeaponChoice
+  nameWithType: Room.RequiresStartingWeaponChoice
+  fullName: Vibe_Game.Core.Services.Room.RequiresStartingWeaponChoice
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: 'На первом этаже: комната закрыта, пока не взят один из стартовых видов оружия с пьедесталов.'
+  example: []
+  syntax:
+    content: public bool RequiresStartingWeaponChoice { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property RequiresStartingWeaponChoice As Boolean
+  overload: Vibe_Game.Core.Services.Room.RequiresStartingWeaponChoice*
+- uid: Vibe_Game.Core.Services.Room.ButtonPos
+  commentId: P:Vibe_Game.Core.Services.Room.ButtonPos
+  id: ButtonPos
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: ButtonPos
+  nameWithType: Room.ButtonPos
+  fullName: Vibe_Game.Core.Services.Room.ButtonPos
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Возвращает координаты тайла кнопки в сетке комнаты, либо Point.Zero, если кнопки нет.
+  example: []
+  syntax:
+    content: public Point ButtonPos { get; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Point
+    content.vb: Public ReadOnly Property ButtonPos As Point
+  overload: Vibe_Game.Core.Services.Room.ButtonPos*
+- uid: Vibe_Game.Core.Services.Room.ButtonTile
+  commentId: P:Vibe_Game.Core.Services.Room.ButtonTile
+  id: ButtonTile
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: ButtonTile
+  nameWithType: Room.ButtonTile
+  fullName: Vibe_Game.Core.Services.Room.ButtonTile
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Ссылка на объект тайла кнопки в этой комнате.
+  example: []
+  syntax:
+    content: public ButtonTile ButtonTile { get; }
+    parameters: []
+    return:
+      type: Vibe_Game.Core.Tiles.ButtonTile
+    content.vb: Public ReadOnly Property ButtonTile As ButtonTile
+  overload: Vibe_Game.Core.Services.Room.ButtonTile*
+- uid: Vibe_Game.Core.Services.Room.FloorExitTile
+  commentId: P:Vibe_Game.Core.Services.Room.FloorExitTile
+  id: FloorExitTile
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: FloorExitTile
+  nameWithType: Room.FloorExitTile
+  fullName: Vibe_Game.Core.Services.Room.FloorExitTile
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Ссылка на объект тайла люка (выхода на следующий этаж) в этой комнате.
+  example: []
+  syntax:
+    content: public TrapdoorTile FloorExitTile { get; }
+    parameters: []
+    return:
+      type: Vibe_Game.Core.Tiles.TrapdoorTile
+    content.vb: Public ReadOnly Property FloorExitTile As TrapdoorTile
+  overload: Vibe_Game.Core.Services.Room.FloorExitTile*
+- uid: Vibe_Game.Core.Services.Room.enemies
+  commentId: P:Vibe_Game.Core.Services.Room.enemies
+  id: enemies
+  parent: Vibe_Game.Core.Services.Room
+  langs:
+  - csharp
+  - vb
+  name: enemies
+  nameWithType: Room.enemies
+  fullName: Vibe_Game.Core.Services.Room.enemies
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Список врагов, находящихся в данной комнате.
+  example: []
+  syntax:
+    content: public List<Enemy> enemies { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Vibe_Game.Gameplay.Entities.Enemies.Enemy}
+    content.vb: Public ReadOnly Property enemies As List(Of Enemy)
+  overload: Vibe_Game.Core.Services.Room.enemies*
+references:
+- uid: Vibe_Game.Core.Services
+  commentId: N:Vibe_Game.Core.Services
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Core.Services
+  nameWithType: Vibe_Game.Core.Services
+  fullName: Vibe_Game.Core.Services
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Services
+    name: Services
+    isExternal: true
+    href: Vibe_Game.Core.Services.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Services
+    name: Services
+    isExternal: true
+    href: Vibe_Game.Core.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vibe_Game.Core.Services.Room.#ctor*
+  commentId: Overload:Vibe_Game.Core.Services.Room.#ctor
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room__ctor_System_Int32_System_Int32_Vibe_Game_Core_Services_LevelGenerator_RoomType_
+  name: Room
+  nameWithType: Room.Room
+  fullName: Vibe_Game.Core.Services.Room.Room
+  nameWithType.vb: Room.New
+  fullName.vb: Vibe_Game.Core.Services.Room.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vibe_Game.Core.Services.LevelGenerator.RoomType
+  commentId: T:Vibe_Game.Core.Services.LevelGenerator.RoomType
+  parent: Vibe_Game.Core.Services
+  isExternal: true
+  href: Vibe_Game.Core.Services.LevelGenerator.html
+  name: LevelGenerator.RoomType
+  nameWithType: LevelGenerator.RoomType
+  fullName: Vibe_Game.Core.Services.LevelGenerator.RoomType
+  spec.csharp:
+  - uid: Vibe_Game.Core.Services.LevelGenerator
+    name: LevelGenerator
+    isExternal: true
+    href: Vibe_Game.Core.Services.LevelGenerator.html
+  - name: .
+  - uid: Vibe_Game.Core.Services.LevelGenerator.RoomType
+    name: RoomType
+    isExternal: true
+    href: Vibe_Game.Core.Services.LevelGenerator.RoomType.html
+  spec.vb:
+  - uid: Vibe_Game.Core.Services.LevelGenerator
+    name: LevelGenerator
+    isExternal: true
+    href: Vibe_Game.Core.Services.LevelGenerator.html
+  - name: .
+  - uid: Vibe_Game.Core.Services.LevelGenerator.RoomType
+    name: RoomType
+    isExternal: true
+    href: Vibe_Game.Core.Services.LevelGenerator.RoomType.html
+- uid: Vibe_Game.Core.Services.Room.IsInside*
+  commentId: Overload:Vibe_Game.Core.Services.Room.IsInside
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_IsInside_System_Int32_System_Int32_
+  name: IsInside
+  nameWithType: Room.IsInside
+  fullName: Vibe_Game.Core.Services.Room.IsInside
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vibe_Game.Core.Services.Room.GetTile*
+  commentId: Overload:Vibe_Game.Core.Services.Room.GetTile
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_GetTile_System_Int32_System_Int32_
+  name: GetTile
+  nameWithType: Room.GetTile
+  fullName: Vibe_Game.Core.Services.Room.GetTile
+- uid: Vibe_Game.Core.Tiles.Tile
+  commentId: T:Vibe_Game.Core.Tiles.Tile
+  parent: Vibe_Game.Core.Tiles
+  isExternal: true
+  href: Vibe_Game.Core.Tiles.Tile.html
+  name: Tile
+  nameWithType: Tile
+  fullName: Vibe_Game.Core.Tiles.Tile
+- uid: Vibe_Game.Core.Tiles
+  commentId: N:Vibe_Game.Core.Tiles
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Core.Tiles
+  nameWithType: Vibe_Game.Core.Tiles
+  fullName: Vibe_Game.Core.Tiles
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Tiles
+    name: Tiles
+    isExternal: true
+    href: Vibe_Game.Core.Tiles.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Tiles
+    name: Tiles
+    isExternal: true
+    href: Vibe_Game.Core.Tiles.html
+- uid: Vibe_Game.Core.Services.Room.SetTile*
+  commentId: Overload:Vibe_Game.Core.Services.Room.SetTile
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_SetTile_System_Int32_System_Int32_Vibe_Game_Core_Tiles_Tile_
+  name: SetTile
+  nameWithType: Room.SetTile
+  fullName: Vibe_Game.Core.Services.Room.SetTile
+- uid: Vibe_Game.Core.Services.Room.PressButton*
+  commentId: Overload:Vibe_Game.Core.Services.Room.PressButton
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_PressButton
+  name: PressButton
+  nameWithType: Room.PressButton
+  fullName: Vibe_Game.Core.Services.Room.PressButton
+- uid: Vibe_Game.Core.Services.Room.RemoveRoomButton*
+  commentId: Overload:Vibe_Game.Core.Services.Room.RemoveRoomButton
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_RemoveRoomButton
+  name: RemoveRoomButton
+  nameWithType: Room.RemoveRoomButton
+  fullName: Vibe_Game.Core.Services.Room.RemoveRoomButton
+- uid: Vibe_Game.Core.Services.Room.PlaceFloorExitButtonMarkers*
+  commentId: Overload:Vibe_Game.Core.Services.Room.PlaceFloorExitButtonMarkers
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_PlaceFloorExitButtonMarkers
+  name: PlaceFloorExitButtonMarkers
+  nameWithType: Room.PlaceFloorExitButtonMarkers
+  fullName: Vibe_Game.Core.Services.Room.PlaceFloorExitButtonMarkers
+- uid: Vibe_Game.Core.Services.Room.ActivateFloorExitButtonMarkers*
+  commentId: Overload:Vibe_Game.Core.Services.Room.ActivateFloorExitButtonMarkers
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_ActivateFloorExitButtonMarkers
+  name: ActivateFloorExitButtonMarkers
+  nameWithType: Room.ActivateFloorExitButtonMarkers
+  fullName: Vibe_Game.Core.Services.Room.ActivateFloorExitButtonMarkers
+- uid: Vibe_Game.Core.Services.Room.UpdateFloorExitButtonMarkers*
+  commentId: Overload:Vibe_Game.Core.Services.Room.UpdateFloorExitButtonMarkers
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_UpdateFloorExitButtonMarkers_System_Single_
+  name: UpdateFloorExitButtonMarkers
+  nameWithType: Room.UpdateFloorExitButtonMarkers
+  fullName: Vibe_Game.Core.Services.Room.UpdateFloorExitButtonMarkers
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vibe_Game.Core.Services.Room.CreateFloorExit*
+  commentId: Overload:Vibe_Game.Core.Services.Room.CreateFloorExit
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_CreateFloorExit_System_Int32_
+  name: CreateFloorExit
+  nameWithType: Room.CreateFloorExit
+  fullName: Vibe_Game.Core.Services.Room.CreateFloorExit
+- uid: Vibe_Game.Core.Services.Room.PlacePedestals*
+  commentId: Overload:Vibe_Game.Core.Services.Room.PlacePedestals
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_PlacePedestals_System_Int32_
+  name: PlacePedestals
+  nameWithType: Room.PlacePedestals
+  fullName: Vibe_Game.Core.Services.Room.PlacePedestals
+- uid: Vibe_Game.Core.Services.Room.PlaceTreasurePedestalAtCenter*
+  commentId: Overload:Vibe_Game.Core.Services.Room.PlaceTreasurePedestalAtCenter
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_PlaceTreasurePedestalAtCenter
+  name: PlaceTreasurePedestalAtCenter
+  nameWithType: Room.PlaceTreasurePedestalAtCenter
+  fullName: Vibe_Game.Core.Services.Room.PlaceTreasurePedestalAtCenter
+- uid: Vibe_Game.Core.Services.Room.PlaceStartingWeaponPedestals*
+  commentId: Overload:Vibe_Game.Core.Services.Room.PlaceStartingWeaponPedestals
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_PlaceStartingWeaponPedestals
+  name: PlaceStartingWeaponPedestals
+  nameWithType: Room.PlaceStartingWeaponPedestals
+  fullName: Vibe_Game.Core.Services.Room.PlaceStartingWeaponPedestals
+- uid: Vibe_Game.Core.Services.Room.ClearEnemyOccupancy*
+  commentId: Overload:Vibe_Game.Core.Services.Room.ClearEnemyOccupancy
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_ClearEnemyOccupancy
+  name: ClearEnemyOccupancy
+  nameWithType: Room.ClearEnemyOccupancy
+  fullName: Vibe_Game.Core.Services.Room.ClearEnemyOccupancy
+- uid: Vibe_Game.Core.Services.Room.MarkEnemyOccupancy*
+  commentId: Overload:Vibe_Game.Core.Services.Room.MarkEnemyOccupancy
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_MarkEnemyOccupancy_System_Int32_System_Int32_
+  name: MarkEnemyOccupancy
+  nameWithType: Room.MarkEnemyOccupancy
+  fullName: Vibe_Game.Core.Services.Room.MarkEnemyOccupancy
+- uid: Vibe_Game.Core.Services.Room.ClearObstaclesNearDoorApproaches*
+  commentId: Overload:Vibe_Game.Core.Services.Room.ClearObstaclesNearDoorApproaches
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_ClearObstaclesNearDoorApproaches
+  name: ClearObstaclesNearDoorApproaches
+  nameWithType: Room.ClearObstaclesNearDoorApproaches
+  fullName: Vibe_Game.Core.Services.Room.ClearObstaclesNearDoorApproaches
+- uid: Vibe_Game.Core.Services.Room.Tiles*
+  commentId: Overload:Vibe_Game.Core.Services.Room.Tiles
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_Tiles
+  name: Tiles
+  nameWithType: Room.Tiles
+  fullName: Vibe_Game.Core.Services.Room.Tiles
+- uid: Vibe_Game.Core.Tiles.Tile[,]
+  isExternal: true
+  href: Vibe_Game.Core.Tiles.Tile.html
+  name: Tile[,]
+  nameWithType: Tile[,]
+  fullName: Vibe_Game.Core.Tiles.Tile[,]
+  nameWithType.vb: Tile(,)
+  fullName.vb: Vibe_Game.Core.Tiles.Tile(,)
+  name.vb: Tile(,)
+  spec.csharp:
+  - uid: Vibe_Game.Core.Tiles.Tile
+    name: Tile
+    isExternal: true
+    href: Vibe_Game.Core.Tiles.Tile.html
+  - name: '['
+  - name: ','
+  - name: ']'
+  spec.vb:
+  - uid: Vibe_Game.Core.Tiles.Tile
+    name: Tile
+    isExternal: true
+    href: Vibe_Game.Core.Tiles.Tile.html
+  - name: (
+  - name: ','
+  - name: )
+- uid: Vibe_Game.Core.Services.Room.WidthInTiles*
+  commentId: Overload:Vibe_Game.Core.Services.Room.WidthInTiles
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_WidthInTiles
+  name: WidthInTiles
+  nameWithType: Room.WidthInTiles
+  fullName: Vibe_Game.Core.Services.Room.WidthInTiles
+- uid: Vibe_Game.Core.Services.Room.HeightInTiles*
+  commentId: Overload:Vibe_Game.Core.Services.Room.HeightInTiles
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_HeightInTiles
+  name: HeightInTiles
+  nameWithType: Room.HeightInTiles
+  fullName: Vibe_Game.Core.Services.Room.HeightInTiles
+- uid: Vibe_Game.Core.Services.Room.Type*
+  commentId: Overload:Vibe_Game.Core.Services.Room.Type
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_Type
+  name: Type
+  nameWithType: Room.Type
+  fullName: Vibe_Game.Core.Services.Room.Type
+- uid: Vibe_Game.Core.Services.Room.IsLocked*
+  commentId: Overload:Vibe_Game.Core.Services.Room.IsLocked
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_IsLocked
+  name: IsLocked
+  nameWithType: Room.IsLocked
+  fullName: Vibe_Game.Core.Services.Room.IsLocked
+- uid: Vibe_Game.Core.Services.Room.HasButton*
+  commentId: Overload:Vibe_Game.Core.Services.Room.HasButton
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_HasButton
+  name: HasButton
+  nameWithType: Room.HasButton
+  fullName: Vibe_Game.Core.Services.Room.HasButton
+- uid: Vibe_Game.Core.Services.Room.IsButtonPressed*
+  commentId: Overload:Vibe_Game.Core.Services.Room.IsButtonPressed
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_IsButtonPressed
+  name: IsButtonPressed
+  nameWithType: Room.IsButtonPressed
+  fullName: Vibe_Game.Core.Services.Room.IsButtonPressed
+- uid: Vibe_Game.Core.Services.Room.IsCleared*
+  commentId: Overload:Vibe_Game.Core.Services.Room.IsCleared
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_IsCleared
+  name: IsCleared
+  nameWithType: Room.IsCleared
+  fullName: Vibe_Game.Core.Services.Room.IsCleared
+- uid: Vibe_Game.Core.Services.Room.IsFloorExitRoom*
+  commentId: Overload:Vibe_Game.Core.Services.Room.IsFloorExitRoom
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_IsFloorExitRoom
+  name: IsFloorExitRoom
+  nameWithType: Room.IsFloorExitRoom
+  fullName: Vibe_Game.Core.Services.Room.IsFloorExitRoom
+- uid: Vibe_Game.Core.Services.Room.RequiresStartingWeaponChoice*
+  commentId: Overload:Vibe_Game.Core.Services.Room.RequiresStartingWeaponChoice
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_RequiresStartingWeaponChoice
+  name: RequiresStartingWeaponChoice
+  nameWithType: Room.RequiresStartingWeaponChoice
+  fullName: Vibe_Game.Core.Services.Room.RequiresStartingWeaponChoice
+- uid: Vibe_Game.Core.Services.Room.ButtonPos*
+  commentId: Overload:Vibe_Game.Core.Services.Room.ButtonPos
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_ButtonPos
+  name: ButtonPos
+  nameWithType: Room.ButtonPos
+  fullName: Vibe_Game.Core.Services.Room.ButtonPos
+- uid: Microsoft.Xna.Framework.Point
+  commentId: T:Microsoft.Xna.Framework.Point
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Point
+  nameWithType: Point
+  fullName: Microsoft.Xna.Framework.Point
+- uid: Microsoft.Xna.Framework
+  commentId: N:Microsoft.Xna.Framework
+  isExternal: true
+  name: Microsoft.Xna.Framework
+  nameWithType: Microsoft.Xna.Framework
+  fullName: Microsoft.Xna.Framework
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+- uid: Vibe_Game.Core.Services.Room.ButtonTile*
+  commentId: Overload:Vibe_Game.Core.Services.Room.ButtonTile
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_ButtonTile
+  name: ButtonTile
+  nameWithType: Room.ButtonTile
+  fullName: Vibe_Game.Core.Services.Room.ButtonTile
+- uid: Vibe_Game.Core.Tiles.ButtonTile
+  commentId: T:Vibe_Game.Core.Tiles.ButtonTile
+  parent: Vibe_Game.Core.Tiles
+  isExternal: true
+  href: Vibe_Game.Core.Tiles.ButtonTile.html
+  name: ButtonTile
+  nameWithType: ButtonTile
+  fullName: Vibe_Game.Core.Tiles.ButtonTile
+- uid: Vibe_Game.Core.Services.Room.FloorExitTile*
+  commentId: Overload:Vibe_Game.Core.Services.Room.FloorExitTile
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_FloorExitTile
+  name: FloorExitTile
+  nameWithType: Room.FloorExitTile
+  fullName: Vibe_Game.Core.Services.Room.FloorExitTile
+- uid: Vibe_Game.Core.Tiles.TrapdoorTile
+  commentId: T:Vibe_Game.Core.Tiles.TrapdoorTile
+  parent: Vibe_Game.Core.Tiles
+  isExternal: true
+  href: Vibe_Game.Core.Tiles.TrapdoorTile.html
+  name: TrapdoorTile
+  nameWithType: TrapdoorTile
+  fullName: Vibe_Game.Core.Tiles.TrapdoorTile
+- uid: Vibe_Game.Core.Services.Room.enemies*
+  commentId: Overload:Vibe_Game.Core.Services.Room.enemies
+  isExternal: true
+  href: Vibe_Game.Core.Services.Room.html#Vibe_Game_Core_Services_Room_enemies
+  name: enemies
+  nameWithType: Room.enemies
+  fullName: Vibe_Game.Core.Services.Room.enemies
+- uid: System.Collections.Generic.List{Vibe_Game.Gameplay.Entities.Enemies.Enemy}
+  commentId: T:System.Collections.Generic.List{Vibe_Game.Gameplay.Entities.Enemies.Enemy}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Enemy>
+  nameWithType: List<Enemy>
+  fullName: System.Collections.Generic.List<Vibe_Game.Gameplay.Entities.Enemies.Enemy>
+  nameWithType.vb: List(Of Enemy)
+  fullName.vb: System.Collections.Generic.List(Of Vibe_Game.Gameplay.Entities.Enemies.Enemy)
+  name.vb: List(Of Enemy)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+    name: Enemy
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+    name: Enemy
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

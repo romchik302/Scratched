@@ -1,0 +1,1269 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Game1
+  commentId: T:Vibe_Game.Game1
+  id: Game1
+  parent: Vibe_Game
+  children:
+  - Vibe_Game.Game1.#ctor
+  - Vibe_Game.Game1.Draw(Microsoft.Xna.Framework.GameTime)
+  - Vibe_Game.Game1.Initialize
+  - Vibe_Game.Game1.LoadContent
+  - Vibe_Game.Game1.ShowCredits
+  - Vibe_Game.Game1.ShowDeathScreen
+  - Vibe_Game.Game1.ShowMainMenu
+  - Vibe_Game.Game1.StartNewGame
+  - Vibe_Game.Game1.Update(Microsoft.Xna.Framework.GameTime)
+  langs:
+  - csharp
+  - vb
+  name: Game1
+  nameWithType: Game1
+  fullName: Vibe_Game.Game1
+  type: Class
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Game1.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game
+  summary: >-
+    Главный класс игры, управляющий жизненным циклом приложения, инициализацией сервисов, 
+
+    переключением сцен и основным циклом отрисовки.
+  example: []
+  syntax:
+    content: 'public class Game1 : Game, IDisposable'
+    content.vb: Public Class Game1 Inherits Game Implements IDisposable
+  inheritance:
+  - System.Object
+  - Microsoft.Xna.Framework.Game
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - Microsoft.Xna.Framework.Game.Dispose
+  - Microsoft.Xna.Framework.Game.Dispose(System.Boolean)
+  - Microsoft.Xna.Framework.Game.Exit
+  - Microsoft.Xna.Framework.Game.ResetElapsedTime
+  - Microsoft.Xna.Framework.Game.SuppressDraw
+  - Microsoft.Xna.Framework.Game.RunOneFrame
+  - Microsoft.Xna.Framework.Game.Run
+  - Microsoft.Xna.Framework.Game.Run(Microsoft.Xna.Framework.GameRunBehavior)
+  - Microsoft.Xna.Framework.Game.Tick
+  - Microsoft.Xna.Framework.Game.BeginDraw
+  - Microsoft.Xna.Framework.Game.EndDraw
+  - Microsoft.Xna.Framework.Game.BeginRun
+  - Microsoft.Xna.Framework.Game.EndRun
+  - Microsoft.Xna.Framework.Game.UnloadContent
+  - Microsoft.Xna.Framework.Game.OnExiting(System.Object,Microsoft.Xna.Framework.ExitingEventArgs)
+  - Microsoft.Xna.Framework.Game.OnActivated(System.Object,System.EventArgs)
+  - Microsoft.Xna.Framework.Game.OnDeactivated(System.Object,System.EventArgs)
+  - Microsoft.Xna.Framework.Game.LaunchParameters
+  - Microsoft.Xna.Framework.Game.Components
+  - Microsoft.Xna.Framework.Game.InactiveSleepTime
+  - Microsoft.Xna.Framework.Game.MaxElapsedTime
+  - Microsoft.Xna.Framework.Game.IsActive
+  - Microsoft.Xna.Framework.Game.IsMouseVisible
+  - Microsoft.Xna.Framework.Game.TargetElapsedTime
+  - Microsoft.Xna.Framework.Game.IsFixedTimeStep
+  - Microsoft.Xna.Framework.Game.Services
+  - Microsoft.Xna.Framework.Game.Content
+  - Microsoft.Xna.Framework.Game.GraphicsDevice
+  - Microsoft.Xna.Framework.Game.Window
+  - Microsoft.Xna.Framework.Game.Activated
+  - Microsoft.Xna.Framework.Game.Deactivated
+  - Microsoft.Xna.Framework.Game.Disposed
+  - Microsoft.Xna.Framework.Game.Exiting
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Vibe_Game.Game1.#ctor
+  commentId: M:Vibe_Game.Game1.#ctor
+  id: '#ctor'
+  parent: Vibe_Game.Game1
+  langs:
+  - csharp
+  - vb
+  name: Game1()
+  nameWithType: Game1.Game1()
+  fullName: Vibe_Game.Game1.Game1()
+  type: Constructor
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Game1.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game
+  summary: Инициализирует новый экземпляр класса Game1, настраивает графику и создает базовые компоненты.
+  example: []
+  syntax:
+    content: public Game1()
+    content.vb: Public Sub New()
+  overload: Vibe_Game.Game1.#ctor*
+  nameWithType.vb: Game1.New()
+  fullName.vb: Vibe_Game.Game1.New()
+  name.vb: New()
+- uid: Vibe_Game.Game1.Initialize
+  commentId: M:Vibe_Game.Game1.Initialize
+  id: Initialize
+  parent: Vibe_Game.Game1
+  langs:
+  - csharp
+  - vb
+  name: Initialize()
+  nameWithType: Game1.Initialize()
+  fullName: Vibe_Game.Game1.Initialize()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Game1.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game
+  summary: Выполняет начальную настройку игры, проверку графического устройства и запуск сервисов.
+  example: []
+  syntax:
+    content: protected override void Initialize()
+    content.vb: Protected Overrides Sub Initialize()
+  overridden: Microsoft.Xna.Framework.Game.Initialize
+  overload: Vibe_Game.Game1.Initialize*
+- uid: Vibe_Game.Game1.LoadContent
+  commentId: M:Vibe_Game.Game1.LoadContent
+  id: LoadContent
+  parent: Vibe_Game.Game1
+  langs:
+  - csharp
+  - vb
+  name: LoadContent()
+  nameWithType: Game1.LoadContent()
+  fullName: Vibe_Game.Game1.LoadContent()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Game1.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game
+  summary: Загружает все графические и аудио ресурсы, а также подготавливает RenderTarget перед началом игрового цикла.
+  example: []
+  syntax:
+    content: protected override void LoadContent()
+    content.vb: Protected Overrides Sub LoadContent()
+  overridden: Microsoft.Xna.Framework.Game.LoadContent
+  overload: Vibe_Game.Game1.LoadContent*
+- uid: Vibe_Game.Game1.StartNewGame
+  commentId: M:Vibe_Game.Game1.StartNewGame
+  id: StartNewGame
+  parent: Vibe_Game.Game1
+  langs:
+  - csharp
+  - vb
+  name: StartNewGame()
+  nameWithType: Game1.StartNewGame()
+  fullName: Vibe_Game.Game1.StartNewGame()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Game1.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game
+  summary: Инициализирует игровую сцену и переключает контекст приложения на игровой процесс.
+  example: []
+  syntax:
+    content: public void StartNewGame()
+    content.vb: Public Sub StartNewGame()
+  overload: Vibe_Game.Game1.StartNewGame*
+- uid: Vibe_Game.Game1.ShowMainMenu
+  commentId: M:Vibe_Game.Game1.ShowMainMenu
+  id: ShowMainMenu
+  parent: Vibe_Game.Game1
+  langs:
+  - csharp
+  - vb
+  name: ShowMainMenu()
+  nameWithType: Game1.ShowMainMenu()
+  fullName: Vibe_Game.Game1.ShowMainMenu()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Game1.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game
+  summary: Переключает текущую сцену на главное меню игры.
+  example: []
+  syntax:
+    content: public void ShowMainMenu()
+    content.vb: Public Sub ShowMainMenu()
+  overload: Vibe_Game.Game1.ShowMainMenu*
+- uid: Vibe_Game.Game1.ShowCredits
+  commentId: M:Vibe_Game.Game1.ShowCredits
+  id: ShowCredits
+  parent: Vibe_Game.Game1
+  langs:
+  - csharp
+  - vb
+  name: ShowCredits()
+  nameWithType: Game1.ShowCredits()
+  fullName: Vibe_Game.Game1.ShowCredits()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Game1.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game
+  summary: Показывает отдельную сцену титров после завершения забега.
+  example: []
+  syntax:
+    content: public void ShowCredits()
+    content.vb: Public Sub ShowCredits()
+  overload: Vibe_Game.Game1.ShowCredits*
+- uid: Vibe_Game.Game1.ShowDeathScreen
+  commentId: M:Vibe_Game.Game1.ShowDeathScreen
+  id: ShowDeathScreen
+  parent: Vibe_Game.Game1
+  langs:
+  - csharp
+  - vb
+  name: ShowDeathScreen()
+  nameWithType: Game1.ShowDeathScreen()
+  fullName: Vibe_Game.Game1.ShowDeathScreen()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Game1.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game
+  summary: Показывает отдельную сцену смерти после окончания здоровья игрока.
+  example: []
+  syntax:
+    content: public void ShowDeathScreen()
+    content.vb: Public Sub ShowDeathScreen()
+  overload: Vibe_Game.Game1.ShowDeathScreen*
+- uid: Vibe_Game.Game1.Update(Microsoft.Xna.Framework.GameTime)
+  commentId: M:Vibe_Game.Game1.Update(Microsoft.Xna.Framework.GameTime)
+  id: Update(Microsoft.Xna.Framework.GameTime)
+  parent: Vibe_Game.Game1
+  langs:
+  - csharp
+  - vb
+  name: Update(GameTime)
+  nameWithType: Game1.Update(GameTime)
+  fullName: Vibe_Game.Game1.Update(Microsoft.Xna.Framework.GameTime)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Game1.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game
+  summary: Выполняет обновление игровой логики, обработку ввода и состояний аудио на каждом кадре.
+  example: []
+  syntax:
+    content: protected override void Update(GameTime gameTime)
+    parameters:
+    - id: gameTime
+      type: Microsoft.Xna.Framework.GameTime
+      description: Время, прошедшее с момента последнего обновления.
+    content.vb: Protected Overrides Sub Update(gameTime As GameTime)
+  overridden: Microsoft.Xna.Framework.Game.Update(Microsoft.Xna.Framework.GameTime)
+  overload: Vibe_Game.Game1.Update*
+- uid: Vibe_Game.Game1.Draw(Microsoft.Xna.Framework.GameTime)
+  commentId: M:Vibe_Game.Game1.Draw(Microsoft.Xna.Framework.GameTime)
+  id: Draw(Microsoft.Xna.Framework.GameTime)
+  parent: Vibe_Game.Game1
+  langs:
+  - csharp
+  - vb
+  name: Draw(GameTime)
+  nameWithType: Game1.Draw(GameTime)
+  fullName: Vibe_Game.Game1.Draw(Microsoft.Xna.Framework.GameTime)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Game1.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game
+  summary: Выполняет отрисовку сцены в RenderTarget, а затем растягивает изображение на весь экран.
+  example: []
+  syntax:
+    content: protected override void Draw(GameTime gameTime)
+    parameters:
+    - id: gameTime
+      type: Microsoft.Xna.Framework.GameTime
+      description: Время, прошедшее с момента последнего кадра.
+    content.vb: Protected Overrides Sub Draw(gameTime As GameTime)
+  overridden: Microsoft.Xna.Framework.Game.Draw(Microsoft.Xna.Framework.GameTime)
+  overload: Vibe_Game.Game1.Draw*
+references:
+- uid: Vibe_Game
+  commentId: N:Vibe_Game
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game
+  nameWithType: Vibe_Game
+  fullName: Vibe_Game
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Microsoft.Xna.Framework.Game
+  commentId: T:Microsoft.Xna.Framework.Game
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Game
+  nameWithType: Game
+  fullName: Microsoft.Xna.Framework.Game
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Microsoft.Xna.Framework.Game.Dispose
+  commentId: M:Microsoft.Xna.Framework.Game.Dispose
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Dispose()
+  nameWithType: Game.Dispose()
+  fullName: Microsoft.Xna.Framework.Game.Dispose()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.Dispose
+    name: Dispose
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.Xna.Framework.Game.Dispose(System.Boolean)
+  commentId: M:Microsoft.Xna.Framework.Game.Dispose(System.Boolean)
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: Dispose(bool)
+  nameWithType: Game.Dispose(bool)
+  fullName: Microsoft.Xna.Framework.Game.Dispose(bool)
+  nameWithType.vb: Game.Dispose(Boolean)
+  fullName.vb: Microsoft.Xna.Framework.Game.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.Dispose(System.Boolean)
+    name: Dispose
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.Dispose(System.Boolean)
+    name: Dispose
+    isExternal: true
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Microsoft.Xna.Framework.Game.Exit
+  commentId: M:Microsoft.Xna.Framework.Game.Exit
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Exit()
+  nameWithType: Game.Exit()
+  fullName: Microsoft.Xna.Framework.Game.Exit()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.Exit
+    name: Exit
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.Exit
+    name: Exit
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.Xna.Framework.Game.ResetElapsedTime
+  commentId: M:Microsoft.Xna.Framework.Game.ResetElapsedTime
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: ResetElapsedTime()
+  nameWithType: Game.ResetElapsedTime()
+  fullName: Microsoft.Xna.Framework.Game.ResetElapsedTime()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.ResetElapsedTime
+    name: ResetElapsedTime
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.ResetElapsedTime
+    name: ResetElapsedTime
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.Xna.Framework.Game.SuppressDraw
+  commentId: M:Microsoft.Xna.Framework.Game.SuppressDraw
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: SuppressDraw()
+  nameWithType: Game.SuppressDraw()
+  fullName: Microsoft.Xna.Framework.Game.SuppressDraw()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.SuppressDraw
+    name: SuppressDraw
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.SuppressDraw
+    name: SuppressDraw
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.Xna.Framework.Game.RunOneFrame
+  commentId: M:Microsoft.Xna.Framework.Game.RunOneFrame
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: RunOneFrame()
+  nameWithType: Game.RunOneFrame()
+  fullName: Microsoft.Xna.Framework.Game.RunOneFrame()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.RunOneFrame
+    name: RunOneFrame
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.RunOneFrame
+    name: RunOneFrame
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.Xna.Framework.Game.Run
+  commentId: M:Microsoft.Xna.Framework.Game.Run
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Run()
+  nameWithType: Game.Run()
+  fullName: Microsoft.Xna.Framework.Game.Run()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.Run
+    name: Run
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.Run
+    name: Run
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.Xna.Framework.Game.Run(Microsoft.Xna.Framework.GameRunBehavior)
+  commentId: M:Microsoft.Xna.Framework.Game.Run(Microsoft.Xna.Framework.GameRunBehavior)
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Run(GameRunBehavior)
+  nameWithType: Game.Run(GameRunBehavior)
+  fullName: Microsoft.Xna.Framework.Game.Run(Microsoft.Xna.Framework.GameRunBehavior)
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.Run(Microsoft.Xna.Framework.GameRunBehavior)
+    name: Run
+    isExternal: true
+  - name: (
+  - uid: Microsoft.Xna.Framework.GameRunBehavior
+    name: GameRunBehavior
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.Run(Microsoft.Xna.Framework.GameRunBehavior)
+    name: Run
+    isExternal: true
+  - name: (
+  - uid: Microsoft.Xna.Framework.GameRunBehavior
+    name: GameRunBehavior
+    isExternal: true
+  - name: )
+- uid: Microsoft.Xna.Framework.Game.Tick
+  commentId: M:Microsoft.Xna.Framework.Game.Tick
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Tick()
+  nameWithType: Game.Tick()
+  fullName: Microsoft.Xna.Framework.Game.Tick()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.Tick
+    name: Tick
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.Tick
+    name: Tick
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.Xna.Framework.Game.BeginDraw
+  commentId: M:Microsoft.Xna.Framework.Game.BeginDraw
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: BeginDraw()
+  nameWithType: Game.BeginDraw()
+  fullName: Microsoft.Xna.Framework.Game.BeginDraw()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.BeginDraw
+    name: BeginDraw
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.BeginDraw
+    name: BeginDraw
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.Xna.Framework.Game.EndDraw
+  commentId: M:Microsoft.Xna.Framework.Game.EndDraw
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: EndDraw()
+  nameWithType: Game.EndDraw()
+  fullName: Microsoft.Xna.Framework.Game.EndDraw()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.EndDraw
+    name: EndDraw
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.EndDraw
+    name: EndDraw
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.Xna.Framework.Game.BeginRun
+  commentId: M:Microsoft.Xna.Framework.Game.BeginRun
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: BeginRun()
+  nameWithType: Game.BeginRun()
+  fullName: Microsoft.Xna.Framework.Game.BeginRun()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.BeginRun
+    name: BeginRun
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.BeginRun
+    name: BeginRun
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.Xna.Framework.Game.EndRun
+  commentId: M:Microsoft.Xna.Framework.Game.EndRun
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: EndRun()
+  nameWithType: Game.EndRun()
+  fullName: Microsoft.Xna.Framework.Game.EndRun()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.EndRun
+    name: EndRun
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.EndRun
+    name: EndRun
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.Xna.Framework.Game.UnloadContent
+  commentId: M:Microsoft.Xna.Framework.Game.UnloadContent
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: UnloadContent()
+  nameWithType: Game.UnloadContent()
+  fullName: Microsoft.Xna.Framework.Game.UnloadContent()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.UnloadContent
+    name: UnloadContent
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.UnloadContent
+    name: UnloadContent
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Microsoft.Xna.Framework.Game.OnExiting(System.Object,Microsoft.Xna.Framework.ExitingEventArgs)
+  commentId: M:Microsoft.Xna.Framework.Game.OnExiting(System.Object,Microsoft.Xna.Framework.ExitingEventArgs)
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: OnExiting(object, ExitingEventArgs)
+  nameWithType: Game.OnExiting(object, ExitingEventArgs)
+  fullName: Microsoft.Xna.Framework.Game.OnExiting(object, Microsoft.Xna.Framework.ExitingEventArgs)
+  nameWithType.vb: Game.OnExiting(Object, ExitingEventArgs)
+  fullName.vb: Microsoft.Xna.Framework.Game.OnExiting(Object, Microsoft.Xna.Framework.ExitingEventArgs)
+  name.vb: OnExiting(Object, ExitingEventArgs)
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.OnExiting(System.Object,Microsoft.Xna.Framework.ExitingEventArgs)
+    name: OnExiting
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Xna.Framework.ExitingEventArgs
+    name: ExitingEventArgs
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.OnExiting(System.Object,Microsoft.Xna.Framework.ExitingEventArgs)
+    name: OnExiting
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Xna.Framework.ExitingEventArgs
+    name: ExitingEventArgs
+    isExternal: true
+  - name: )
+- uid: Microsoft.Xna.Framework.Game.OnActivated(System.Object,System.EventArgs)
+  commentId: M:Microsoft.Xna.Framework.Game.OnActivated(System.Object,System.EventArgs)
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: OnActivated(object, EventArgs)
+  nameWithType: Game.OnActivated(object, EventArgs)
+  fullName: Microsoft.Xna.Framework.Game.OnActivated(object, System.EventArgs)
+  nameWithType.vb: Game.OnActivated(Object, EventArgs)
+  fullName.vb: Microsoft.Xna.Framework.Game.OnActivated(Object, System.EventArgs)
+  name.vb: OnActivated(Object, EventArgs)
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.OnActivated(System.Object,System.EventArgs)
+    name: OnActivated
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.EventArgs
+    name: EventArgs
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventargs
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.OnActivated(System.Object,System.EventArgs)
+    name: OnActivated
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.EventArgs
+    name: EventArgs
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventargs
+  - name: )
+- uid: Microsoft.Xna.Framework.Game.OnDeactivated(System.Object,System.EventArgs)
+  commentId: M:Microsoft.Xna.Framework.Game.OnDeactivated(System.Object,System.EventArgs)
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: OnDeactivated(object, EventArgs)
+  nameWithType: Game.OnDeactivated(object, EventArgs)
+  fullName: Microsoft.Xna.Framework.Game.OnDeactivated(object, System.EventArgs)
+  nameWithType.vb: Game.OnDeactivated(Object, EventArgs)
+  fullName.vb: Microsoft.Xna.Framework.Game.OnDeactivated(Object, System.EventArgs)
+  name.vb: OnDeactivated(Object, EventArgs)
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.OnDeactivated(System.Object,System.EventArgs)
+    name: OnDeactivated
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.EventArgs
+    name: EventArgs
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventargs
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.OnDeactivated(System.Object,System.EventArgs)
+    name: OnDeactivated
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.EventArgs
+    name: EventArgs
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventargs
+  - name: )
+- uid: Microsoft.Xna.Framework.Game.LaunchParameters
+  commentId: P:Microsoft.Xna.Framework.Game.LaunchParameters
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: LaunchParameters
+  nameWithType: Game.LaunchParameters
+  fullName: Microsoft.Xna.Framework.Game.LaunchParameters
+- uid: Microsoft.Xna.Framework.Game.Components
+  commentId: P:Microsoft.Xna.Framework.Game.Components
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Components
+  nameWithType: Game.Components
+  fullName: Microsoft.Xna.Framework.Game.Components
+- uid: Microsoft.Xna.Framework.Game.InactiveSleepTime
+  commentId: P:Microsoft.Xna.Framework.Game.InactiveSleepTime
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: InactiveSleepTime
+  nameWithType: Game.InactiveSleepTime
+  fullName: Microsoft.Xna.Framework.Game.InactiveSleepTime
+- uid: Microsoft.Xna.Framework.Game.MaxElapsedTime
+  commentId: P:Microsoft.Xna.Framework.Game.MaxElapsedTime
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: MaxElapsedTime
+  nameWithType: Game.MaxElapsedTime
+  fullName: Microsoft.Xna.Framework.Game.MaxElapsedTime
+- uid: Microsoft.Xna.Framework.Game.IsActive
+  commentId: P:Microsoft.Xna.Framework.Game.IsActive
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: IsActive
+  nameWithType: Game.IsActive
+  fullName: Microsoft.Xna.Framework.Game.IsActive
+- uid: Microsoft.Xna.Framework.Game.IsMouseVisible
+  commentId: P:Microsoft.Xna.Framework.Game.IsMouseVisible
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: IsMouseVisible
+  nameWithType: Game.IsMouseVisible
+  fullName: Microsoft.Xna.Framework.Game.IsMouseVisible
+- uid: Microsoft.Xna.Framework.Game.TargetElapsedTime
+  commentId: P:Microsoft.Xna.Framework.Game.TargetElapsedTime
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: TargetElapsedTime
+  nameWithType: Game.TargetElapsedTime
+  fullName: Microsoft.Xna.Framework.Game.TargetElapsedTime
+- uid: Microsoft.Xna.Framework.Game.IsFixedTimeStep
+  commentId: P:Microsoft.Xna.Framework.Game.IsFixedTimeStep
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: IsFixedTimeStep
+  nameWithType: Game.IsFixedTimeStep
+  fullName: Microsoft.Xna.Framework.Game.IsFixedTimeStep
+- uid: Microsoft.Xna.Framework.Game.Services
+  commentId: P:Microsoft.Xna.Framework.Game.Services
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Services
+  nameWithType: Game.Services
+  fullName: Microsoft.Xna.Framework.Game.Services
+- uid: Microsoft.Xna.Framework.Game.Content
+  commentId: P:Microsoft.Xna.Framework.Game.Content
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Content
+  nameWithType: Game.Content
+  fullName: Microsoft.Xna.Framework.Game.Content
+- uid: Microsoft.Xna.Framework.Game.GraphicsDevice
+  commentId: P:Microsoft.Xna.Framework.Game.GraphicsDevice
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: GraphicsDevice
+  nameWithType: Game.GraphicsDevice
+  fullName: Microsoft.Xna.Framework.Game.GraphicsDevice
+- uid: Microsoft.Xna.Framework.Game.Window
+  commentId: P:Microsoft.Xna.Framework.Game.Window
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Window
+  nameWithType: Game.Window
+  fullName: Microsoft.Xna.Framework.Game.Window
+- uid: Microsoft.Xna.Framework.Game.Activated
+  commentId: E:Microsoft.Xna.Framework.Game.Activated
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Activated
+  nameWithType: Game.Activated
+  fullName: Microsoft.Xna.Framework.Game.Activated
+- uid: Microsoft.Xna.Framework.Game.Deactivated
+  commentId: E:Microsoft.Xna.Framework.Game.Deactivated
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Deactivated
+  nameWithType: Game.Deactivated
+  fullName: Microsoft.Xna.Framework.Game.Deactivated
+- uid: Microsoft.Xna.Framework.Game.Disposed
+  commentId: E:Microsoft.Xna.Framework.Game.Disposed
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Disposed
+  nameWithType: Game.Disposed
+  fullName: Microsoft.Xna.Framework.Game.Disposed
+- uid: Microsoft.Xna.Framework.Game.Exiting
+  commentId: E:Microsoft.Xna.Framework.Game.Exiting
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Exiting
+  nameWithType: Game.Exiting
+  fullName: Microsoft.Xna.Framework.Game.Exiting
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.Xna.Framework
+  commentId: N:Microsoft.Xna.Framework
+  isExternal: true
+  name: Microsoft.Xna.Framework
+  nameWithType: Microsoft.Xna.Framework
+  fullName: Microsoft.Xna.Framework
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+- uid: Vibe_Game.Game1.#ctor*
+  commentId: Overload:Vibe_Game.Game1.#ctor
+  isExternal: true
+  href: Vibe_Game.Game1.html#Vibe_Game_Game1__ctor
+  name: Game1
+  nameWithType: Game1.Game1
+  fullName: Vibe_Game.Game1.Game1
+  nameWithType.vb: Game1.New
+  fullName.vb: Vibe_Game.Game1.New
+  name.vb: New
+- uid: Microsoft.Xna.Framework.Game.Initialize
+  commentId: M:Microsoft.Xna.Framework.Game.Initialize
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Initialize()
+  nameWithType: Game.Initialize()
+  fullName: Microsoft.Xna.Framework.Game.Initialize()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.Initialize
+    name: Initialize
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.Initialize
+    name: Initialize
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Vibe_Game.Game1.Initialize*
+  commentId: Overload:Vibe_Game.Game1.Initialize
+  isExternal: true
+  href: Vibe_Game.Game1.html#Vibe_Game_Game1_Initialize
+  name: Initialize
+  nameWithType: Game1.Initialize
+  fullName: Vibe_Game.Game1.Initialize
+- uid: Microsoft.Xna.Framework.Game.LoadContent
+  commentId: M:Microsoft.Xna.Framework.Game.LoadContent
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: LoadContent()
+  nameWithType: Game.LoadContent()
+  fullName: Microsoft.Xna.Framework.Game.LoadContent()
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.LoadContent
+    name: LoadContent
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.LoadContent
+    name: LoadContent
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Vibe_Game.Game1.LoadContent*
+  commentId: Overload:Vibe_Game.Game1.LoadContent
+  isExternal: true
+  href: Vibe_Game.Game1.html#Vibe_Game_Game1_LoadContent
+  name: LoadContent
+  nameWithType: Game1.LoadContent
+  fullName: Vibe_Game.Game1.LoadContent
+- uid: Vibe_Game.Game1.StartNewGame*
+  commentId: Overload:Vibe_Game.Game1.StartNewGame
+  isExternal: true
+  href: Vibe_Game.Game1.html#Vibe_Game_Game1_StartNewGame
+  name: StartNewGame
+  nameWithType: Game1.StartNewGame
+  fullName: Vibe_Game.Game1.StartNewGame
+- uid: Vibe_Game.Game1.ShowMainMenu*
+  commentId: Overload:Vibe_Game.Game1.ShowMainMenu
+  isExternal: true
+  href: Vibe_Game.Game1.html#Vibe_Game_Game1_ShowMainMenu
+  name: ShowMainMenu
+  nameWithType: Game1.ShowMainMenu
+  fullName: Vibe_Game.Game1.ShowMainMenu
+- uid: Vibe_Game.Game1.ShowCredits*
+  commentId: Overload:Vibe_Game.Game1.ShowCredits
+  isExternal: true
+  href: Vibe_Game.Game1.html#Vibe_Game_Game1_ShowCredits
+  name: ShowCredits
+  nameWithType: Game1.ShowCredits
+  fullName: Vibe_Game.Game1.ShowCredits
+- uid: Vibe_Game.Game1.ShowDeathScreen*
+  commentId: Overload:Vibe_Game.Game1.ShowDeathScreen
+  isExternal: true
+  href: Vibe_Game.Game1.html#Vibe_Game_Game1_ShowDeathScreen
+  name: ShowDeathScreen
+  nameWithType: Game1.ShowDeathScreen
+  fullName: Vibe_Game.Game1.ShowDeathScreen
+- uid: Microsoft.Xna.Framework.Game.Update(Microsoft.Xna.Framework.GameTime)
+  commentId: M:Microsoft.Xna.Framework.Game.Update(Microsoft.Xna.Framework.GameTime)
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Update(GameTime)
+  nameWithType: Game.Update(GameTime)
+  fullName: Microsoft.Xna.Framework.Game.Update(Microsoft.Xna.Framework.GameTime)
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.Update(Microsoft.Xna.Framework.GameTime)
+    name: Update
+    isExternal: true
+  - name: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.Update(Microsoft.Xna.Framework.GameTime)
+    name: Update
+    isExternal: true
+  - name: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    isExternal: true
+  - name: )
+- uid: Vibe_Game.Game1.Update*
+  commentId: Overload:Vibe_Game.Game1.Update
+  isExternal: true
+  href: Vibe_Game.Game1.html#Vibe_Game_Game1_Update_Microsoft_Xna_Framework_GameTime_
+  name: Update
+  nameWithType: Game1.Update
+  fullName: Vibe_Game.Game1.Update
+- uid: Microsoft.Xna.Framework.GameTime
+  commentId: T:Microsoft.Xna.Framework.GameTime
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: GameTime
+  nameWithType: GameTime
+  fullName: Microsoft.Xna.Framework.GameTime
+- uid: Microsoft.Xna.Framework.Game.Draw(Microsoft.Xna.Framework.GameTime)
+  commentId: M:Microsoft.Xna.Framework.Game.Draw(Microsoft.Xna.Framework.GameTime)
+  parent: Microsoft.Xna.Framework.Game
+  isExternal: true
+  name: Draw(GameTime)
+  nameWithType: Game.Draw(GameTime)
+  fullName: Microsoft.Xna.Framework.Game.Draw(Microsoft.Xna.Framework.GameTime)
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Game.Draw(Microsoft.Xna.Framework.GameTime)
+    name: Draw
+    isExternal: true
+  - name: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Game.Draw(Microsoft.Xna.Framework.GameTime)
+    name: Draw
+    isExternal: true
+  - name: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    isExternal: true
+  - name: )
+- uid: Vibe_Game.Game1.Draw*
+  commentId: Overload:Vibe_Game.Game1.Draw
+  isExternal: true
+  href: Vibe_Game.Game1.html#Vibe_Game_Game1_Draw_Microsoft_Xna_Framework_GameTime_
+  name: Draw
+  nameWithType: Game1.Draw
+  fullName: Vibe_Game.Game1.Draw

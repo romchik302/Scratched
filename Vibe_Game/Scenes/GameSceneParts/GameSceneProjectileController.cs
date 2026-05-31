@@ -8,18 +8,32 @@ using Vibe_Game.Gameplay.Weapons;
 
 namespace Vibe_Game.Scenes
 {
+    /// <summary>
+    /// Контроллер снарядов игровой сцены. Управляет жизненным циклом всех летящих объектов (снарядов), 
+    /// включая их спавн, обновление позиций, анимации попадания, отрисовку и проверку коллизий с окружением и сущностями.
+    /// </summary>
     internal sealed class GameSceneProjectileController
     {
         private readonly GameSceneState _state;
         private readonly GameSceneWorld _world;
         private ContentManager _contentManager;
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="GameSceneProjectileController"/>.
+        /// </summary>
+        /// <param name="state">Глобальное состояние игровой сцены.</param>
+        /// <param name="world">Объект игрового мира для валидации столкновений со стенами.</param>
         public GameSceneProjectileController(GameSceneState state, GameSceneWorld world)
         {
             _state = state;
             _world = world;
         }
 
+        /// <summary>
+        /// Кэширует менеджер контента и загружает графические ресурсы для всех снарядов, 
+        /// которые уже зарегистрированы в состоянии игры.
+        /// </summary>
+        /// <param name="content">Менеджер контента MonoGame.</param>
         public void LoadContent(ContentManager content)
         {
             _contentManager = content;
@@ -30,6 +44,11 @@ namespace Vibe_Game.Scenes
             }
         }
 
+        /// <summary>
+        /// Создает и настраивает новый снаряд в мире на основе переданных аргументов конфигурации.
+        /// Автоматически подгружает контент и инициализирует орбитальное движение, если оно задано.
+        /// </summary>
+        /// <param name="args">Аргументы спавна, содержащие физические и визуальные параметры снаряда.</param>
         public void Spawn(ProjectileSpawnArgs args)
         {
             Projectile projectile = new Projectile(
@@ -71,6 +90,11 @@ namespace Vibe_Game.Scenes
             _state.Projectiles.Add(projectile);
         }
 
+        /// <summary>
+        /// Обновляет логику всех снарядов: обрабатывает движение, коллизии со стенами, 
+        /// наносит урон врагам или игроку при пересечении хитбоксов и удаляет мертвые объекты из памяти.
+        /// </summary>
+        /// <param name="gameTime">Снапшот игрового времени.</param>
         public void Update(GameTime gameTime)
         {
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -144,6 +168,10 @@ namespace Vibe_Game.Scenes
             }
         }
 
+        /// <summary>
+        /// Отрисовывает все активные и живые снаряды на сцене.
+        /// </summary>
+        /// <param name="spriteBatch">Инструмент отрисовки спрайтов MonoGame.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (Projectile projectile in _state.Projectiles)

@@ -1,0 +1,180 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Gameplay.Entities.Enemies
+  commentId: N:Vibe_Game.Gameplay.Entities.Enemies
+  id: Vibe_Game.Gameplay.Entities.Enemies
+  children:
+  - Vibe_Game.Gameplay.Entities.Enemies.BossEnemy
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.FacingDirection
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+  - Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx
+  - Vibe_Game.Gameplay.Entities.Enemies.FlyingEnemy
+  - Vibe_Game.Gameplay.Entities.Enemies.IFlyingCollisionChecker
+  - Vibe_Game.Gameplay.Entities.Enemies.ShooterFlyingEnemy
+  langs:
+  - csharp
+  - vb
+  name: Vibe_Game.Gameplay.Entities.Enemies
+  nameWithType: Vibe_Game.Gameplay.Entities.Enemies
+  fullName: Vibe_Game.Gameplay.Entities.Enemies
+  type: Namespace
+  assemblies:
+  - Vibe_Game
+references:
+- uid: Vibe_Game.Gameplay.Entities.Enemies.BossEnemy
+  commentId: T:Vibe_Game.Gameplay.Entities.Enemies.BossEnemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.BossEnemy.html
+  name: BossEnemy
+  nameWithType: BossEnemy
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.BossEnemy
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  commentId: T:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html
+  name: ChasingEnemy
+  nameWithType: ChasingEnemy
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  commentId: T:Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  parent: Vibe_Game.Gameplay.Entities.Enemies
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html
+  name: Enemy
+  nameWithType: Enemy
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+  commentId: T:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+  parent: Vibe_Game.Gameplay.Entities.Enemies
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html
+  name: Enemy.RandomMovementMode
+  nameWithType: Enemy.RandomMovementMode
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+    name: Enemy
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+    name: RandomMovementMode
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.html
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+    name: Enemy
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode
+    name: RandomMovementMode
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.html
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.FacingDirection
+  commentId: T:Vibe_Game.Gameplay.Entities.Enemies.Enemy.FacingDirection
+  parent: Vibe_Game.Gameplay.Entities.Enemies
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html
+  name: Enemy.FacingDirection
+  nameWithType: Enemy.FacingDirection
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.FacingDirection
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+    name: Enemy
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.FacingDirection
+    name: FacingDirection
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.FacingDirection.html
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+    name: Enemy
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.FacingDirection
+    name: FacingDirection
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.FacingDirection.html
+- uid: Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx
+  commentId: T:Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx.html
+  name: EnemyDeathVfx
+  nameWithType: EnemyDeathVfx
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx
+- uid: Vibe_Game.Gameplay.Entities.Enemies.FlyingEnemy
+  commentId: T:Vibe_Game.Gameplay.Entities.Enemies.FlyingEnemy
+  parent: Vibe_Game.Gameplay.Entities.Enemies
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.FlyingEnemy.html
+  name: FlyingEnemy
+  nameWithType: FlyingEnemy
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.FlyingEnemy
+- uid: Vibe_Game.Gameplay.Entities.Enemies.IFlyingCollisionChecker
+  commentId: T:Vibe_Game.Gameplay.Entities.Enemies.IFlyingCollisionChecker
+  parent: Vibe_Game.Gameplay.Entities.Enemies
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.IFlyingCollisionChecker.html
+  name: IFlyingCollisionChecker
+  nameWithType: IFlyingCollisionChecker
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.IFlyingCollisionChecker
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ShooterFlyingEnemy
+  commentId: T:Vibe_Game.Gameplay.Entities.Enemies.ShooterFlyingEnemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ShooterFlyingEnemy.html
+  name: ShooterFlyingEnemy
+  nameWithType: ShooterFlyingEnemy
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ShooterFlyingEnemy
+- uid: Vibe_Game.Gameplay.Entities.Enemies
+  commentId: N:Vibe_Game.Gameplay.Entities.Enemies
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Gameplay.Entities.Enemies
+  nameWithType: Vibe_Game.Gameplay.Entities.Enemies
+  fullName: Vibe_Game.Gameplay.Entities.Enemies
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Enemies
+    name: Enemies
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Enemies
+    name: Enemies
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.html

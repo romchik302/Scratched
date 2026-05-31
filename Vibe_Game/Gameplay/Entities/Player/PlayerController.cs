@@ -4,14 +4,22 @@ using Vibe_Game.Core.Interfaces;
 
 namespace Vibe_Game.Gameplay.Entities.Player
 {
+    /// <summary>
+    /// Контроллер управления персонажем, отвечающий за физику перемещения (разгон, трение) 
+    /// и ортогональное прицеливание в стиле The Binding of Isaac.
+    /// </summary>
     public class PlayerController
     {
         private readonly IInputService _inputService;
         private Vector2 _currentVelocity;
 
-        public float Acceleration { get; set; } = 1800f;     // пикс/сек²
-        public float MaxSpeed { get; set; } = 150f;          // пикс/сек
-        public float BaseFriction { get; set; } = 1200f;      // торможение без ввода (пикс/сек²)
+        /// <summary>Скорость разгона персонажа (пикселей в секунду в квадрате).</summary>
+        public float Acceleration { get; set; } = 1800f;
+        /// <summary>Максимально допустимая скорость перемещения игрока.</summary>
+        public float MaxSpeed { get; set; } = 150f;
+        /// <summary>Базовая сила торможения при отсутствии ввода движения.</summary>
+        public float BaseFriction { get; set; } = 1200f;
+        /// <summary>Текущий множитель трения (например, для скольжения по льду или замедления в грязи).</summary>
         public float CurrentFrictionMultiplier { get; set; } = 1f;
 
         public Vector2 CurrentVelocity => _currentVelocity;
@@ -19,12 +27,21 @@ namespace Vibe_Game.Gameplay.Entities.Player
 
         private readonly List<InputAction> _shootPressOrder = new();
 
+        /// <summary>
+        /// Инициализирует новый экземпляр контроллера игрока.
+        /// </summary>
+        /// <param name="player">Экземпляр управляемого игрока, откуда берутся и куда записываются параметры.</param>
+        /// <param name="inputService">Сервис для отслеживания нажатий клавиш управления.</param>
         public PlayerController(Player player, IInputService inputService)
         {
             _ = player;
             _inputService = inputService;
         }
 
+        /// <summary>
+        /// Основной такт обновления контроллера. Вызывается каждый кадр игры.
+        /// </summary>
+        /// <param name="gameTime">Текущее игровое время.</param>
         public void Update(GameTime gameTime)
         {
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;

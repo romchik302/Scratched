@@ -10,6 +10,11 @@ using Vibe_Game.Gameplay.Entities.Player;
 
 namespace Vibe_Game.Scenes
 {
+    /// <summary>
+    /// Основная игровая сцена, оркеструющая весь геймплейный цикл.
+    /// Объединяет системы игрока, генерации мира, ИИ врагов, полета снарядов и рендеринга,
+    /// а также обрабатывает меню паузы, переходы между этажами и условия победы/проигрыша.
+    /// </summary>
     public class GameScene : BaseScene
     {
         private static readonly Point StartRoomGrid = new(WorldConfig.CenterGrid, WorldConfig.CenterGrid);
@@ -36,6 +41,13 @@ namespace Vibe_Game.Scenes
         private float _footstepDistanceCarry;
         private float _footstepTimeSinceLast;
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="GameScene"/>.
+        /// </summary>
+        /// <param name="game">Основной экземпляр игры MonoGame.</param>
+        /// <param name="pr">Компонент отрисовки персонажа.</param>
+        /// <param name="isrv">Сервис считывания ввода.</param>
+        /// <param name="pcl">Загрузчик ресурсов игрока.</param>
         public GameScene(Game game, IPlayerRenderer pr, IInputService isrv, IPlayerContentLoader pcl)
             : base(game)
         {
@@ -44,6 +56,7 @@ namespace Vibe_Game.Scenes
             _contentLoader = pcl;
         }
 
+        /// <inheritdoc />
         public override void Initialize()
         {
             _world = new GameSceneWorld(_state, GameInstance.Content);
@@ -61,6 +74,7 @@ namespace Vibe_Game.Scenes
             base.Initialize();
         }
 
+        /// <inheritdoc />
         public override void LoadContent()
         {
             Enemy.LoadSharedTextures(GameInstance.Content);
@@ -69,6 +83,7 @@ namespace Vibe_Game.Scenes
             _renderer.LoadContent(GameInstance.Content);
         }
 
+        /// <inheritdoc />
         public override void Update(GameTime gameTime)
         {
             if (_inputService.IsActionPressed(InputAction.Pause))
@@ -139,6 +154,7 @@ namespace Vibe_Game.Scenes
             base.Update(gameTime);
         }
 
+        /// <inheritdoc />
         public override void Draw(GameTime gameTime)
         {
             var spriteBatch = GetSpriteBatch();

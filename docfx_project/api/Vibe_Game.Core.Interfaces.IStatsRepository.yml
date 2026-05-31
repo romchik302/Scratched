@@ -1,0 +1,271 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Core.Interfaces.IStatsRepository
+  commentId: T:Vibe_Game.Core.Interfaces.IStatsRepository
+  id: IStatsRepository
+  parent: Vibe_Game.Core.Interfaces
+  children:
+  - Vibe_Game.Core.Interfaces.IStatsRepository.LoadAllStats
+  - Vibe_Game.Core.Interfaces.IStatsRepository.LoadBestStats
+  - Vibe_Game.Core.Interfaces.IStatsRepository.SaveRunStats(Vibe_Game.Core.Interfaces.RunStats)
+  langs:
+  - csharp
+  - vb
+  name: IStatsRepository
+  nameWithType: IStatsRepository
+  fullName: Vibe_Game.Core.Interfaces.IStatsRepository
+  type: Interface
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Interfaces/IStatsRepository.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Interfaces
+  summary: >-
+    Интерфейс для взаимодействия с системой хранения статистики игровых сессий.
+
+    Позволяет сохранять результаты пробегов и извлекать исторические данные.
+  example: []
+  syntax:
+    content: public interface IStatsRepository
+    content.vb: Public Interface IStatsRepository
+- uid: Vibe_Game.Core.Interfaces.IStatsRepository.SaveRunStats(Vibe_Game.Core.Interfaces.RunStats)
+  commentId: M:Vibe_Game.Core.Interfaces.IStatsRepository.SaveRunStats(Vibe_Game.Core.Interfaces.RunStats)
+  id: SaveRunStats(Vibe_Game.Core.Interfaces.RunStats)
+  parent: Vibe_Game.Core.Interfaces.IStatsRepository
+  langs:
+  - csharp
+  - vb
+  name: SaveRunStats(RunStats)
+  nameWithType: IStatsRepository.SaveRunStats(RunStats)
+  fullName: Vibe_Game.Core.Interfaces.IStatsRepository.SaveRunStats(Vibe_Game.Core.Interfaces.RunStats)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Interfaces/IStatsRepository.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Interfaces
+  summary: Сохраняет результат завершенного пробега.
+  example: []
+  syntax:
+    content: void SaveRunStats(RunStats stats)
+    parameters:
+    - id: stats
+      type: Vibe_Game.Core.Interfaces.RunStats
+      description: Экземпляр RunStats с данными текущей сессии.
+    content.vb: Sub SaveRunStats(stats As RunStats)
+  overload: Vibe_Game.Core.Interfaces.IStatsRepository.SaveRunStats*
+- uid: Vibe_Game.Core.Interfaces.IStatsRepository.LoadBestStats
+  commentId: M:Vibe_Game.Core.Interfaces.IStatsRepository.LoadBestStats
+  id: LoadBestStats
+  parent: Vibe_Game.Core.Interfaces.IStatsRepository
+  langs:
+  - csharp
+  - vb
+  name: LoadBestStats()
+  nameWithType: IStatsRepository.LoadBestStats()
+  fullName: Vibe_Game.Core.Interfaces.IStatsRepository.LoadBestStats()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Interfaces/IStatsRepository.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Interfaces
+  summary: Загружает статистику лучшего (рекордного) пробега.
+  example: []
+  syntax:
+    content: RunStats LoadBestStats()
+    return:
+      type: Vibe_Game.Core.Interfaces.RunStats
+    content.vb: Function LoadBestStats() As RunStats
+  overload: Vibe_Game.Core.Interfaces.IStatsRepository.LoadBestStats*
+- uid: Vibe_Game.Core.Interfaces.IStatsRepository.LoadAllStats
+  commentId: M:Vibe_Game.Core.Interfaces.IStatsRepository.LoadAllStats
+  id: LoadAllStats
+  parent: Vibe_Game.Core.Interfaces.IStatsRepository
+  langs:
+  - csharp
+  - vb
+  name: LoadAllStats()
+  nameWithType: IStatsRepository.LoadAllStats()
+  fullName: Vibe_Game.Core.Interfaces.IStatsRepository.LoadAllStats()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Interfaces/IStatsRepository.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Interfaces
+  summary: Загружает историю всех сохраненных пробегов.
+  example: []
+  syntax:
+    content: List<RunStats> LoadAllStats()
+    return:
+      type: System.Collections.Generic.List{Vibe_Game.Core.Interfaces.RunStats}
+    content.vb: Function LoadAllStats() As List(Of RunStats)
+  overload: Vibe_Game.Core.Interfaces.IStatsRepository.LoadAllStats*
+references:
+- uid: Vibe_Game.Core.Interfaces
+  commentId: N:Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Core.Interfaces
+  nameWithType: Vibe_Game.Core.Interfaces
+  fullName: Vibe_Game.Core.Interfaces
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Interfaces
+    name: Interfaces
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Interfaces
+    name: Interfaces
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.html
+- uid: Vibe_Game.Core.Interfaces.IStatsRepository.SaveRunStats*
+  commentId: Overload:Vibe_Game.Core.Interfaces.IStatsRepository.SaveRunStats
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IStatsRepository.html#Vibe_Game_Core_Interfaces_IStatsRepository_SaveRunStats_Vibe_Game_Core_Interfaces_RunStats_
+  name: SaveRunStats
+  nameWithType: IStatsRepository.SaveRunStats
+  fullName: Vibe_Game.Core.Interfaces.IStatsRepository.SaveRunStats
+- uid: Vibe_Game.Core.Interfaces.RunStats
+  commentId: T:Vibe_Game.Core.Interfaces.RunStats
+  parent: Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.RunStats.html
+  name: RunStats
+  nameWithType: RunStats
+  fullName: Vibe_Game.Core.Interfaces.RunStats
+- uid: Vibe_Game.Core.Interfaces.IStatsRepository.LoadBestStats*
+  commentId: Overload:Vibe_Game.Core.Interfaces.IStatsRepository.LoadBestStats
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IStatsRepository.html#Vibe_Game_Core_Interfaces_IStatsRepository_LoadBestStats
+  name: LoadBestStats
+  nameWithType: IStatsRepository.LoadBestStats
+  fullName: Vibe_Game.Core.Interfaces.IStatsRepository.LoadBestStats
+- uid: Vibe_Game.Core.Interfaces.IStatsRepository.LoadAllStats*
+  commentId: Overload:Vibe_Game.Core.Interfaces.IStatsRepository.LoadAllStats
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IStatsRepository.html#Vibe_Game_Core_Interfaces_IStatsRepository_LoadAllStats
+  name: LoadAllStats
+  nameWithType: IStatsRepository.LoadAllStats
+  fullName: Vibe_Game.Core.Interfaces.IStatsRepository.LoadAllStats
+- uid: System.Collections.Generic.List{Vibe_Game.Core.Interfaces.RunStats}
+  commentId: T:System.Collections.Generic.List{Vibe_Game.Core.Interfaces.RunStats}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<RunStats>
+  nameWithType: List<RunStats>
+  fullName: System.Collections.Generic.List<Vibe_Game.Core.Interfaces.RunStats>
+  nameWithType.vb: List(Of RunStats)
+  fullName.vb: System.Collections.Generic.List(Of Vibe_Game.Core.Interfaces.RunStats)
+  name.vb: List(Of RunStats)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vibe_Game.Core.Interfaces.RunStats
+    name: RunStats
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.RunStats.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vibe_Game.Core.Interfaces.RunStats
+    name: RunStats
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.RunStats.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

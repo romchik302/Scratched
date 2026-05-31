@@ -1,0 +1,2731 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  commentId: T:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  id: ChasingEnemy
+  parent: Vibe_Game.Gameplay.Entities.Enemies
+  children:
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.#ctor(Microsoft.Xna.Framework.Vector2,Vibe_Game.Core.Interfaces.IWallCollisionChecker)
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.#ctor(Microsoft.Xna.Framework.Vector2,Vibe_Game.Core.Interfaces.IWallCollisionChecker,System.Single,System.Int32,System.Single)
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AmbientSoundInterval
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AnimFrameDuration
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AttackHitboxScale
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.BodyHitboxScale
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ChaseTarget
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.EnsureSpriteConfigured
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetAttackBounds
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBodyCenter
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBodyCenter(Microsoft.Xna.Framework.Vector2)
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBounds
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetCollisionRadius
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetDebugAttackBounds
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.HitboxOffsetXFactor
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.HitboxOffsetYPixels
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.OnActivated
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.PlayAmbientSound
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ResolveRecoilCollision(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ResolveWallCollision(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.UpdateAnimation(Microsoft.Xna.Framework.GameTime)
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.UpdateEnemy(Microsoft.Xna.Framework.GameTime)
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._animTimer
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._attackRadius
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._bodyRadius
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._collisionRadius
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._frameCount
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._frameHeight
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._frameIndex
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._frameWidth
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._moveSpeed
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._pixel
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._sourceRect
+  - Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._spriteSheet
+  langs:
+  - csharp
+  - vb
+  name: ChasingEnemy
+  nameWithType: ChasingEnemy
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  type: Class
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Враг, который преследует цель игрока, использует навигацию с учётом стен, поддерживает хитбоксы тела и атаки, а также анимацию спрайтов и систему обновления поведения.
+  example: []
+  syntax:
+    content: 'public class ChasingEnemy : Enemy'
+    content.vb: Public Class ChasingEnemy Inherits Enemy
+  inheritance:
+  - System.Object
+  - Vibe_Game.Gameplay.Entities.Entity
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  inheritedMembers:
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy._ambientSoundTimer
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.SetFloorIndex(System.Int32)
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.LoadSharedTextures(Microsoft.Xna.Framework.Content.ContentManager)
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.Activate(System.Boolean)
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.TakeDamage(System.Int32)
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.ApplyRecoil(Microsoft.Xna.Framework.Vector2,System.Single)
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.Update(Microsoft.Xna.Framework.GameTime)
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.PrimeSpriteConfiguration
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateFacingFromDirection(Microsoft.Xna.Framework.Vector2,System.Boolean)
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetHorizontalSpriteEffect
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetMovementDirectionWithRandomBehavior(Microsoft.Xna.Framework.Vector2,System.Single,System.Single@)
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.ResetRandomMovementBehavior
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugBodyBounds
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugAggroRadius
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugCenter
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.DrawDebugOverlay(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.Health
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.MaxHealth
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.FloorIndex
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RecoilResistance
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.PenetrationRadius
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.IsActivated
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.IsInvulnerable
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.CanDealContactDamage
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.Facing
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomBehaviorChance
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomPauseMinDuration
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomPauseMaxDuration
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomSideDashMinDuration
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomSideDashMaxDuration
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomSideDashSpeedMultiplier
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagMinDuration
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagMaxDuration
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagDirectionChangeInterval
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagAmplitude
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagSpeedMultiplier
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitMinDuration
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitMaxDuration
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitInwardWeight
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitLateralWeight
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitSpeedMultiplier
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedDeathTexture
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedBossTexture
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedFlyingTexture
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedChasingTexture
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedAdaptiveTexture
+  - Vibe_Game.Gameplay.Entities.Enemies.Enemy.ActivationSkippedDelay
+  - Vibe_Game.Gameplay.Entities.Entity.Origin
+  - Vibe_Game.Gameplay.Entities.Entity.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+  - Vibe_Game.Gameplay.Entities.Entity.Position
+  - Vibe_Game.Gameplay.Entities.Entity.Velocity
+  - Vibe_Game.Gameplay.Entities.Entity.IsAlive
+  - Vibe_Game.Gameplay.Entities.Entity.Texture
+  - Vibe_Game.Gameplay.Entities.Entity.Color
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._collisionRadius
+  commentId: F:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._collisionRadius
+  id: _collisionRadius
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: _collisionRadius
+  nameWithType: ChasingEnemy._collisionRadius
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._collisionRadius
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  syntax:
+    content: protected readonly float _collisionRadius
+    return:
+      type: System.Single
+    content.vb: Protected ReadOnly _collisionRadius As Single
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._moveSpeed
+  commentId: F:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._moveSpeed
+  id: _moveSpeed
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: _moveSpeed
+  nameWithType: ChasingEnemy._moveSpeed
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._moveSpeed
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  syntax:
+    content: protected readonly float _moveSpeed
+    return:
+      type: System.Single
+    content.vb: Protected ReadOnly _moveSpeed As Single
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._bodyRadius
+  commentId: F:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._bodyRadius
+  id: _bodyRadius
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: _bodyRadius
+  nameWithType: ChasingEnemy._bodyRadius
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._bodyRadius
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  syntax:
+    content: protected float _bodyRadius
+    return:
+      type: System.Single
+    content.vb: Protected _bodyRadius As Single
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._attackRadius
+  commentId: F:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._attackRadius
+  id: _attackRadius
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: _attackRadius
+  nameWithType: ChasingEnemy._attackRadius
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._attackRadius
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  syntax:
+    content: protected float _attackRadius
+    return:
+      type: System.Single
+    content.vb: Protected _attackRadius As Single
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._pixel
+  commentId: F:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._pixel
+  id: _pixel
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: _pixel
+  nameWithType: ChasingEnemy._pixel
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._pixel
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  syntax:
+    content: protected Texture2D _pixel
+    return:
+      type: Microsoft.Xna.Framework.Graphics.Texture2D
+    content.vb: Protected _pixel As Texture2D
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._spriteSheet
+  commentId: F:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._spriteSheet
+  id: _spriteSheet
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: _spriteSheet
+  nameWithType: ChasingEnemy._spriteSheet
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._spriteSheet
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  syntax:
+    content: protected Texture2D _spriteSheet
+    return:
+      type: Microsoft.Xna.Framework.Graphics.Texture2D
+    content.vb: Protected _spriteSheet As Texture2D
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._sourceRect
+  commentId: F:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._sourceRect
+  id: _sourceRect
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: _sourceRect
+  nameWithType: ChasingEnemy._sourceRect
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._sourceRect
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  syntax:
+    content: protected Rectangle _sourceRect
+    return:
+      type: Microsoft.Xna.Framework.Rectangle
+    content.vb: Protected _sourceRect As Rectangle
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._frameWidth
+  commentId: F:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._frameWidth
+  id: _frameWidth
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: _frameWidth
+  nameWithType: ChasingEnemy._frameWidth
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._frameWidth
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  syntax:
+    content: protected int _frameWidth
+    return:
+      type: System.Int32
+    content.vb: Protected _frameWidth As Integer
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._frameHeight
+  commentId: F:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._frameHeight
+  id: _frameHeight
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: _frameHeight
+  nameWithType: ChasingEnemy._frameHeight
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._frameHeight
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  syntax:
+    content: protected int _frameHeight
+    return:
+      type: System.Int32
+    content.vb: Protected _frameHeight As Integer
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._frameCount
+  commentId: F:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._frameCount
+  id: _frameCount
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: _frameCount
+  nameWithType: ChasingEnemy._frameCount
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._frameCount
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  syntax:
+    content: protected int _frameCount
+    return:
+      type: System.Int32
+    content.vb: Protected _frameCount As Integer
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._frameIndex
+  commentId: F:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._frameIndex
+  id: _frameIndex
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: _frameIndex
+  nameWithType: ChasingEnemy._frameIndex
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._frameIndex
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  syntax:
+    content: protected int _frameIndex
+    return:
+      type: System.Int32
+    content.vb: Protected _frameIndex As Integer
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._animTimer
+  commentId: F:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._animTimer
+  id: _animTimer
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: _animTimer
+  nameWithType: ChasingEnemy._animTimer
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy._animTimer
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  syntax:
+    content: protected float _animTimer
+    return:
+      type: System.Single
+    content.vb: Protected _animTimer As Single
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.#ctor(Microsoft.Xna.Framework.Vector2,Vibe_Game.Core.Interfaces.IWallCollisionChecker,System.Single,System.Int32,System.Single)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.#ctor(Microsoft.Xna.Framework.Vector2,Vibe_Game.Core.Interfaces.IWallCollisionChecker,System.Single,System.Int32,System.Single)
+  id: '#ctor(Microsoft.Xna.Framework.Vector2,Vibe_Game.Core.Interfaces.IWallCollisionChecker,System.Single,System.Int32,System.Single)'
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: ChasingEnemy(Vector2, IWallCollisionChecker, float, int, float)
+  nameWithType: ChasingEnemy.ChasingEnemy(Vector2, IWallCollisionChecker, float, int, float)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ChasingEnemy(Microsoft.Xna.Framework.Vector2, Vibe_Game.Core.Interfaces.IWallCollisionChecker, float, int, float)
+  type: Constructor
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Инициализирует преследующего врага с полным набором параметров.
+  example: []
+  syntax:
+    content: public ChasingEnemy(Vector2 position, IWallCollisionChecker collision, float moveSpeed, int maxHealth, float collisionRadius)
+    parameters:
+    - id: position
+      type: Microsoft.Xna.Framework.Vector2
+    - id: collision
+      type: Vibe_Game.Core.Interfaces.IWallCollisionChecker
+    - id: moveSpeed
+      type: System.Single
+    - id: maxHealth
+      type: System.Int32
+    - id: collisionRadius
+      type: System.Single
+    content.vb: Public Sub New(position As Vector2, collision As IWallCollisionChecker, moveSpeed As Single, maxHealth As Integer, collisionRadius As Single)
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.#ctor*
+  nameWithType.vb: ChasingEnemy.New(Vector2, IWallCollisionChecker, Single, Integer, Single)
+  fullName.vb: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.New(Microsoft.Xna.Framework.Vector2, Vibe_Game.Core.Interfaces.IWallCollisionChecker, Single, Integer, Single)
+  name.vb: New(Vector2, IWallCollisionChecker, Single, Integer, Single)
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.#ctor(Microsoft.Xna.Framework.Vector2,Vibe_Game.Core.Interfaces.IWallCollisionChecker)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.#ctor(Microsoft.Xna.Framework.Vector2,Vibe_Game.Core.Interfaces.IWallCollisionChecker)
+  id: '#ctor(Microsoft.Xna.Framework.Vector2,Vibe_Game.Core.Interfaces.IWallCollisionChecker)'
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: ChasingEnemy(Vector2, IWallCollisionChecker)
+  nameWithType: ChasingEnemy.ChasingEnemy(Vector2, IWallCollisionChecker)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ChasingEnemy(Microsoft.Xna.Framework.Vector2, Vibe_Game.Core.Interfaces.IWallCollisionChecker)
+  type: Constructor
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Инициализирует преследующего врага со стандартными параметрами из конфигурации.
+  example: []
+  syntax:
+    content: public ChasingEnemy(Vector2 position, IWallCollisionChecker collision)
+    parameters:
+    - id: position
+      type: Microsoft.Xna.Framework.Vector2
+    - id: collision
+      type: Vibe_Game.Core.Interfaces.IWallCollisionChecker
+    content.vb: Public Sub New(position As Vector2, collision As IWallCollisionChecker)
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.#ctor*
+  nameWithType.vb: ChasingEnemy.New(Vector2, IWallCollisionChecker)
+  fullName.vb: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.New(Microsoft.Xna.Framework.Vector2, Vibe_Game.Core.Interfaces.IWallCollisionChecker)
+  name.vb: New(Vector2, IWallCollisionChecker)
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ResolveRecoilCollision(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ResolveRecoilCollision(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  id: ResolveRecoilCollision(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: ResolveRecoilCollision(Vector2, Vector2)
+  nameWithType: ChasingEnemy.ResolveRecoilCollision(Vector2, Vector2)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ResolveRecoilCollision(Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Vector2)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Обрабатывает столкновения со стенами при отбрасывании врага.
+  example: []
+  syntax:
+    content: protected override Vector2 ResolveRecoilCollision(Vector2 oldPos, Vector2 newPos)
+    parameters:
+    - id: oldPos
+      type: Microsoft.Xna.Framework.Vector2
+    - id: newPos
+      type: Microsoft.Xna.Framework.Vector2
+    return:
+      type: Microsoft.Xna.Framework.Vector2
+    content.vb: Protected Overrides Function ResolveRecoilCollision(oldPos As Vector2, newPos As Vector2) As Vector2
+  overridden: Vibe_Game.Gameplay.Entities.Enemies.Enemy.ResolveRecoilCollision(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ResolveRecoilCollision*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetCollisionRadius
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetCollisionRadius
+  id: GetCollisionRadius
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: GetCollisionRadius()
+  nameWithType: ChasingEnemy.GetCollisionRadius()
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetCollisionRadius()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Возвращает радиус физического хитбокса для обработки столкновений.
+  example: []
+  syntax:
+    content: protected override float GetCollisionRadius()
+    return:
+      type: System.Single
+    content.vb: Protected Overrides Function GetCollisionRadius() As Single
+  overridden: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetCollisionRadius
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetCollisionRadius*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.UpdateEnemy(Microsoft.Xna.Framework.GameTime)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.UpdateEnemy(Microsoft.Xna.Framework.GameTime)
+  id: UpdateEnemy(Microsoft.Xna.Framework.GameTime)
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: UpdateEnemy(GameTime)
+  nameWithType: ChasingEnemy.UpdateEnemy(GameTime)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.UpdateEnemy(Microsoft.Xna.Framework.GameTime)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: 'Обновляет логику поведения врага: расчет направления, движение к цели и обработку столкновений.'
+  example: []
+  syntax:
+    content: protected override void UpdateEnemy(GameTime gameTime)
+    parameters:
+    - id: gameTime
+      type: Microsoft.Xna.Framework.GameTime
+    content.vb: Protected Overrides Sub UpdateEnemy(gameTime As GameTime)
+  overridden: Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateEnemy(Microsoft.Xna.Framework.GameTime)
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.UpdateEnemy*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ResolveWallCollision(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ResolveWallCollision(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  id: ResolveWallCollision(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: ResolveWallCollision(Vector2, Vector2)
+  nameWithType: ChasingEnemy.ResolveWallCollision(Vector2, Vector2)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ResolveWallCollision(Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Vector2)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Корректирует позицию врага, предотвращая прохождение сквозь стены.
+  example: []
+  syntax:
+    content: protected Vector2 ResolveWallCollision(Vector2 oldPos, Vector2 delta)
+    parameters:
+    - id: oldPos
+      type: Microsoft.Xna.Framework.Vector2
+    - id: delta
+      type: Microsoft.Xna.Framework.Vector2
+    return:
+      type: Microsoft.Xna.Framework.Vector2
+    content.vb: Protected Function ResolveWallCollision(oldPos As Vector2, delta As Vector2) As Vector2
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ResolveWallCollision*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBodyCenter(Microsoft.Xna.Framework.Vector2)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBodyCenter(Microsoft.Xna.Framework.Vector2)
+  id: GetBodyCenter(Microsoft.Xna.Framework.Vector2)
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: GetBodyCenter(Vector2)
+  nameWithType: ChasingEnemy.GetBodyCenter(Vector2)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBodyCenter(Microsoft.Xna.Framework.Vector2)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Вычисляет центр тела врага с учетом вертикального смещения для указанной позиции.
+  example: []
+  syntax:
+    content: protected Vector2 GetBodyCenter(Vector2 basePos)
+    parameters:
+    - id: basePos
+      type: Microsoft.Xna.Framework.Vector2
+    return:
+      type: Microsoft.Xna.Framework.Vector2
+    content.vb: Protected Function GetBodyCenter(basePos As Vector2) As Vector2
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBodyCenter*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBodyCenter
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBodyCenter
+  id: GetBodyCenter
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: GetBodyCenter()
+  nameWithType: ChasingEnemy.GetBodyCenter()
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBodyCenter()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Вычисляет центр тела врага с учетом вертикального смещения для текущей позиции.
+  example: []
+  syntax:
+    content: protected Vector2 GetBodyCenter()
+    return:
+      type: Microsoft.Xna.Framework.Vector2
+    content.vb: Protected Function GetBodyCenter() As Vector2
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBodyCenter*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBounds
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBounds
+  id: GetBounds
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: GetBounds()
+  nameWithType: ChasingEnemy.GetBounds()
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBounds()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Возвращает область столкновения объекта. Используется системой коллизий и проверкой попаданий.
+  example: []
+  syntax:
+    content: public override Rectangle GetBounds()
+    return:
+      type: Microsoft.Xna.Framework.Rectangle
+    content.vb: Public Overrides Function GetBounds() As Rectangle
+  overridden: Vibe_Game.Gameplay.Entities.Entity.GetBounds
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBounds*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetAttackBounds
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetAttackBounds
+  id: GetAttackBounds
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: GetAttackBounds()
+  nameWithType: ChasingEnemy.GetAttackBounds()
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetAttackBounds()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Возвращает область нанесения контактного урона. Может отличаться от физического хитбокса врага.
+  example: []
+  syntax:
+    content: public Rectangle GetAttackBounds()
+    return:
+      type: Microsoft.Xna.Framework.Rectangle
+    content.vb: Public Function GetAttackBounds() As Rectangle
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetAttackBounds*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  id: Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: Draw(SpriteBatch)
+  nameWithType: ChasingEnemy.Draw(SpriteBatch)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Отрисовывает объект на экране. Использует текстуру, позицию и цвет сущности.
+  example: []
+  syntax:
+    content: public override void Draw(SpriteBatch spriteBatch)
+    parameters:
+    - id: spriteBatch
+      type: Microsoft.Xna.Framework.Graphics.SpriteBatch
+      description: Экземпляр SpriteBatch, используемый для отрисовки графики.
+    content.vb: Public Overrides Sub Draw(spriteBatch As SpriteBatch)
+  overridden: Vibe_Game.Gameplay.Entities.Enemies.Enemy.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.Draw*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetDebugAttackBounds
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetDebugAttackBounds
+  id: GetDebugAttackBounds
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: GetDebugAttackBounds()
+  nameWithType: ChasingEnemy.GetDebugAttackBounds()
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetDebugAttackBounds()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Возвращает хитбокс атаки для отрисовки в режиме отладки.
+  example: []
+  syntax:
+    content: protected override Rectangle? GetDebugAttackBounds()
+    return:
+      type: System.Nullable{Microsoft.Xna.Framework.Rectangle}
+    content.vb: Protected Overrides Function GetDebugAttackBounds() As Rectangle?
+  overridden: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugAttackBounds
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetDebugAttackBounds*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.EnsureSpriteConfigured
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.EnsureSpriteConfigured
+  id: EnsureSpriteConfigured
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: EnsureSpriteConfigured()
+  nameWithType: ChasingEnemy.EnsureSpriteConfigured()
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.EnsureSpriteConfigured()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Инициализирует спрайт-лист и настраивает параметры кадров анимации, если они еще не загружены.
+  example: []
+  syntax:
+    content: protected override void EnsureSpriteConfigured()
+    content.vb: Protected Overrides Sub EnsureSpriteConfigured()
+  overridden: Vibe_Game.Gameplay.Entities.Enemies.Enemy.EnsureSpriteConfigured
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.EnsureSpriteConfigured*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.UpdateAnimation(Microsoft.Xna.Framework.GameTime)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.UpdateAnimation(Microsoft.Xna.Framework.GameTime)
+  id: UpdateAnimation(Microsoft.Xna.Framework.GameTime)
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: UpdateAnimation(GameTime)
+  nameWithType: ChasingEnemy.UpdateAnimation(GameTime)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.UpdateAnimation(Microsoft.Xna.Framework.GameTime)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Обновляет таймер анимации и переключает кадры спрайта.
+  example: []
+  syntax:
+    content: protected override void UpdateAnimation(GameTime gameTime)
+    parameters:
+    - id: gameTime
+      type: Microsoft.Xna.Framework.GameTime
+    content.vb: Protected Overrides Sub UpdateAnimation(gameTime As GameTime)
+  overridden: Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateAnimation(Microsoft.Xna.Framework.GameTime)
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.UpdateAnimation*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.OnActivated
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.OnActivated
+  id: OnActivated
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: OnActivated()
+  nameWithType: ChasingEnemy.OnActivated()
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.OnActivated()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Срабатывает при активации врага в комнате, воспроизводя звук появления.
+  example: []
+  syntax:
+    content: protected override void OnActivated()
+    content.vb: Protected Overrides Sub OnActivated()
+  overridden: Vibe_Game.Gameplay.Entities.Enemies.Enemy.OnActivated
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.OnActivated*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.PlayAmbientSound
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.PlayAmbientSound
+  id: PlayAmbientSound
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: PlayAmbientSound()
+  nameWithType: ChasingEnemy.PlayAmbientSound()
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.PlayAmbientSound()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Воспроизводит фоновый звук перемещения врага.
+  example: []
+  syntax:
+    content: protected override void PlayAmbientSound()
+    content.vb: Protected Overrides Sub PlayAmbientSound()
+  overridden: Vibe_Game.Gameplay.Entities.Enemies.Enemy.PlayAmbientSound
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.PlayAmbientSound*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AnimFrameDuration
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AnimFrameDuration
+  id: AnimFrameDuration
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: AnimFrameDuration
+  nameWithType: ChasingEnemy.AnimFrameDuration
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AnimFrameDuration
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Продолжительность одного кадра анимации в секундах.
+  example: []
+  syntax:
+    content: protected virtual float AnimFrameDuration { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Protected Overridable ReadOnly Property AnimFrameDuration As Single
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AnimFrameDuration*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ChaseTarget
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ChaseTarget
+  id: ChaseTarget
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: ChaseTarget
+  nameWithType: ChasingEnemy.ChaseTarget
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ChaseTarget
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Целевая позиция (обычно позиция игрока), к которой движется враг.
+  example: []
+  syntax:
+    content: public Vector2 ChaseTarget { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Vector2
+    content.vb: Public Property ChaseTarget As Vector2
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ChaseTarget*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.BodyHitboxScale
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.BodyHitboxScale
+  id: BodyHitboxScale
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: BodyHitboxScale
+  nameWithType: ChasingEnemy.BodyHitboxScale
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.BodyHitboxScale
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Множитель масштаба для физического хитбокса тела врага.
+  example: []
+  syntax:
+    content: public float BodyHitboxScale { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property BodyHitboxScale As Single
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.BodyHitboxScale*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AttackHitboxScale
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AttackHitboxScale
+  id: AttackHitboxScale
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: AttackHitboxScale
+  nameWithType: ChasingEnemy.AttackHitboxScale
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AttackHitboxScale
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Множитель масштаба для хитбокса атаки врага.
+  example: []
+  syntax:
+    content: public float AttackHitboxScale { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property AttackHitboxScale As Single
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AttackHitboxScale*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.HitboxOffsetXFactor
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.HitboxOffsetXFactor
+  id: HitboxOffsetXFactor
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: HitboxOffsetXFactor
+  nameWithType: ChasingEnemy.HitboxOffsetXFactor
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.HitboxOffsetXFactor
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Коэффициент смещения хитбокса по оси X.
+  example: []
+  syntax:
+    content: public float HitboxOffsetXFactor { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property HitboxOffsetXFactor As Single
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.HitboxOffsetXFactor*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.HitboxOffsetYPixels
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.HitboxOffsetYPixels
+  id: HitboxOffsetYPixels
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: HitboxOffsetYPixels
+  nameWithType: ChasingEnemy.HitboxOffsetYPixels
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.HitboxOffsetYPixels
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Смещение хитбокса по оси Y в пикселях (для выравнивания относительно спрайта).
+  example: []
+  syntax:
+    content: public float HitboxOffsetYPixels { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property HitboxOffsetYPixels As Single
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.HitboxOffsetYPixels*
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AmbientSoundInterval
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AmbientSoundInterval
+  id: AmbientSoundInterval
+  parent: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy
+  langs:
+  - csharp
+  - vb
+  name: AmbientSoundInterval
+  nameWithType: ChasingEnemy.AmbientSoundInterval
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AmbientSoundInterval
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Enemies/ChasingEnemy.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Enemies
+  summary: Интервал времени между воспроизведением фоновых звуков перемещения врага.
+  example: []
+  syntax:
+    content: protected override float AmbientSoundInterval { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Protected Overrides ReadOnly Property AmbientSoundInterval As Single
+  overridden: Vibe_Game.Gameplay.Entities.Enemies.Enemy.AmbientSoundInterval
+  overload: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AmbientSoundInterval*
+references:
+- uid: Vibe_Game.Gameplay.Entities.Enemies
+  commentId: N:Vibe_Game.Gameplay.Entities.Enemies
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Gameplay.Entities.Enemies
+  nameWithType: Vibe_Game.Gameplay.Entities.Enemies
+  fullName: Vibe_Game.Gameplay.Entities.Enemies
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Enemies
+    name: Enemies
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Enemies
+    name: Enemies
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vibe_Game.Gameplay.Entities.Entity
+  commentId: T:Vibe_Game.Gameplay.Entities.Entity
+  parent: Vibe_Game.Gameplay.Entities
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html
+  name: Entity
+  nameWithType: Entity
+  fullName: Vibe_Game.Gameplay.Entities.Entity
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  commentId: T:Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  parent: Vibe_Game.Gameplay.Entities.Enemies
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html
+  name: Enemy
+  nameWithType: Enemy
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy._ambientSoundTimer
+  commentId: F:Vibe_Game.Gameplay.Entities.Enemies.Enemy._ambientSoundTimer
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy__ambientSoundTimer
+  name: _ambientSoundTimer
+  nameWithType: Enemy._ambientSoundTimer
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy._ambientSoundTimer
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.SetFloorIndex(System.Int32)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.SetFloorIndex(System.Int32)
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_SetFloorIndex_System_Int32_
+  name: SetFloorIndex(int)
+  nameWithType: Enemy.SetFloorIndex(int)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.SetFloorIndex(int)
+  nameWithType.vb: Enemy.SetFloorIndex(Integer)
+  fullName.vb: Vibe_Game.Gameplay.Entities.Enemies.Enemy.SetFloorIndex(Integer)
+  name.vb: SetFloorIndex(Integer)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.SetFloorIndex(System.Int32)
+    name: SetFloorIndex
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_SetFloorIndex_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.SetFloorIndex(System.Int32)
+    name: SetFloorIndex
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_SetFloorIndex_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.LoadSharedTextures(Microsoft.Xna.Framework.Content.ContentManager)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.LoadSharedTextures(Microsoft.Xna.Framework.Content.ContentManager)
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_LoadSharedTextures_Microsoft_Xna_Framework_Content_ContentManager_
+  name: LoadSharedTextures(ContentManager)
+  nameWithType: Enemy.LoadSharedTextures(ContentManager)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.LoadSharedTextures(Microsoft.Xna.Framework.Content.ContentManager)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.LoadSharedTextures(Microsoft.Xna.Framework.Content.ContentManager)
+    name: LoadSharedTextures
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_LoadSharedTextures_Microsoft_Xna_Framework_Content_ContentManager_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Content.ContentManager
+    name: ContentManager
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.LoadSharedTextures(Microsoft.Xna.Framework.Content.ContentManager)
+    name: LoadSharedTextures
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_LoadSharedTextures_Microsoft_Xna_Framework_Content_ContentManager_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Content.ContentManager
+    name: ContentManager
+    isExternal: true
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.Activate(System.Boolean)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.Activate(System.Boolean)
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_Activate_System_Boolean_
+  name: Activate(bool)
+  nameWithType: Enemy.Activate(bool)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.Activate(bool)
+  nameWithType.vb: Enemy.Activate(Boolean)
+  fullName.vb: Vibe_Game.Gameplay.Entities.Enemies.Enemy.Activate(Boolean)
+  name.vb: Activate(Boolean)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.Activate(System.Boolean)
+    name: Activate
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_Activate_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.Activate(System.Boolean)
+    name: Activate
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_Activate_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.TakeDamage(System.Int32)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.TakeDamage(System.Int32)
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_TakeDamage_System_Int32_
+  name: TakeDamage(int)
+  nameWithType: Enemy.TakeDamage(int)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.TakeDamage(int)
+  nameWithType.vb: Enemy.TakeDamage(Integer)
+  fullName.vb: Vibe_Game.Gameplay.Entities.Enemies.Enemy.TakeDamage(Integer)
+  name.vb: TakeDamage(Integer)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.TakeDamage(System.Int32)
+    name: TakeDamage
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_TakeDamage_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.TakeDamage(System.Int32)
+    name: TakeDamage
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_TakeDamage_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.ApplyRecoil(Microsoft.Xna.Framework.Vector2,System.Single)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.ApplyRecoil(Microsoft.Xna.Framework.Vector2,System.Single)
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_ApplyRecoil_Microsoft_Xna_Framework_Vector2_System_Single_
+  name: ApplyRecoil(Vector2, float)
+  nameWithType: Enemy.ApplyRecoil(Vector2, float)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.ApplyRecoil(Microsoft.Xna.Framework.Vector2, float)
+  nameWithType.vb: Enemy.ApplyRecoil(Vector2, Single)
+  fullName.vb: Vibe_Game.Gameplay.Entities.Enemies.Enemy.ApplyRecoil(Microsoft.Xna.Framework.Vector2, Single)
+  name.vb: ApplyRecoil(Vector2, Single)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.ApplyRecoil(Microsoft.Xna.Framework.Vector2,System.Single)
+    name: ApplyRecoil
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_ApplyRecoil_Microsoft_Xna_Framework_Vector2_System_Single_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.ApplyRecoil(Microsoft.Xna.Framework.Vector2,System.Single)
+    name: ApplyRecoil
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_ApplyRecoil_Microsoft_Xna_Framework_Vector2_System_Single_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.Update(Microsoft.Xna.Framework.GameTime)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.Update(Microsoft.Xna.Framework.GameTime)
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_Update_Microsoft_Xna_Framework_GameTime_
+  name: Update(GameTime)
+  nameWithType: Enemy.Update(GameTime)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.Update(Microsoft.Xna.Framework.GameTime)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.Update(Microsoft.Xna.Framework.GameTime)
+    name: Update
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_Update_Microsoft_Xna_Framework_GameTime_
+  - name: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.Update(Microsoft.Xna.Framework.GameTime)
+    name: Update
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_Update_Microsoft_Xna_Framework_GameTime_
+  - name: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    isExternal: true
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.PrimeSpriteConfiguration
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.PrimeSpriteConfiguration
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_PrimeSpriteConfiguration
+  name: PrimeSpriteConfiguration()
+  nameWithType: Enemy.PrimeSpriteConfiguration()
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.PrimeSpriteConfiguration()
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.PrimeSpriteConfiguration
+    name: PrimeSpriteConfiguration
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_PrimeSpriteConfiguration
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.PrimeSpriteConfiguration
+    name: PrimeSpriteConfiguration
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_PrimeSpriteConfiguration
+  - name: (
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateFacingFromDirection(Microsoft.Xna.Framework.Vector2,System.Boolean)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateFacingFromDirection(Microsoft.Xna.Framework.Vector2,System.Boolean)
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_UpdateFacingFromDirection_Microsoft_Xna_Framework_Vector2_System_Boolean_
+  name: UpdateFacingFromDirection(Vector2, bool)
+  nameWithType: Enemy.UpdateFacingFromDirection(Vector2, bool)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateFacingFromDirection(Microsoft.Xna.Framework.Vector2, bool)
+  nameWithType.vb: Enemy.UpdateFacingFromDirection(Vector2, Boolean)
+  fullName.vb: Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateFacingFromDirection(Microsoft.Xna.Framework.Vector2, Boolean)
+  name.vb: UpdateFacingFromDirection(Vector2, Boolean)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateFacingFromDirection(Microsoft.Xna.Framework.Vector2,System.Boolean)
+    name: UpdateFacingFromDirection
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_UpdateFacingFromDirection_Microsoft_Xna_Framework_Vector2_System_Boolean_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateFacingFromDirection(Microsoft.Xna.Framework.Vector2,System.Boolean)
+    name: UpdateFacingFromDirection
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_UpdateFacingFromDirection_Microsoft_Xna_Framework_Vector2_System_Boolean_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetHorizontalSpriteEffect
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetHorizontalSpriteEffect
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetHorizontalSpriteEffect
+  name: GetHorizontalSpriteEffect()
+  nameWithType: Enemy.GetHorizontalSpriteEffect()
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetHorizontalSpriteEffect()
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetHorizontalSpriteEffect
+    name: GetHorizontalSpriteEffect
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetHorizontalSpriteEffect
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetHorizontalSpriteEffect
+    name: GetHorizontalSpriteEffect
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetHorizontalSpriteEffect
+  - name: (
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetMovementDirectionWithRandomBehavior(Microsoft.Xna.Framework.Vector2,System.Single,System.Single@)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetMovementDirectionWithRandomBehavior(Microsoft.Xna.Framework.Vector2,System.Single,System.Single@)
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetMovementDirectionWithRandomBehavior_Microsoft_Xna_Framework_Vector2_System_Single_System_Single__
+  name: GetMovementDirectionWithRandomBehavior(Vector2, float, out float)
+  nameWithType: Enemy.GetMovementDirectionWithRandomBehavior(Vector2, float, out float)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetMovementDirectionWithRandomBehavior(Microsoft.Xna.Framework.Vector2, float, out float)
+  nameWithType.vb: Enemy.GetMovementDirectionWithRandomBehavior(Vector2, Single, Single)
+  fullName.vb: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetMovementDirectionWithRandomBehavior(Microsoft.Xna.Framework.Vector2, Single, Single)
+  name.vb: GetMovementDirectionWithRandomBehavior(Vector2, Single, Single)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetMovementDirectionWithRandomBehavior(Microsoft.Xna.Framework.Vector2,System.Single,System.Single@)
+    name: GetMovementDirectionWithRandomBehavior
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetMovementDirectionWithRandomBehavior_Microsoft_Xna_Framework_Vector2_System_Single_System_Single__
+  - name: (
+  - uid: Microsoft.Xna.Framework.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetMovementDirectionWithRandomBehavior(Microsoft.Xna.Framework.Vector2,System.Single,System.Single@)
+    name: GetMovementDirectionWithRandomBehavior
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetMovementDirectionWithRandomBehavior_Microsoft_Xna_Framework_Vector2_System_Single_System_Single__
+  - name: (
+  - uid: Microsoft.Xna.Framework.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.ResetRandomMovementBehavior
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.ResetRandomMovementBehavior
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_ResetRandomMovementBehavior
+  name: ResetRandomMovementBehavior()
+  nameWithType: Enemy.ResetRandomMovementBehavior()
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.ResetRandomMovementBehavior()
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.ResetRandomMovementBehavior
+    name: ResetRandomMovementBehavior
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_ResetRandomMovementBehavior
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.ResetRandomMovementBehavior
+    name: ResetRandomMovementBehavior
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_ResetRandomMovementBehavior
+  - name: (
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugBodyBounds
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugBodyBounds
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugBodyBounds
+  name: GetDebugBodyBounds()
+  nameWithType: Enemy.GetDebugBodyBounds()
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugBodyBounds()
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugBodyBounds
+    name: GetDebugBodyBounds
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugBodyBounds
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugBodyBounds
+    name: GetDebugBodyBounds
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugBodyBounds
+  - name: (
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugAggroRadius
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugAggroRadius
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugAggroRadius
+  name: GetDebugAggroRadius()
+  nameWithType: Enemy.GetDebugAggroRadius()
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugAggroRadius()
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugAggroRadius
+    name: GetDebugAggroRadius
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugAggroRadius
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugAggroRadius
+    name: GetDebugAggroRadius
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugAggroRadius
+  - name: (
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugCenter
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugCenter
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugCenter
+  name: GetDebugCenter()
+  nameWithType: Enemy.GetDebugCenter()
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugCenter()
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugCenter
+    name: GetDebugCenter
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugCenter
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugCenter
+    name: GetDebugCenter
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugCenter
+  - name: (
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.DrawDebugOverlay(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.DrawDebugOverlay(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_DrawDebugOverlay_Microsoft_Xna_Framework_Graphics_SpriteBatch_
+  name: DrawDebugOverlay(SpriteBatch)
+  nameWithType: Enemy.DrawDebugOverlay(SpriteBatch)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.DrawDebugOverlay(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.DrawDebugOverlay(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+    name: DrawDebugOverlay
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_DrawDebugOverlay_Microsoft_Xna_Framework_Graphics_SpriteBatch_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Graphics.SpriteBatch
+    name: SpriteBatch
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.DrawDebugOverlay(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+    name: DrawDebugOverlay
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_DrawDebugOverlay_Microsoft_Xna_Framework_Graphics_SpriteBatch_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Graphics.SpriteBatch
+    name: SpriteBatch
+    isExternal: true
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.Health
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.Health
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_Health
+  name: Health
+  nameWithType: Enemy.Health
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.Health
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.MaxHealth
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.MaxHealth
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_MaxHealth
+  name: MaxHealth
+  nameWithType: Enemy.MaxHealth
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.MaxHealth
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.FloorIndex
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.FloorIndex
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_FloorIndex
+  name: FloorIndex
+  nameWithType: Enemy.FloorIndex
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.FloorIndex
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RecoilResistance
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RecoilResistance
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_RecoilResistance
+  name: RecoilResistance
+  nameWithType: Enemy.RecoilResistance
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RecoilResistance
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.PenetrationRadius
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.PenetrationRadius
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_PenetrationRadius
+  name: PenetrationRadius
+  nameWithType: Enemy.PenetrationRadius
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.PenetrationRadius
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.IsActivated
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.IsActivated
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_IsActivated
+  name: IsActivated
+  nameWithType: Enemy.IsActivated
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.IsActivated
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.IsInvulnerable
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.IsInvulnerable
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_IsInvulnerable
+  name: IsInvulnerable
+  nameWithType: Enemy.IsInvulnerable
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.IsInvulnerable
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.CanDealContactDamage
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.CanDealContactDamage
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_CanDealContactDamage
+  name: CanDealContactDamage
+  nameWithType: Enemy.CanDealContactDamage
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.CanDealContactDamage
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.Facing
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.Facing
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_Facing
+  name: Facing
+  nameWithType: Enemy.Facing
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.Facing
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomBehaviorChance
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomBehaviorChance
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomBehaviorChance
+  name: RandomBehaviorChance
+  nameWithType: Enemy.RandomBehaviorChance
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomBehaviorChance
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomPauseMinDuration
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomPauseMinDuration
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomPauseMinDuration
+  name: RandomPauseMinDuration
+  nameWithType: Enemy.RandomPauseMinDuration
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomPauseMinDuration
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomPauseMaxDuration
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomPauseMaxDuration
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomPauseMaxDuration
+  name: RandomPauseMaxDuration
+  nameWithType: Enemy.RandomPauseMaxDuration
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomPauseMaxDuration
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomSideDashMinDuration
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomSideDashMinDuration
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomSideDashMinDuration
+  name: RandomSideDashMinDuration
+  nameWithType: Enemy.RandomSideDashMinDuration
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomSideDashMinDuration
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomSideDashMaxDuration
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomSideDashMaxDuration
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomSideDashMaxDuration
+  name: RandomSideDashMaxDuration
+  nameWithType: Enemy.RandomSideDashMaxDuration
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomSideDashMaxDuration
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomSideDashSpeedMultiplier
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomSideDashSpeedMultiplier
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomSideDashSpeedMultiplier
+  name: RandomSideDashSpeedMultiplier
+  nameWithType: Enemy.RandomSideDashSpeedMultiplier
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomSideDashSpeedMultiplier
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagMinDuration
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagMinDuration
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomZigzagMinDuration
+  name: RandomZigzagMinDuration
+  nameWithType: Enemy.RandomZigzagMinDuration
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagMinDuration
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagMaxDuration
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagMaxDuration
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomZigzagMaxDuration
+  name: RandomZigzagMaxDuration
+  nameWithType: Enemy.RandomZigzagMaxDuration
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagMaxDuration
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagDirectionChangeInterval
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagDirectionChangeInterval
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomZigzagDirectionChangeInterval
+  name: RandomZigzagDirectionChangeInterval
+  nameWithType: Enemy.RandomZigzagDirectionChangeInterval
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagDirectionChangeInterval
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagAmplitude
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagAmplitude
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomZigzagAmplitude
+  name: RandomZigzagAmplitude
+  nameWithType: Enemy.RandomZigzagAmplitude
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagAmplitude
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagSpeedMultiplier
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagSpeedMultiplier
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomZigzagSpeedMultiplier
+  name: RandomZigzagSpeedMultiplier
+  nameWithType: Enemy.RandomZigzagSpeedMultiplier
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomZigzagSpeedMultiplier
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitMinDuration
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitMinDuration
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomOrbitMinDuration
+  name: RandomOrbitMinDuration
+  nameWithType: Enemy.RandomOrbitMinDuration
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitMinDuration
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitMaxDuration
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitMaxDuration
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomOrbitMaxDuration
+  name: RandomOrbitMaxDuration
+  nameWithType: Enemy.RandomOrbitMaxDuration
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitMaxDuration
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitInwardWeight
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitInwardWeight
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomOrbitInwardWeight
+  name: RandomOrbitInwardWeight
+  nameWithType: Enemy.RandomOrbitInwardWeight
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitInwardWeight
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitLateralWeight
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitLateralWeight
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomOrbitLateralWeight
+  name: RandomOrbitLateralWeight
+  nameWithType: Enemy.RandomOrbitLateralWeight
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitLateralWeight
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitSpeedMultiplier
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitSpeedMultiplier
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_RandomOrbitSpeedMultiplier
+  name: RandomOrbitSpeedMultiplier
+  nameWithType: Enemy.RandomOrbitSpeedMultiplier
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomOrbitSpeedMultiplier
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedDeathTexture
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedDeathTexture
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_SharedDeathTexture
+  name: SharedDeathTexture
+  nameWithType: Enemy.SharedDeathTexture
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedDeathTexture
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedBossTexture
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedBossTexture
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_SharedBossTexture
+  name: SharedBossTexture
+  nameWithType: Enemy.SharedBossTexture
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedBossTexture
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedFlyingTexture
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedFlyingTexture
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_SharedFlyingTexture
+  name: SharedFlyingTexture
+  nameWithType: Enemy.SharedFlyingTexture
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedFlyingTexture
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedChasingTexture
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedChasingTexture
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_SharedChasingTexture
+  name: SharedChasingTexture
+  nameWithType: Enemy.SharedChasingTexture
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedChasingTexture
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedAdaptiveTexture
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedAdaptiveTexture
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_SharedAdaptiveTexture
+  name: SharedAdaptiveTexture
+  nameWithType: Enemy.SharedAdaptiveTexture
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.SharedAdaptiveTexture
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.ActivationSkippedDelay
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.ActivationSkippedDelay
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_ActivationSkippedDelay
+  name: ActivationSkippedDelay
+  nameWithType: Enemy.ActivationSkippedDelay
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.ActivationSkippedDelay
+- uid: Vibe_Game.Gameplay.Entities.Entity.Origin
+  commentId: F:Vibe_Game.Gameplay.Entities.Entity.Origin
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Origin
+  name: Origin
+  nameWithType: Entity.Origin
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Origin
+- uid: Vibe_Game.Gameplay.Entities.Entity.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+  commentId: M:Vibe_Game.Gameplay.Entities.Entity.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_LoadContent_Microsoft_Xna_Framework_Content_ContentManager_
+  name: LoadContent(ContentManager)
+  nameWithType: Entity.LoadContent(ContentManager)
+  fullName: Vibe_Game.Gameplay.Entities.Entity.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Entity.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+    name: LoadContent
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_LoadContent_Microsoft_Xna_Framework_Content_ContentManager_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Content.ContentManager
+    name: ContentManager
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Entity.LoadContent(Microsoft.Xna.Framework.Content.ContentManager)
+    name: LoadContent
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_LoadContent_Microsoft_Xna_Framework_Content_ContentManager_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Content.ContentManager
+    name: ContentManager
+    isExternal: true
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Entity.Position
+  commentId: P:Vibe_Game.Gameplay.Entities.Entity.Position
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Position
+  name: Position
+  nameWithType: Entity.Position
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Position
+- uid: Vibe_Game.Gameplay.Entities.Entity.Velocity
+  commentId: P:Vibe_Game.Gameplay.Entities.Entity.Velocity
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Velocity
+  name: Velocity
+  nameWithType: Entity.Velocity
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Velocity
+- uid: Vibe_Game.Gameplay.Entities.Entity.IsAlive
+  commentId: P:Vibe_Game.Gameplay.Entities.Entity.IsAlive
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_IsAlive
+  name: IsAlive
+  nameWithType: Entity.IsAlive
+  fullName: Vibe_Game.Gameplay.Entities.Entity.IsAlive
+- uid: Vibe_Game.Gameplay.Entities.Entity.Texture
+  commentId: P:Vibe_Game.Gameplay.Entities.Entity.Texture
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Texture
+  name: Texture
+  nameWithType: Entity.Texture
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Texture
+- uid: Vibe_Game.Gameplay.Entities.Entity.Color
+  commentId: P:Vibe_Game.Gameplay.Entities.Entity.Color
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Color
+  name: Color
+  nameWithType: Entity.Color
+  fullName: Vibe_Game.Gameplay.Entities.Entity.Color
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vibe_Game.Gameplay.Entities
+  commentId: N:Vibe_Game.Gameplay.Entities
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Gameplay.Entities
+  nameWithType: Vibe_Game.Gameplay.Entities
+  fullName: Vibe_Game.Gameplay.Entities
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Microsoft.Xna.Framework.Graphics.Texture2D
+  commentId: T:Microsoft.Xna.Framework.Graphics.Texture2D
+  parent: Microsoft.Xna.Framework.Graphics
+  isExternal: true
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: Microsoft.Xna.Framework.Graphics.Texture2D
+- uid: Microsoft.Xna.Framework.Graphics
+  commentId: N:Microsoft.Xna.Framework.Graphics
+  isExternal: true
+  name: Microsoft.Xna.Framework.Graphics
+  nameWithType: Microsoft.Xna.Framework.Graphics
+  fullName: Microsoft.Xna.Framework.Graphics
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework.Graphics
+    name: Graphics
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework.Graphics
+    name: Graphics
+    isExternal: true
+- uid: Microsoft.Xna.Framework.Rectangle
+  commentId: T:Microsoft.Xna.Framework.Rectangle
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Rectangle
+  nameWithType: Rectangle
+  fullName: Microsoft.Xna.Framework.Rectangle
+- uid: Microsoft.Xna.Framework
+  commentId: N:Microsoft.Xna.Framework
+  isExternal: true
+  name: Microsoft.Xna.Framework
+  nameWithType: Microsoft.Xna.Framework
+  fullName: Microsoft.Xna.Framework
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.#ctor*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.#ctor
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy__ctor_Microsoft_Xna_Framework_Vector2_Vibe_Game_Core_Interfaces_IWallCollisionChecker_System_Single_System_Int32_System_Single_
+  name: ChasingEnemy
+  nameWithType: ChasingEnemy.ChasingEnemy
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ChasingEnemy
+  nameWithType.vb: ChasingEnemy.New
+  fullName.vb: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.New
+  name.vb: New
+- uid: Microsoft.Xna.Framework.Vector2
+  commentId: T:Microsoft.Xna.Framework.Vector2
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Microsoft.Xna.Framework.Vector2
+- uid: Vibe_Game.Core.Interfaces.IWallCollisionChecker
+  commentId: T:Vibe_Game.Core.Interfaces.IWallCollisionChecker
+  parent: Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IWallCollisionChecker.html
+  name: IWallCollisionChecker
+  nameWithType: IWallCollisionChecker
+  fullName: Vibe_Game.Core.Interfaces.IWallCollisionChecker
+- uid: Vibe_Game.Core.Interfaces
+  commentId: N:Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Core.Interfaces
+  nameWithType: Vibe_Game.Core.Interfaces
+  fullName: Vibe_Game.Core.Interfaces
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Interfaces
+    name: Interfaces
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Interfaces
+    name: Interfaces
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.html
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.ResolveRecoilCollision(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.ResolveRecoilCollision(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_ResolveRecoilCollision_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_
+  name: ResolveRecoilCollision(Vector2, Vector2)
+  nameWithType: Enemy.ResolveRecoilCollision(Vector2, Vector2)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.ResolveRecoilCollision(Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Vector2)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.ResolveRecoilCollision(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+    name: ResolveRecoilCollision
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_ResolveRecoilCollision_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Xna.Framework.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.ResolveRecoilCollision(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
+    name: ResolveRecoilCollision
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_ResolveRecoilCollision_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Vector2
+    name: Vector2
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Xna.Framework.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ResolveRecoilCollision*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ResolveRecoilCollision
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_ResolveRecoilCollision_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_
+  name: ResolveRecoilCollision
+  nameWithType: ChasingEnemy.ResolveRecoilCollision
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ResolveRecoilCollision
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetCollisionRadius
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetCollisionRadius
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetCollisionRadius
+  name: GetCollisionRadius()
+  nameWithType: Enemy.GetCollisionRadius()
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetCollisionRadius()
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetCollisionRadius
+    name: GetCollisionRadius
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetCollisionRadius
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetCollisionRadius
+    name: GetCollisionRadius
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetCollisionRadius
+  - name: (
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetCollisionRadius*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetCollisionRadius
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_GetCollisionRadius
+  name: GetCollisionRadius
+  nameWithType: ChasingEnemy.GetCollisionRadius
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetCollisionRadius
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateEnemy(Microsoft.Xna.Framework.GameTime)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateEnemy(Microsoft.Xna.Framework.GameTime)
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_UpdateEnemy_Microsoft_Xna_Framework_GameTime_
+  name: UpdateEnemy(GameTime)
+  nameWithType: Enemy.UpdateEnemy(GameTime)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateEnemy(Microsoft.Xna.Framework.GameTime)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateEnemy(Microsoft.Xna.Framework.GameTime)
+    name: UpdateEnemy
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_UpdateEnemy_Microsoft_Xna_Framework_GameTime_
+  - name: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateEnemy(Microsoft.Xna.Framework.GameTime)
+    name: UpdateEnemy
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_UpdateEnemy_Microsoft_Xna_Framework_GameTime_
+  - name: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    isExternal: true
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.UpdateEnemy*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.UpdateEnemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_UpdateEnemy_Microsoft_Xna_Framework_GameTime_
+  name: UpdateEnemy
+  nameWithType: ChasingEnemy.UpdateEnemy
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.UpdateEnemy
+- uid: Microsoft.Xna.Framework.GameTime
+  commentId: T:Microsoft.Xna.Framework.GameTime
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: GameTime
+  nameWithType: GameTime
+  fullName: Microsoft.Xna.Framework.GameTime
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ResolveWallCollision*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ResolveWallCollision
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_ResolveWallCollision_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_
+  name: ResolveWallCollision
+  nameWithType: ChasingEnemy.ResolveWallCollision
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ResolveWallCollision
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBodyCenter*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBodyCenter
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_GetBodyCenter_Microsoft_Xna_Framework_Vector2_
+  name: GetBodyCenter
+  nameWithType: ChasingEnemy.GetBodyCenter
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBodyCenter
+- uid: Vibe_Game.Gameplay.Entities.Entity.GetBounds
+  commentId: M:Vibe_Game.Gameplay.Entities.Entity.GetBounds
+  parent: Vibe_Game.Gameplay.Entities.Entity
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_GetBounds
+  name: GetBounds()
+  nameWithType: Entity.GetBounds()
+  fullName: Vibe_Game.Gameplay.Entities.Entity.GetBounds()
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Entity.GetBounds
+    name: GetBounds
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_GetBounds
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Entity.GetBounds
+    name: GetBounds
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_GetBounds
+  - name: (
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBounds*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBounds
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_GetBounds
+  name: GetBounds
+  nameWithType: ChasingEnemy.GetBounds
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetBounds
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetAttackBounds*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetAttackBounds
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_GetAttackBounds
+  name: GetAttackBounds
+  nameWithType: ChasingEnemy.GetAttackBounds
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetAttackBounds
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_
+  name: Draw(SpriteBatch)
+  nameWithType: Enemy.Draw(SpriteBatch)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+    name: Draw
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Graphics.SpriteBatch
+    name: SpriteBatch
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)
+    name: Draw
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_
+  - name: (
+  - uid: Microsoft.Xna.Framework.Graphics.SpriteBatch
+    name: SpriteBatch
+    isExternal: true
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.Draw*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.Draw
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_
+  name: Draw
+  nameWithType: ChasingEnemy.Draw
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.Draw
+- uid: Microsoft.Xna.Framework.Graphics.SpriteBatch
+  commentId: T:Microsoft.Xna.Framework.Graphics.SpriteBatch
+  parent: Microsoft.Xna.Framework.Graphics
+  isExternal: true
+  name: SpriteBatch
+  nameWithType: SpriteBatch
+  fullName: Microsoft.Xna.Framework.Graphics.SpriteBatch
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugAttackBounds
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugAttackBounds
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugAttackBounds
+  name: GetDebugAttackBounds()
+  nameWithType: Enemy.GetDebugAttackBounds()
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugAttackBounds()
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugAttackBounds
+    name: GetDebugAttackBounds
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugAttackBounds
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.GetDebugAttackBounds
+    name: GetDebugAttackBounds
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_GetDebugAttackBounds
+  - name: (
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetDebugAttackBounds*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetDebugAttackBounds
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_GetDebugAttackBounds
+  name: GetDebugAttackBounds
+  nameWithType: ChasingEnemy.GetDebugAttackBounds
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.GetDebugAttackBounds
+- uid: System.Nullable{Microsoft.Xna.Framework.Rectangle}
+  commentId: T:System.Nullable{Microsoft.Xna.Framework.Rectangle}
+  parent: System
+  definition: System.Nullable`1
+  name: Rectangle?
+  nameWithType: Rectangle?
+  fullName: Microsoft.Xna.Framework.Rectangle?
+  spec.csharp:
+  - uid: Microsoft.Xna.Framework.Rectangle
+    name: Rectangle
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: Microsoft.Xna.Framework.Rectangle
+    name: Rectangle
+    isExternal: true
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.EnsureSpriteConfigured
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.EnsureSpriteConfigured
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_EnsureSpriteConfigured
+  name: EnsureSpriteConfigured()
+  nameWithType: Enemy.EnsureSpriteConfigured()
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.EnsureSpriteConfigured()
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.EnsureSpriteConfigured
+    name: EnsureSpriteConfigured
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_EnsureSpriteConfigured
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.EnsureSpriteConfigured
+    name: EnsureSpriteConfigured
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_EnsureSpriteConfigured
+  - name: (
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.EnsureSpriteConfigured*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.EnsureSpriteConfigured
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_EnsureSpriteConfigured
+  name: EnsureSpriteConfigured
+  nameWithType: ChasingEnemy.EnsureSpriteConfigured
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.EnsureSpriteConfigured
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateAnimation(Microsoft.Xna.Framework.GameTime)
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateAnimation(Microsoft.Xna.Framework.GameTime)
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_UpdateAnimation_Microsoft_Xna_Framework_GameTime_
+  name: UpdateAnimation(GameTime)
+  nameWithType: Enemy.UpdateAnimation(GameTime)
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateAnimation(Microsoft.Xna.Framework.GameTime)
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateAnimation(Microsoft.Xna.Framework.GameTime)
+    name: UpdateAnimation
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_UpdateAnimation_Microsoft_Xna_Framework_GameTime_
+  - name: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateAnimation(Microsoft.Xna.Framework.GameTime)
+    name: UpdateAnimation
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_UpdateAnimation_Microsoft_Xna_Framework_GameTime_
+  - name: (
+  - uid: Microsoft.Xna.Framework.GameTime
+    name: GameTime
+    isExternal: true
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.UpdateAnimation*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.UpdateAnimation
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_UpdateAnimation_Microsoft_Xna_Framework_GameTime_
+  name: UpdateAnimation
+  nameWithType: ChasingEnemy.UpdateAnimation
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.UpdateAnimation
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.OnActivated
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.OnActivated
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_OnActivated
+  name: OnActivated()
+  nameWithType: Enemy.OnActivated()
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.OnActivated()
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.OnActivated
+    name: OnActivated
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_OnActivated
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.OnActivated
+    name: OnActivated
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_OnActivated
+  - name: (
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.OnActivated*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.OnActivated
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_OnActivated
+  name: OnActivated
+  nameWithType: ChasingEnemy.OnActivated
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.OnActivated
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.PlayAmbientSound
+  commentId: M:Vibe_Game.Gameplay.Entities.Enemies.Enemy.PlayAmbientSound
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_PlayAmbientSound
+  name: PlayAmbientSound()
+  nameWithType: Enemy.PlayAmbientSound()
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.PlayAmbientSound()
+  spec.csharp:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.PlayAmbientSound
+    name: PlayAmbientSound
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_PlayAmbientSound
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.PlayAmbientSound
+    name: PlayAmbientSound
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_PlayAmbientSound
+  - name: (
+  - name: )
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.PlayAmbientSound*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.PlayAmbientSound
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_PlayAmbientSound
+  name: PlayAmbientSound
+  nameWithType: ChasingEnemy.PlayAmbientSound
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.PlayAmbientSound
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AnimFrameDuration*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AnimFrameDuration
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_AnimFrameDuration
+  name: AnimFrameDuration
+  nameWithType: ChasingEnemy.AnimFrameDuration
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AnimFrameDuration
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ChaseTarget*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ChaseTarget
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_ChaseTarget
+  name: ChaseTarget
+  nameWithType: ChasingEnemy.ChaseTarget
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.ChaseTarget
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.BodyHitboxScale*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.BodyHitboxScale
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_BodyHitboxScale
+  name: BodyHitboxScale
+  nameWithType: ChasingEnemy.BodyHitboxScale
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.BodyHitboxScale
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AttackHitboxScale*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AttackHitboxScale
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_AttackHitboxScale
+  name: AttackHitboxScale
+  nameWithType: ChasingEnemy.AttackHitboxScale
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AttackHitboxScale
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.HitboxOffsetXFactor*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.HitboxOffsetXFactor
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_HitboxOffsetXFactor
+  name: HitboxOffsetXFactor
+  nameWithType: ChasingEnemy.HitboxOffsetXFactor
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.HitboxOffsetXFactor
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.HitboxOffsetYPixels*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.HitboxOffsetYPixels
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_HitboxOffsetYPixels
+  name: HitboxOffsetYPixels
+  nameWithType: ChasingEnemy.HitboxOffsetYPixels
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.HitboxOffsetYPixels
+- uid: Vibe_Game.Gameplay.Entities.Enemies.Enemy.AmbientSoundInterval
+  commentId: P:Vibe_Game.Gameplay.Entities.Enemies.Enemy.AmbientSoundInterval
+  parent: Vibe_Game.Gameplay.Entities.Enemies.Enemy
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.Enemy.html#Vibe_Game_Gameplay_Entities_Enemies_Enemy_AmbientSoundInterval
+  name: AmbientSoundInterval
+  nameWithType: Enemy.AmbientSoundInterval
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.Enemy.AmbientSoundInterval
+- uid: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AmbientSoundInterval*
+  commentId: Overload:Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AmbientSoundInterval
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html#Vibe_Game_Gameplay_Entities_Enemies_ChasingEnemy_AmbientSoundInterval
+  name: AmbientSoundInterval
+  nameWithType: ChasingEnemy.AmbientSoundInterval
+  fullName: Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.AmbientSoundInterval

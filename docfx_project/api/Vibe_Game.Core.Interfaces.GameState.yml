@@ -1,0 +1,162 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Core.Interfaces.GameState
+  commentId: T:Vibe_Game.Core.Interfaces.GameState
+  id: GameState
+  parent: Vibe_Game.Core.Interfaces
+  children:
+  - Vibe_Game.Core.Interfaces.GameState.GameOver
+  - Vibe_Game.Core.Interfaces.GameState.Menu
+  - Vibe_Game.Core.Interfaces.GameState.Paused
+  - Vibe_Game.Core.Interfaces.GameState.Playing
+  langs:
+  - csharp
+  - vb
+  name: GameState
+  nameWithType: GameState
+  fullName: Vibe_Game.Core.Interfaces.GameState
+  type: Enum
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Interfaces/IGameStateService.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Interfaces
+  summary: Перечисление возможных состояний игрового цикла.
+  example: []
+  syntax:
+    content: public enum GameState
+    content.vb: Public Enum GameState
+- uid: Vibe_Game.Core.Interfaces.GameState.Menu
+  commentId: F:Vibe_Game.Core.Interfaces.GameState.Menu
+  id: Menu
+  parent: Vibe_Game.Core.Interfaces.GameState
+  langs:
+  - csharp
+  - vb
+  name: Menu
+  nameWithType: GameState.Menu
+  fullName: Vibe_Game.Core.Interfaces.GameState.Menu
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Interfaces/IGameStateService.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Interfaces
+  summary: Главное меню или экран выбора.
+  example: []
+  syntax:
+    content: Menu = 0
+    return:
+      type: Vibe_Game.Core.Interfaces.GameState
+- uid: Vibe_Game.Core.Interfaces.GameState.Playing
+  commentId: F:Vibe_Game.Core.Interfaces.GameState.Playing
+  id: Playing
+  parent: Vibe_Game.Core.Interfaces.GameState
+  langs:
+  - csharp
+  - vb
+  name: Playing
+  nameWithType: GameState.Playing
+  fullName: Vibe_Game.Core.Interfaces.GameState.Playing
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Interfaces/IGameStateService.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Interfaces
+  summary: Активный игровой процесс.
+  example: []
+  syntax:
+    content: Playing = 1
+    return:
+      type: Vibe_Game.Core.Interfaces.GameState
+- uid: Vibe_Game.Core.Interfaces.GameState.Paused
+  commentId: F:Vibe_Game.Core.Interfaces.GameState.Paused
+  id: Paused
+  parent: Vibe_Game.Core.Interfaces.GameState
+  langs:
+  - csharp
+  - vb
+  name: Paused
+  nameWithType: GameState.Paused
+  fullName: Vibe_Game.Core.Interfaces.GameState.Paused
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Interfaces/IGameStateService.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Interfaces
+  summary: Игра приостановлена.
+  example: []
+  syntax:
+    content: Paused = 2
+    return:
+      type: Vibe_Game.Core.Interfaces.GameState
+- uid: Vibe_Game.Core.Interfaces.GameState.GameOver
+  commentId: F:Vibe_Game.Core.Interfaces.GameState.GameOver
+  id: GameOver
+  parent: Vibe_Game.Core.Interfaces.GameState
+  langs:
+  - csharp
+  - vb
+  name: GameOver
+  nameWithType: GameState.GameOver
+  fullName: Vibe_Game.Core.Interfaces.GameState.GameOver
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Interfaces/IGameStateService.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Interfaces
+  summary: Экран проигрыша или завершения сессии.
+  example: []
+  syntax:
+    content: GameOver = 3
+    return:
+      type: Vibe_Game.Core.Interfaces.GameState
+references:
+- uid: Vibe_Game.Core.Interfaces
+  commentId: N:Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Core.Interfaces
+  nameWithType: Vibe_Game.Core.Interfaces
+  fullName: Vibe_Game.Core.Interfaces
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Interfaces
+    name: Interfaces
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Interfaces
+    name: Interfaces
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.html
+- uid: Vibe_Game.Core.Interfaces.GameState
+  commentId: T:Vibe_Game.Core.Interfaces.GameState
+  parent: Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: Vibe_Game.Core.Interfaces.GameState

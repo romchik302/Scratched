@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IWeapon </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IWeapon ">
+      
+      <meta name="description" content="Определяет контракт для игрового оружия, управляющего логикой атаки, обновлением состояния и визуальным отображением.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vibe_Game.Gameplay.Weapons.IWeapon">
+
+
+
+  <h1 id="Vibe_Game_Gameplay_Weapons_IWeapon" data-uid="Vibe_Game.Gameplay.Weapons.IWeapon" class="text-break">
+Interface IWeapon  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/IWeapon.cs"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vibe_Game.html">Vibe_Game</a>.<a class="xref" href="Vibe_Game.Gameplay.html">Gameplay</a>.<a class="xref" href="Vibe_Game.Gameplay.Weapons.html">Weapons</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Vibe_Game.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Определяет контракт для игрового оружия, управляющего логикой атаки, обновлением состояния и визуальным отображением.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IWeapon</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vibe_Game_Gameplay_Weapons_IWeapon_BaseRecoil_" data-uid="Vibe_Game.Gameplay.Weapons.IWeapon.BaseRecoil*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Weapons_IWeapon_BaseRecoil" data-uid="Vibe_Game.Gameplay.Weapons.IWeapon.BaseRecoil">
+  BaseRecoil
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/IWeapon.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Базовая отдача оружия (сила толчка в обратную сторону от направления атаки).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float BaseRecoil { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Weapons_IWeapon_DisplayName_" data-uid="Vibe_Game.Gameplay.Weapons.IWeapon.DisplayName*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Weapons_IWeapon_DisplayName" data-uid="Vibe_Game.Gameplay.Weapons.IWeapon.DisplayName">
+  DisplayName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/IWeapon.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Имя для UI/отладки.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string DisplayName { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Weapons_IWeapon_FireMode_" data-uid="Vibe_Game.Gameplay.Weapons.IWeapon.FireMode*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Weapons_IWeapon_FireMode" data-uid="Vibe_Game.Gameplay.Weapons.IWeapon.FireMode">
+  FireMode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/IWeapon.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Когда именно вызывать <a class="xref" href="Vibe_Game.Gameplay.Weapons.IWeapon.html#Vibe_Game_Gameplay_Weapons_IWeapon_TryPrimaryAttack_IAttackContext_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_">TryPrimaryAttack(IAttackContext, Vector2, Vector2)</a> из игрока.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">WeaponFireMode FireMode { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vibe_Game.Gameplay.Weapons.WeaponFireMode.html">WeaponFireMode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vibe_Game_Gameplay_Weapons_IWeapon_Draw_" data-uid="Vibe_Game.Gameplay.Weapons.IWeapon.Draw*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Weapons_IWeapon_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_IAttackContext_" data-uid="Vibe_Game.Gameplay.Weapons.IWeapon.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,IAttackContext)">
+  Draw(SpriteBatch, IAttackContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/IWeapon.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Отрисовывает визуальные элементы, спрайты или графические эффекты оружия в игровом мире.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Draw(SpriteBatch spriteBatch, IAttackContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>spriteBatch</code> <span class="xref">SpriteBatch</span></dt>
+    <dd><p>Пакет спрайтов для графического вывода.</p>
+</dd>
+    <dt><code>context</code> <a class="xref" href="IAttackContext.html">IAttackContext</a></dt>
+    <dd><p>Контекст боевой системы.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Weapons_IWeapon_TryPrimaryAttack_" data-uid="Vibe_Game.Gameplay.Weapons.IWeapon.TryPrimaryAttack*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Weapons_IWeapon_TryPrimaryAttack_IAttackContext_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_" data-uid="Vibe_Game.Gameplay.Weapons.IWeapon.TryPrimaryAttack(IAttackContext,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)">
+  TryPrimaryAttack(IAttackContext, Vector2, Vector2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/IWeapon.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Пытается выполнить основную атаку оружия из указанной позиции в заданном направлении.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryPrimaryAttack(IAttackContext context, Vector2 ownerPosition, Vector2 facingDirection)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="IAttackContext.html">IAttackContext</a></dt>
+    <dd><p>Контекст боевой системы для регистрации попаданий или спавна снарядов.</p>
+</dd>
+    <dt><code>ownerPosition</code> <span class="xref">Vector2</span></dt>
+    <dd><p>Позиция владельца оружия в мировых координатах.</p>
+</dd>
+    <dt><code>facingDirection</code> <span class="xref">Vector2</span></dt>
+    <dd><p>Вектор направления атаки.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Значение <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, если атака была успешно произведена; иначе — <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Weapons_IWeapon_Update_" data-uid="Vibe_Game.Gameplay.Weapons.IWeapon.Update*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Weapons_IWeapon_Update_Microsoft_Xna_Framework_GameTime_IAttackContext_" data-uid="Vibe_Game.Gameplay.Weapons.IWeapon.Update(Microsoft.Xna.Framework.GameTime,IAttackContext)">
+  Update(GameTime, IAttackContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/IWeapon.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Обновляет внутреннее состояние оружия, включая таймеры перезарядки и логику работы механизмов.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Update(GameTime gameTime, IAttackContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gameTime</code> <span class="xref">GameTime</span></dt>
+    <dd><p>Текущее игровое время.</p>
+</dd>
+    <dt><code>context</code> <a class="xref" href="IAttackContext.html">IAttackContext</a></dt>
+    <dd><p>Контекст выполнения боевых действий и взаимодействия с миром.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Weapons/IWeapon.cs" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

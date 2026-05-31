@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class CollectableEntity </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class CollectableEntity ">
+      
+      <meta name="description" content="Предмет на пьедестале: управляет анимацией покачивания в покое, анимацией подбора и применением эффектов.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity">
+
+
+
+  <h1 id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity" class="text-break">
+Class CollectableEntity  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableEntity.cs"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vibe_Game.html">Vibe_Game</a>.<a class="xref" href="Vibe_Game.Gameplay.html">Gameplay</a>.<a class="xref" href="Vibe_Game.Gameplay.Entities.html">Entities</a>.<a class="xref" href="Vibe_Game.Gameplay.Entities.Collectables.html">Collectables</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Vibe_Game.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Предмет на пьедестале: управляет анимацией покачивания в покое, анимацией подбора и применением эффектов.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class CollectableEntity : Entity</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Vibe_Game.Gameplay.Entities.Entity.html">Entity</a></div>
+      <div><span class="xref">CollectableEntity</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Draw_Microsoft_Xna_Framework_Graphics_SpriteBatch_">Entity.Draw(SpriteBatch)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_LoadContent_Microsoft_Xna_Framework_Content_ContentManager_">Entity.LoadContent(ContentManager)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_GetBounds">Entity.GetBounds()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Position">Entity.Position</a>
+    </div>
+    <div>
+      <a class="xref" href="Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_Velocity">Entity.Velocity</a>
+    </div>
+    <div>
+      <a class="xref" href="Vibe_Game.Gameplay.Entities.Entity.html#Vibe_Game_Gameplay_Entities_Entity_IsAlive">Entity.IsAlive</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity__ctor_" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.#ctor*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity__ctor_Microsoft_Xna_Framework_Point_Vibe_Game_Gameplay_Entities_Collectables_CollectableKind_" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.#ctor(Microsoft.Xna.Framework.Point,Vibe_Game.Gameplay.Entities.Collectables.CollectableKind)">
+  CollectableEntity(Point, CollectableKind)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableEntity.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Инициализирует новый экземпляр класса CollectableEntity.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CollectableEntity(Point tilePositionInRoom, CollectableKind kind)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tilePositionInRoom</code> <span class="xref">Point</span></dt>
+    <dd><p>Позиция плитки в комнате, где находится предмет.</p>
+</dd>
+    <dt><code>kind</code> <a class="xref" href="Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.html">CollectableKind</a></dt>
+    <dd><p>Тип предмета (определяет его визуальный ряд и эффект).</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_IsPedestalGone_" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.IsPedestalGone*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_IsPedestalGone" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.IsPedestalGone">
+  IsPedestalGone
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableEntity.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Указывает, был ли предмет полностью поглощен (анимация подбора завершена).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsPedestalGone { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_Kind_" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.Kind*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_Kind" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.Kind">
+  Kind
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableEntity.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CollectableKind Kind { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.html">CollectableKind</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_PedestalBobOffsetY_" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.PedestalBobOffsetY*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_PedestalBobOffsetY" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.PedestalBobOffsetY">
+  PedestalBobOffsetY
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableEntity.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Текущее вертикальное смещение предмета (эффект «парения» над пьедесталом).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float PedestalBobOffsetY { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_PedestalIdleFrameIndex_" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.PedestalIdleFrameIndex*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_PedestalIdleFrameIndex" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.PedestalIdleFrameIndex">
+  PedestalIdleFrameIndex
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableEntity.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Индекс текущего кадра анимации предмета.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PedestalIdleFrameIndex { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_TilePositionInRoom_" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.TilePositionInRoom*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_TilePositionInRoom" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.TilePositionInRoom">
+  TilePositionInRoom
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableEntity.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Point TilePositionInRoom { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Point</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_VisualAlpha_" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.VisualAlpha*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_VisualAlpha" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.VisualAlpha">
+  VisualAlpha
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableEntity.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Текущая прозрачность предмета. Используется для плавной анимации исчезновения (1 → 0).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float VisualAlpha { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_VisualScale_" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.VisualScale*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_VisualScale" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.VisualScale">
+  VisualScale
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableEntity.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Масштаб и альфа для совместной отрисовки с пьедесталом (1 → 0).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float VisualScale { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_ApplyEffect_" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.ApplyEffect*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_ApplyEffect_Vibe_Game_Gameplay_Entities_Player_Player_" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.ApplyEffect(Vibe_Game.Gameplay.Entities.Player.Player)">
+  ApplyEffect(Player)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableEntity.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Применяет баффы или эффекты предмета к статистике игрока.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ApplyEffect(Player player)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>player</code> <a class="xref" href="Vibe_Game.Gameplay.Entities.Player.Player.html">Player</a></dt>
+    <dd><p>Экземпляр игрока, на которого применяется эффект.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_DrawOnPedestal_" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.DrawOnPedestal*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_DrawOnPedestal_Microsoft_Xna_Framework_Graphics_SpriteBatch_Vibe_Game_Gameplay_Entities_Collectables_CollectibleVisualCache_Microsoft_Xna_Framework_Graphics_Texture2D_Microsoft_Xna_Framework_Rectangle_" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.DrawOnPedestal(Microsoft.Xna.Framework.Graphics.SpriteBatch,Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Rectangle)">
+  DrawOnPedestal(SpriteBatch, CollectibleVisualCache, Texture2D, Rectangle)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableEntity.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Отрисовывает предмет над пьедесталом с учетом текущей анимации.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DrawOnPedestal(SpriteBatch spriteBatch, CollectibleVisualCache visuals, Texture2D pixel, Rectangle tileBounds)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>spriteBatch</code> <span class="xref">SpriteBatch</span></dt>
+    <dd><p>Экземпляр SpriteBatch для отрисовки.</p>
+</dd>
+    <dt><code>visuals</code> <a class="xref" href="Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache.html">CollectibleVisualCache</a></dt>
+    <dd><p>Кэш текстур для получения нужного кадра анимации.</p>
+</dd>
+    <dt><code>pixel</code> <span class="xref">Texture2D</span></dt>
+    <dd><p>Текстура пикселя 1x1 для отрисовки частиц (spark).</p>
+</dd>
+    <dt><code>tileBounds</code> <span class="xref">Rectangle</span></dt>
+    <dd><p>Область плитки, на которой стоит пьедестал.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_GetWorldPickupBounds_" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.GetWorldPickupBounds*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_GetWorldPickupBounds_Microsoft_Xna_Framework_Point_" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.GetWorldPickupBounds(Microsoft.Xna.Framework.Point)">
+  GetWorldPickupBounds(Point)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableEntity.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Вычисляет хитбокс предмета в мировых координатах для обработки подбора.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rectangle GetWorldPickupBounds(Point roomGrid)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>roomGrid</code> <span class="xref">Point</span></dt>
+    <dd><p>Координаты комнаты в сетке мира.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Rectangle</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_TryBeginPickupIfOverlapping_" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.TryBeginPickupIfOverlapping*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_TryBeginPickupIfOverlapping_Microsoft_Xna_Framework_Rectangle_Microsoft_Xna_Framework_Point_" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.TryBeginPickupIfOverlapping(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Point)">
+  TryBeginPickupIfOverlapping(Rectangle, Point)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableEntity.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Проверяет пересечение с игроком и запускает анимацию подбора.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryBeginPickupIfOverlapping(Rectangle playerBounds, Point roomGrid)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>playerBounds</code> <span class="xref">Rectangle</span></dt>
+    <dd><p>Хитбокс игрока для проверки коллизии.</p>
+</dd>
+    <dt><code>roomGrid</code> <span class="xref">Point</span></dt>
+    <dd><p>Координаты комнаты в сетке мира для вычисления абсолютной позиции.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_Update_" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.Update*"></a>
+
+  <h3 id="Vibe_Game_Gameplay_Entities_Collectables_CollectableEntity_Update_Microsoft_Xna_Framework_GameTime_" data-uid="Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.Update(Microsoft.Xna.Framework.GameTime)">
+  Update(GameTime)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableEntity.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Обновляет состояние объекта. Базовая реализация выполняет перемещение на основе текущей скорости.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Update(GameTime gameTime)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gameTime</code> <span class="xref">GameTime</span></dt>
+    <dd><p>Время, прошедшее с момента последнего обновления.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableEntity.cs" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

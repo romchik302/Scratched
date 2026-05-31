@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Room </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Room ">
+      
+      <meta name="description" content="Представляет отдельную комнату на сгенерированном этаже. Управляет сеткой тайлов (Tiles), логикой расстановки препятствий, декораций и интерактивных объектов (пьедесталы, кнопки, люки). Также хранит состояние комнаты (зачищена, заблокирована), её тип (Start, Battle, Boss, Treasure) и список находящихся внутри врагов.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vibe_Game.Core.Services.Room">
+
+
+
+  <h1 id="Vibe_Game_Core_Services_Room" data-uid="Vibe_Game.Core.Services.Room" class="text-break">
+Class Room  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vibe_Game.html">Vibe_Game</a>.<a class="xref" href="Vibe_Game.Core.html">Core</a>.<a class="xref" href="Vibe_Game.Core.Services.html">Services</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Vibe_Game.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Представляет отдельную комнату на сгенерированном этаже.
+Управляет сеткой тайлов (Tiles), логикой расстановки препятствий, декораций и интерактивных объектов (пьедесталы, кнопки, люки).
+Также хранит состояние комнаты (зачищена, заблокирована), её тип (Start, Battle, Boss, Treasure) и список находящихся внутри врагов.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Room</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Room</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Vibe_Game_Core_Services_Room__ctor_" data-uid="Vibe_Game.Core.Services.Room.#ctor*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room__ctor_System_Int32_System_Int32_Vibe_Game_Core_Services_LevelGenerator_RoomType_" data-uid="Vibe_Game.Core.Services.Room.#ctor(System.Int32,System.Int32,Vibe_Game.Core.Services.LevelGenerator.RoomType)">
+  Room(int, int, RoomType)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Инициализирует новую комнату с заданными размерами и типом, создаёт базовую сетку тайлов и настраивает поведение в зависимости от типа комнаты.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Room(int widthInTiles, int heightInTiles, LevelGenerator.RoomType type)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>widthInTiles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>heightInTiles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>type</code> <a class="xref" href="Vibe_Game.Core.Services.LevelGenerator.html">LevelGenerator</a>.<a class="xref" href="Vibe_Game.Core.Services.LevelGenerator.RoomType.html">RoomType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vibe_Game_Core_Services_Room_ButtonPos_" data-uid="Vibe_Game.Core.Services.Room.ButtonPos*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_ButtonPos" data-uid="Vibe_Game.Core.Services.Room.ButtonPos">
+  ButtonPos
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Возвращает координаты тайла кнопки в сетке комнаты, либо Point.Zero, если кнопки нет.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Point ButtonPos { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Point</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_ButtonTile_" data-uid="Vibe_Game.Core.Services.Room.ButtonTile*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_ButtonTile" data-uid="Vibe_Game.Core.Services.Room.ButtonTile">
+  ButtonTile
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Ссылка на объект тайла кнопки в этой комнате.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ButtonTile ButtonTile { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vibe_Game.Core.Tiles.ButtonTile.html">ButtonTile</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_FloorExitTile_" data-uid="Vibe_Game.Core.Services.Room.FloorExitTile*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_FloorExitTile" data-uid="Vibe_Game.Core.Services.Room.FloorExitTile">
+  FloorExitTile
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Ссылка на объект тайла люка (выхода на следующий этаж) в этой комнате.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TrapdoorTile FloorExitTile { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vibe_Game.Core.Tiles.TrapdoorTile.html">TrapdoorTile</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_HasButton_" data-uid="Vibe_Game.Core.Services.Room.HasButton*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_HasButton" data-uid="Vibe_Game.Core.Services.Room.HasButton">
+  HasButton
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Указывает, должна ли в комнате присутствовать кнопка для старта события/боя.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasButton { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_HeightInTiles_" data-uid="Vibe_Game.Core.Services.Room.HeightInTiles*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_HeightInTiles" data-uid="Vibe_Game.Core.Services.Room.HeightInTiles">
+  HeightInTiles
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Высота комнаты, измеряемая в количестве тайлов.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int HeightInTiles { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_IsButtonPressed_" data-uid="Vibe_Game.Core.Services.Room.IsButtonPressed*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_IsButtonPressed" data-uid="Vibe_Game.Core.Services.Room.IsButtonPressed">
+  IsButtonPressed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Возвращает true, если кнопка в этой комнате была нажата.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsButtonPressed { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_IsCleared_" data-uid="Vibe_Game.Core.Services.Room.IsCleared*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_IsCleared" data-uid="Vibe_Game.Core.Services.Room.IsCleared">
+  IsCleared
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Указывает, зачищена ли комната (пройдена или изначально безопасна).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsCleared { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_IsFloorExitRoom_" data-uid="Vibe_Game.Core.Services.Room.IsFloorExitRoom*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_IsFloorExitRoom" data-uid="Vibe_Game.Core.Services.Room.IsFloorExitRoom">
+  IsFloorExitRoom
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Указывает, является ли эта комната точкой выхода на следующий этаж.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsFloorExitRoom { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_IsLocked_" data-uid="Vibe_Game.Core.Services.Room.IsLocked*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_IsLocked" data-uid="Vibe_Game.Core.Services.Room.IsLocked">
+  IsLocked
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Указывает, заблокированы ли двери комнаты (например, во время боя).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsLocked { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_RequiresStartingWeaponChoice_" data-uid="Vibe_Game.Core.Services.Room.RequiresStartingWeaponChoice*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_RequiresStartingWeaponChoice" data-uid="Vibe_Game.Core.Services.Room.RequiresStartingWeaponChoice">
+  RequiresStartingWeaponChoice
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>На первом этаже: комната закрыта, пока не взят один из стартовых видов оружия с пьедесталов.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RequiresStartingWeaponChoice { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_Tiles_" data-uid="Vibe_Game.Core.Services.Room.Tiles*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_Tiles" data-uid="Vibe_Game.Core.Services.Room.Tiles">
+  Tiles
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Двумерный массив плиток (тайлов), из которых состоит комната.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Tile[,] Tiles { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vibe_Game.Core.Tiles.Tile.html">Tile</a>[,]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_Type_" data-uid="Vibe_Game.Core.Services.Room.Type*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_Type" data-uid="Vibe_Game.Core.Services.Room.Type">
+  Type
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Тип комнаты (Стартовая, Босс, Сокровищница или Обычная битва).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LevelGenerator.RoomType Type { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vibe_Game.Core.Services.LevelGenerator.html">LevelGenerator</a>.<a class="xref" href="Vibe_Game.Core.Services.LevelGenerator.RoomType.html">RoomType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_WidthInTiles_" data-uid="Vibe_Game.Core.Services.Room.WidthInTiles*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_WidthInTiles" data-uid="Vibe_Game.Core.Services.Room.WidthInTiles">
+  WidthInTiles
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Ширина комнаты, измеряемая в количестве тайлов.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int WidthInTiles { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_enemies_" data-uid="Vibe_Game.Core.Services.Room.enemies*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_enemies" data-uid="Vibe_Game.Core.Services.Room.enemies">
+  enemies
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Список врагов, находящихся в данной комнате.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Enemy&gt; enemies { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Vibe_Game.Gameplay.Entities.Enemies.Enemy.html">Enemy</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vibe_Game_Core_Services_Room_ActivateFloorExitButtonMarkers_" data-uid="Vibe_Game.Core.Services.Room.ActivateFloorExitButtonMarkers*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_ActivateFloorExitButtonMarkers" data-uid="Vibe_Game.Core.Services.Room.ActivateFloorExitButtonMarkers">
+  ActivateFloorExitButtonMarkers()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Активирует все ранее размещённые маркеры выхода в комнате.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ActivateFloorExitButtonMarkers()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_ClearEnemyOccupancy_" data-uid="Vibe_Game.Core.Services.Room.ClearEnemyOccupancy*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_ClearEnemyOccupancy" data-uid="Vibe_Game.Core.Services.Room.ClearEnemyOccupancy">
+  ClearEnemyOccupancy()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Очищает флаг занятости врагами у всех тайлов комнаты.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearEnemyOccupancy()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_ClearObstaclesNearDoorApproaches_" data-uid="Vibe_Game.Core.Services.Room.ClearObstaclesNearDoorApproaches*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_ClearObstaclesNearDoorApproaches" data-uid="Vibe_Game.Core.Services.Room.ClearObstaclesNearDoorApproaches">
+  ClearObstaclesNearDoorApproaches()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Убирает камни и заросли в зоне подхода к дверям (после расстановки дверей на карте).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearObstaclesNearDoorApproaches()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_CreateFloorExit_" data-uid="Vibe_Game.Core.Services.Room.CreateFloorExit*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_CreateFloorExit_System_Int32_" data-uid="Vibe_Game.Core.Services.Room.CreateFloorExit(System.Int32)">
+  CreateFloorExit(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Создаёт люк перехода на указанный этаж в центре комнаты.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CreateFloorExit(int targetFloorIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>targetFloorIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_GetTile_" data-uid="Vibe_Game.Core.Services.Room.GetTile*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_GetTile_System_Int32_System_Int32_" data-uid="Vibe_Game.Core.Services.Room.GetTile(System.Int32,System.Int32)">
+  GetTile(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Возвращает тайл по указанным координатам, если они валидны, иначе возвращает null.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Tile GetTile(int x, int y)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vibe_Game.Core.Tiles.Tile.html">Tile</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_IsInside_" data-uid="Vibe_Game.Core.Services.Room.IsInside*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_IsInside_System_Int32_System_Int32_" data-uid="Vibe_Game.Core.Services.Room.IsInside(System.Int32,System.Int32)">
+  IsInside(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Проверяет, находятся ли указанные координаты внутри границ сетки тайлов комнаты.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsInside(int x, int y)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_MarkEnemyOccupancy_" data-uid="Vibe_Game.Core.Services.Room.MarkEnemyOccupancy*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_MarkEnemyOccupancy_System_Int32_System_Int32_" data-uid="Vibe_Game.Core.Services.Room.MarkEnemyOccupancy(System.Int32,System.Int32)">
+  MarkEnemyOccupancy(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Помечает тайл как занятый врагом.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MarkEnemyOccupancy(int tileX, int tileY)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tileX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>tileY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_PlaceFloorExitButtonMarkers_" data-uid="Vibe_Game.Core.Services.Room.PlaceFloorExitButtonMarkers*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_PlaceFloorExitButtonMarkers" data-uid="Vibe_Game.Core.Services.Room.PlaceFloorExitButtonMarkers">
+  PlaceFloorExitButtonMarkers()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Размещает декоративные маркеры выхода на этаж вокруг центра комнаты.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PlaceFloorExitButtonMarkers()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_PlacePedestals_" data-uid="Vibe_Game.Core.Services.Room.PlacePedestals*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_PlacePedestals_System_Int32_" data-uid="Vibe_Game.Core.Services.Room.PlacePedestals(System.Int32)">
+  PlacePedestals(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Размещает указанное количество пьедесталов на свободных клетках комнаты.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PlacePedestals(int count)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_PlaceStartingWeaponPedestals_" data-uid="Vibe_Game.Core.Services.Room.PlaceStartingWeaponPedestals*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_PlaceStartingWeaponPedestals" data-uid="Vibe_Game.Core.Services.Room.PlaceStartingWeaponPedestals">
+  PlaceStartingWeaponPedestals()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Размещает стартовые пьедесталы выбора оружия.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PlaceStartingWeaponPedestals()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_PlaceTreasurePedestalAtCenter_" data-uid="Vibe_Game.Core.Services.Room.PlaceTreasurePedestalAtCenter*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_PlaceTreasurePedestalAtCenter" data-uid="Vibe_Game.Core.Services.Room.PlaceTreasurePedestalAtCenter">
+  PlaceTreasurePedestalAtCenter()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Размещает один пьедестал в центре комнаты (сокровищница).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PlaceTreasurePedestalAtCenter()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_PressButton_" data-uid="Vibe_Game.Core.Services.Room.PressButton*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_PressButton" data-uid="Vibe_Game.Core.Services.Room.PressButton">
+  PressButton()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Вызывает логику нажатия кнопки комнаты, если она существует.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PressButton()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_RemoveRoomButton_" data-uid="Vibe_Game.Core.Services.Room.RemoveRoomButton*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_RemoveRoomButton" data-uid="Vibe_Game.Core.Services.Room.RemoveRoomButton">
+  RemoveRoomButton()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Удаляет кнопку из комнаты и заменяет её на обычный пол.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveRoomButton()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_SetTile_" data-uid="Vibe_Game.Core.Services.Room.SetTile*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_SetTile_System_Int32_System_Int32_Vibe_Game_Core_Tiles_Tile_" data-uid="Vibe_Game.Core.Services.Room.SetTile(System.Int32,System.Int32,Vibe_Game.Core.Tiles.Tile)">
+  SetTile(int, int, Tile)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Заменяет тайл по указанным координатам на новый. Обновляет ссылки на специальные тайлы (кнопки, люки).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetTile(int x, int y, Tile tile)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>tile</code> <a class="xref" href="Vibe_Game.Core.Tiles.Tile.html">Tile</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vibe_Game_Core_Services_Room_UpdateFloorExitButtonMarkers_" data-uid="Vibe_Game.Core.Services.Room.UpdateFloorExitButtonMarkers*"></a>
+
+  <h3 id="Vibe_Game_Core_Services_Room_UpdateFloorExitButtonMarkers_System_Single_" data-uid="Vibe_Game.Core.Services.Room.UpdateFloorExitButtonMarkers(System.Single)">
+  UpdateFloorExitButtonMarkers(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Обновляет состояние маркеров выхода в зависимости от времени.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateFloorExitButtonMarkers(float deltaSeconds)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>deltaSeconds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/Room.cs" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

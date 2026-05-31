@@ -6,7 +6,7 @@ using Vibe_Game.Gameplay.Entities;
 
 namespace Vibe_Game.Gameplay.Entities.Collectables;
 
-/// <summary>Предмет на пьедестале: анимация 4 кадра в покое, общая анимация исчезновения с пьедесталом при подборе.</summary>
+/// <summary>Предмет на пьедестале: управляет анимацией покачивания в покое, анимацией подбора и применением эффектов.</summary>
 public sealed class CollectableEntity : Entity
 {
     private enum CollectState
@@ -25,9 +25,12 @@ public sealed class CollectableEntity : Entity
     public Point TilePositionInRoom { get; }
     public CollectableKind Kind { get; }
 
-    /// <summary>Вертикальное смещение покачивания на пьедестале (как дроп хила на полу).</summary>
+    /// <summary>Текущее вертикальное смещение предмета (эффект «парения» над пьедесталом).</summary>
     public float PedestalBobOffsetY { get; private set; }
 
+    /// <summary>Инициализирует новый экземпляр класса CollectableEntity.</summary>
+    /// <param name="tilePositionInRoom">Позиция плитки в комнате, где находится предмет.</param>
+    /// <param name="kind">Тип предмета (определяет его визуальный ряд и эффект).</param>
     public CollectableEntity(Point tilePositionInRoom, CollectableKind kind)
     {
         TilePositionInRoom = tilePositionInRoom;
@@ -35,15 +38,18 @@ public sealed class CollectableEntity : Entity
         IsAlive = true;
     }
 
-    /// <summary>Текущий кадр idle на пьедестале (для синхронной отрисовки основания пьедестала из того же листа).</summary>
+    /// <summary>Индекс текущего кадра анимации предмета.</summary>
     public int PedestalIdleFrameIndex => _frameIndex;
 
     /// <summary>Масштаб и альфа для совместной отрисовки с пьедесталом (1 → 0).</summary>
     public float VisualScale { get; private set; } = 1f;
+    /// <summary>Текущая прозрачность предмета. Используется для плавной анимации исчезновения (1 → 0).</summary>
     public float VisualAlpha { get; private set; } = 1f;
 
+    /// <summary>Указывает, был ли предмет полностью поглощен (анимация подбора завершена).</summary>
     public bool IsPedestalGone => _state == CollectState.Consumed;
 
+    /// <inheritdoc />
     public override void Update(GameTime gameTime)
     {
         if (!IsAlive || _state == CollectState.Consumed)
@@ -81,6 +87,9 @@ public sealed class CollectableEntity : Entity
         }
     }
 
+    /// <summary>Проверяет пересечение с игроком и запускает анимацию подбора.</summary>
+    /// <param name="playerBounds">Хитбокс игрока для проверки коллизии.</param>
+    /// <param name="roomGrid">Координаты комнаты в сетке мира для вычисления абсолютной позиции.</param>
     public bool TryBeginPickupIfOverlapping(Rectangle playerBounds, Point roomGrid)
     {
         if (_state != CollectState.Idle)
@@ -97,6 +106,8 @@ public sealed class CollectableEntity : Entity
         return true;
     }
 
+    /// <summary>Применяет баффы или эффекты предмета к статистике игрока.</summary>
+    /// <param name="player">Экземпляр игрока, на которого применяется эффект.</param>
     public void ApplyEffect(global::Vibe_Game.Gameplay.Entities.Player.Player player)
     {
         if (player?.Stats == null)
@@ -121,6 +132,8 @@ public sealed class CollectableEntity : Entity
         }
     }
 
+    /// <summary>Вычисляет хитбокс предмета в мировых координатах для обработки подбора.</summary>
+    /// <param name="roomGrid">Координаты комнаты в сетке мира.</param>
     public Rectangle GetWorldPickupBounds(Point roomGrid)
     {
         float wx = roomGrid.X * WorldConfig.RoomWidthPx + TilePositionInRoom.X * WorldConfig.TileSize;
@@ -130,6 +143,11 @@ public sealed class CollectableEntity : Entity
         return new Rectangle((int)wx + margin, (int)wy + margin, size, size);
     }
 
+    /// <summary>Отрисовывает предмет над пьедесталом с учетом текущей анимации.</summary>
+    /// <param name="spriteBatch">Экземпляр SpriteBatch для отрисовки.</param>
+    /// <param name="visuals">Кэш текстур для получения нужного кадра анимации.</param>
+    /// <param name="pixel">Текстура пикселя 1x1 для отрисовки частиц (spark).</param>
+    /// <param name="tileBounds">Область плитки, на которой стоит пьедестал.</param>
     public void DrawOnPedestal(SpriteBatch spriteBatch, CollectibleVisualCache visuals, Texture2D pixel, Rectangle tileBounds)
     {
         if (!IsAlive || _state == CollectState.Consumed || visuals == null)

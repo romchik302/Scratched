@@ -14,6 +14,10 @@ using Vibe_Game.Gameplay.Weapons;
 
 namespace Vibe_Game.Scenes
 {
+    /// <summary>
+    /// Рендерер игровой сцены. Отвечает за отрисовку геометрии комнат, игровых сущностей, 
+    /// снарядов, эффектов, а также элементов интерфейса (миникарты, HUD здоровья и полосы босса).
+    /// </summary>
     internal sealed class GameSceneRenderer
     {
         private const int MinimapRoomSize = 34;
@@ -57,6 +61,13 @@ namespace Vibe_Game.Scenes
         private int _healthHudIdleCellIndex;
         private float _healthHudNextStartInterval = HealthHudConfig.IdleCellIntervalSeconds;
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="GameSceneRenderer"/>.
+        /// </summary>
+        /// <param name="game">Ссылка на главный объект MonoGame класса Game.</param>
+        /// <param name="state">Текущее сквозное состояние игровой сцены и её объектов.</param>
+        /// <param name="projectiles">Контроллер снарядов для их извлечения и отрисовки.</param>
+        /// <param name="enemies">Контроллер врагов для обращения к логике смерти и спискам сущностей.</param>
         public GameSceneRenderer(
             Game game,
             GameSceneState state,
@@ -69,6 +80,10 @@ namespace Vibe_Game.Scenes
             _enemies = enemies;
         }
 
+        /// <summary>
+        /// Загружает графические ассеты, спрайтшиты и шрифты, необходимые для визуализации сцены.
+        /// </summary>
+        /// <param name="content">Менеджер контента для загрузки игровых ресурсов.</param>
         public void LoadContent(ContentManager content)
         {
             _roomFont = content.Load<SpriteFont>("room_font");
@@ -96,11 +111,22 @@ namespace Vibe_Game.Scenes
             _state.CollectibleVisualCache.Load(content, _game.GraphicsDevice);
         }
 
+        /// <summary>
+        /// Обновляет внутренние таймеры рендерера и логику анимаций элементов UI.
+        /// </summary>
+        /// <param name="gameTime">Слепок игрового времени для расчета дельты таймеров.</param>
         public void Update(GameTime gameTime)
         {
             UpdateHealthHudAnimation(gameTime);
         }
 
+        /// <summary>
+        /// Выполняет полный цикл отрисовки игрового кадра (мир с сортировкой по Y, UI, миникарта).
+        /// </summary>
+        /// <param name="attackContext">Контекст атаки игрока для отрисовки боевых эффектов и оружия.</param>
+        /// <param name="camera">Камера для расчета матрицы трансформации и эффекта тряски.</param>
+        /// <param name="spriteBatch">Бач для группировки и вызова команд отрисовки спрайтов.</param>
+        /// <param name="pixel">Однопиксельная текстура для заливки базовых геометрических примитивов.</param>
         public void Draw(IAttackContext attackContext, Camera camera, SpriteBatch spriteBatch, Texture2D pixel)
         {
             _game.GraphicsDevice.Clear(GameColors.Background);
@@ -162,6 +188,12 @@ namespace Vibe_Game.Scenes
             spriteBatch.End();
         }
 
+        /// <summary>
+        /// Отрисовывает затемняющий оверлей и панель паузы с опциями выбора поверх игрового экрана.
+        /// </summary>
+        /// <param name="spriteBatch">Бач для отрисовки спрайтов.</param>
+        /// <param name="pixel">Однопиксельная текстура для отрисовки полупрозрачных фонов и рамок меню.</param>
+        /// <param name="selectedOption">Текущий выбранный индекс элемента в меню паузы.</param>
         public void DrawPauseOverlay(SpriteBatch spriteBatch, Texture2D pixel, int selectedOption)
         {
             if (_roomFont == null)

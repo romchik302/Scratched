@@ -10,6 +10,9 @@ using Vibe_Game.Gameplay.Entities.Enemies;
 
 namespace Vibe_Game.Scenes
 {
+    /// <summary>
+    /// Контроллер врагов. Управляет их спавном, обновлением состояния, коллизиями и дропом лута.
+    /// </summary>
     internal sealed class GameSceneEnemyController
     {
         private readonly GameSceneState _state;
@@ -18,6 +21,12 @@ namespace Vibe_Game.Scenes
         private readonly IFlyingCollisionChecker _flyingCollision;
         private readonly IWallCollisionChecker _wallCollision;
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="GameSceneEnemyController"/>.
+        /// </summary>
+        /// <param name="state">Текущее состояние игровой сцены.</param>
+        /// <param name="world">Игровой мир для расчета коллизий и позиций.</param>
+        /// <param name="projectiles">Контроллер для управления снарядами врагов.</param>
         public GameSceneEnemyController(GameSceneState state, GameSceneWorld world, GameSceneProjectileController projectiles)
         {
             _state = state;
@@ -27,7 +36,10 @@ namespace Vibe_Game.Scenes
             _wallCollision = new SceneWallCollisionChecker(world);
         }
 
-        /// <summary>Создаёт врагов для текущего этажа и записывает номер этажа в каждого врага.</summary>
+        /// <summary>
+        /// Создаёт врагов для текущего этажа и записывает номер этажа в каждого врага.
+        /// </summary>
+        /// <param name="floorIndex">Индекс текущего этажа забега.</param>
         public void SpawnEnemies(int floorIndex)
         {
             SpawnBossRoomEnemies(floorIndex);
@@ -37,12 +49,20 @@ namespace Vibe_Game.Scenes
             SpawnAdaptiveChasingEnemiesInRooms(floorIndex);
         }
 
+        /// <summary>
+        /// Активирует всех врагов в указанной по координатам комнате.
+        /// </summary>
+        /// <param name="grid">Координаты комнаты на сетке этажа.</param>
         public void ActivateEnemies(Point grid)
         {
             Room room = _state.FloorMap[grid.X, grid.Y];
             room?.enemies?.ForEach(e => e.Activate());
         }
 
+        /// <summary>
+        /// Обновляет состояние всех врагов на этаже, обрабатывает урон, коллизии и смерть.
+        /// </summary>
+        /// <param name="gameTime">Слепок игрового времени.</param>
         public void Update(GameTime gameTime)
         {
             Rectangle playerBounds = _state.Player.GetBounds();
@@ -180,6 +200,10 @@ namespace Vibe_Game.Scenes
             }
         }
 
+        /// <summary>
+        /// Отрисовывает эффекты смерти врагов с использованием общих текстур.
+        /// </summary>
+        /// <param name="spriteBatch">Бач для отрисовки спрайтов.</param>
         public void DrawEnemyDeathAnimations(SpriteBatch spriteBatch)
         {
             Texture2D death = Enemy.SharedDeathTexture;
@@ -188,6 +212,10 @@ namespace Vibe_Game.Scenes
                 vfx.Draw(spriteBatch, death, boss);
         }
 
+        /// <summary>
+        /// Отрисовывает всех живых врагов во всех комнатах текущего этажа.
+        /// </summary>
+        /// <param name="spriteBatch">Бач для отрисовки спрайтов.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
             for (int ex = 0; ex < WorldConfig.GridSize; ex++)
@@ -207,6 +235,12 @@ namespace Vibe_Game.Scenes
             }
         }
 
+        /// <summary>
+        /// Наносит урон всем живым врагам в определенном радиусе от центральной точки.
+        /// </summary>
+        /// <param name="center">Центр области поражения в мировых координатах.</param>
+        /// <param name="radius">Радиус области поражения.</param>
+        /// <param name="damage">Количество наносимого урона.</param>
         public void DamageEnemiesInArea(Vector2 center, float radius, int damage)
         {
             int rx = (int)(center.X / WorldConfig.RoomWidthPx);
@@ -231,6 +265,11 @@ namespace Vibe_Game.Scenes
             }
         }
 
+        /// <summary>
+        /// Ищет и возвращает живого врага в заданной точке с учетом радиуса поиска.
+        /// </summary>
+        /// <param name="point">Точка поиска в мировых координатах.</param>
+        /// <param name="radius">Радиус проверки коллизии.</param>
         public object GetEnemyAtPoint(Vector2 point, float radius)
         {
             int rx = (int)(point.X / WorldConfig.RoomWidthPx);
@@ -256,18 +295,33 @@ namespace Vibe_Game.Scenes
             return null;
         }
 
+        /// <summary>
+        /// Наносит урон конкретному объекту врага, если он является валидным и живым.
+        /// </summary>
+        /// <param name="enemy">Объект врага для приведения типов.</param>
+        /// <param name="damage">Количество наносимого урона.</param>
         public void DamageEnemy(object enemy, int damage)
         {
             if (enemy is Enemy castedEnemy && castedEnemy.IsAlive)
                 castedEnemy.TakeDamage(damage);
         }
 
+        /// <summary>
+        /// Применяет импульс отдачи (отталкивания) к указанному врагу.
+        /// </summary>
+        /// <param name="enemy">Объект врага для приведения типов.</param>
+        /// <param name="recoilDirection">Направление вектора отталкивания.</param>
+        /// <param name="recoilForce">Сила импульса.</param>
         public void ApplyRecoilToEnemy(object enemy, Vector2 recoilDirection, float recoilForce)
         {
             if (enemy is Enemy castedEnemy && castedEnemy.IsAlive)
                 castedEnemy.ApplyRecoil(recoilDirection, recoilForce);
         }
 
+        /// <summary>
+        /// Возвращает список всех живых врагов, пересекающих указанные прямоугольные границы.
+        /// </summary>
+        /// <param name="bounds">Прямоугольная область поиска.</param>
         public List<object> GetEnemiesInArea(Rectangle bounds)
         {
             List<object> result = new List<object>();
@@ -483,6 +537,7 @@ namespace Vibe_Game.Scenes
             return enemy;
         }
 
+        /// <summary>Возвращает плоский список всех живых врагов со всей карты текущего этажа.</summary>
         public List<Enemy> GetEnemies()
         {
             var result = new List<Enemy>();

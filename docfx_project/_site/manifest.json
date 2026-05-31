@@ -1,0 +1,1362 @@
+{
+  "source_base_path": "C:/Users/Proker/source/repos/Vibe_Game30.05/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Engine.Camera.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Engine.Camera.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Engine.Camera",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Engine.Camera.yml\" sourcestartlinenumber=\"1\">Управляет отображением игрового мира, трансформацией координат и эффектами тряски камеры.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Engine.DefaultInputBindings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Engine.DefaultInputBindings.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Engine.DefaultInputBindings",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Engine.DefaultInputBindings.yml\" sourcestartlinenumber=\"1\">Реализация привязок клавиш по умолчанию.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Engine.SceneManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Engine.SceneManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Engine.SceneManager",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Engine.SceneManager.yml\" sourcestartlinenumber=\"1\">Менеджер сцен игры. Отвечает за хранение, инициализацию, переключение и\nделегирование обновлений (Update) и отрисовки (Draw) активной игровой сцены.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Engine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Engine.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Engine",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Interfaces.GameState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Interfaces.GameState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Interfaces.GameState",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Interfaces.GameState.yml\" sourcestartlinenumber=\"1\">Перечисление возможных состояний игрового цикла.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Interfaces.ICamera.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Interfaces.ICamera.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Interfaces.ICamera",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Interfaces.ICamera.yml\" sourcestartlinenumber=\"1\">Контракт для реализации камеры, обеспечивающий управление представлением мира,\nтрансформацию координат и эффекты экрана.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Interfaces.ICameraShake.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Interfaces.ICameraShake.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Interfaces.ICameraShake",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Interfaces.ICameraShake.yml\" sourcestartlinenumber=\"1\">Интерфейс для реализации эффекта тряски камеры.\nИнкапсулирует логику расчета смещения и управления временем действия эффекта.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Interfaces.ICollidable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Interfaces.ICollidable.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Interfaces.ICollidable",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Interfaces.ICollidable.yml\" sourcestartlinenumber=\"1\">Определяет контракт для игровых сущностей, которые могут вступать в физические\nили триггерные взаимодействия с другими объектами.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Interfaces.ICollisionSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Interfaces.ICollisionSystem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Interfaces.ICollisionSystem",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Interfaces.ICollisionSystem.yml\" sourcestartlinenumber=\"1\">Интерфейс системы управления коллизиями. Отвечает за отслеживание объектов,\nпространственное индексирование и выявление столкновений между сущностями.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Interfaces.IGameStateService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Interfaces.IGameStateService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Interfaces.IGameStateService",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Interfaces.IGameStateService.yml\" sourcestartlinenumber=\"1\">Сервис управления глобальным состоянием игры.\nПредоставляет доступ к текущему состоянию и уведомляет подписчиков при его изменении.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Interfaces.IInputBindings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Interfaces.IInputBindings.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Interfaces.IInputBindings",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Interfaces.IInputBindings.yml\" sourcestartlinenumber=\"1\">Интерфейс для управления привязками клавиш (Input Mapping).\nПозволяет абстрагировать игровые действия от конкретных физических клавиш,\nподдерживая переназначение и сохранение настроек управления.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Interfaces.IInputService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Interfaces.IInputService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Interfaces.IInputService",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Interfaces.IInputService.yml\" sourcestartlinenumber=\"1\">Сервис для обработки пользовательского ввода.\nПреобразует сырые события ввода (клавиатура, геймпад) в высокоуровневые игровые действия.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Interfaces.IItemEffect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Interfaces.IItemEffect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Interfaces.IItemEffect",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Interfaces.IItemEffect.yml\" sourcestartlinenumber=\"1\">Определяет контракт для эффектов предметов, которые могут изменять характеристики игрока.\nИспользуется для реализации бонусов, дебаффов и временных усилений.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Interfaces.IPlayerContentLoader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Interfaces.IPlayerContentLoader.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Interfaces.IPlayerContentLoader",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Interfaces.IPlayerContentLoader.yml\" sourcestartlinenumber=\"1\">Контракт для сущностей, которым требуются внешние ресурсы (текстуры, звуки).\nПозволяет отделить логику загрузки от инициализации игрового объекта.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Interfaces.IPlayerRenderer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Interfaces.IPlayerRenderer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Interfaces.IPlayerRenderer",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Interfaces.IPlayerRenderer.yml\" sourcestartlinenumber=\"1\">Контракт для отрисовки игрока.\nПозволяет инкапсулировать логику визуализации, анимации и трансформации спрайтов.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Interfaces.IStatsRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Interfaces.IStatsRepository.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Interfaces.IStatsRepository",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Interfaces.IStatsRepository.yml\" sourcestartlinenumber=\"1\">Интерфейс для взаимодействия с системой хранения статистики игровых сессий.\nПозволяет сохранять результаты пробегов и извлекать исторические данные.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Interfaces.IWallCollisionChecker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Interfaces.IWallCollisionChecker.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Interfaces.IWallCollisionChecker",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Interfaces.IWallCollisionChecker.yml\" sourcestartlinenumber=\"1\">Определяет контракт для сервиса проверки столкновений игровых сущностей со стенами и статическими препятствиями уровня.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Interfaces.InputAction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Interfaces.InputAction.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Interfaces.InputAction",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Interfaces.InputAction.yml\" sourcestartlinenumber=\"1\">Перечисление доступных действий игрока.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Interfaces.RunStats.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Interfaces.RunStats.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Interfaces.RunStats",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Interfaces.RunStats.yml\" sourcestartlinenumber=\"1\">Модель данных, представляющая статистику одной игровой сессии.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Interfaces.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Interfaces",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Services.GameStateService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Services.GameStateService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Services.GameStateService",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Services.GameStateService.yml\" sourcestartlinenumber=\"1\">Управления состоянием игры, отвечает за хранение текущего состояния и уведомление  о его изменении.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Services.GameplayAudio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Services.GameplayAudio.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Services.GameplayAudio",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Services.GameplayAudio.yml\" sourcestartlinenumber=\"1\">Статический сервис для управления звуковыми эффектами (SFX) и фоновой музыкой (BGM) в игровом процессе.\nОбеспечивает плавные переходы между треками, управление громкостью и безопасную загрузку ассетов.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Services.InputService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Services.InputService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Services.InputService",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Services.InputService.yml\" sourcestartlinenumber=\"1\">Сервис ввода, обеспечивающий обработку клавиатуры и мыши с поддержкой настраиваемых привязок действий.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Services.LevelGenerator.RoomType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Services.LevelGenerator.RoomType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Services.LevelGenerator.RoomType",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Services.LevelGenerator.RoomType.yml\" sourcestartlinenumber=\"1\">Перечисление возможных типов игровых комнат.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Services.LevelGenerator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Services.LevelGenerator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Services.LevelGenerator",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Services.LevelGenerator.yml\" sourcestartlinenumber=\"1\">Генератор уровней, отвечающий за создание процедурной структуры этажей, размещение комнат, назначение типов комнат и построение соединений между ними.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Services.Room.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Services.Room.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Services.Room",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Services.Room.yml\" sourcestartlinenumber=\"1\">Представляет отдельную комнату на сгенерированном этаже.\nУправляет сеткой тайлов (Tiles), логикой расстановки препятствий, декораций и интерактивных объектов (пьедесталы, кнопки, люки).\nТакже хранит состояние комнаты (зачищена, заблокирована), её тип (Start, Battle, Boss, Treasure) и список находящихся внутри врагов.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Services.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Services",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Settings.CollectibleConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Settings.CollectibleConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Settings.CollectibleConfig",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Settings.CollectibleConfig.yml\" sourcestartlinenumber=\"1\">Параметры подбираемых предметов, артефактов и хила (баффы, шансы дропа).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Settings.EnemyConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Settings.EnemyConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Settings.EnemyConfig",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Settings.EnemyConfig.yml\" sourcestartlinenumber=\"1\">Характеристики всех противников и босса (здоровье, скорости, шансы спавна и параметры атак).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Settings.FloorConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Settings.FloorConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Settings.FloorConfig",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Settings.FloorConfig.yml\" sourcestartlinenumber=\"1\">Настройки генерации этажей и общей прогрессии забега.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Settings.GameColors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Settings.GameColors.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Settings.GameColors",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Settings.GameColors.yml\" sourcestartlinenumber=\"1\">Глобальная палитра цветов, используемая для отрисовки интерфейса, миникарты и базовой геометрии.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Settings.HealthHudConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Settings.HealthHudConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Settings.HealthHudConfig",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Settings.HealthHudConfig.yml\" sourcestartlinenumber=\"1\">Конфиг отрисовки полоски здоровья игрока из спрайт-листа 8x4.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Settings.PedestalConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Settings.PedestalConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Settings.PedestalConfig",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Settings.PedestalConfig.yml\" sourcestartlinenumber=\"1\">Настройки генерации и отрисовки пьедесталов для артефактов и стартового оружия.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Settings.PlayerConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Settings.PlayerConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Settings.PlayerConfig",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Settings.PlayerConfig.yml\" sourcestartlinenumber=\"1\">Базовые параметры главного героя (хитбокс и скорость перемещения).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Settings.SoundConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Settings.SoundConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Settings.SoundConfig",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Settings.SoundConfig.yml\" sourcestartlinenumber=\"1\">Имена аудиофайлов и настройки звуковой системы (громкость, шаги, музыка).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Settings.StartingWeaponConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Settings.StartingWeaponConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Settings.StartingWeaponConfig",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Settings.StartingWeaponConfig.yml\" sourcestartlinenumber=\"1\">Параметры экземпляров оружия при выборе на первом этаже.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Settings.WeaponConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Settings.WeaponConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Settings.WeaponConfig",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Settings.WeaponConfig.yml\" sourcestartlinenumber=\"1\">Настройки оружия (урон, кулдауны, скорости снарядов и параметры визуальных эффектов).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Settings.WorldConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Settings.WorldConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Settings.WorldConfig",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Settings.WorldConfig.yml\" sourcestartlinenumber=\"1\">Глобальные настройки сетки мира, размеров комнат и тайлов.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Settings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Settings.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Settings",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Tiles.ButtonTile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Tiles.ButtonTile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Tiles.ButtonTile",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Tiles.ButtonTile.yml\" sourcestartlinenumber=\"1\">Представляет интерактивный тайл кнопки.\nПоддерживает состояния покоя, анимацию нажатия и анимацию ожидания в нажатом состоянии.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Tiles.DoorTile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Tiles.DoorTile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Tiles.DoorTile",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Tiles.DoorTile.yml\" sourcestartlinenumber=\"1\">Представляет динамический тайл двери.\nМожет быть открыт (проходимый) или закрыт (препятствие).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Tiles.ExitButtonTile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Tiles.ExitButtonTile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Tiles.ExitButtonTile",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Tiles.ExitButtonTile.yml\" sourcestartlinenumber=\"1\">Представляет кнопку выхода с уровня.\nМожет находиться в заблокированном или активном состоянии и имеет циклическую анимацию в активном режиме.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Tiles.FloorTile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Tiles.FloorTile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Tiles.FloorTile",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Tiles.FloorTile.yml\" sourcestartlinenumber=\"1\">Представляет стандартный проходимый тайл пола.\nЯвляется основным пространством для перемещения игрока и врагов.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Tiles.OvergrowthTile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Tiles.OvergrowthTile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Tiles.OvergrowthTile",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Tiles.OvergrowthTile.yml\" sourcestartlinenumber=\"1\">Представляет декоративный тайл с густой травой или ветками.\nЯвляется проходимым, но запрещает спавн врагов на этом участке.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Tiles.PedestalTile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Tiles.PedestalTile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Tiles.PedestalTile",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Tiles.PedestalTile.yml\" sourcestartlinenumber=\"1\">Представляет тайл с пьедесталом, на котором размещается коллекционный предмет.\nЯвляется проходимым тайлом, но блокирует спавн врагов.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Tiles.RockTile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Tiles.RockTile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Tiles.RockTile",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Tiles.RockTile.yml\" sourcestartlinenumber=\"1\">Представляет препятствие в виде камня. Блокирует проход, но не является частью границы уровня.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Tiles.Tile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Tiles.Tile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Tiles.Tile",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Tiles.Tile.yml\" sourcestartlinenumber=\"1\">Абстрактный базовый класс для всех тайлов на сетке игрового уровня.\nХранит состояние тайла, его положение и правила взаимодействия с другими сущностями.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Tiles.TrapdoorTile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Tiles.TrapdoorTile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Tiles.TrapdoorTile",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Tiles.TrapdoorTile.yml\" sourcestartlinenumber=\"1\">Представляет тайл с люком (трапдором), который инициирует переход на другой уровень или этаж.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Tiles.WallTile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Tiles.WallTile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Tiles.WallTile",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Tiles.WallTile.yml\" sourcestartlinenumber=\"1\">Представляет непроходимый тайл стены. Блокирует движение игрока, врагов и не может содержать сущности.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Tiles.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Tiles.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Tiles",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Utilities.RandomHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Utilities.RandomHelper.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Utilities.RandomHelper",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Utilities.RandomHelper.yml\" sourcestartlinenumber=\"1\">Вспомогательный класс для генерации случайных чисел и значений, упрощающий работу с рандомизацией в игре.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Utilities.SpriteBatchExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Utilities.SpriteBatchExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Utilities.SpriteBatchExtensions",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Core.Utilities.SpriteBatchExtensions.yml\" sourcestartlinenumber=\"1\">Предоставляет методы расширения для <xref href=\"Microsoft.Xna.Framework.Graphics.SpriteBatch\" data-throw-if-not-resolved=\"false\"></xref> для отрисовки простых геометрических примитивов (отладка).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Core.Utilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Core.Utilities.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Core.Utilities",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Game1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Game1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Game1",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Game1.yml\" sourcestartlinenumber=\"1\">Главный класс игры, управляющий жизненным циклом приложения, инициализацией сервисов,\nпереключением сцен и основным циклом отрисовки.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Entities.Collectables.CollectableEntity.yml\" sourcestartlinenumber=\"1\">Предмет на пьедестале: управляет анимацией покачивания в покое, анимацией подбора и применением эффектов.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Collectables.CollectableKind",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.yml\" sourcestartlinenumber=\"1\">Подбираемые предметы: лут на пьедесталах, стартовый выбор оружия (первый этаж), дроп здоровья с врагов.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Entities.Collectables.CollectibleVisualCache.yml\" sourcestartlinenumber=\"1\">Все визуалы пьедестала и предметов — один спрайт-лист <xref href=\"Vibe_Game.Core.Settings.CollectibleConfig.CollectablesTexture\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Entities.Collectables.DroppedPickup.yml\" sourcestartlinenumber=\"1\">Представляет предмет, лежащий на полу (например, сердечки или другие бонусы).\nОтвечает за проигрывание idle-анимации, покачивание и логику подбора игроком.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Collectables.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Collectables.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Collectables",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.BossEnemy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.BossEnemy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Enemies.BossEnemy",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Entities.Enemies.BossEnemy.yml\" sourcestartlinenumber=\"1\">Главный босс игры, обладающий несколькими фазами атак (выброс шипов, вращающиеся снаряды, рывок под землей, призыв миньонов).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Entities.Enemies.ChasingEnemy.yml\" sourcestartlinenumber=\"1\">Враг, который преследует цель игрока, использует навигацию с учётом стен, поддерживает хитбоксы тела и атаки, а также анимацию спрайтов и систему обновления поведения.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.Enemy.FacingDirection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.Enemy.FacingDirection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Enemies.Enemy.FacingDirection",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Entities.Enemies.Enemy.FacingDirection.yml\" sourcestartlinenumber=\"1\">Направление, в сторону которого в данный момент повернут или движется враг.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Entities.Enemies.Enemy.RandomMovementMode.yml\" sourcestartlinenumber=\"1\">Режимы случайного модифицированного поведения ИИ врага при преследовании цели.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.Enemy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.Enemy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Enemies.Enemy",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Entities.Enemies.Enemy.yml\" sourcestartlinenumber=\"1\">Базовый враг: здоровье, активация при входе в комнату, общий жизненный цикл.\nКонкретное поведение (как ходит, какая коллизия) — в наследниках через <xref href=\"Vibe_Game.Gameplay.Entities.Enemies.Enemy.UpdateEnemy(Microsoft.Xna.Framework.GameTime)\" data-throw-if-not-resolved=\"false\"></xref>.\nНаследует <xref href=\"Vibe_Game.Gameplay.Entities.Entity\" data-throw-if-not-resolved=\"false\"></xref>: позиция, IsAlive, при желании Texture для отрисовки по умолчанию.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Entities.Enemies.EnemyDeathVfx.yml\" sourcestartlinenumber=\"1\">Анимация смерти врага или босса: кадры из соответствующего спрайт-листа и затухание по альфе.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.FlyingEnemy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.FlyingEnemy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Enemies.FlyingEnemy",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Entities.Enemies.FlyingEnemy.yml\" sourcestartlinenumber=\"1\">Летающий враг: преследует цель, игнорирует внутренние стены, использует проверку коллизий периметра и скользит вдоль препятствий.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.IFlyingCollisionChecker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.IFlyingCollisionChecker.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Enemies.IFlyingCollisionChecker",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Entities.Enemies.IFlyingCollisionChecker.yml\" sourcestartlinenumber=\"1\">Проверка «куда летающий юнит зайти не может».\nРеализует сцена: для летающих — обычно периметр комнаты + двери, без внутренних декоративных стен.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.ShooterFlyingEnemy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.ShooterFlyingEnemy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Enemies.ShooterFlyingEnemy",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Entities.Enemies.ShooterFlyingEnemy.yml\" sourcestartlinenumber=\"1\">Летающий стреляющий враг: преследует цель в воздухе, а при сближении на расстояние\nрадиуса агрессии останавливается и атакует игрока снарядами с заданной периодичностью.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Enemies.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Enemies",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Entity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Entity.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Entity",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Entities.Entity.yml\" sourcestartlinenumber=\"1\">Базовый игровой объект. Предоставляет общую функциональность для всех сущностей игры: позицию, движение, отрисовку, загрузку ресурсов и коллизии.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Player.ItemEffect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Player.ItemEffect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Player.ItemEffect",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Entities.Player.ItemEffect.yml\" sourcestartlinenumber=\"1\">Набор модификаторов характеристик, предоставляемых игровым предметом.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Player.Player.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Player.Player.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Player.Player",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Entities.Player.Player.yml\" sourcestartlinenumber=\"1\">Игровой персонаж, управляемый игроком.\nОтвечает за движение, получение урона, использование оружия,\nвоспроизведение анимаций и взаимодействие с игровыми системами.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Player.PlayerController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Player.PlayerController.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Player.PlayerController",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Entities.Player.PlayerController.yml\" sourcestartlinenumber=\"1\">Контроллер управления персонажем, отвечающий за физику перемещения (разгон, трение)\nи ортогональное прицеливание в стиле The Binding of Isaac.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Player.PlayerStats.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Player.PlayerStats.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Player.PlayerStats",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Entities.Player.PlayerStats.yml\" sourcestartlinenumber=\"1\">Хранит характеристики игрока и модификаторы, влияющие на боевые и передвижные параметры персонажа.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.Player.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.Player.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities.Player",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Entities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Entities.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Entities",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Projectiles.Projectile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Projectiles.Projectile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Projectiles.Projectile",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Projectiles.Projectile.yml\" sourcestartlinenumber=\"1\">Представляет снаряд в игре. Обрабатывает логику движения, орбитального вращения,\nотрисовку спрайтов и анимацию при столкновении.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Projectiles.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Projectiles.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Projectiles",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Weapons.ForwardProjectileWeapon.yml\" sourcestartlinenumber=\"1\">Оружие дальнего боя, выпускающее одиночные снаряды по прямой линии в направлении взгляда или движения владельца.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Weapons.IWeapon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Weapons.IWeapon.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Weapons.IWeapon",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Weapons.IWeapon.yml\" sourcestartlinenumber=\"1\">Определяет контракт для игрового оружия, управляющего логикой атаки, обновлением состояния и визуальным отображением.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Weapons.ProjectileSpawnArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Weapons.ProjectileSpawnArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Weapons.ProjectileSpawnArgs",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Weapons.ProjectileSpawnArgs.yml\" sourcestartlinenumber=\"1\">Аргументы конфигурации и параметры инициализации для создания снаряда в игровом мире.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Weapons.SwordTrailParticle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Weapons.SwordTrailParticle.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Weapons.SwordTrailParticle",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Weapons.SwordTrailParticle.yml\" sourcestartlinenumber=\"1\">Описывает состояние, параметры анимации, размеры и характеристики отображения отдельной частицы визуального следа меча.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Weapons.SwordWeapon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Weapons.SwordWeapon.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Weapons.SwordWeapon",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Weapons.SwordWeapon.yml\" sourcestartlinenumber=\"1\">Оружие ближнего боя (меч), выполняющее круговой взмах по дуге, рассчитывающее динамический\nхитбокс атаки каждый кадр и генерирующее анимированные частицы шлейфа (следа).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Weapons.WeaponBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Weapons.WeaponBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Weapons.WeaponBase",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Weapons.WeaponBase.yml\" sourcestartlinenumber=\"1\">Базовый класс оружия.\nПредоставляет общую логику отката между атаками,\nобновления состояния и взаимодействия с боевой системой.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Weapons.WeaponFireMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Weapons.WeaponFireMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Weapons.WeaponFireMode",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Gameplay.Weapons.WeaponFireMode.yml\" sourcestartlinenumber=\"1\">Как игрок инициирует основную атаку этого оружия.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Gameplay.Weapons.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Gameplay.Weapons.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Gameplay.Weapons",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Program.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Program.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Program",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Program.yml\" sourcestartlinenumber=\"1\">Статический класс, содержащий точку входа в приложение.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Scenes.BaseScene.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Scenes.BaseScene.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Scenes.BaseScene",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Scenes.BaseScene.yml\" sourcestartlinenumber=\"1\">Базовый абстрактный класс для всех игровых сцен (главное меню, игровой процесс, экран паузы, загрузка и т.д.).\nОбеспечивает управление жизненным циклом сцены и предоставляет удобный доступ к системным сервисам игры.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Scenes.GameScene.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Scenes.GameScene.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Scenes.GameScene",
+      "Summary": "<p sourcefile=\"api/Vibe_Game.Scenes.GameScene.yml\" sourcestartlinenumber=\"1\">Основная игровая сцена, оркеструющая весь геймплейный цикл.\nОбъединяет системы игрока, генерации мира, ИИ врагов, полета снарядов и рендеринга,\nа также обрабатывает меню паузы, переходы между этажами и условия победы/проигрыша.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.Scenes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.Scenes.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game.Scenes",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Vibe_Game.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Vibe_Game.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Vibe_Game",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

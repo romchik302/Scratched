@@ -1,0 +1,778 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Core.Utilities.RandomHelper
+  commentId: T:Vibe_Game.Core.Utilities.RandomHelper
+  id: RandomHelper
+  parent: Vibe_Game.Core.Utilities
+  children:
+  - Vibe_Game.Core.Utilities.RandomHelper.#ctor
+  - Vibe_Game.Core.Utilities.RandomHelper.Chance(System.Single)
+  - Vibe_Game.Core.Utilities.RandomHelper.Next(System.Int32)
+  - Vibe_Game.Core.Utilities.RandomHelper.Next(System.Int32,System.Int32)
+  - Vibe_Game.Core.Utilities.RandomHelper.NextFloat
+  - Vibe_Game.Core.Utilities.RandomHelper.NextFloat(System.Single,System.Single)
+  - Vibe_Game.Core.Utilities.RandomHelper.RandomDirection4Way
+  - Vibe_Game.Core.Utilities.RandomHelper.RandomItem``1(System.Collections.Generic.List{``0})
+  langs:
+  - csharp
+  - vb
+  name: RandomHelper
+  nameWithType: RandomHelper
+  fullName: Vibe_Game.Core.Utilities.RandomHelper
+  type: Class
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Utilities/RandomHelper.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Utilities
+  summary: Вспомогательный класс для генерации случайных чисел и значений, упрощающий работу с рандомизацией в игре.
+  example: []
+  syntax:
+    content: public class RandomHelper
+    content.vb: Public Class RandomHelper
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Vibe_Game.Core.Utilities.RandomHelper.Next(System.Int32)
+  commentId: M:Vibe_Game.Core.Utilities.RandomHelper.Next(System.Int32)
+  id: Next(System.Int32)
+  parent: Vibe_Game.Core.Utilities.RandomHelper
+  langs:
+  - csharp
+  - vb
+  name: Next(int)
+  nameWithType: RandomHelper.Next(int)
+  fullName: Vibe_Game.Core.Utilities.RandomHelper.Next(int)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Utilities/RandomHelper.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Utilities
+  summary: Возвращает случайное целое число от 0 (включительно) до указанного максимума (не включая).
+  example: []
+  syntax:
+    content: public int Next(int max)
+    parameters:
+    - id: max
+      type: System.Int32
+      description: Верхняя граница диапазона.
+    return:
+      type: System.Int32
+      description: Случайное целое число.
+    content.vb: Public Function [Next](max As Integer) As Integer
+  overload: Vibe_Game.Core.Utilities.RandomHelper.Next*
+  nameWithType.vb: RandomHelper.Next(Integer)
+  fullName.vb: Vibe_Game.Core.Utilities.RandomHelper.Next(Integer)
+  name.vb: Next(Integer)
+- uid: Vibe_Game.Core.Utilities.RandomHelper.Next(System.Int32,System.Int32)
+  commentId: M:Vibe_Game.Core.Utilities.RandomHelper.Next(System.Int32,System.Int32)
+  id: Next(System.Int32,System.Int32)
+  parent: Vibe_Game.Core.Utilities.RandomHelper
+  langs:
+  - csharp
+  - vb
+  name: Next(int, int)
+  nameWithType: RandomHelper.Next(int, int)
+  fullName: Vibe_Game.Core.Utilities.RandomHelper.Next(int, int)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Utilities/RandomHelper.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Utilities
+  summary: Возвращает случайное целое число в заданном диапазоне.
+  example: []
+  syntax:
+    content: public int Next(int min, int max)
+    parameters:
+    - id: min
+      type: System.Int32
+      description: Нижняя граница диапазона (включительно).
+    - id: max
+      type: System.Int32
+      description: Верхняя граница диапазона (не включая).
+    return:
+      type: System.Int32
+      description: Случайное целое число.
+    content.vb: Public Function [Next](min As Integer, max As Integer) As Integer
+  overload: Vibe_Game.Core.Utilities.RandomHelper.Next*
+  nameWithType.vb: RandomHelper.Next(Integer, Integer)
+  fullName.vb: Vibe_Game.Core.Utilities.RandomHelper.Next(Integer, Integer)
+  name.vb: Next(Integer, Integer)
+- uid: Vibe_Game.Core.Utilities.RandomHelper.NextFloat
+  commentId: M:Vibe_Game.Core.Utilities.RandomHelper.NextFloat
+  id: NextFloat
+  parent: Vibe_Game.Core.Utilities.RandomHelper
+  langs:
+  - csharp
+  - vb
+  name: NextFloat()
+  nameWithType: RandomHelper.NextFloat()
+  fullName: Vibe_Game.Core.Utilities.RandomHelper.NextFloat()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Utilities/RandomHelper.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Utilities
+  summary: Возвращает случайное число с плавающей запятой в диапазоне [0.0, 1.0).
+  example: []
+  syntax:
+    content: public float NextFloat()
+    return:
+      type: System.Single
+      description: Случайное число типа float.
+    content.vb: Public Function NextFloat() As Single
+  overload: Vibe_Game.Core.Utilities.RandomHelper.NextFloat*
+- uid: Vibe_Game.Core.Utilities.RandomHelper.NextFloat(System.Single,System.Single)
+  commentId: M:Vibe_Game.Core.Utilities.RandomHelper.NextFloat(System.Single,System.Single)
+  id: NextFloat(System.Single,System.Single)
+  parent: Vibe_Game.Core.Utilities.RandomHelper
+  langs:
+  - csharp
+  - vb
+  name: NextFloat(float, float)
+  nameWithType: RandomHelper.NextFloat(float, float)
+  fullName: Vibe_Game.Core.Utilities.RandomHelper.NextFloat(float, float)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Utilities/RandomHelper.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Utilities
+  summary: Возвращает случайное число с плавающей запятой в заданном диапазоне.
+  example: []
+  syntax:
+    content: public float NextFloat(float min, float max)
+    parameters:
+    - id: min
+      type: System.Single
+      description: Минимальное значение.
+    - id: max
+      type: System.Single
+      description: Максимальное значение.
+    return:
+      type: System.Single
+      description: Случайное число типа float в диапазоне [min, max].
+    content.vb: Public Function NextFloat(min As Single, max As Single) As Single
+  overload: Vibe_Game.Core.Utilities.RandomHelper.NextFloat*
+  nameWithType.vb: RandomHelper.NextFloat(Single, Single)
+  fullName.vb: Vibe_Game.Core.Utilities.RandomHelper.NextFloat(Single, Single)
+  name.vb: NextFloat(Single, Single)
+- uid: Vibe_Game.Core.Utilities.RandomHelper.Chance(System.Single)
+  commentId: M:Vibe_Game.Core.Utilities.RandomHelper.Chance(System.Single)
+  id: Chance(System.Single)
+  parent: Vibe_Game.Core.Utilities.RandomHelper
+  langs:
+  - csharp
+  - vb
+  name: Chance(float)
+  nameWithType: RandomHelper.Chance(float)
+  fullName: Vibe_Game.Core.Utilities.RandomHelper.Chance(float)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Utilities/RandomHelper.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Utilities
+  summary: Выполняет проверку вероятности наступления события.
+  example: []
+  syntax:
+    content: public bool Chance(float probability)
+    parameters:
+    - id: probability
+      type: System.Single
+      description: Вероятность успеха от 0.0 до 1.0.
+    return:
+      type: System.Boolean
+      description: True, если событие произошло, иначе false.
+    content.vb: Public Function Chance(probability As Single) As Boolean
+  overload: Vibe_Game.Core.Utilities.RandomHelper.Chance*
+  nameWithType.vb: RandomHelper.Chance(Single)
+  fullName.vb: Vibe_Game.Core.Utilities.RandomHelper.Chance(Single)
+  name.vb: Chance(Single)
+- uid: Vibe_Game.Core.Utilities.RandomHelper.RandomItem``1(System.Collections.Generic.List{``0})
+  commentId: M:Vibe_Game.Core.Utilities.RandomHelper.RandomItem``1(System.Collections.Generic.List{``0})
+  id: RandomItem``1(System.Collections.Generic.List{``0})
+  parent: Vibe_Game.Core.Utilities.RandomHelper
+  langs:
+  - csharp
+  - vb
+  name: RandomItem<T>(List<T>)
+  nameWithType: RandomHelper.RandomItem<T>(List<T>)
+  fullName: Vibe_Game.Core.Utilities.RandomHelper.RandomItem<T>(System.Collections.Generic.List<T>)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Utilities/RandomHelper.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Utilities
+  summary: Выбирает случайный элемент из списка.
+  example: []
+  syntax:
+    content: public T RandomItem<T>(List<T> list)
+    parameters:
+    - id: list
+      type: System.Collections.Generic.List{{T}}
+      description: Список, из которого нужно выбрать элемент.
+    typeParameters:
+    - id: T
+      description: Тип элементов списка.
+    return:
+      type: '{T}'
+      description: Случайный элемент типа T.
+    content.vb: Public Function RandomItem(Of T)(list As List(Of T)) As T
+  overload: Vibe_Game.Core.Utilities.RandomHelper.RandomItem*
+  nameWithType.vb: RandomHelper.RandomItem(Of T)(List(Of T))
+  fullName.vb: Vibe_Game.Core.Utilities.RandomHelper.RandomItem(Of T)(System.Collections.Generic.List(Of T))
+  name.vb: RandomItem(Of T)(List(Of T))
+- uid: Vibe_Game.Core.Utilities.RandomHelper.RandomDirection4Way
+  commentId: M:Vibe_Game.Core.Utilities.RandomHelper.RandomDirection4Way
+  id: RandomDirection4Way
+  parent: Vibe_Game.Core.Utilities.RandomHelper
+  langs:
+  - csharp
+  - vb
+  name: RandomDirection4Way()
+  nameWithType: RandomHelper.RandomDirection4Way()
+  fullName: Vibe_Game.Core.Utilities.RandomHelper.RandomDirection4Way()
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Utilities/RandomHelper.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Utilities
+  summary: Возвращает случайный вектор направления для 4-х сторон (вверх, вниз, влево, вправо).
+  example: []
+  syntax:
+    content: public Vector2 RandomDirection4Way()
+    return:
+      type: Microsoft.Xna.Framework.Vector2
+      description: Вектор направления типа <xref href="Microsoft.Xna.Framework.Vector2" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function RandomDirection4Way() As Vector2
+  overload: Vibe_Game.Core.Utilities.RandomHelper.RandomDirection4Way*
+- uid: Vibe_Game.Core.Utilities.RandomHelper.#ctor
+  commentId: M:Vibe_Game.Core.Utilities.RandomHelper.#ctor
+  id: '#ctor'
+  parent: Vibe_Game.Core.Utilities.RandomHelper
+  langs:
+  - csharp
+  - vb
+  name: RandomHelper()
+  nameWithType: RandomHelper.RandomHelper()
+  fullName: Vibe_Game.Core.Utilities.RandomHelper.RandomHelper()
+  type: Constructor
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Utilities/RandomHelper.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Utilities
+  syntax:
+    content: public RandomHelper()
+    content.vb: Public Sub New()
+  overload: Vibe_Game.Core.Utilities.RandomHelper.#ctor*
+  nameWithType.vb: RandomHelper.New()
+  fullName.vb: Vibe_Game.Core.Utilities.RandomHelper.New()
+  name.vb: New()
+references:
+- uid: Vibe_Game.Core.Utilities
+  commentId: N:Vibe_Game.Core.Utilities
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Core.Utilities
+  nameWithType: Vibe_Game.Core.Utilities
+  fullName: Vibe_Game.Core.Utilities
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Utilities
+    name: Utilities
+    isExternal: true
+    href: Vibe_Game.Core.Utilities.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Utilities
+    name: Utilities
+    isExternal: true
+    href: Vibe_Game.Core.Utilities.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vibe_Game.Core.Utilities.RandomHelper.Next*
+  commentId: Overload:Vibe_Game.Core.Utilities.RandomHelper.Next
+  isExternal: true
+  href: Vibe_Game.Core.Utilities.RandomHelper.html#Vibe_Game_Core_Utilities_RandomHelper_Next_System_Int32_
+  name: Next
+  nameWithType: RandomHelper.Next
+  fullName: Vibe_Game.Core.Utilities.RandomHelper.Next
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vibe_Game.Core.Utilities.RandomHelper.NextFloat*
+  commentId: Overload:Vibe_Game.Core.Utilities.RandomHelper.NextFloat
+  isExternal: true
+  href: Vibe_Game.Core.Utilities.RandomHelper.html#Vibe_Game_Core_Utilities_RandomHelper_NextFloat
+  name: NextFloat
+  nameWithType: RandomHelper.NextFloat
+  fullName: Vibe_Game.Core.Utilities.RandomHelper.NextFloat
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vibe_Game.Core.Utilities.RandomHelper.Chance*
+  commentId: Overload:Vibe_Game.Core.Utilities.RandomHelper.Chance
+  isExternal: true
+  href: Vibe_Game.Core.Utilities.RandomHelper.html#Vibe_Game_Core_Utilities_RandomHelper_Chance_System_Single_
+  name: Chance
+  nameWithType: RandomHelper.Chance
+  fullName: Vibe_Game.Core.Utilities.RandomHelper.Chance
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vibe_Game.Core.Utilities.RandomHelper.RandomItem*
+  commentId: Overload:Vibe_Game.Core.Utilities.RandomHelper.RandomItem
+  isExternal: true
+  href: Vibe_Game.Core.Utilities.RandomHelper.html#Vibe_Game_Core_Utilities_RandomHelper_RandomItem__1_System_Collections_Generic_List___0__
+  name: RandomItem
+  nameWithType: RandomHelper.RandomItem
+  fullName: Vibe_Game.Core.Utilities.RandomHelper.RandomItem
+- uid: System.Collections.Generic.List{{T}}
+  commentId: T:System.Collections.Generic.List{``0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Microsoft.Xna.Framework.Vector2
+  commentId: T:Microsoft.Xna.Framework.Vector2
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Microsoft.Xna.Framework.Vector2
+- uid: Vibe_Game.Core.Utilities.RandomHelper.RandomDirection4Way*
+  commentId: Overload:Vibe_Game.Core.Utilities.RandomHelper.RandomDirection4Way
+  isExternal: true
+  href: Vibe_Game.Core.Utilities.RandomHelper.html#Vibe_Game_Core_Utilities_RandomHelper_RandomDirection4Way
+  name: RandomDirection4Way
+  nameWithType: RandomHelper.RandomDirection4Way
+  fullName: Vibe_Game.Core.Utilities.RandomHelper.RandomDirection4Way
+- uid: Microsoft.Xna.Framework
+  commentId: N:Microsoft.Xna.Framework
+  isExternal: true
+  name: Microsoft.Xna.Framework
+  nameWithType: Microsoft.Xna.Framework
+  fullName: Microsoft.Xna.Framework
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+- uid: Vibe_Game.Core.Utilities.RandomHelper.#ctor*
+  commentId: Overload:Vibe_Game.Core.Utilities.RandomHelper.#ctor
+  isExternal: true
+  href: Vibe_Game.Core.Utilities.RandomHelper.html#Vibe_Game_Core_Utilities_RandomHelper__ctor
+  name: RandomHelper
+  nameWithType: RandomHelper.RandomHelper
+  fullName: Vibe_Game.Core.Utilities.RandomHelper.RandomHelper
+  nameWithType.vb: RandomHelper.New
+  fullName.vb: Vibe_Game.Core.Utilities.RandomHelper.New
+  name.vb: New

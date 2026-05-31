@@ -1,0 +1,99 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Gameplay.Entities.Player
+  commentId: N:Vibe_Game.Gameplay.Entities.Player
+  id: Vibe_Game.Gameplay.Entities.Player
+  children:
+  - Vibe_Game.Gameplay.Entities.Player.ItemEffect
+  - Vibe_Game.Gameplay.Entities.Player.Player
+  - Vibe_Game.Gameplay.Entities.Player.PlayerController
+  - Vibe_Game.Gameplay.Entities.Player.PlayerStats
+  langs:
+  - csharp
+  - vb
+  name: Vibe_Game.Gameplay.Entities.Player
+  nameWithType: Vibe_Game.Gameplay.Entities.Player
+  fullName: Vibe_Game.Gameplay.Entities.Player
+  type: Namespace
+  assemblies:
+  - Vibe_Game
+references:
+- uid: Vibe_Game.Gameplay.Entities.Player.Player
+  commentId: T:Vibe_Game.Gameplay.Entities.Player.Player
+  parent: Vibe_Game.Gameplay.Entities.Player
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Player.Player.html
+  name: Player
+  nameWithType: Player
+  fullName: Vibe_Game.Gameplay.Entities.Player.Player
+- uid: Vibe_Game.Gameplay.Entities.Player.PlayerController
+  commentId: T:Vibe_Game.Gameplay.Entities.Player.PlayerController
+  parent: Vibe_Game.Gameplay.Entities.Player
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Player.PlayerController.html
+  name: PlayerController
+  nameWithType: PlayerController
+  fullName: Vibe_Game.Gameplay.Entities.Player.PlayerController
+- uid: Vibe_Game.Gameplay.Entities.Player.PlayerStats
+  commentId: T:Vibe_Game.Gameplay.Entities.Player.PlayerStats
+  parent: Vibe_Game.Gameplay.Entities.Player
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Player.PlayerStats.html
+  name: PlayerStats
+  nameWithType: PlayerStats
+  fullName: Vibe_Game.Gameplay.Entities.Player.PlayerStats
+- uid: Vibe_Game.Gameplay.Entities.Player.ItemEffect
+  commentId: T:Vibe_Game.Gameplay.Entities.Player.ItemEffect
+  parent: Vibe_Game.Gameplay.Entities.Player
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Player.ItemEffect.html
+  name: ItemEffect
+  nameWithType: ItemEffect
+  fullName: Vibe_Game.Gameplay.Entities.Player.ItemEffect
+- uid: Vibe_Game.Gameplay.Entities.Player
+  commentId: N:Vibe_Game.Gameplay.Entities.Player
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Gameplay.Entities.Player
+  nameWithType: Vibe_Game.Gameplay.Entities.Player
+  fullName: Vibe_Game.Gameplay.Entities.Player
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Player
+    name: Player
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Player.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Player
+    name: Player
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Player.html

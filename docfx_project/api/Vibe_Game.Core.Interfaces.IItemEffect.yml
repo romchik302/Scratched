@@ -1,0 +1,272 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Core.Interfaces.IItemEffect
+  commentId: T:Vibe_Game.Core.Interfaces.IItemEffect
+  id: IItemEffect
+  parent: Vibe_Game.Core.Interfaces
+  children:
+  - Vibe_Game.Core.Interfaces.IItemEffect.Apply(Vibe_Game.Gameplay.Entities.Player.PlayerStats)
+  - Vibe_Game.Core.Interfaces.IItemEffect.Description
+  - Vibe_Game.Core.Interfaces.IItemEffect.Name
+  - Vibe_Game.Core.Interfaces.IItemEffect.Remove(Vibe_Game.Gameplay.Entities.Player.PlayerStats)
+  langs:
+  - csharp
+  - vb
+  name: IItemEffect
+  nameWithType: IItemEffect
+  fullName: Vibe_Game.Core.Interfaces.IItemEffect
+  type: Interface
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Interfaces/IItemEffect.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Interfaces
+  summary: >-
+    Определяет контракт для эффектов предметов, которые могут изменять характеристики игрока.
+
+    Используется для реализации бонусов, дебаффов и временных усилений.
+  example: []
+  syntax:
+    content: public interface IItemEffect
+    content.vb: Public Interface IItemEffect
+- uid: Vibe_Game.Core.Interfaces.IItemEffect.Apply(Vibe_Game.Gameplay.Entities.Player.PlayerStats)
+  commentId: M:Vibe_Game.Core.Interfaces.IItemEffect.Apply(Vibe_Game.Gameplay.Entities.Player.PlayerStats)
+  id: Apply(Vibe_Game.Gameplay.Entities.Player.PlayerStats)
+  parent: Vibe_Game.Core.Interfaces.IItemEffect
+  langs:
+  - csharp
+  - vb
+  name: Apply(PlayerStats)
+  nameWithType: IItemEffect.Apply(PlayerStats)
+  fullName: Vibe_Game.Core.Interfaces.IItemEffect.Apply(Vibe_Game.Gameplay.Entities.Player.PlayerStats)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Interfaces/IItemEffect.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Interfaces
+  summary: Применяет модификатор к характеристикам игрока.
+  example: []
+  syntax:
+    content: void Apply(PlayerStats stats)
+    parameters:
+    - id: stats
+      type: Vibe_Game.Gameplay.Entities.Player.PlayerStats
+      description: Объект характеристик игрока.
+    content.vb: Sub Apply(stats As PlayerStats)
+  overload: Vibe_Game.Core.Interfaces.IItemEffect.Apply*
+- uid: Vibe_Game.Core.Interfaces.IItemEffect.Remove(Vibe_Game.Gameplay.Entities.Player.PlayerStats)
+  commentId: M:Vibe_Game.Core.Interfaces.IItemEffect.Remove(Vibe_Game.Gameplay.Entities.Player.PlayerStats)
+  id: Remove(Vibe_Game.Gameplay.Entities.Player.PlayerStats)
+  parent: Vibe_Game.Core.Interfaces.IItemEffect
+  langs:
+  - csharp
+  - vb
+  name: Remove(PlayerStats)
+  nameWithType: IItemEffect.Remove(PlayerStats)
+  fullName: Vibe_Game.Core.Interfaces.IItemEffect.Remove(Vibe_Game.Gameplay.Entities.Player.PlayerStats)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Interfaces/IItemEffect.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Interfaces
+  summary: Отменяет действие эффекта, возвращая характеристики к исходному состоянию.
+  example: []
+  syntax:
+    content: void Remove(PlayerStats stats)
+    parameters:
+    - id: stats
+      type: Vibe_Game.Gameplay.Entities.Player.PlayerStats
+      description: Объект характеристик игрока.
+    content.vb: Sub Remove(stats As PlayerStats)
+  overload: Vibe_Game.Core.Interfaces.IItemEffect.Remove*
+- uid: Vibe_Game.Core.Interfaces.IItemEffect.Name
+  commentId: P:Vibe_Game.Core.Interfaces.IItemEffect.Name
+  id: Name
+  parent: Vibe_Game.Core.Interfaces.IItemEffect
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: IItemEffect.Name
+  fullName: Vibe_Game.Core.Interfaces.IItemEffect.Name
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Interfaces/IItemEffect.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Interfaces
+  summary: Отображаемое имя эффекта (например, "Сила великана").
+  example: []
+  syntax:
+    content: string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Name As String
+  overload: Vibe_Game.Core.Interfaces.IItemEffect.Name*
+- uid: Vibe_Game.Core.Interfaces.IItemEffect.Description
+  commentId: P:Vibe_Game.Core.Interfaces.IItemEffect.Description
+  id: Description
+  parent: Vibe_Game.Core.Interfaces.IItemEffect
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: IItemEffect.Description
+  fullName: Vibe_Game.Core.Interfaces.IItemEffect.Description
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Interfaces/IItemEffect.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Interfaces
+  summary: Краткое описание эффекта (например, "Увеличивает урон на 10%").
+  example: []
+  syntax:
+    content: string Description { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Description As String
+  overload: Vibe_Game.Core.Interfaces.IItemEffect.Description*
+references:
+- uid: Vibe_Game.Core.Interfaces
+  commentId: N:Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Core.Interfaces
+  nameWithType: Vibe_Game.Core.Interfaces
+  fullName: Vibe_Game.Core.Interfaces
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Interfaces
+    name: Interfaces
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Interfaces
+    name: Interfaces
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.html
+- uid: Vibe_Game.Core.Interfaces.IItemEffect.Apply*
+  commentId: Overload:Vibe_Game.Core.Interfaces.IItemEffect.Apply
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IItemEffect.html#Vibe_Game_Core_Interfaces_IItemEffect_Apply_Vibe_Game_Gameplay_Entities_Player_PlayerStats_
+  name: Apply
+  nameWithType: IItemEffect.Apply
+  fullName: Vibe_Game.Core.Interfaces.IItemEffect.Apply
+- uid: Vibe_Game.Gameplay.Entities.Player.PlayerStats
+  commentId: T:Vibe_Game.Gameplay.Entities.Player.PlayerStats
+  parent: Vibe_Game.Gameplay.Entities.Player
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Player.PlayerStats.html
+  name: PlayerStats
+  nameWithType: PlayerStats
+  fullName: Vibe_Game.Gameplay.Entities.Player.PlayerStats
+- uid: Vibe_Game.Gameplay.Entities.Player
+  commentId: N:Vibe_Game.Gameplay.Entities.Player
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Gameplay.Entities.Player
+  nameWithType: Vibe_Game.Gameplay.Entities.Player
+  fullName: Vibe_Game.Gameplay.Entities.Player
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Player
+    name: Player
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Player.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Player
+    name: Player
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Player.html
+- uid: Vibe_Game.Core.Interfaces.IItemEffect.Remove*
+  commentId: Overload:Vibe_Game.Core.Interfaces.IItemEffect.Remove
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IItemEffect.html#Vibe_Game_Core_Interfaces_IItemEffect_Remove_Vibe_Game_Gameplay_Entities_Player_PlayerStats_
+  name: Remove
+  nameWithType: IItemEffect.Remove
+  fullName: Vibe_Game.Core.Interfaces.IItemEffect.Remove
+- uid: Vibe_Game.Core.Interfaces.IItemEffect.Name*
+  commentId: Overload:Vibe_Game.Core.Interfaces.IItemEffect.Name
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IItemEffect.html#Vibe_Game_Core_Interfaces_IItemEffect_Name
+  name: Name
+  nameWithType: IItemEffect.Name
+  fullName: Vibe_Game.Core.Interfaces.IItemEffect.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vibe_Game.Core.Interfaces.IItemEffect.Description*
+  commentId: Overload:Vibe_Game.Core.Interfaces.IItemEffect.Description
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IItemEffect.html#Vibe_Game_Core_Interfaces_IItemEffect_Description
+  name: Description
+  nameWithType: IItemEffect.Description
+  fullName: Vibe_Game.Core.Interfaces.IItemEffect.Description

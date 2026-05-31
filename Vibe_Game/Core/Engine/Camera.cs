@@ -1,15 +1,19 @@
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Vibe_Game.Core.Utilities;
 
 namespace Vibe_Game.Core.Engine
-{ 
+{
+    /// <summary>
+    /// Управляет отображением игрового мира, трансформацией координат и эффектами тряски камеры.
+    /// </summary>
     public class Camera
     {
         // Основные свойства
         public Vector2 Position { get; private set; }
-        public float Zoom { get; set; } = 2.65f; // Зум х2 для удобства (очень удобно, Ром, круто что это тут ваще не найти)))))))
+        /// <summary>Коэффициент масштабирования камеры (2.65f по умолчанию).</summary>
+        public float Zoom { get; set; } = 2.65f;
+        /// <summary>Угол поворота камеры в радианах.</summary>
         public float Rotation { get; set; }
 
         // Границы комнаты
@@ -22,6 +26,7 @@ namespace Vibe_Game.Core.Engine
 
         private readonly RandomHelper _random;
 
+        /// <summary>Инициализирует новый экземпляр класса Camera с заданными размерами области просмотра.</summary>
         public Camera(int viewportWidth, int viewportHeight)
         {
             ViewportWidth = viewportWidth;
@@ -29,7 +34,9 @@ namespace Vibe_Game.Core.Engine
             _random = new RandomHelper();
         }
 
-        // Матрица трансформации (самое важное!)
+        /// <summary>
+        /// Матрица, преобразующая мировые координаты в экранные с учетом зума, поворота и позиции.
+        /// </summary>
         public Matrix TransformMatrix
         {
             get
@@ -42,26 +49,26 @@ namespace Vibe_Game.Core.Engine
             }
         }
 
-        // Установить границы комнаты
+        /// <summary>
+        /// Устанавливает границы комнаты, за которые камера не может выходить при следовании за целью.
+        /// </summary>
         public void SetBounds(Rectangle bounds)
         {
             _roomBounds = bounds;
             _hasBounds = true;
         }
 
-        // Следовать за целью с ограничениями
+        /// <summary>
+        /// Плавно перемещает камеру к указанной точке с помощью линейной интерполяции (Lerp) и ограничивает ее границы комнаты.
+        /// </summary>
         public void Follow(Vector2 target)
         {
-            // Плавное движение к цели с помощью Lerp
             Position = Vector2.Lerp(Position, target, 0.1f);
 
-            // Если есть границы - ограничиваем
             if (_hasBounds)
             {
-                // Видимая область с учётом зума
                 var visibleArea = GetVisibleArea();
 
-                // Если камера выходит за границы - корректируем
                 if (visibleArea.Left < _roomBounds.Left)
                     Position = new Vector2(Position.X + (_roomBounds.Left - visibleArea.Left), Position.Y);
 
@@ -76,22 +83,23 @@ namespace Vibe_Game.Core.Engine
             }
         }
 
-        // Получить видимую область в мировых координатах
+        /// <summary>
+        /// Вычисляет прямоугольник видимой области камеры в мировых координатах. Полезно для отсечения (culling) объектов вне экрана.
+        /// </summary>
         public Rectangle GetVisibleArea()
         {
             var inverseMatrix = Matrix.Invert(TransformMatrix);
 
-            // Четыре угла экрана в мировых координатах
             var tl = Vector2.Transform(Vector2.Zero, inverseMatrix);
             var tr = Vector2.Transform(new Vector2(ViewportWidth, 0), inverseMatrix);
             var bl = Vector2.Transform(new Vector2(0, ViewportHeight), inverseMatrix);
             var br = Vector2.Transform(new Vector2(ViewportWidth, ViewportHeight), inverseMatrix);
 
-            // Находим ограничивающий прямоугольник
             var min = new Vector2(
                 MathHelper.Min(tl.X, MathHelper.Min(tr.X, MathHelper.Min(bl.X, br.X))),
                 MathHelper.Min(tl.Y, MathHelper.Min(tr.Y, MathHelper.Min(bl.Y, br.Y)))
             );
+
             var max = new Vector2(
                 MathHelper.Max(tl.X, MathHelper.Max(tr.X, MathHelper.Max(bl.X, br.X))),
                 MathHelper.Max(tl.Y, MathHelper.Max(tr.Y, MathHelper.Max(bl.Y, br.Y)))
@@ -100,33 +108,36 @@ namespace Vibe_Game.Core.Engine
             return new Rectangle((int)min.X, (int)min.Y, (int)(max.X - min.X), (int)(max.Y - min.Y));
         }
 
-        // Конвертация координат
+        /// <summary>Преобразует координаты из мирового пространства в экранные.</summary>
         public Vector2 WorldToScreen(Vector2 worldPosition)
         {
             return Vector2.Transform(worldPosition, TransformMatrix);
         }
 
+        /// <summary>Преобразует координаты из экранного пространства в мировые координаты.</summary>
         public Vector2 ScreenToWorld(Vector2 screenPosition)
         {
             return Vector2.Transform(screenPosition, Matrix.Invert(TransformMatrix));
         }
 
-        // Очень загадочная тряска камеры при получении урона
         private Vector2 _shakeOffset;
         private float _shakeTimer;
         private float _shakeIntensity;
 
+        /// <summary>Запускает эффект тряски камеры с указанной интенсивностью и длительностью.</summary>
         public void Shake(float intensity, float duration)
         {
             _shakeIntensity = intensity;
             _shakeTimer = duration;
         }
 
+        /// <summary>Обновляет состояние эффекта тряски камеры с учётом прошедшего времени.</summary>
         public void UpdateShake(GameTime gameTime)
         {
             if (_shakeTimer > 0)
             {
                 _shakeTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+
                 _shakeOffset = new Vector2(
                     (_random.NextFloat() * 2 - 1) * _shakeIntensity,
                     (_random.NextFloat() * 2 - 1) * _shakeIntensity
@@ -136,7 +147,8 @@ namespace Vibe_Game.Core.Engine
                     _shakeOffset = Vector2.Zero;
             }
         }
-        // Матрица с учётом тряски
+
+        /// <summary>Возвращает матрицу трансформации камеры с учётом текущего эффекта тряски.</summary>
         public Matrix GetShakenMatrix()
         {
             return

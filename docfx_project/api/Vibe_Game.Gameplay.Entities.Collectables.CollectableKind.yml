@@ -1,0 +1,235 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+  commentId: T:Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+  id: CollectableKind
+  parent: Vibe_Game.Gameplay.Entities.Collectables
+  children:
+  - Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.Fang
+  - Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.Feather
+  - Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.HealthLarge
+  - Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.HealthSmall
+  - Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.Totem
+  - Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.WeaponProjectile
+  - Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.WeaponSword
+  langs:
+  - csharp
+  - vb
+  name: CollectableKind
+  nameWithType: CollectableKind
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+  type: Enum
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableKind.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Collectables
+  summary: 'Подбираемые предметы: лут на пьедесталах, стартовый выбор оружия (первый этаж), дроп здоровья с врагов.'
+  example: []
+  syntax:
+    content: public enum CollectableKind
+    content.vb: Public Enum CollectableKind
+- uid: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.Totem
+  commentId: F:Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.Totem
+  id: Totem
+  parent: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+  langs:
+  - csharp
+  - vb
+  name: Totem
+  nameWithType: CollectableKind.Totem
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.Totem
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableKind.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Collectables
+  syntax:
+    content: Totem = 0
+    return:
+      type: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+- uid: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.Feather
+  commentId: F:Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.Feather
+  id: Feather
+  parent: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+  langs:
+  - csharp
+  - vb
+  name: Feather
+  nameWithType: CollectableKind.Feather
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.Feather
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableKind.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Collectables
+  syntax:
+    content: Feather = 1
+    return:
+      type: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+- uid: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.Fang
+  commentId: F:Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.Fang
+  id: Fang
+  parent: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+  langs:
+  - csharp
+  - vb
+  name: Fang
+  nameWithType: CollectableKind.Fang
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.Fang
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableKind.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Collectables
+  syntax:
+    content: Fang = 2
+    return:
+      type: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+- uid: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.HealthSmall
+  commentId: F:Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.HealthSmall
+  id: HealthSmall
+  parent: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+  langs:
+  - csharp
+  - vb
+  name: HealthSmall
+  nameWithType: CollectableKind.HealthSmall
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.HealthSmall
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableKind.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Collectables
+  summary: Малое восстановление здоровья.
+  example: []
+  syntax:
+    content: HealthSmall = 3
+    return:
+      type: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+- uid: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.HealthLarge
+  commentId: F:Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.HealthLarge
+  id: HealthLarge
+  parent: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+  langs:
+  - csharp
+  - vb
+  name: HealthLarge
+  nameWithType: CollectableKind.HealthLarge
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.HealthLarge
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableKind.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Collectables
+  summary: Большое восстановление здоровья.
+  example: []
+  syntax:
+    content: HealthLarge = 4
+    return:
+      type: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+- uid: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.WeaponProjectile
+  commentId: F:Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.WeaponProjectile
+  id: WeaponProjectile
+  parent: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+  langs:
+  - csharp
+  - vb
+  name: WeaponProjectile
+  nameWithType: CollectableKind.WeaponProjectile
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.WeaponProjectile
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableKind.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Collectables
+  summary: 'Стартовый выбор: дальнобойное оружие (только пьедестал на первом этаже).'
+  example: []
+  syntax:
+    content: WeaponProjectile = 5
+    return:
+      type: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+- uid: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.WeaponSword
+  commentId: F:Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.WeaponSword
+  id: WeaponSword
+  parent: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+  langs:
+  - csharp
+  - vb
+  name: WeaponSword
+  nameWithType: CollectableKind.WeaponSword
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.WeaponSword
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Gameplay/Entities/Collectables/CollectableKind.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Gameplay.Entities.Collectables
+  summary: 'Стартовый выбор: меч (только пьедестал на первом этаже).'
+  example: []
+  syntax:
+    content: WeaponSword = 6
+    return:
+      type: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+references:
+- uid: Vibe_Game.Gameplay.Entities.Collectables
+  commentId: N:Vibe_Game.Gameplay.Entities.Collectables
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Gameplay.Entities.Collectables
+  nameWithType: Vibe_Game.Gameplay.Entities.Collectables
+  fullName: Vibe_Game.Gameplay.Entities.Collectables
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Collectables
+    name: Collectables
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Collectables.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Gameplay
+    name: Gameplay
+    isExternal: true
+    href: Vibe_Game.Gameplay.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities
+    name: Entities
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.html
+  - name: .
+  - uid: Vibe_Game.Gameplay.Entities.Collectables
+    name: Collectables
+    isExternal: true
+    href: Vibe_Game.Gameplay.Entities.Collectables.html
+- uid: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+  commentId: T:Vibe_Game.Gameplay.Entities.Collectables.CollectableKind
+  parent: Vibe_Game.Gameplay.Entities.Collectables
+  isExternal: true
+  href: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind.html
+  name: CollectableKind
+  nameWithType: CollectableKind
+  fullName: Vibe_Game.Gameplay.Entities.Collectables.CollectableKind

@@ -6,11 +6,20 @@ using System;
 namespace Vibe_Game.Core.Utilities
 {
 
-    // Это хуета для отрисовки отладочной залупы написанная нейросетью я даже близко не смотрел на это
-    // Использовать только для отладки на свой страх и риск
+    /// <summary>
+    /// Предоставляет методы расширения для <see cref="SpriteBatch"/> для отрисовки простых геометрических примитивов (отладка).
+    /// </summary>
     public static class SpriteBatchExtensions
     {
-        // === МЕТОД ДЛЯ РИСОВАНИЯ ЛИНИИ ===
+        /// <summary>
+        /// Рисует линию между двумя точками.
+        /// </summary>
+        /// <param name="spriteBatch">Экземпляр SpriteBatch.</param>
+        /// <param name="pixelTexture">Текстура пикселя (1x1).</param>
+        /// <param name="start">Начальная точка.</param>
+        /// <param name="end">Конечная точка.</param>
+        /// <param name="color">Цвет линии.</param>
+        /// <param name="thickness">Толщина линии.</param>
         public static void DrawLine(this SpriteBatch spriteBatch, Texture2D pixelTexture,
             Vector2 start, Vector2 end, Color color, float thickness = 1f)
         {
@@ -28,7 +37,14 @@ namespace Vibe_Game.Core.Utilities
                 0);
         }
 
-        // === МЕТОД ДЛЯ РИСОВАНИЯ ПРЯМОУГОЛЬНИКА (контур) ===
+        /// <summary>
+        /// Рисует контур прямоугольника.
+        /// </summary>
+        /// <param name="spriteBatch">Экземпляр SpriteBatch.</param>
+        /// <param name="pixelTexture">Текстура пикселя (1x1).</param>
+        /// <param name="rectangle">Область отрисовки.</param>
+        /// <param name="color">Цвет контура.</param>
+        /// <param name="thickness">Толщина линий контура.</param>
         public static void DrawRectangle(this SpriteBatch spriteBatch, Texture2D pixelTexture,
             Rectangle rectangle, Color color, float thickness = 1f)
         {
@@ -53,14 +69,28 @@ namespace Vibe_Game.Core.Utilities
                 color);
         }
 
-        // === МЕТОД ДЛЯ РИСОВАНИЯ ЗАЛИТОГО ПРЯМОУГОЛЬНИКА ===
+        /// <summary>
+        /// Рисует залитый прямоугольник.
+        /// </summary>
+        /// <param name="spriteBatch">Экземпляр SpriteBatch.</param>
+        /// <param name="pixelTexture">Текстура пикселя (1x1).</param>
+        /// <param name="rectangle">Область отрисовки.</param>
+        /// <param name="color">Цвет заливки.</param>
         public static void DrawFilledRectangle(this SpriteBatch spriteBatch, Texture2D pixelTexture,
             Rectangle rectangle, Color color)
         {
             spriteBatch.Draw(pixelTexture, rectangle, color);
         }
 
-        // === МЕТОД ДЛЯ РИСОВАНИЯ КРУГА (аппроксимация) ===
+        /// <summary>
+        /// Рисует аппроксимированный контур круга.
+        /// </summary>
+        /// <param name="spriteBatch">Экземпляр SpriteBatch.</param>
+        /// <param name="pixelTexture">Текстура пикселя (1x1).</param>
+        /// <param name="center">Центр круга.</param>
+        /// <param name="radius">Радиус круга.</param>
+        /// <param name="color">Цвет контура.</param>
+        /// <param name="segments">Количество сегментов для аппроксимации.</param>
         public static void DrawCircle(this SpriteBatch spriteBatch, Texture2D pixelTexture,
             Vector2 center, float radius, Color color, int segments = 16)
         {
@@ -79,7 +109,14 @@ namespace Vibe_Game.Core.Utilities
             }
         }
 
-        // === МЕТОД ДЛЯ РИСОВАНИЯ ЗАЛИТОГО КРУГА ===
+        /// <summary>
+        /// Рисует залитый круг (в данной реализации рисует квадрат, описывающий круг).
+        /// </summary>
+        /// <param name="spriteBatch">Экземпляр SpriteBatch.</param>
+        /// <param name="pixelTexture">Текстура пикселя (1x1).</param>
+        /// <param name="center">Центр круга.</param>
+        /// <param name="radius">Радиус круга.</param>
+        /// <param name="color">Цвет заливки.</param>
         public static void DrawFilledCircle(this SpriteBatch spriteBatch, Texture2D pixelTexture,
             Vector2 center, float radius, Color color)
         {
@@ -95,7 +132,15 @@ namespace Vibe_Game.Core.Utilities
             spriteBatch.Draw(pixelTexture, rect, color);
         }
 
-        // === МЕТОД ДЛЯ РИСОВАНИЯ ТРЕУГОЛЬНИКА ===
+        /// <summary>
+        /// Рисует треугольник по трем заданным точкам.
+        /// </summary>
+        /// <param name="spriteBatch">Экземпляр SpriteBatch.</param>
+        /// <param name="pixelTexture">Текстура пикселя (1x1).</param>
+        /// <param name="point1">Первая вершина.</param>
+        /// <param name="point2">Вторая вершина.</param>
+        /// <param name="point3">Третья вершина.</param>
+        /// <param name="color">Цвет линий треугольника.</param>
         public static void DrawTriangle(this SpriteBatch spriteBatch, Texture2D pixelTexture,
             Vector2 point1, Vector2 point2, Vector2 point3, Color color)
         {

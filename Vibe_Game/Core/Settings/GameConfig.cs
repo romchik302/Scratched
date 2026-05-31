@@ -3,11 +3,15 @@ using Vibe_Game.Gameplay.Entities.Collectables;
 
 namespace Vibe_Game.Core.Settings
 {
+    /// <summary>Глобальные настройки сетки мира, размеров комнат и тайлов.</summary>
     public static class WorldConfig
     {
+        /// <summary>Базовый размер одного квадратного тайла в пикселях.</summary>
         public const int TileSize = 32;
 
+        /// <summary>Ширина комнаты в количестве тайлов.</summary>
         public const int RoomWidthTiles = 15;
+        /// <summary>Высота комнаты в количестве тайлов.</summary>
         public const int RoomHeightTiles = 9;
 
         public const int RoomWidthPx = RoomWidthTiles * TileSize;
@@ -19,10 +23,15 @@ namespace Vibe_Game.Core.Settings
         /// <summary>Минимальное расстояние (радиус по Чебышёву) между камнями при генерации комнаты.</summary>
         public const int ObstacleMinSeparationTiles = 2;
 
+        /// <summary>Максимальный размер сетки этажа (комнат по ширине и высоте).</summary>
         public const int GridSize = 13;
+        /// <summary>
+        /// Координата центральной точки матрицы этажа, определяющая фиксированное местоположение стартовой комнаты.
+        /// </summary>
         public const int CenterGrid = 6;
     }
 
+    /// <summary>Настройки генерации этажей и общей прогрессии забега.</summary>
     public static class FloorConfig
     {
         public const int FirstFloorIndex = 1;
@@ -30,14 +39,21 @@ namespace Vibe_Game.Core.Settings
         public const int MaxFloorIndex = 2;
     }
 
+    /// <summary>Базовые параметры главного героя (хитбокс и скорость перемещения).</summary>
     public static class PlayerConfig
     {
         public const int Size = 24;
         public const int Radius = Size / 2;
+        /// <summary>
+        /// Внутреннее смещение хитбокса коллизии относительно графического спрайта для реализации эффекта глубины и наложения объектов (Y-sorting).
+        /// </summary>
         public const float CollisionOffset = 11.9f;
+
+        /// <summary>Базовая скорость перемещения игрока в пикселях в секунду.</summary>
         public const float BaseSpeed = 200f;
     }
 
+    /// <summary>Характеристики всех противников и босса (здоровье, скорости, шансы спавна и параметры атак).</summary>
     public static class EnemyConfig
     {
         /// <summary>Спрайт-лист анимации смерти (все враги, горизонтальные кадры).</summary>
@@ -47,6 +63,9 @@ namespace Vibe_Game.Core.Settings
         public const float DeathAnimationStartOpacity = 1f;
         public const float DeathAnimationEndOpacity = 0f;
 
+        /// <summary>
+        /// Задержка активации логики ИИ врага после его появления, предотвращающая мгновенное нанесение урона игроку на входе в комнату.
+        /// </summary>
         public const float EnemyActivationDelaySeconds = 0.6f;
 
         public const int DefaultFlyingRadius = 8;
@@ -62,7 +81,13 @@ namespace Vibe_Game.Core.Settings
         public const float AdaptiveChasingMoveSpeed = 70f;
         public const int AdaptiveChasingMaxHealth = 20;
         public const float AdaptiveChasingRadius = 15f;
+        /// <summary>
+        /// Исходный радиус обнаружения игрока, при входе в который адаптивный противник переходит в состояние погони.
+        /// </summary>
         public const float AdaptiveChasingInitialRadius = 90f;
+        /// <summary>
+        /// Расширенный радиус удержания цели, позволяющий противнику не терять игрока из виду при резких маневрах или выходе из базовой зоны агро.
+        /// </summary>
         public const float AdaptiveChasingExpandedRadius = 200f;
         public const float AdaptiveChasingSpawnChance = 0.3f;
 
@@ -75,6 +100,9 @@ namespace Vibe_Game.Core.Settings
         public const int ShooterMaxHealth = 12;
         public const float ShooterAggroRadius = 100f;
         public const float ShooterShotIntervalSeconds = 0.7f;
+        /// <summary>
+        /// Кулдаун перед первым выстрелом стрелка после смены позиции или входа в состояние атаки.
+        /// </summary>
         public const float ShooterReentryShotCooldownSeconds = 0.55f;
         public const float ShooterProjectileSpeed = 150f;
         public const int ShooterProjectileDamage = 1;
@@ -83,19 +111,23 @@ namespace Vibe_Game.Core.Settings
         public const float ShooterProjectileRecoilForce = 0f;
         public const float ShooterSpawnChancePerRoom = 0.4f;
 
-        public const float BossMoveSpeed = 35f;
+        /// <summary>Базовое максимальное здоровье финального босса.</summary>
         public const int BossMaxHealth = 180;
+        public const float BossMoveSpeed = 35f;
         public const float BossRadius = 26f;
         /// <summary>Доля высоты спрайта босса, участвующей в хитбоксе (верхние 15% отрезаны).</summary>
         public const float BossHitboxVisibleHeightFraction = 0.85f;
         public const float BossAttackPauseMin = 0.95f;
         public const float BossAttackPauseMax = 1.55f;
+        /// <summary>
+        /// Математический вес (вероятность выбора) атаки призыва миньонов в дереве поведений босса.
+        /// </summary>
         public const float BossSummonAttackWeight = 0.35f;
         public const float BossSummonShooterChance = 0.2f;
         public const int BossSummonMinCount = 2;
         public const int BossSummonMaxCount = 4;
         public const float BossSummonSpawnRadius = 30f;
-        /// <summary>Сколько полных циклов анимации строки <see cref="BossSheetFliesAttackIdleRow"/> играет во время призыва.</summary>
+        /// <summary>Сколько полных циклов анимации строки BossSheetFliesAttackIdleRow играет во время призыва.</summary>
         public const int BossSummonFliesAnimLoopCount = 3;
 
         public const int BossSpikeBurstProjectileCount = 10;
@@ -104,7 +136,7 @@ namespace Vibe_Game.Core.Settings
         public const float BossSpikeBurstProjectileRadius = 6f;
         public const float BossSpikeBurstSpawnRadius = 22f;
 
-        /// <summary>Длинные шипы burst-атаки: отдельный лист <see cref="BossLongProjectileTexture"/>.</summary>
+        /// <summary>Длинные шипы burst-атаки: отдельный лист BossLongProjectileTexture.</summary>
         public const string BossLongProjectileTexture = "boss_long_projectile";
         public const int BossLongProjectileFrameColumns = 4;
         public const float BossLongProjectileDrawSize = 30f;
@@ -114,6 +146,9 @@ namespace Vibe_Game.Core.Settings
         public const float BossBurstSpecialProjectileLifetime = 2.2f;
         public const float BossBurstSpecialProjectileRadius = 5f;
         public const float BossBurstSpecialProjectileLength = 34f;
+        /// <summary>
+        /// Половина угла общего конуса разлета (в радианах) для веерной атаки особыми снарядами.
+        /// </summary>
         public const float BossBurstSpecialSpreadHalfAngle = 0.35f;
 
         /// <summary>Строк в спрайт-листе босса (0..N-1).</summary>
@@ -122,7 +157,7 @@ namespace Vibe_Game.Core.Settings
         public const float BossCommonAnimFrameDurationSeconds = 0.11f;
         public const float BossFlyIdleAnimFrameDurationSeconds = 0.09f;
         public const float BossIdleRowFrameDurationSeconds = 0.14f;
-        
+
         public const int BossDeathAnimationFramesCount = 4;
         public const float BossDeathAnimationFrameDurationSeconds = 0.12f;
 
@@ -134,23 +169,27 @@ namespace Vibe_Game.Core.Settings
 
         public const float BossBurrowTravelDuration = 1.5f;
         public const float BossBurrowTrailSpeed = 70f;
+        /// <summary>
+        /// Радиус зоны поражения при выныривании босса из-под земли под персонажем игрока.
+        /// </summary>
         public const float BossBurrowStrikeRadius = 44f;
         public const bool BossInvulnerableDuringBurrow = true;
 
         public const string BossTexture = "boss_sheet";
-        public const int BossSheetRotateRow = 0; // босс поворачивается
-        public const int BossSheetAttackRow = 1; // босс начинает атаку(burst/spinning)
-        public const int BossSheetFliesAttackIdleRow = 2; // босс во время того как атака со спавном противников происходит
-        public const int BossSheetBurrowRow = 3; // босс зарывается под землю
-        public const int BossSheetDiggingRow = 4; // босс ползет под землей
-        public const int BossSheetIdleRow = 5; // босс когда не атакует и стоит на месте
-        public const int BossSheetDeathRow = 6; // босс умирает
+        public const int BossSheetRotateRow = 0;
+        public const int BossSheetAttackRow = 1;
+        public const int BossSheetFliesAttackIdleRow = 2;
+        public const int BossSheetBurrowRow = 3;
+        public const int BossSheetDiggingRow = 4;
+        public const int BossSheetIdleRow = 5;
+        public const int BossSheetDeathRow = 6;
 
-        public const int BossSheetFramesCount = 8; // всего кадров в спрайт листе
-        public const int BossSheetCommonFramesCount = 4;// базовое количество кадров
-        public const int BossSheetFliesAttckFramesCount = 8; // только тут 8 кадров, в остальных по 4
+        public const int BossSheetFramesCount = 8;
+        public const int BossSheetCommonFramesCount = 4;
+        public const int BossSheetFliesAttckFramesCount = 8;
     }
 
+    /// <summary>Настройки оружия (урон, кулдауны, скорости снарядов и параметры визуальных эффектов).</summary>
     public static class WeaponConfig
     {
         public const string SwordTexture = "sword_sheet";
@@ -160,8 +199,10 @@ namespace Vibe_Game.Core.Settings
 
         public const float SwordLength = 40f;
         public const float SwordWidth = 10f;
-        public const float SwordAttackAngle = System.MathF.PI / 1.5f; // 120 градусов
+        public const float SwordAttackAngle = System.MathF.PI / 1.5f;
         public const float SwordAttackDuration = 0.2f;
+
+        /// <summary>Базовый урон меча при атаке в ближнем бою.</summary>
         public const int SwordDamage = 5;
         public const float SwordRecoilForce = 500f;
 
@@ -170,27 +211,29 @@ namespace Vibe_Game.Core.Settings
         public const float SwordTrailParticleSize = 6f;
         public const float SwordTrailAnimationSpeed = 0.1f;
         public const float SwordTrailParticleLifetime = 0.7f;
+        /// <summary>
+        /// Максимальная амплитуда случайного отклонения яркости генерируемой частицы шлейфа от её базового цвета.
+        /// </summary>
         public const float SwordTrailBrightnessVariation = 0.6f;
 
         public const int ProjectileFrameCount = 4;
         public const float ProjectileSize = 16f;
         public const float ProjectileAnimationSpeed = 0.06f;
-        
+
         public const float PlayerProjectileSpeed = 300f;
         public const float PlayerProjectileLifetime = 1.8f;
+        /// <summary>Базовый урон от одного выстрела игрока.</summary>
         public const int PlayerProjectileDamage = 3;
-        
+
         public const float EnemyProjectileSpeed = 150f;
         public const float EnemyProjectileLifetime = 2.2f;
         public const int EnemyProjectileDamage = 1;
     }
 
+    /// <summary>Параметры подбираемых предметов, артефактов и хила (баффы, шансы дропа).</summary>
     public static class CollectibleConfig
     {
-        /// <summary>
-        /// Один спрайт-лист: строка <see cref="CollectablesSheetPedestalRow"/> — idle пьедестала (4 кадра в ряд),
-        /// далее клыки, перо, тотем, малый/большой хил, пьедесталы оружия — см. <see cref="CollectablesSheetFangRow"/> … <see cref="CollectablesSheetWeaponSwordRow"/>.
-        /// </summary>
+        /// <summary>Один спрайт-лист: строка CollectablesSheetPedestalRow — idle пьедестала (4 кадра в ряд), далее клыки, перо, тотем, малый/большой хил, пьедесталы оружия.</summary>
         public const string CollectablesTexture = "collectables_sheet";
 
         /// <summary>Кадров в одной строке (idle пьедестала и предмета).</summary>
@@ -210,16 +253,27 @@ namespace Vibe_Game.Core.Settings
 
         public const float FeatherSpeedMultiplierBonus = 0.12f;
         public const float FeatherProjectileSpeedMultiplierBonus = 0.1f;
+        /// <summary>
+        /// Мультипликативный множитель изменения времени перезарядки меча за каждый стек предмета «Перо» (уменьшает кулдаун).
+        /// </summary>
         public const float FeatherSwordCooldownMultiplierPerStack = 0.92f;
 
         public const int FangBonusDamage = 1;
 
+        /// <summary>Вероятность выпадения здоровья после смерти врага.</summary>
         public const float EnemyHealthDropChance = 0.15f;
         /// <summary>Доля дропа, при котором выпадает +2 HP (остальное — +1).</summary>
         public const float EnemyTwoHpDropWeight = 0.5f;
 
         public const int FloorPickupSize = 18;
+        /// <summary>
+        /// Частота вертикального покачивания (анимации левитации) предмета на полу, используемая в функции синуса.
+        /// </summary>
         public const float FloorPickupBobSpeed = 4.2f;
+
+        /// <summary>
+        /// Максимальное отклонение по оси Y (в пикселях) при покачивании предмета на полу.
+        /// </summary>
         public const float FloorPickupBobAmplitude = 2.5f;
 
         /// <summary>Скорость idle-анимации сердец на полу (кадры из строки хила в спрайт-листе).</summary>
@@ -228,14 +282,12 @@ namespace Vibe_Game.Core.Settings
         public const float BasePlayerControllerMaxSpeed = 150f;
     }
 
-    /// <summary>Пьедесталы: раскладка, имена PNG в Content, число кадров idle-анимации.</summary>
+    /// <summary>Настройки генерации и отрисовки пьедесталов для артефактов и стартового оружия.</summary>
     public static class PedestalConfig
     {
         public const int SpriteFrameCount = 4;
         public const float IdleAnimFps = 5f;
         public const float PickupAnimDurationSeconds = 0.42f;
-
-        /// <summary>Раскладка спрайтов пьедестала и предметов — в <see cref="CollectibleConfig.CollectablesTexture"/>.</summary>
 
         /// <summary>Случайный лут на обычных пьедесталах (не стартовое оружие).</summary>
         public static readonly CollectableKind[] StandardLootKinds =
@@ -252,7 +304,7 @@ namespace Vibe_Game.Core.Settings
             new Point(2, 1)
         };
 
-        /// <summary>Порядок соответствует <see cref="StartingWeaponPedestalOffsetsFromCenter"/>.</summary>
+        /// <summary>Порядок соответствует StartingWeaponPedestalOffsetsFromCenter.</summary>
         public static readonly CollectableKind[] StartingWeaponPedestalKinds =
         {
             CollectableKind.WeaponProjectile,
@@ -284,13 +336,16 @@ namespace Vibe_Game.Core.Settings
         public const float ProjectileCooldownSeconds = 0.35f;
         public const float ProjectileSpeed = 205f;
         public const int ProjectileDamage = 3;
+        /// <summary>
+        /// Расстояние в пикселях от центра игрока, на котором порождается снаряд, предотвращающее мгновенную коллизию с хитбоксом стреляющего.
+        /// </summary>
         public const float ProjectileSpawnOffsetPixels = 2f;
         public const float ProjectileLifetimeSeconds = 1.5f;
         public const float ProjectileRadius = 4f;
         public const float ProjectileRecoilForce = 100f;
     }
 
-    /// <summary>Конфиг полоски здоровья игрока из спрайт-листа 8x4.</summary>
+    /// <summary>Конфиг отрисовки полоски здоровья игрока из спрайт-листа 8x4.</summary>
     public static class HealthHudConfig
     {
         public const string TextureAsset = "healthbar_sheet";
@@ -326,6 +381,7 @@ namespace Vibe_Game.Core.Settings
         public const int ExtraLivesTextOffsetY = 4;
     }
 
+    /// <summary>Имена аудиофайлов и настройки звуковой системы (громкость, шаги, музыка).</summary>
     public static class SoundConfig
     {
         // Эффекты игрока
@@ -346,11 +402,11 @@ namespace Vibe_Game.Core.Settings
 
         // Эффекты босса
         public const string BossDeath = "boss_death";
-        public const string BossEntering = "boss_emerge";     
-        public const string BossBurrow = "boss_burrow";        
-        public const string BossEmerge = "boss_emerge";         
-        public const string BossStatic = "boss_static";         // заготовка 
-        public const string BossAttack = "boss_attack";        
+        public const string BossEntering = "boss_emerge";
+        public const string BossBurrow = "boss_burrow";
+        public const string BossEmerge = "boss_emerge";
+        public const string BossStatic = "boss_static";
+        public const string BossAttack = "boss_attack";
 
         // Эффекты UI и карты
         public const string UIConfirm = "ui_confirm";
@@ -362,14 +418,14 @@ namespace Vibe_Game.Core.Settings
         public const string MapOpenDoor = "map_opendoor";
 
         // Музыка
-        public const string MusicMainMenu = "music_main_menu";           
-        public const string MusicEmptyRoom = "music_empty_room";         
-        public const string MusicCombatRoom = "music_combat_room";       
-        public const string MusicBossRoom = "music_boss_room";           
-        public const string MusicCredits = "music_credits";             
+        public const string MusicMainMenu = "music_main_menu";
+        public const string MusicEmptyRoom = "music_empty_room";
+        public const string MusicCombatRoom = "music_combat_room";
+        public const string MusicBossRoom = "music_boss_room";
+        public const string MusicCredits = "music_credits";
 
         // Переходы (звуки очистки комнаты)
-        public const string RoomCleared = "room_cleared";                
+        public const string RoomCleared = "room_cleared";
 
         public const float DefaultSoundEffectVolume = 0.3f;
 
@@ -386,6 +442,7 @@ namespace Vibe_Game.Core.Settings
         public const float FootstepMinIntervalSeconds = 0.4f;
     }
 
+    /// <summary>Глобальная палитра цветов, используемая для отрисовки интерфейса, миникарты и базовой геометрии.</summary>
     public static class GameColors
     {
         public static readonly Color Background = new Color(15, 10, 20);
@@ -412,6 +469,7 @@ namespace Vibe_Game.Core.Settings
         public static readonly Color RoomLabel = new Color(245, 245, 235);
         public static readonly Color RoomLabelShadow = new Color(20, 20, 26, 180);
         public static readonly Color FloorHint = new Color(232, 216, 160);
+
         public static readonly Color MenuBackground = new Color(18, 24, 16);
         public static readonly Color MenuPanel = new Color(36, 44, 30, 238);
         public static readonly Color MenuOutline = new Color(118, 103, 76);

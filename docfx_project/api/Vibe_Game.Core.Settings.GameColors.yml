@@ -1,0 +1,1182 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Core.Settings.GameColors
+  commentId: T:Vibe_Game.Core.Settings.GameColors
+  id: GameColors
+  parent: Vibe_Game.Core.Settings
+  children:
+  - Vibe_Game.Core.Settings.GameColors.Background
+  - Vibe_Game.Core.Settings.GameColors.ButtonLocked
+  - Vibe_Game.Core.Settings.GameColors.ButtonUnlocked
+  - Vibe_Game.Core.Settings.GameColors.CollectablePlaceholder
+  - Vibe_Game.Core.Settings.GameColors.DeathBackground
+  - Vibe_Game.Core.Settings.GameColors.DeathMuted
+  - Vibe_Game.Core.Settings.GameColors.DeathOutline
+  - Vibe_Game.Core.Settings.GameColors.DeathPanel
+  - Vibe_Game.Core.Settings.GameColors.DeathText
+  - Vibe_Game.Core.Settings.GameColors.Floor
+  - Vibe_Game.Core.Settings.GameColors.FloorHint
+  - Vibe_Game.Core.Settings.GameColors.MenuBackground
+  - Vibe_Game.Core.Settings.GameColors.MenuMuted
+  - Vibe_Game.Core.Settings.GameColors.MenuOutline
+  - Vibe_Game.Core.Settings.GameColors.MenuOverlay
+  - Vibe_Game.Core.Settings.GameColors.MenuPanel
+  - Vibe_Game.Core.Settings.GameColors.MenuSelection
+  - Vibe_Game.Core.Settings.GameColors.MinimapBattle
+  - Vibe_Game.Core.Settings.GameColors.MinimapBoss
+  - Vibe_Game.Core.Settings.GameColors.MinimapCurrent
+  - Vibe_Game.Core.Settings.GameColors.MinimapCurrentOutline
+  - Vibe_Game.Core.Settings.GameColors.MinimapDefault
+  - Vibe_Game.Core.Settings.GameColors.MinimapStart
+  - Vibe_Game.Core.Settings.GameColors.MinimapTreasure
+  - Vibe_Game.Core.Settings.GameColors.MinimapVisitedOutline
+  - Vibe_Game.Core.Settings.GameColors.Overgrowth
+  - Vibe_Game.Core.Settings.GameColors.Pedestal
+  - Vibe_Game.Core.Settings.GameColors.Rock
+  - Vibe_Game.Core.Settings.GameColors.RoomLabel
+  - Vibe_Game.Core.Settings.GameColors.RoomLabelShadow
+  - Vibe_Game.Core.Settings.GameColors.Trapdoor
+  - Vibe_Game.Core.Settings.GameColors.TrapdoorRim
+  - Vibe_Game.Core.Settings.GameColors.VictoryAccent
+  - Vibe_Game.Core.Settings.GameColors.VictoryBackground
+  - Vibe_Game.Core.Settings.GameColors.VictoryOutline
+  - Vibe_Game.Core.Settings.GameColors.VictoryPanel
+  - Vibe_Game.Core.Settings.GameColors.VictoryText
+  - Vibe_Game.Core.Settings.GameColors.Wall
+  langs:
+  - csharp
+  - vb
+  name: GameColors
+  nameWithType: GameColors
+  fullName: Vibe_Game.Core.Settings.GameColors
+  type: Class
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  summary: Глобальная палитра цветов, используемая для отрисовки интерфейса, миникарты и базовой геометрии.
+  example: []
+  syntax:
+    content: public static class GameColors
+    content.vb: Public Module GameColors
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Vibe_Game.Core.Settings.GameColors.Background
+  commentId: F:Vibe_Game.Core.Settings.GameColors.Background
+  id: Background
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: Background
+  nameWithType: GameColors.Background
+  fullName: Vibe_Game.Core.Settings.GameColors.Background
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color Background
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly Background As Color
+- uid: Vibe_Game.Core.Settings.GameColors.Floor
+  commentId: F:Vibe_Game.Core.Settings.GameColors.Floor
+  id: Floor
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: Floor
+  nameWithType: GameColors.Floor
+  fullName: Vibe_Game.Core.Settings.GameColors.Floor
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color Floor
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly Floor As Color
+- uid: Vibe_Game.Core.Settings.GameColors.Wall
+  commentId: F:Vibe_Game.Core.Settings.GameColors.Wall
+  id: Wall
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: Wall
+  nameWithType: GameColors.Wall
+  fullName: Vibe_Game.Core.Settings.GameColors.Wall
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color Wall
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly Wall As Color
+- uid: Vibe_Game.Core.Settings.GameColors.Rock
+  commentId: F:Vibe_Game.Core.Settings.GameColors.Rock
+  id: Rock
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: Rock
+  nameWithType: GameColors.Rock
+  fullName: Vibe_Game.Core.Settings.GameColors.Rock
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color Rock
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly Rock As Color
+- uid: Vibe_Game.Core.Settings.GameColors.Overgrowth
+  commentId: F:Vibe_Game.Core.Settings.GameColors.Overgrowth
+  id: Overgrowth
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: Overgrowth
+  nameWithType: GameColors.Overgrowth
+  fullName: Vibe_Game.Core.Settings.GameColors.Overgrowth
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color Overgrowth
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly Overgrowth As Color
+- uid: Vibe_Game.Core.Settings.GameColors.Pedestal
+  commentId: F:Vibe_Game.Core.Settings.GameColors.Pedestal
+  id: Pedestal
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: Pedestal
+  nameWithType: GameColors.Pedestal
+  fullName: Vibe_Game.Core.Settings.GameColors.Pedestal
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color Pedestal
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly Pedestal As Color
+- uid: Vibe_Game.Core.Settings.GameColors.CollectablePlaceholder
+  commentId: F:Vibe_Game.Core.Settings.GameColors.CollectablePlaceholder
+  id: CollectablePlaceholder
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: CollectablePlaceholder
+  nameWithType: GameColors.CollectablePlaceholder
+  fullName: Vibe_Game.Core.Settings.GameColors.CollectablePlaceholder
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color CollectablePlaceholder
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly CollectablePlaceholder As Color
+- uid: Vibe_Game.Core.Settings.GameColors.Trapdoor
+  commentId: F:Vibe_Game.Core.Settings.GameColors.Trapdoor
+  id: Trapdoor
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: Trapdoor
+  nameWithType: GameColors.Trapdoor
+  fullName: Vibe_Game.Core.Settings.GameColors.Trapdoor
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color Trapdoor
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly Trapdoor As Color
+- uid: Vibe_Game.Core.Settings.GameColors.TrapdoorRim
+  commentId: F:Vibe_Game.Core.Settings.GameColors.TrapdoorRim
+  id: TrapdoorRim
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: TrapdoorRim
+  nameWithType: GameColors.TrapdoorRim
+  fullName: Vibe_Game.Core.Settings.GameColors.TrapdoorRim
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color TrapdoorRim
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly TrapdoorRim As Color
+- uid: Vibe_Game.Core.Settings.GameColors.ButtonLocked
+  commentId: F:Vibe_Game.Core.Settings.GameColors.ButtonLocked
+  id: ButtonLocked
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: ButtonLocked
+  nameWithType: GameColors.ButtonLocked
+  fullName: Vibe_Game.Core.Settings.GameColors.ButtonLocked
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color ButtonLocked
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly ButtonLocked As Color
+- uid: Vibe_Game.Core.Settings.GameColors.ButtonUnlocked
+  commentId: F:Vibe_Game.Core.Settings.GameColors.ButtonUnlocked
+  id: ButtonUnlocked
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: ButtonUnlocked
+  nameWithType: GameColors.ButtonUnlocked
+  fullName: Vibe_Game.Core.Settings.GameColors.ButtonUnlocked
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color ButtonUnlocked
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly ButtonUnlocked As Color
+- uid: Vibe_Game.Core.Settings.GameColors.MinimapStart
+  commentId: F:Vibe_Game.Core.Settings.GameColors.MinimapStart
+  id: MinimapStart
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: MinimapStart
+  nameWithType: GameColors.MinimapStart
+  fullName: Vibe_Game.Core.Settings.GameColors.MinimapStart
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color MinimapStart
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly MinimapStart As Color
+- uid: Vibe_Game.Core.Settings.GameColors.MinimapBattle
+  commentId: F:Vibe_Game.Core.Settings.GameColors.MinimapBattle
+  id: MinimapBattle
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: MinimapBattle
+  nameWithType: GameColors.MinimapBattle
+  fullName: Vibe_Game.Core.Settings.GameColors.MinimapBattle
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color MinimapBattle
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly MinimapBattle As Color
+- uid: Vibe_Game.Core.Settings.GameColors.MinimapBoss
+  commentId: F:Vibe_Game.Core.Settings.GameColors.MinimapBoss
+  id: MinimapBoss
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: MinimapBoss
+  nameWithType: GameColors.MinimapBoss
+  fullName: Vibe_Game.Core.Settings.GameColors.MinimapBoss
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color MinimapBoss
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly MinimapBoss As Color
+- uid: Vibe_Game.Core.Settings.GameColors.MinimapTreasure
+  commentId: F:Vibe_Game.Core.Settings.GameColors.MinimapTreasure
+  id: MinimapTreasure
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: MinimapTreasure
+  nameWithType: GameColors.MinimapTreasure
+  fullName: Vibe_Game.Core.Settings.GameColors.MinimapTreasure
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color MinimapTreasure
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly MinimapTreasure As Color
+- uid: Vibe_Game.Core.Settings.GameColors.MinimapCurrent
+  commentId: F:Vibe_Game.Core.Settings.GameColors.MinimapCurrent
+  id: MinimapCurrent
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: MinimapCurrent
+  nameWithType: GameColors.MinimapCurrent
+  fullName: Vibe_Game.Core.Settings.GameColors.MinimapCurrent
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color MinimapCurrent
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly MinimapCurrent As Color
+- uid: Vibe_Game.Core.Settings.GameColors.MinimapDefault
+  commentId: F:Vibe_Game.Core.Settings.GameColors.MinimapDefault
+  id: MinimapDefault
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: MinimapDefault
+  nameWithType: GameColors.MinimapDefault
+  fullName: Vibe_Game.Core.Settings.GameColors.MinimapDefault
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color MinimapDefault
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly MinimapDefault As Color
+- uid: Vibe_Game.Core.Settings.GameColors.MinimapVisitedOutline
+  commentId: F:Vibe_Game.Core.Settings.GameColors.MinimapVisitedOutline
+  id: MinimapVisitedOutline
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: MinimapVisitedOutline
+  nameWithType: GameColors.MinimapVisitedOutline
+  fullName: Vibe_Game.Core.Settings.GameColors.MinimapVisitedOutline
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color MinimapVisitedOutline
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly MinimapVisitedOutline As Color
+- uid: Vibe_Game.Core.Settings.GameColors.MinimapCurrentOutline
+  commentId: F:Vibe_Game.Core.Settings.GameColors.MinimapCurrentOutline
+  id: MinimapCurrentOutline
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: MinimapCurrentOutline
+  nameWithType: GameColors.MinimapCurrentOutline
+  fullName: Vibe_Game.Core.Settings.GameColors.MinimapCurrentOutline
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color MinimapCurrentOutline
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly MinimapCurrentOutline As Color
+- uid: Vibe_Game.Core.Settings.GameColors.RoomLabel
+  commentId: F:Vibe_Game.Core.Settings.GameColors.RoomLabel
+  id: RoomLabel
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: RoomLabel
+  nameWithType: GameColors.RoomLabel
+  fullName: Vibe_Game.Core.Settings.GameColors.RoomLabel
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color RoomLabel
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly RoomLabel As Color
+- uid: Vibe_Game.Core.Settings.GameColors.RoomLabelShadow
+  commentId: F:Vibe_Game.Core.Settings.GameColors.RoomLabelShadow
+  id: RoomLabelShadow
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: RoomLabelShadow
+  nameWithType: GameColors.RoomLabelShadow
+  fullName: Vibe_Game.Core.Settings.GameColors.RoomLabelShadow
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color RoomLabelShadow
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly RoomLabelShadow As Color
+- uid: Vibe_Game.Core.Settings.GameColors.FloorHint
+  commentId: F:Vibe_Game.Core.Settings.GameColors.FloorHint
+  id: FloorHint
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: FloorHint
+  nameWithType: GameColors.FloorHint
+  fullName: Vibe_Game.Core.Settings.GameColors.FloorHint
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color FloorHint
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly FloorHint As Color
+- uid: Vibe_Game.Core.Settings.GameColors.MenuBackground
+  commentId: F:Vibe_Game.Core.Settings.GameColors.MenuBackground
+  id: MenuBackground
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: MenuBackground
+  nameWithType: GameColors.MenuBackground
+  fullName: Vibe_Game.Core.Settings.GameColors.MenuBackground
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color MenuBackground
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly MenuBackground As Color
+- uid: Vibe_Game.Core.Settings.GameColors.MenuPanel
+  commentId: F:Vibe_Game.Core.Settings.GameColors.MenuPanel
+  id: MenuPanel
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: MenuPanel
+  nameWithType: GameColors.MenuPanel
+  fullName: Vibe_Game.Core.Settings.GameColors.MenuPanel
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color MenuPanel
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly MenuPanel As Color
+- uid: Vibe_Game.Core.Settings.GameColors.MenuOutline
+  commentId: F:Vibe_Game.Core.Settings.GameColors.MenuOutline
+  id: MenuOutline
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: MenuOutline
+  nameWithType: GameColors.MenuOutline
+  fullName: Vibe_Game.Core.Settings.GameColors.MenuOutline
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color MenuOutline
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly MenuOutline As Color
+- uid: Vibe_Game.Core.Settings.GameColors.MenuSelection
+  commentId: F:Vibe_Game.Core.Settings.GameColors.MenuSelection
+  id: MenuSelection
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: MenuSelection
+  nameWithType: GameColors.MenuSelection
+  fullName: Vibe_Game.Core.Settings.GameColors.MenuSelection
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color MenuSelection
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly MenuSelection As Color
+- uid: Vibe_Game.Core.Settings.GameColors.MenuMuted
+  commentId: F:Vibe_Game.Core.Settings.GameColors.MenuMuted
+  id: MenuMuted
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: MenuMuted
+  nameWithType: GameColors.MenuMuted
+  fullName: Vibe_Game.Core.Settings.GameColors.MenuMuted
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color MenuMuted
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly MenuMuted As Color
+- uid: Vibe_Game.Core.Settings.GameColors.MenuOverlay
+  commentId: F:Vibe_Game.Core.Settings.GameColors.MenuOverlay
+  id: MenuOverlay
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: MenuOverlay
+  nameWithType: GameColors.MenuOverlay
+  fullName: Vibe_Game.Core.Settings.GameColors.MenuOverlay
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color MenuOverlay
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly MenuOverlay As Color
+- uid: Vibe_Game.Core.Settings.GameColors.DeathBackground
+  commentId: F:Vibe_Game.Core.Settings.GameColors.DeathBackground
+  id: DeathBackground
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: DeathBackground
+  nameWithType: GameColors.DeathBackground
+  fullName: Vibe_Game.Core.Settings.GameColors.DeathBackground
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color DeathBackground
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly DeathBackground As Color
+- uid: Vibe_Game.Core.Settings.GameColors.DeathPanel
+  commentId: F:Vibe_Game.Core.Settings.GameColors.DeathPanel
+  id: DeathPanel
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: DeathPanel
+  nameWithType: GameColors.DeathPanel
+  fullName: Vibe_Game.Core.Settings.GameColors.DeathPanel
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color DeathPanel
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly DeathPanel As Color
+- uid: Vibe_Game.Core.Settings.GameColors.DeathOutline
+  commentId: F:Vibe_Game.Core.Settings.GameColors.DeathOutline
+  id: DeathOutline
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: DeathOutline
+  nameWithType: GameColors.DeathOutline
+  fullName: Vibe_Game.Core.Settings.GameColors.DeathOutline
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color DeathOutline
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly DeathOutline As Color
+- uid: Vibe_Game.Core.Settings.GameColors.DeathText
+  commentId: F:Vibe_Game.Core.Settings.GameColors.DeathText
+  id: DeathText
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: DeathText
+  nameWithType: GameColors.DeathText
+  fullName: Vibe_Game.Core.Settings.GameColors.DeathText
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color DeathText
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly DeathText As Color
+- uid: Vibe_Game.Core.Settings.GameColors.DeathMuted
+  commentId: F:Vibe_Game.Core.Settings.GameColors.DeathMuted
+  id: DeathMuted
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: DeathMuted
+  nameWithType: GameColors.DeathMuted
+  fullName: Vibe_Game.Core.Settings.GameColors.DeathMuted
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color DeathMuted
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly DeathMuted As Color
+- uid: Vibe_Game.Core.Settings.GameColors.VictoryBackground
+  commentId: F:Vibe_Game.Core.Settings.GameColors.VictoryBackground
+  id: VictoryBackground
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: VictoryBackground
+  nameWithType: GameColors.VictoryBackground
+  fullName: Vibe_Game.Core.Settings.GameColors.VictoryBackground
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color VictoryBackground
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly VictoryBackground As Color
+- uid: Vibe_Game.Core.Settings.GameColors.VictoryPanel
+  commentId: F:Vibe_Game.Core.Settings.GameColors.VictoryPanel
+  id: VictoryPanel
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: VictoryPanel
+  nameWithType: GameColors.VictoryPanel
+  fullName: Vibe_Game.Core.Settings.GameColors.VictoryPanel
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color VictoryPanel
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly VictoryPanel As Color
+- uid: Vibe_Game.Core.Settings.GameColors.VictoryOutline
+  commentId: F:Vibe_Game.Core.Settings.GameColors.VictoryOutline
+  id: VictoryOutline
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: VictoryOutline
+  nameWithType: GameColors.VictoryOutline
+  fullName: Vibe_Game.Core.Settings.GameColors.VictoryOutline
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color VictoryOutline
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly VictoryOutline As Color
+- uid: Vibe_Game.Core.Settings.GameColors.VictoryText
+  commentId: F:Vibe_Game.Core.Settings.GameColors.VictoryText
+  id: VictoryText
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: VictoryText
+  nameWithType: GameColors.VictoryText
+  fullName: Vibe_Game.Core.Settings.GameColors.VictoryText
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color VictoryText
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly VictoryText As Color
+- uid: Vibe_Game.Core.Settings.GameColors.VictoryAccent
+  commentId: F:Vibe_Game.Core.Settings.GameColors.VictoryAccent
+  id: VictoryAccent
+  parent: Vibe_Game.Core.Settings.GameColors
+  langs:
+  - csharp
+  - vb
+  name: VictoryAccent
+  nameWithType: GameColors.VictoryAccent
+  fullName: Vibe_Game.Core.Settings.GameColors.VictoryAccent
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public static readonly Color VictoryAccent
+    return:
+      type: Microsoft.Xna.Framework.Color
+    content.vb: Public Shared ReadOnly VictoryAccent As Color
+references:
+- uid: Vibe_Game.Core.Settings
+  commentId: N:Vibe_Game.Core.Settings
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Core.Settings
+  nameWithType: Vibe_Game.Core.Settings
+  fullName: Vibe_Game.Core.Settings
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Settings
+    name: Settings
+    isExternal: true
+    href: Vibe_Game.Core.Settings.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Settings
+    name: Settings
+    isExternal: true
+    href: Vibe_Game.Core.Settings.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.Xna.Framework.Color
+  commentId: T:Microsoft.Xna.Framework.Color
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Color
+  nameWithType: Color
+  fullName: Microsoft.Xna.Framework.Color
+- uid: Microsoft.Xna.Framework
+  commentId: N:Microsoft.Xna.Framework
+  isExternal: true
+  name: Microsoft.Xna.Framework
+  nameWithType: Microsoft.Xna.Framework
+  fullName: Microsoft.Xna.Framework
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true

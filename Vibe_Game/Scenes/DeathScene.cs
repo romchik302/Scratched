@@ -6,24 +6,34 @@ using Vibe_Game.Core.Settings;
 
 namespace Vibe_Game.Scenes
 {
+    /// <summary>
+    /// Сцена экрана смерти (Game Over).
+    /// Выводит сообщение о проигрыше, воспроизводит звуковой эффект подтверждения 
+    /// и возвращает игрока в главное меню при нажатии любой игровой клавиши.
+    /// </summary>
     internal sealed class DeathScene : BaseScene
     {
         private readonly IInputService _inputService;
         private SpriteFont _font;
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="DeathScene"/>.
+        /// </summary>
+        /// <param name="game">Основной экземпляр игры MonoGame.</param>
+        /// <param name="inputService">Сервис для проверки нажатия клавиш.</param>
         public DeathScene(Game game, IInputService inputService)
             : base(game)
         {
             _inputService = inputService;
         }
 
-        /// <summary>Загружает шрифт для окна смерти.</summary>
+        /// <inheritdoc />
         public override void LoadContent()
         {
             _font = GameInstance.Content.Load<SpriteFont>("room_font");
         }
 
-        /// <summary>Ждёт нажатия любой игровой клавиши и возвращает игрока в главное меню.</summary>
+        /// <inheritdoc />
         public override void Update(GameTime gameTime)
         {
             if (IsAnySkipActionPressed())
@@ -33,7 +43,7 @@ namespace Vibe_Game.Scenes
             }
         }
 
-        /// <summary>Рисует окно смерти с грустным смайликом и сообщением игроку.</summary>
+        /// <inheritdoc />
         public override void Draw(GameTime gameTime)
         {
             SpriteBatch spriteBatch = GetSpriteBatch();
@@ -52,7 +62,7 @@ namespace Vibe_Game.Scenes
             DrawBorder(spriteBatch, pixel, panelRect);
             DrawCenteredText(spriteBatch, "x_x", new Vector2(viewport.Width / 2f, panelRect.Y + 84f), GameColors.DeathText, 1.7f, GameColors.RoomLabelShadow);
             DrawCenteredText(spriteBatch, "hah loser", new Vector2(viewport.Width / 2f, panelRect.Y + 164f), GameColors.DeathText, 1.05f, GameColors.RoomLabelShadow);
-            DrawCenteredText(spriteBatch, "PRESS ANY GAME KEY", new Vector2(viewport.Width / 2f, panelRect.Bottom - 66f), GameColors.DeathMuted, 0.62f);
+            DrawCenteredText(spriteBatch, "PRESS E TO TRY AGAIN", new Vector2(viewport.Width / 2f, panelRect.Bottom - 66f), GameColors.DeathMuted, 0.62f);
 
             spriteBatch.End();
         }
@@ -60,17 +70,7 @@ namespace Vibe_Game.Scenes
         /// <summary>Проверяет игровые действия, которыми можно закрыть окно смерти.</summary>
         private bool IsAnySkipActionPressed()
         {
-            return _inputService.IsActionPressed(InputAction.MoveUp) ||
-                   _inputService.IsActionPressed(InputAction.MoveDown) ||
-                   _inputService.IsActionPressed(InputAction.MoveLeft) ||
-                   _inputService.IsActionPressed(InputAction.MoveRight) ||
-                   _inputService.IsActionPressed(InputAction.ShootUp) ||
-                   _inputService.IsActionPressed(InputAction.ShootDown) ||
-                   _inputService.IsActionPressed(InputAction.ShootLeft) ||
-                   _inputService.IsActionPressed(InputAction.ShootRight) ||
-                   _inputService.IsActionPressed(InputAction.Fire) ||
-                   _inputService.IsActionPressed(InputAction.Pause) ||
-                   _inputService.IsActionPressed(InputAction.Interact);
+            return _inputService.IsActionPressed(InputAction.Interact);
         }
 
         /// <summary>Рисует рамку панели смерти в общем стиле меню.</summary>

@@ -1,0 +1,617 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Core.Services.GameStateService
+  commentId: T:Vibe_Game.Core.Services.GameStateService
+  id: GameStateService
+  parent: Vibe_Game.Core.Services
+  children:
+  - Vibe_Game.Core.Services.GameStateService.#ctor(Vibe_Game.Core.Interfaces.GameState)
+  - Vibe_Game.Core.Services.GameStateService.ChangeState(Vibe_Game.Core.Interfaces.GameState)
+  - Vibe_Game.Core.Services.GameStateService.CurrentState
+  - Vibe_Game.Core.Services.GameStateService.StateChanged
+  langs:
+  - csharp
+  - vb
+  name: GameStateService
+  nameWithType: GameStateService
+  fullName: Vibe_Game.Core.Services.GameStateService
+  type: Class
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameStateService.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Управления состоянием игры, отвечает за хранение текущего состояния и уведомление  о его изменении.
+  example: []
+  syntax:
+    content: 'public class GameStateService : IGameStateService'
+    content.vb: Public Class GameStateService Implements IGameStateService
+  inheritance:
+  - System.Object
+  implements:
+  - Vibe_Game.Core.Interfaces.IGameStateService
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Vibe_Game.Core.Services.GameStateService.#ctor(Vibe_Game.Core.Interfaces.GameState)
+  commentId: M:Vibe_Game.Core.Services.GameStateService.#ctor(Vibe_Game.Core.Interfaces.GameState)
+  id: '#ctor(Vibe_Game.Core.Interfaces.GameState)'
+  parent: Vibe_Game.Core.Services.GameStateService
+  langs:
+  - csharp
+  - vb
+  name: GameStateService(GameState)
+  nameWithType: GameStateService.GameStateService(GameState)
+  fullName: Vibe_Game.Core.Services.GameStateService.GameStateService(Vibe_Game.Core.Interfaces.GameState)
+  type: Constructor
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameStateService.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Инициализирует новый экземпляр класса <xref href="Vibe_Game.Core.Services.GameStateService" data-throw-if-not-resolved="false"></xref> с заданным начальным состоянием.
+  example: []
+  syntax:
+    content: public GameStateService(GameState initialState)
+    parameters:
+    - id: initialState
+      type: Vibe_Game.Core.Interfaces.GameState
+      description: Начальное состояние игры.
+    content.vb: Public Sub New(initialState As GameState)
+  overload: Vibe_Game.Core.Services.GameStateService.#ctor*
+  nameWithType.vb: GameStateService.New(GameState)
+  fullName.vb: Vibe_Game.Core.Services.GameStateService.New(Vibe_Game.Core.Interfaces.GameState)
+  name.vb: New(GameState)
+- uid: Vibe_Game.Core.Services.GameStateService.ChangeState(Vibe_Game.Core.Interfaces.GameState)
+  commentId: M:Vibe_Game.Core.Services.GameStateService.ChangeState(Vibe_Game.Core.Interfaces.GameState)
+  id: ChangeState(Vibe_Game.Core.Interfaces.GameState)
+  parent: Vibe_Game.Core.Services.GameStateService
+  langs:
+  - csharp
+  - vb
+  name: ChangeState(GameState)
+  nameWithType: GameStateService.ChangeState(GameState)
+  fullName: Vibe_Game.Core.Services.GameStateService.ChangeState(Vibe_Game.Core.Interfaces.GameState)
+  type: Method
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameStateService.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Изменяет текущее состояние игры на новое и вызывает событие смены состояния, если оно изменилось.
+  example: []
+  syntax:
+    content: public void ChangeState(GameState newState)
+    parameters:
+    - id: newState
+      type: Vibe_Game.Core.Interfaces.GameState
+      description: Целевое состояние.
+    content.vb: Public Sub ChangeState(newState As GameState)
+  overload: Vibe_Game.Core.Services.GameStateService.ChangeState*
+  implements:
+  - Vibe_Game.Core.Interfaces.IGameStateService.ChangeState(Vibe_Game.Core.Interfaces.GameState)
+- uid: Vibe_Game.Core.Services.GameStateService.CurrentState
+  commentId: P:Vibe_Game.Core.Services.GameStateService.CurrentState
+  id: CurrentState
+  parent: Vibe_Game.Core.Services.GameStateService
+  langs:
+  - csharp
+  - vb
+  name: CurrentState
+  nameWithType: GameStateService.CurrentState
+  fullName: Vibe_Game.Core.Services.GameStateService.CurrentState
+  type: Property
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameStateService.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Текущее активное состояние игры.
+  example: []
+  syntax:
+    content: public GameState CurrentState { get; }
+    parameters: []
+    return:
+      type: Vibe_Game.Core.Interfaces.GameState
+    content.vb: Public ReadOnly Property CurrentState As GameState
+  overload: Vibe_Game.Core.Services.GameStateService.CurrentState*
+  implements:
+  - Vibe_Game.Core.Interfaces.IGameStateService.CurrentState
+- uid: Vibe_Game.Core.Services.GameStateService.StateChanged
+  commentId: E:Vibe_Game.Core.Services.GameStateService.StateChanged
+  id: StateChanged
+  parent: Vibe_Game.Core.Services.GameStateService
+  langs:
+  - csharp
+  - vb
+  name: StateChanged
+  nameWithType: GameStateService.StateChanged
+  fullName: Vibe_Game.Core.Services.GameStateService.StateChanged
+  type: Event
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Services/GameStateService.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Services
+  summary: Событие, возникающее при смене состояния игры.
+  example: []
+  syntax:
+    content: public event EventHandler<GameState> StateChanged
+    return:
+      type: System.EventHandler{Vibe_Game.Core.Interfaces.GameState}
+    content.vb: Public Event StateChanged As EventHandler(Of GameState)
+  implements:
+  - Vibe_Game.Core.Interfaces.IGameStateService.StateChanged
+references:
+- uid: Vibe_Game.Core.Services
+  commentId: N:Vibe_Game.Core.Services
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Core.Services
+  nameWithType: Vibe_Game.Core.Services
+  fullName: Vibe_Game.Core.Services
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Services
+    name: Services
+    isExternal: true
+    href: Vibe_Game.Core.Services.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Services
+    name: Services
+    isExternal: true
+    href: Vibe_Game.Core.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vibe_Game.Core.Interfaces.IGameStateService
+  commentId: T:Vibe_Game.Core.Interfaces.IGameStateService
+  parent: Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IGameStateService.html
+  name: IGameStateService
+  nameWithType: IGameStateService
+  fullName: Vibe_Game.Core.Interfaces.IGameStateService
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vibe_Game.Core.Interfaces
+  commentId: N:Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Core.Interfaces
+  nameWithType: Vibe_Game.Core.Interfaces
+  fullName: Vibe_Game.Core.Interfaces
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Interfaces
+    name: Interfaces
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Interfaces
+    name: Interfaces
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.html
+- uid: Vibe_Game.Core.Services.GameStateService
+  commentId: T:Vibe_Game.Core.Services.GameStateService
+  isExternal: true
+  href: Vibe_Game.Core.Services.GameStateService.html
+  name: GameStateService
+  nameWithType: GameStateService
+  fullName: Vibe_Game.Core.Services.GameStateService
+- uid: Vibe_Game.Core.Services.GameStateService.#ctor*
+  commentId: Overload:Vibe_Game.Core.Services.GameStateService.#ctor
+  isExternal: true
+  href: Vibe_Game.Core.Services.GameStateService.html#Vibe_Game_Core_Services_GameStateService__ctor_Vibe_Game_Core_Interfaces_GameState_
+  name: GameStateService
+  nameWithType: GameStateService.GameStateService
+  fullName: Vibe_Game.Core.Services.GameStateService.GameStateService
+  nameWithType.vb: GameStateService.New
+  fullName.vb: Vibe_Game.Core.Services.GameStateService.New
+  name.vb: New
+- uid: Vibe_Game.Core.Interfaces.GameState
+  commentId: T:Vibe_Game.Core.Interfaces.GameState
+  parent: Vibe_Game.Core.Interfaces
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.GameState.html
+  name: GameState
+  nameWithType: GameState
+  fullName: Vibe_Game.Core.Interfaces.GameState
+- uid: Vibe_Game.Core.Services.GameStateService.ChangeState*
+  commentId: Overload:Vibe_Game.Core.Services.GameStateService.ChangeState
+  isExternal: true
+  href: Vibe_Game.Core.Services.GameStateService.html#Vibe_Game_Core_Services_GameStateService_ChangeState_Vibe_Game_Core_Interfaces_GameState_
+  name: ChangeState
+  nameWithType: GameStateService.ChangeState
+  fullName: Vibe_Game.Core.Services.GameStateService.ChangeState
+- uid: Vibe_Game.Core.Interfaces.IGameStateService.ChangeState(Vibe_Game.Core.Interfaces.GameState)
+  commentId: M:Vibe_Game.Core.Interfaces.IGameStateService.ChangeState(Vibe_Game.Core.Interfaces.GameState)
+  parent: Vibe_Game.Core.Interfaces.IGameStateService
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IGameStateService.html#Vibe_Game_Core_Interfaces_IGameStateService_ChangeState_Vibe_Game_Core_Interfaces_GameState_
+  name: ChangeState(GameState)
+  nameWithType: IGameStateService.ChangeState(GameState)
+  fullName: Vibe_Game.Core.Interfaces.IGameStateService.ChangeState(Vibe_Game.Core.Interfaces.GameState)
+  spec.csharp:
+  - uid: Vibe_Game.Core.Interfaces.IGameStateService.ChangeState(Vibe_Game.Core.Interfaces.GameState)
+    name: ChangeState
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.IGameStateService.html#Vibe_Game_Core_Interfaces_IGameStateService_ChangeState_Vibe_Game_Core_Interfaces_GameState_
+  - name: (
+  - uid: Vibe_Game.Core.Interfaces.GameState
+    name: GameState
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.GameState.html
+  - name: )
+  spec.vb:
+  - uid: Vibe_Game.Core.Interfaces.IGameStateService.ChangeState(Vibe_Game.Core.Interfaces.GameState)
+    name: ChangeState
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.IGameStateService.html#Vibe_Game_Core_Interfaces_IGameStateService_ChangeState_Vibe_Game_Core_Interfaces_GameState_
+  - name: (
+  - uid: Vibe_Game.Core.Interfaces.GameState
+    name: GameState
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.GameState.html
+  - name: )
+- uid: Vibe_Game.Core.Services.GameStateService.CurrentState*
+  commentId: Overload:Vibe_Game.Core.Services.GameStateService.CurrentState
+  isExternal: true
+  href: Vibe_Game.Core.Services.GameStateService.html#Vibe_Game_Core_Services_GameStateService_CurrentState
+  name: CurrentState
+  nameWithType: GameStateService.CurrentState
+  fullName: Vibe_Game.Core.Services.GameStateService.CurrentState
+- uid: Vibe_Game.Core.Interfaces.IGameStateService.CurrentState
+  commentId: P:Vibe_Game.Core.Interfaces.IGameStateService.CurrentState
+  parent: Vibe_Game.Core.Interfaces.IGameStateService
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IGameStateService.html#Vibe_Game_Core_Interfaces_IGameStateService_CurrentState
+  name: CurrentState
+  nameWithType: IGameStateService.CurrentState
+  fullName: Vibe_Game.Core.Interfaces.IGameStateService.CurrentState
+- uid: Vibe_Game.Core.Interfaces.IGameStateService.StateChanged
+  commentId: E:Vibe_Game.Core.Interfaces.IGameStateService.StateChanged
+  parent: Vibe_Game.Core.Interfaces.IGameStateService
+  isExternal: true
+  href: Vibe_Game.Core.Interfaces.IGameStateService.html#Vibe_Game_Core_Interfaces_IGameStateService_StateChanged
+  name: StateChanged
+  nameWithType: IGameStateService.StateChanged
+  fullName: Vibe_Game.Core.Interfaces.IGameStateService.StateChanged
+- uid: System.EventHandler{Vibe_Game.Core.Interfaces.GameState}
+  commentId: T:System.EventHandler{Vibe_Game.Core.Interfaces.GameState}
+  parent: System
+  definition: System.EventHandler`1
+  href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  name: EventHandler<GameState>
+  nameWithType: EventHandler<GameState>
+  fullName: System.EventHandler<Vibe_Game.Core.Interfaces.GameState>
+  nameWithType.vb: EventHandler(Of GameState)
+  fullName.vb: System.EventHandler(Of Vibe_Game.Core.Interfaces.GameState)
+  name.vb: EventHandler(Of GameState)
+  spec.csharp:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  - name: <
+  - uid: Vibe_Game.Core.Interfaces.GameState
+    name: GameState
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.GameState.html
+  - name: '>'
+  spec.vb:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vibe_Game.Core.Interfaces.GameState
+    name: GameState
+    isExternal: true
+    href: Vibe_Game.Core.Interfaces.GameState.html
+  - name: )
+- uid: System.EventHandler`1
+  commentId: T:System.EventHandler`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  name: EventHandler<TEventArgs>
+  nameWithType: EventHandler<TEventArgs>
+  fullName: System.EventHandler<TEventArgs>
+  nameWithType.vb: EventHandler(Of TEventArgs)
+  fullName.vb: System.EventHandler(Of TEventArgs)
+  name.vb: EventHandler(Of TEventArgs)
+  spec.csharp:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  - name: <
+  - name: TEventArgs
+  - name: '>'
+  spec.vb:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.eventhandler-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEventArgs
+  - name: )

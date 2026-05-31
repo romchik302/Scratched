@@ -7,8 +7,10 @@ using Vibe_Game.Core.Tiles;
 
 namespace Vibe_Game.Core.Services
 {
+    /// <summary>Генератор уровней, отвечающий за создание процедурной структуры этажей, размещение комнат, назначение типов комнат и построение соединений между ними.</summary>
     public class LevelGenerator
     {
+        /// <summary>Векторы направлений для обхода сетки (вверх, вниз, влево, вправо).</summary>
         private static readonly Point[] Directions =
         {
             new Point(0, -1),
@@ -19,6 +21,7 @@ namespace Vibe_Game.Core.Services
 
         private readonly Random _random = new Random();
 
+        /// <summary>Перечисление возможных типов игровых комнат.</summary>
         public enum RoomType
         {
             Start,
@@ -27,7 +30,11 @@ namespace Vibe_Game.Core.Services
             Boss
         }
 
-        /// <summary>Создаёт карту этажа и назначает специальные комнаты по номеру этажа.</summary>
+        /// <summary>
+        /// Создаёт и возвращает сетку комнат уровня с заданным индексом этажа.
+        /// </summary>
+        /// <param name="floorIndex">Индекс текущего этажа для настройки сложности и типов комнат.</param>
+        /// <returns>Двумерный массив комнат (<see cref="Room"/>).</returns>
         public Room[,] GenerateFloor(int floorIndex)
         {
             Room[,] grid = new Room[WorldConfig.GridSize, WorldConfig.GridSize];
@@ -49,6 +56,7 @@ namespace Vibe_Game.Core.Services
 
             return grid;
         }
+
 
         private void GrowMainLayout(Room[,] grid, List<Point> occupiedRooms, Point start, int targetRoomCount)
         {
@@ -85,9 +93,11 @@ namespace Vibe_Game.Core.Services
             while (occupiedRooms.Count < Math.Max(6, targetRoomCount - 1))
             {
                 Point anchor = occupiedRooms[_random.Next(occupiedRooms.Count)];
+
                 foreach (Point direction in Directions.OrderBy(_ => _random.Next()))
                 {
                     Point candidate = anchor + direction;
+
                     if (!IsInsideGrid(candidate) || grid[candidate.X, candidate.Y] != null)
                         continue;
 
@@ -98,7 +108,7 @@ namespace Vibe_Game.Core.Services
             }
         }
 
-        /// <summary>Гарантирует, что для босса и сокровищницы есть тупиковые комнаты с одним входом.</summary>
+        /// <summary>Гарантирует наличие тупиковых комнат для специальных зон (босс, сокровищница).</summary>
         private void EnsureSpecialRoomDeadEnds(Room[,] grid, List<Point> occupiedRooms, Point start, int requiredDeadEndCount)
         {
             int attempts = 0;
@@ -118,6 +128,7 @@ namespace Vibe_Game.Core.Services
         private Point? TryCreateExtraDeadEnd(Room[,] grid, List<Point> occupiedRooms, Point start)
         {
             Dictionary<Point, int> distances = CalculateDistances(grid, start);
+
             List<Point> anchors = occupiedRooms
                 .Where(point => point != start && CountOccupiedNeighbors(grid, point) > 1)
                 .OrderByDescending(point => distances.GetValueOrDefault(point))
@@ -129,6 +140,7 @@ namespace Vibe_Game.Core.Services
                 foreach (Point direction in Directions.OrderBy(_ => _random.Next()))
                 {
                     Point candidate = anchor + direction;
+
                     if (!IsInsideGrid(candidate) || grid[candidate.X, candidate.Y] != null)
                         continue;
 
@@ -144,10 +156,11 @@ namespace Vibe_Game.Core.Services
             return null;
         }
 
-        /// <summary>Назначает специальные комнаты и выбирает комнату выхода, если на этаже нет босса.</summary>
+        /// <summary>Назначает специальные комнаты и определяет комнату прогрессии уровня.</summary>
         private void AssignSpecialRooms(Room[,] grid, List<Point> occupiedRooms, Point start, int floorIndex)
         {
             Dictionary<Point, int> distances = CalculateDistances(grid, start);
+
             List<Point> deadEnds = occupiedRooms
                 .Where(point => point != start && CountOccupiedNeighbors(grid, point) == 1)
                 .OrderByDescending(point => distances.GetValueOrDefault(point))
@@ -156,18 +169,19 @@ namespace Vibe_Game.Core.Services
             HashSet<Point> assigned = new HashSet<Point> { start };
 
             Point floorProgressionRoom = FindFloorProgressionRoom(deadEnds, occupiedRooms, start, distances);
+
             if (ShouldCreateBossRoom(floorIndex))
                 AssignRoomType(grid, floorProgressionRoom, RoomType.Boss, assigned);
             else
                 MarkFloorExitRoom(grid, floorProgressionRoom, assigned);
 
             Point treasureRoom = deadEnds.FirstOrDefault(point => !assigned.Contains(point));
+
             if (treasureRoom != Point.Zero || deadEnds.Contains(Point.Zero))
                 AssignRoomType(grid, treasureRoom, RoomType.Treasure, assigned);
-
         }
 
-        /// <summary>Считает тупиковые комнаты, которые не являются стартовой комнатой.</summary>
+        /// <summary>Считает тупиковые комнаты, исключая стартовую.</summary>
         private static int CountDeadEnds(Room[,] grid, List<Point> occupiedRooms, Point start)
         {
             return occupiedRooms.Count(point => point != start && CountOccupiedNeighbors(grid, point) == 1);
@@ -179,7 +193,7 @@ namespace Vibe_Game.Core.Services
             return floorIndex == FloorConfig.BossFloorIndex;
         }
 
-        /// <summary>Выбирает самую дальнюю комнату, через которую игрок продвигается на следующий этап.</summary>
+        /// <summary>Выбирает наиболее удалённую комнату для прогрессии уровня.</summary>
         private static Point FindFloorProgressionRoom(
             List<Point> deadEnds,
             List<Point> occupiedRooms,
@@ -187,6 +201,7 @@ namespace Vibe_Game.Core.Services
             Dictionary<Point, int> distances)
         {
             Point progressionRoom = deadEnds.FirstOrDefault();
+
             if (progressionRoom != Point.Zero || deadEnds.Contains(Point.Zero))
                 return progressionRoom;
 
@@ -196,10 +211,11 @@ namespace Vibe_Game.Core.Services
                 .First();
         }
 
-        /// <summary>Помечает комнату местом выхода на следующий этаж без изменения её обычного типа.</summary>
+        /// <summary>Помечает комнату как выход на следующий этаж без изменения её типа.</summary>
         private static void MarkFloorExitRoom(Room[,] grid, Point point, HashSet<Point> assigned)
         {
             Room room = grid[point.X, point.Y];
+
             if (room == null || assigned.Contains(point))
                 return;
 
@@ -212,6 +228,7 @@ namespace Vibe_Game.Core.Services
         private static void AssignRoomType(Room[,] grid, Point point, RoomType roomType, HashSet<Point> assigned)
         {
             Room room = grid[point.X, point.Y];
+
             if (room == null || assigned.Contains(point))
                 return;
 
@@ -219,10 +236,11 @@ namespace Vibe_Game.Core.Services
             assigned.Add(point);
         }
 
-        /// <summary>Пьедесталы: на первом этаже в старте — выбор оружия; в сокровищнице — один предмет по центру; на первом этаже у выхода — случайный лут.</summary>
+        /// <summary>Размещает пьедесталы в специальных комнатах (старт, сокровищница, выход).</summary>
         private static void PlacePedestals(Room[,] grid, List<Point> occupiedRooms, Point start, int floorIndex)
         {
             Room startRoom = grid[start.X, start.Y];
+
             if (floorIndex == FloorConfig.FirstFloorIndex && startRoom != null)
             {
                 startRoom.RequiresStartingWeaponChoice = true;
@@ -233,6 +251,7 @@ namespace Vibe_Game.Core.Services
             foreach (Point point in occupiedRooms)
             {
                 Room room = grid[point.X, point.Y];
+
                 if (room?.Type == RoomType.Treasure)
                     room.PlaceTreasurePedestalAtCenter();
             }
@@ -243,6 +262,7 @@ namespace Vibe_Game.Core.Services
             foreach (Point point in occupiedRooms)
             {
                 Room room = grid[point.X, point.Y];
+
                 if (room?.IsFloorExitRoom == true)
                     room.PlacePedestals(1);
             }
@@ -277,6 +297,7 @@ namespace Vibe_Game.Core.Services
             foreach (Point direction in Directions)
             {
                 Point neighbor = point + direction;
+
                 if (IsInsideGrid(neighbor) && grid[neighbor.X, neighbor.Y] != null)
                     yield return neighbor;
             }
@@ -307,6 +328,7 @@ namespace Vibe_Game.Core.Services
                 for (int y = 0; y < WorldConfig.GridSize; y++)
                 {
                     Room room = grid[x, y];
+
                     if (room == null)
                         continue;
 

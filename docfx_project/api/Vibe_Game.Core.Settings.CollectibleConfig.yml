@@ -1,0 +1,844 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vibe_Game.Core.Settings.CollectibleConfig
+  commentId: T:Vibe_Game.Core.Settings.CollectibleConfig
+  id: CollectibleConfig
+  parent: Vibe_Game.Core.Settings
+  children:
+  - Vibe_Game.Core.Settings.CollectibleConfig.BasePlayerControllerMaxSpeed
+  - Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetFangRow
+  - Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetFeatherRow
+  - Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetFramesPerRow
+  - Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetHealthLargeRow
+  - Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetHealthSmallRow
+  - Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetPedestalRow
+  - Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetRowCount
+  - Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetTotemRow
+  - Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetWeaponProjectileRow
+  - Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetWeaponSwordRow
+  - Vibe_Game.Core.Settings.CollectibleConfig.CollectablesTexture
+  - Vibe_Game.Core.Settings.CollectibleConfig.EnemyHealthDropChance
+  - Vibe_Game.Core.Settings.CollectibleConfig.EnemyTwoHpDropWeight
+  - Vibe_Game.Core.Settings.CollectibleConfig.FangBonusDamage
+  - Vibe_Game.Core.Settings.CollectibleConfig.FeatherProjectileSpeedMultiplierBonus
+  - Vibe_Game.Core.Settings.CollectibleConfig.FeatherSpeedMultiplierBonus
+  - Vibe_Game.Core.Settings.CollectibleConfig.FeatherSwordCooldownMultiplierPerStack
+  - Vibe_Game.Core.Settings.CollectibleConfig.FloorPickupBobAmplitude
+  - Vibe_Game.Core.Settings.CollectibleConfig.FloorPickupBobSpeed
+  - Vibe_Game.Core.Settings.CollectibleConfig.FloorPickupIdleAnimFps
+  - Vibe_Game.Core.Settings.CollectibleConfig.FloorPickupSize
+  langs:
+  - csharp
+  - vb
+  name: CollectibleConfig
+  nameWithType: CollectibleConfig
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig
+  type: Class
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  summary: Параметры подбираемых предметов, артефактов и хила (баффы, шансы дропа).
+  example: []
+  syntax:
+    content: public static class CollectibleConfig
+    content.vb: Public Module CollectibleConfig
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesTexture
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.CollectablesTexture
+  id: CollectablesTexture
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: CollectablesTexture
+  nameWithType: CollectibleConfig.CollectablesTexture
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesTexture
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  summary: 'Один спрайт-лист: строка CollectablesSheetPedestalRow — idle пьедестала (4 кадра в ряд), далее клыки, перо, тотем, малый/большой хил, пьедесталы оружия.'
+  example: []
+  syntax:
+    content: public const string CollectablesTexture = "collectables_sheet"
+    return:
+      type: System.String
+    content.vb: Public Const CollectablesTexture As String = "collectables_sheet"
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetFramesPerRow
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetFramesPerRow
+  id: CollectablesSheetFramesPerRow
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: CollectablesSheetFramesPerRow
+  nameWithType: CollectibleConfig.CollectablesSheetFramesPerRow
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetFramesPerRow
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  summary: Кадров в одной строке (idle пьедестала и предмета).
+  example: []
+  syntax:
+    content: public const int CollectablesSheetFramesPerRow = 4
+    return:
+      type: System.Int32
+    content.vb: Public Const CollectablesSheetFramesPerRow As Integer = 4
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetPedestalRow
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetPedestalRow
+  id: CollectablesSheetPedestalRow
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: CollectablesSheetPedestalRow
+  nameWithType: CollectibleConfig.CollectablesSheetPedestalRow
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetPedestalRow
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  summary: Строки листа сверху вниз (индекс 0 — верх файла).
+  example: []
+  syntax:
+    content: public const int CollectablesSheetPedestalRow = 0
+    return:
+      type: System.Int32
+    content.vb: Public Const CollectablesSheetPedestalRow As Integer = 0
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetFangRow
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetFangRow
+  id: CollectablesSheetFangRow
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: CollectablesSheetFangRow
+  nameWithType: CollectibleConfig.CollectablesSheetFangRow
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetFangRow
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int CollectablesSheetFangRow = 1
+    return:
+      type: System.Int32
+    content.vb: Public Const CollectablesSheetFangRow As Integer = 1
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetFeatherRow
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetFeatherRow
+  id: CollectablesSheetFeatherRow
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: CollectablesSheetFeatherRow
+  nameWithType: CollectibleConfig.CollectablesSheetFeatherRow
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetFeatherRow
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int CollectablesSheetFeatherRow = 2
+    return:
+      type: System.Int32
+    content.vb: Public Const CollectablesSheetFeatherRow As Integer = 2
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetTotemRow
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetTotemRow
+  id: CollectablesSheetTotemRow
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: CollectablesSheetTotemRow
+  nameWithType: CollectibleConfig.CollectablesSheetTotemRow
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetTotemRow
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int CollectablesSheetTotemRow = 3
+    return:
+      type: System.Int32
+    content.vb: Public Const CollectablesSheetTotemRow As Integer = 3
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetHealthSmallRow
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetHealthSmallRow
+  id: CollectablesSheetHealthSmallRow
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: CollectablesSheetHealthSmallRow
+  nameWithType: CollectibleConfig.CollectablesSheetHealthSmallRow
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetHealthSmallRow
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int CollectablesSheetHealthSmallRow = 4
+    return:
+      type: System.Int32
+    content.vb: Public Const CollectablesSheetHealthSmallRow As Integer = 4
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetHealthLargeRow
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetHealthLargeRow
+  id: CollectablesSheetHealthLargeRow
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: CollectablesSheetHealthLargeRow
+  nameWithType: CollectibleConfig.CollectablesSheetHealthLargeRow
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetHealthLargeRow
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int CollectablesSheetHealthLargeRow = 5
+    return:
+      type: System.Int32
+    content.vb: Public Const CollectablesSheetHealthLargeRow As Integer = 5
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetWeaponProjectileRow
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetWeaponProjectileRow
+  id: CollectablesSheetWeaponProjectileRow
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: CollectablesSheetWeaponProjectileRow
+  nameWithType: CollectibleConfig.CollectablesSheetWeaponProjectileRow
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetWeaponProjectileRow
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int CollectablesSheetWeaponProjectileRow = 6
+    return:
+      type: System.Int32
+    content.vb: Public Const CollectablesSheetWeaponProjectileRow As Integer = 6
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetWeaponSwordRow
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetWeaponSwordRow
+  id: CollectablesSheetWeaponSwordRow
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: CollectablesSheetWeaponSwordRow
+  nameWithType: CollectibleConfig.CollectablesSheetWeaponSwordRow
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetWeaponSwordRow
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int CollectablesSheetWeaponSwordRow = 7
+    return:
+      type: System.Int32
+    content.vb: Public Const CollectablesSheetWeaponSwordRow As Integer = 7
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetRowCount
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetRowCount
+  id: CollectablesSheetRowCount
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: CollectablesSheetRowCount
+  nameWithType: CollectibleConfig.CollectablesSheetRowCount
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.CollectablesSheetRowCount
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int CollectablesSheetRowCount = 8
+    return:
+      type: System.Int32
+    content.vb: Public Const CollectablesSheetRowCount As Integer = 8
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.FeatherSpeedMultiplierBonus
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.FeatherSpeedMultiplierBonus
+  id: FeatherSpeedMultiplierBonus
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: FeatherSpeedMultiplierBonus
+  nameWithType: CollectibleConfig.FeatherSpeedMultiplierBonus
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.FeatherSpeedMultiplierBonus
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const float FeatherSpeedMultiplierBonus = 0.12
+    return:
+      type: System.Single
+    content.vb: Public Const FeatherSpeedMultiplierBonus As Single = 0.12
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.FeatherProjectileSpeedMultiplierBonus
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.FeatherProjectileSpeedMultiplierBonus
+  id: FeatherProjectileSpeedMultiplierBonus
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: FeatherProjectileSpeedMultiplierBonus
+  nameWithType: CollectibleConfig.FeatherProjectileSpeedMultiplierBonus
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.FeatherProjectileSpeedMultiplierBonus
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const float FeatherProjectileSpeedMultiplierBonus = 0.1
+    return:
+      type: System.Single
+    content.vb: Public Const FeatherProjectileSpeedMultiplierBonus As Single = 0.1
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.FeatherSwordCooldownMultiplierPerStack
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.FeatherSwordCooldownMultiplierPerStack
+  id: FeatherSwordCooldownMultiplierPerStack
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: FeatherSwordCooldownMultiplierPerStack
+  nameWithType: CollectibleConfig.FeatherSwordCooldownMultiplierPerStack
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.FeatherSwordCooldownMultiplierPerStack
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  summary: Мультипликативный множитель изменения времени перезарядки меча за каждый стек предмета «Перо» (уменьшает кулдаун).
+  example: []
+  syntax:
+    content: public const float FeatherSwordCooldownMultiplierPerStack = 0.92
+    return:
+      type: System.Single
+    content.vb: Public Const FeatherSwordCooldownMultiplierPerStack As Single = 0.92
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.FangBonusDamage
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.FangBonusDamage
+  id: FangBonusDamage
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: FangBonusDamage
+  nameWithType: CollectibleConfig.FangBonusDamage
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.FangBonusDamage
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int FangBonusDamage = 1
+    return:
+      type: System.Int32
+    content.vb: Public Const FangBonusDamage As Integer = 1
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.EnemyHealthDropChance
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.EnemyHealthDropChance
+  id: EnemyHealthDropChance
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: EnemyHealthDropChance
+  nameWithType: CollectibleConfig.EnemyHealthDropChance
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.EnemyHealthDropChance
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  summary: Вероятность выпадения здоровья после смерти врага.
+  example: []
+  syntax:
+    content: public const float EnemyHealthDropChance = 0.15
+    return:
+      type: System.Single
+    content.vb: Public Const EnemyHealthDropChance As Single = 0.15
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.EnemyTwoHpDropWeight
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.EnemyTwoHpDropWeight
+  id: EnemyTwoHpDropWeight
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: EnemyTwoHpDropWeight
+  nameWithType: CollectibleConfig.EnemyTwoHpDropWeight
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.EnemyTwoHpDropWeight
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  summary: Доля дропа, при котором выпадает +2 HP (остальное — +1).
+  example: []
+  syntax:
+    content: public const float EnemyTwoHpDropWeight = 0.5
+    return:
+      type: System.Single
+    content.vb: Public Const EnemyTwoHpDropWeight As Single = 0.5
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.FloorPickupSize
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.FloorPickupSize
+  id: FloorPickupSize
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: FloorPickupSize
+  nameWithType: CollectibleConfig.FloorPickupSize
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.FloorPickupSize
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const int FloorPickupSize = 18
+    return:
+      type: System.Int32
+    content.vb: Public Const FloorPickupSize As Integer = 18
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.FloorPickupBobSpeed
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.FloorPickupBobSpeed
+  id: FloorPickupBobSpeed
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: FloorPickupBobSpeed
+  nameWithType: CollectibleConfig.FloorPickupBobSpeed
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.FloorPickupBobSpeed
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  summary: Частота вертикального покачивания (анимации левитации) предмета на полу, используемая в функции синуса.
+  example: []
+  syntax:
+    content: public const float FloorPickupBobSpeed = 4.2
+    return:
+      type: System.Single
+    content.vb: Public Const FloorPickupBobSpeed As Single = 4.2
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.FloorPickupBobAmplitude
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.FloorPickupBobAmplitude
+  id: FloorPickupBobAmplitude
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: FloorPickupBobAmplitude
+  nameWithType: CollectibleConfig.FloorPickupBobAmplitude
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.FloorPickupBobAmplitude
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  summary: Максимальное отклонение по оси Y (в пикселях) при покачивании предмета на полу.
+  example: []
+  syntax:
+    content: public const float FloorPickupBobAmplitude = 2.5
+    return:
+      type: System.Single
+    content.vb: Public Const FloorPickupBobAmplitude As Single = 2.5
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.FloorPickupIdleAnimFps
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.FloorPickupIdleAnimFps
+  id: FloorPickupIdleAnimFps
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: FloorPickupIdleAnimFps
+  nameWithType: CollectibleConfig.FloorPickupIdleAnimFps
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.FloorPickupIdleAnimFps
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  summary: Скорость idle-анимации сердец на полу (кадры из строки хила в спрайт-листе).
+  example: []
+  syntax:
+    content: public const float FloorPickupIdleAnimFps = 5
+    return:
+      type: System.Single
+    content.vb: Public Const FloorPickupIdleAnimFps As Single = 5
+- uid: Vibe_Game.Core.Settings.CollectibleConfig.BasePlayerControllerMaxSpeed
+  commentId: F:Vibe_Game.Core.Settings.CollectibleConfig.BasePlayerControllerMaxSpeed
+  id: BasePlayerControllerMaxSpeed
+  parent: Vibe_Game.Core.Settings.CollectibleConfig
+  langs:
+  - csharp
+  - vb
+  name: BasePlayerControllerMaxSpeed
+  nameWithType: CollectibleConfig.BasePlayerControllerMaxSpeed
+  fullName: Vibe_Game.Core.Settings.CollectibleConfig.BasePlayerControllerMaxSpeed
+  type: Field
+  source:
+    href: https://github.com/romchik302/Vibe_Game/blob/ce9f54115a254c056f6d657d901d3e7a4d51caa9/Vibe_Game/Core/Settings/GameConfig.cs
+  assemblies:
+  - Vibe_Game
+  namespace: Vibe_Game.Core.Settings
+  syntax:
+    content: public const float BasePlayerControllerMaxSpeed = 150
+    return:
+      type: System.Single
+    content.vb: Public Const BasePlayerControllerMaxSpeed As Single = 150
+references:
+- uid: Vibe_Game.Core.Settings
+  commentId: N:Vibe_Game.Core.Settings
+  isExternal: true
+  href: Vibe_Game.html
+  name: Vibe_Game.Core.Settings
+  nameWithType: Vibe_Game.Core.Settings
+  fullName: Vibe_Game.Core.Settings
+  spec.csharp:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Settings
+    name: Settings
+    isExternal: true
+    href: Vibe_Game.Core.Settings.html
+  spec.vb:
+  - uid: Vibe_Game
+    name: Vibe_Game
+    isExternal: true
+    href: Vibe_Game.html
+  - name: .
+  - uid: Vibe_Game.Core
+    name: Core
+    isExternal: true
+    href: Vibe_Game.Core.html
+  - name: .
+  - uid: Vibe_Game.Core.Settings
+    name: Settings
+    isExternal: true
+    href: Vibe_Game.Core.Settings.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single

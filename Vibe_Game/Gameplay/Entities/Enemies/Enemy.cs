@@ -12,12 +12,19 @@ namespace Vibe_Game.Gameplay.Entities.Enemies;
 public abstract class Enemy : Entity
 {
 
-    // Таймер повторяющегося звука
+    /// <summary>
+    /// Таймер для отсчета интервала между воспроизведением фоновых (эмбиент) звуков врага.
+    /// </summary>
     protected float _ambientSoundTimer;
 
-    // Интервал звука по умолчанию
+    /// <summary>
+    /// Интервал времени (в секундах) между автоматическими повторениями фонового звука.
+    /// </summary>
     protected virtual float AmbientSoundInterval => 1.5f;
 
+    /// <summary>
+    /// Режимы случайного модифицированного поведения ИИ врага при преследовании цели.
+    /// </summary>
     protected enum RandomMovementMode
     {
         None,
@@ -27,6 +34,9 @@ public abstract class Enemy : Entity
         Orbit
     }
 
+    /// <summary>
+    /// Направление, в сторону которого в данный момент повернут или движется враг.
+    /// </summary>
     protected enum FacingDirection
     {
         Right,
@@ -43,9 +53,11 @@ public abstract class Enemy : Entity
 #if DEBUG
     private static Texture2D _debugPixel;
 #endif
-
+    /// <summary>Текущее количество здоровья врага. Если здоровье равно 0, враг считается мертвым.</summary>
     public int Health { get; set; }
+    /// <summary>Максимальное количество здоровья врага, используемое при инициализации.</summary>
     public int MaxHealth { get; protected set; }
+    /// <summary>Номер этажа, на котором находится враг. Влияет на масштабирование характеристик (HP, урон).</summary>
     public int FloorIndex { get; private set; } = 1;
 
     /// <summary>Сопротивление отдаче (0.0 = полная отдача, 1.0 = не отталкивается).</summary>
@@ -56,7 +68,14 @@ public abstract class Enemy : Entity
 
     /// <summary>Пока false — AI и движение не крутятся (враг «спит» до входа игрока в комнату).</summary>
     public bool IsActivated { get; private set; }
+    /// <summary>
+    /// Определяет, может ли враг получать урон.
+    /// Переопределяется особыми типами врагов.
+    /// </summary>
     public virtual bool IsInvulnerable => false;
+    /// <summary>
+    /// Определяет, может ли враг наносить контактный урон игроку.
+    /// </summary>
     public virtual bool CanDealContactDamage => true;
 
     private float _activationDelayTimer = 0f;
@@ -93,6 +112,11 @@ public abstract class Enemy : Entity
     public float RandomOrbitLateralWeight { get; set; } = 1.1f;
     public float RandomOrbitSpeedMultiplier { get; set; } = 1.15f;
 
+    /// <summary>
+    /// Инициализирует базовые параметры сущности врага.
+    /// </summary>
+    /// <param name="position">Начальная позиция спавна врага в мировых координатах.</param>
+    /// <param name="maxHealth">Максимальное количество очков здоровья.</param>
     protected Enemy(Vector2 position, int maxHealth)
     {
         Position = position;
@@ -100,12 +124,17 @@ public abstract class Enemy : Entity
         Health = maxHealth;
     }
 
-    /// <summary>Запоминает этаж, на котором враг был создан.</summary>
+    /// <summary>Устанавливает номер текущего этажа для масштабирования сложности.</summary>
+    /// <param name="floorIndex">Номер этажа (минимальное значение 1).</param>
     public void SetFloorIndex(int floorIndex)
     {
         FloorIndex = Math.Max(1, floorIndex);
     }
 
+    /// <summary>
+    /// Загружает и кэширует общие текстуры врагов.
+    /// Вызывается один раз и переиспользует ресурсы между экземплярами.
+    /// </summary>
     public static void LoadSharedTextures(ContentManager content)
     {
         if (content == null)
@@ -138,7 +167,8 @@ public abstract class Enemy : Entity
         }
     }
 
-    /// <summary>Вызывается сценой один раз при первом входе игрока в комнату этого врага.</summary>
+    /// <summary>Переводит врага в активное состояние, запуская его ИИ и движение.</summary>
+    /// <param name="skipDelay">Если true, пропускает задержку активации (используется для немедленного появления).</param>
     public void Activate(bool skipDelay = false)
     {
         if (IsActivated)
@@ -162,12 +192,14 @@ public abstract class Enemy : Entity
     /// <summary>True, если активация была с <paramref name="skipDelay"/> (призыв босса и т.п.).</summary>
     protected bool ActivationSkippedDelay => _activationSkippedDelay;
 
-    /// <summary>Хуки: звук, анимация пробуждения и т.д.</summary>
+    /// <summary>
+    /// Виртуальный метод-хук, вызываемый в момент активации врага (например, для воспроизведения стартового звука появления).
+    /// </summary>
     protected virtual void OnActivated()
     {
     }
 
-    /// <summary>Получить урон; при Health &lt;= 0 выставляет IsAlive = false.</summary>
+    /// <inheritdoc />
     public virtual void TakeDamage(int amount)
     {
         if (!IsAlive || amount <= 0 || IsInvulnerable)
@@ -181,7 +213,9 @@ public abstract class Enemy : Entity
         }
     }
 
-    /// <summary>Применить отдачу от оружия (толчок в направлении).</summary>
+    /// <summary>Применяет импульс отталкивания к врагу.</summary>
+    /// <param name="recoilDirection">Вектор направления отталкивания.</param>
+    /// <param name="recoilForce">Сила отталкивания (умножается на (1 - RecoilResistance)).</param>
     public virtual void ApplyRecoil(Vector2 recoilDirection, float recoilForce)
     {
         if (!IsAlive || !IsActivated)
@@ -196,6 +230,7 @@ public abstract class Enemy : Entity
         _recoilVelocity += recoilDirection * effectiveForce;
     }
 
+    /// <inheritdoc />
     public override void Update(GameTime gameTime)
     {
         if (!IsAlive)
@@ -252,36 +287,58 @@ public abstract class Enemy : Entity
         UpdateEnemy(gameTime);
     }
 
-    /// <summary>Обновление анимации (вызывается всегда при активации, даже во время задержки движения).</summary>
+    /// <summary>
+    /// Виртуальный метод для обновления анимационных таймеров и индексов кадров. 
+    /// Переопределяется в подклассах, обладающих анимацией.
+    /// </summary>
+    /// <param name="gameTime">Текущее игровое время.</param>
     protected virtual void UpdateAnimation(GameTime gameTime)
     {
-        // Переопределяется в подклассах
     }
 
-    /// <summary>Загрузка текстуры спрайта (вызывается для подготовки к отрисовке).</summary>
+    /// <summary>
+    /// Настраивает параметры спрайта, рассчитывает размеры кадров и вычленяет текстурные атласы. 
+    /// Вызывается автоматически перед отрисовкой или обновлением.
+    /// </summary>
     protected virtual void EnsureSpriteConfigured()
     {
-        // Переопределяется в подклассах
     }
 
-    /// <summary>Подгружает спрайт до первого Update (например, призыв босса).</summary>
+    /// <summary>
+    /// Подготавливает параметры анимации и отображения спрайта.
+    /// Используется перед началом работы системы анимации.
+    /// </summary>
     public void PrimeSpriteConfiguration() => EnsureSpriteConfigured();
 
-    /// <summary>Проверяет коллизию со стенами при отдаче и возвращает скорректированную позицию.</summary>
+    /// <summary>
+    /// Рассчитывает и корректирует позицию врага при получении импульса отдачи, предотвращая прохождение сквозь стены.
+    /// </summary>
+    /// <param name="oldPos">Позиция врага до применения смещения от отдачи.</param>
+    /// <param name="newPos">Желаемая позиция после применения смещения.</param>
+    /// <returns>Скорректированная координата <see cref="Vector2"/>, безопасная для перемещения.</returns>
     protected virtual Vector2 ResolveRecoilCollision(Vector2 oldPos, Vector2 newPos)
     {
         return newPos; // По умолчанию без проверки
     }
 
-    /// <summary>Движение и AI конкретного типа врага.</summary>
+    /// <summary>
+    /// Обновляет уникальную логику поведения, ИИ и перемещения конкретного типа врага.
+    /// </summary>
+    /// <param name="gameTime">Текущее игровое время.</param>
     protected abstract void UpdateEnemy(GameTime gameTime);
 
-    /// <summary>Возвращает радиус коллизии врага для проверки стен.</summary>
+    /// <summary>
+    /// Возвращает радиус физической окружности коллизии врага, используемый по умолчанию для проверок столкновений.
+    /// </summary>
+    /// <returns>Радиус коллизии в пикселях.</returns>
     protected virtual float GetCollisionRadius()
     {
         return 10f;
     }
 
+    /// <summary>Обновляет направление взгляда (Facing) на основе вектора движения.</summary>
+    /// <param name="direction">Вектор направления движения.</param>
+    /// <param name="allowVertical">Разрешает установку вертикальных направлений (Up/Down).</param>
     protected void UpdateFacingFromDirection(Vector2 direction, bool allowVertical = false)
     {
         if (direction.LengthSquared() < 0.0001f)
@@ -296,11 +353,16 @@ public abstract class Enemy : Entity
         Facing = direction.X >= 0 ? FacingDirection.Right : FacingDirection.Left;
     }
 
+    /// <summary>
+    /// Возвращает параметры отражения спрайта
+    /// для корректного отображения направления взгляда.
+    /// </summary>
     protected SpriteEffects GetHorizontalSpriteEffect()
     {
         return Facing == FacingDirection.Left ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
     }
 
+    /// <inheritdoc />
     public override void Draw(SpriteBatch spriteBatch)
     {
         if (!IsAlive || !IsActivated)
@@ -310,6 +372,11 @@ public abstract class Enemy : Entity
         DrawDebugOverlay(spriteBatch);
     }
 
+    /// <summary>Вычисляет итоговый вектор движения с учетом случайных модификаторов поведения (зигзаги, орбиты, паузы).</summary>
+    /// <param name="toTarget">Вектор направления к игроку.</param>
+    /// <param name="dt">Время, прошедшее с последнего кадра (DeltaTime).</param>
+    /// <param name="speedMultiplier">Выходной множитель скорости для текущего поведения.</param>
+    /// <returns>Нормализованный вектор направления движения.</returns>
     protected Vector2 GetMovementDirectionWithRandomBehavior(Vector2 toTarget, float dt, out float speedMultiplier)
     {
         speedMultiplier = 1f;
@@ -352,6 +419,10 @@ public abstract class Enemy : Entity
         }
     }
 
+    /// <summary>
+    /// Сбрасывает текущее случайное поведение врага.
+    /// После вызова используется стандартное преследование цели.
+    /// </summary>
     protected void ResetRandomMovementBehavior()
     {
         _randomMovementMode = RandomMovementMode.None;
@@ -410,6 +481,7 @@ public abstract class Enemy : Entity
         }
     }
 
+ 
     private static Vector2 GetPerpendicular(Vector2 direction, int sign)
     {
         return sign >= 0
@@ -426,26 +498,46 @@ public abstract class Enemy : Entity
         return min + (float)t * (max - min);
     }
 
+    /// <summary>
+    /// Возвращает габариты тела врага для отрисовки отладочной рамки. По умолчанию возвращает физические границы.
+    /// </summary>
+    /// <returns>Прямоугольник коллизии или <see langword="null"/>, если отрисовка не требуется.</returns>
     protected virtual Rectangle? GetDebugBodyBounds()
     {
         return GetBounds();
     }
 
+    /// <summary>
+    /// Возвращает границы триггера атаки для отладочной визуализации.
+    /// </summary>
+    /// <returns>Прямоугольник зоны атаки или <see langword="null"/>, если зоны нет.</returns>
     protected virtual Rectangle? GetDebugAttackBounds()
     {
         return null;
     }
 
+    /// <summary>
+    /// Возвращает текущий радиус агрессии (обнаружения) для отрисовки зеленой окружности.
+    /// </summary>
+    /// <returns>Радиус в пикселях или <see langword="null"/>, если радиус не используется.</returns>
     protected virtual float? GetDebugAggroRadius()
     {
         return null;
     }
 
+    /// <summary>
+    /// Вычисляет центральную точку сущности, используемую в качестве центра для отрисовки отладочных кругов.
+    /// </summary>
+    /// <returns>Вектор координат центра врага.</returns>
     protected virtual Vector2 GetDebugCenter()
     {
         Rectangle bounds = GetBounds();
         return new Vector2(bounds.Center.X, bounds.Center.Y);
     }
+    /// <summary>
+    /// Воспроизводит уникальный фоновый (эмбиент) звук, если враг активен и жив. 
+    /// Переопределяется в наследниках для кастомной озвучки.
+    /// </summary>
     protected virtual void PlayAmbientSound() 
     {
         if (!IsActivated || !IsAlive)
@@ -453,6 +545,11 @@ public abstract class Enemy : Entity
     }
 
 #if DEBUG
+/// <summary>
+    /// Отрисовывает поверх спрайта контуры физических хитбоксов (красный), зон атак (синий) и радиусов агрессии (зеленый).
+    /// Доступно только в DEBUG-сборке.
+    /// </summary>
+    /// <param name="spriteBatch">Пакет спрайтов для графического вывода.</param>
     protected void DrawDebugOverlay(SpriteBatch spriteBatch)
     {
         if (spriteBatch == null)

@@ -11,17 +11,37 @@ public sealed class CollectibleVisualCache
 {
     private Texture2D _sheet;
 
+    /// <summary>
+    /// Получить общую текстуру спрайт-листа.
+    /// </summary>
     public Texture2D Sheet => _sheet;
 
+    /// <summary>
+    /// Загружает общий спрайт-лист предметов и элементов пьедестала в память.
+    /// В случае ошибки загрузки создает процедурную текстуру-заглушку.
+    /// </summary>
+    /// <param name="content">Менеджер контента.</param>
+    /// <param name="device">Графическое устройство.</param>
     public void Load(ContentManager content, GraphicsDevice device)
     {
         _sheet = TryLoadSheet(content, device);
     }
 
+    /// <summary>
+    /// Возвращает текстуру для отрисовки предмета.
+    /// </summary>
     public Texture2D GetSheet(CollectableKind _) => _sheet;
 
+    /// <summary>
+    /// Возвращает текстуру, используемую для отображения выпадающих объектов здоровья.
+    /// </summary>
     public Texture2D GetHealthTexture(CollectableKind _) => _sheet;
 
+    /// <summary>
+    /// Определяет номер строки в спрайт-листе на основе типа предмета.
+    /// </summary>
+    /// <param name="kind">Тип предмета.</param>
+    /// <returns>Индекс строки.</returns>
     public static int GetSheetRow(CollectableKind kind) =>
         kind switch
         {
@@ -35,15 +55,28 @@ public sealed class CollectibleVisualCache
             _ => CollectibleConfig.CollectablesSheetTotemRow
         };
 
+    /// <summary>
+    /// Вычисляет прямоугольник исходного изображения для отрисовки конкретного кадра предмета.
+    /// </summary>
+    /// <param name="kind">Тип предмета.</param>
+    /// <param name="frameIndex">Индекс кадра (анимации).</param>
     public Rectangle GetSourceRect(CollectableKind kind, int frameIndex)
     {
         int row = GetSheetRow(kind);
         return GetSourceRect(row, frameIndex);
     }
 
+    /// <summary>
+    /// Вычисляет прямоугольник исходного изображения для основания пьедестала.
+    /// </summary>
     public Rectangle GetPedestalBaseSourceRect(int frameIndex) =>
         GetSourceRect(CollectibleConfig.CollectablesSheetPedestalRow, frameIndex);
 
+    /// <summary>
+    /// Базовый метод для получения прямоугольника кадра.
+    /// </summary>
+    /// <param name="row">Строка в атласе.</param>
+    /// <param name="frameIndex">Индекс кадра.</param>
     public Rectangle GetSourceRect(int row, int frameIndex)
     {
         if (_sheet == null)
